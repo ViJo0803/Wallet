@@ -1,27 +1,53 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { Text, View, StyleSheet,TextInput, Button, Alert } from "react-native";
+import { useForm, Controller } from "react-hook-form";
 
-const UselessTextInput = () => {
-  const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState(null);
+export default function RegisterInit() {
+  const { control, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
 
   return (
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
+    <View>
+      <Controller
+        control={control}
+        rules={{
+         required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="firstName"
+        defaultValue=""
       />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
+      {errors.firstName && <Text>This is required.</Text>}
+
+      <Controller
+        control={control}
+        rules={{
+         maxLength: 100,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="lastName"
+        defaultValue=""
       />
-    </SafeAreaView>
+
+      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+    </View>
   );
-};
+}
+
 
 const styles = StyleSheet.create({
   input: {
@@ -31,5 +57,3 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-
-export default UselessTextInput;
