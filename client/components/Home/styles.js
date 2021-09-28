@@ -9,13 +9,4 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#CEE5F1',
     },
-    containerText: {
-        marginTop: '15%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    button: {
-        borderRadius: 60,
-    },
 })
