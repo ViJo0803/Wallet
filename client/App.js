@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import 'react-native-gesture-handler'
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
+import Register from './components/Register';
 
 const Stack = createStackNavigator();
 
@@ -15,10 +15,20 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen
           name='LandingPage'
-          component={LandingPage}/>
+          component={LandingPage}
+          options={{
+            headerShown: false,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 30,
+          }} />
         <Stack.Screen
           name='Home'
-          component={Home}/>
+          component={Home} />
+        <Stack.Screen
+          name='Register'
+          component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );
