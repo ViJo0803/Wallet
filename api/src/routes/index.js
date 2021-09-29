@@ -5,9 +5,9 @@ const axios = require('axios');
 const { combineTableNames } = require('sequelize'); // sequelize/types/lib/utils
 const { noExtendLeft } = require('sequelize'); // /types/lib/operators
 const router = Router();
+const { postUser } = require('./Controllers/userControllers.js')
 
-router.get('/testing', function(req, res, next) {
-    console.log("--------------");
-  })
-  
+router.post('/register', postUser)
+
+
 module.exports = router;

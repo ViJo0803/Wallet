@@ -8,13 +8,16 @@ export default function RegisterInit() {
 
   return (
     <View>
+        <Text>
+        Usuario:
+        </Text>
       <Controller
         control={control}
         rules={{
          required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
+             <TextInput
             style={styles.input}
             onBlur={onBlur}
             onChangeText={onChange}
@@ -24,8 +27,78 @@ export default function RegisterInit() {
         name="firstName"
         defaultValue=""
       />
-      {errors.firstName && <Text>This is required.</Text>}
 
+      {errors.firstName && <Text>This is required.</Text>}
+      
+      <Text>
+        DNI:
+        </Text>
+      <Controller
+        control={control}
+        rules={{
+         required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+             <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="DNI"
+        defaultValue=""
+      />
+
+      {errors.DNI && <Text>This is required.</Text>}
+
+      <Text>
+        Email:
+        </Text>
+      <Controller
+        control={control}
+        rules={{
+         required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+             <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="email"
+        defaultValue=""
+      />
+
+      {errors.email && <Text>This is required.</Text>}
+
+      <Text>
+        Contraseña:
+        </Text>
+      <Controller
+        control={control}
+        rules={{
+         required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+             <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="Contraseña"
+        defaultValue=""
+      />
+
+      {errors.Contraseña && <Text>This is required.</Text>}
+
+      <Text>
+        Confirmar Contraseña:
+        </Text>
       <Controller
         control={control}
         rules={{
@@ -43,7 +116,7 @@ export default function RegisterInit() {
         defaultValue=""
       />
 
-      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+      <Button title="Register" onPress={handleSubmit(onSubmit)} />
     </View>
   );
 }
