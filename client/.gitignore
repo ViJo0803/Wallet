@@ -9,6 +9,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+#vitacora de anotaciones de LuchoMazzetti
+vitacoraLuchoM.txt 
 # macOS
 .DS_Store
 

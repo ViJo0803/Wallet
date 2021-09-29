@@ -1,13 +1,14 @@
 import React from 'react'
 import { View, Button, Text } from 'react-native';
+import RegisterInit from "../RegisterInit";
 import { styles } from './styles'
-
 
 function LandingPage({ navigation }) {
     return (
         <View style={styles.container}>
             <Text  style={styles.title}>This is LandingPage</Text>
             <View style={styles.containerText}>
+            <RegisterInit/>
                 <View style={styles.buttonContainer}>
                     <Button style={styles.button} title="Log In" onPress={() => navigation.navigate('Home')} />
                 </View>
