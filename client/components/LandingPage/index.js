@@ -11,7 +11,7 @@ function LandingPage({ navigation }) {
                 <View style={styles.buttonContainer}>
                     <Button style={styles.button} title="Log In" onPress={() => navigation.navigate('Home')} />
                 </View>
-                <Text>Prueba</Text>
+                <Text>New User</Text>
                 <View style={styles.button}>
                     <Button  style={styles.buttonContainer} title="Register" onPress={() => navigation.navigate('Register')} />
                 </View>
