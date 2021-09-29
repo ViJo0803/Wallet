@@ -1,0 +1,6 @@
+PAra crear una rama en el repo local: git branch nombreDeLaRama
+para pushear la rama:
+git push -u origin NOMbre_de_la_rama 
+
+install el hook para usar forms de react. useForm
+$ npm install react-hook-form
