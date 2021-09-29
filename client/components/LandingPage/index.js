@@ -4,10 +4,18 @@ import RegisterInit from "../RegisterInit";
 
 function LandingPage({ navigation }) {
     return (
-        <View>
-            <Text>This is LandingPage</Text>
-            <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
+        <View style={styles.container}>
+            <Text  style={styles.title}>This is LandingPage</Text>
+            <View style={styles.containerText}>
             <RegisterInit/>
+                <View style={styles.buttonContainer}>
+                    <Button style={styles.button} title="Log In" onPress={() => navigation.navigate('Home')} />
+                </View>
+                <Text>New User</Text>
+                <View style={styles.button}>
+                    <Button  style={styles.buttonContainer} title="Register" onPress={() => navigation.navigate('Register')} />
+                </View>
+            </View>
         </View>
     )
 
