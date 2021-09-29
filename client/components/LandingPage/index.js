@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Button, Text } from 'react-native';
 import RegisterInit from "../RegisterInit";
+import { styles } from './styles'
 
 function LandingPage({ navigation }) {
     return (
