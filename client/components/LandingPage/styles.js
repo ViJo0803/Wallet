@@ -15,7 +15,16 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    title:{
+        fontSize: 25,
+        fontWeight: 'bold',
+    },
     button: {
         borderRadius: 60,
+        margin: '5%'
+    },
+    buttonContainer: {
+        borderRadius: 60,
+        margin: '3%',
     },
 })
