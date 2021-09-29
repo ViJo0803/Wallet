@@ -18,7 +18,9 @@ export default function App() {
           component={LandingPage}/>
         <Stack.Screen
           name='Home'
-          component={Home}/>
+          component={Home}
+          options={{headerShown: false}}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );
