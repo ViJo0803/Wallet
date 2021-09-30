@@ -4,19 +4,16 @@ import {
   View,
   StyleSheet,
   TextInput,
-  Button,
-  Alert,
   TouchableOpacity,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 
-export default function RegisterInit() {
+export default function RegisterInit({ navigation }) {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
 
   return (
     <View>
@@ -58,8 +55,8 @@ export default function RegisterInit() {
         defaultValue=""
       />
 
-      <TouchableOpacity style={styles.buttonlogin}>
-        <Text style={styles.textlogin} onPress={handleSubmit(onSubmit)}>
+      <TouchableOpacity style={styles.buttonlogin} onPress={handleSubmit(() => navigation.navigate("Drawer"))}> 
+        <Text style={styles.textlogin} >
           Login
         </Text>
       </TouchableOpacity>
