@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, Text, ScrollView, TextInput} from 'react-native';
 import { styles } from './styles';
 import 'react-native-gesture-handler';
 
+
+
 function Home() {
+    
+    
     return (
 
         <View style={styles.container}>

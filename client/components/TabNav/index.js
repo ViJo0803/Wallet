@@ -13,6 +13,7 @@ const Tab = createBottomTabNavigator();
 
 function TabNav() {
 
+
     return (
 
         <Tab.Navigator
@@ -21,7 +22,7 @@ function TabNav() {
                 "tabBarActiveTintColor": "darkred"
             }}>
             <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Coins" component={Coins} />
+            <Tab.Screen name="Coins" component={Coins}/>
             <Tab.Screen name="Transfers" component={Transfers} />
             <Tab.Screen name="Services" component={Services} />
             <Tab.Screen name="Deposit" component={Deposit} />
