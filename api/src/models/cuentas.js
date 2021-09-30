@@ -24,5 +24,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    idusuario: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   });
 }

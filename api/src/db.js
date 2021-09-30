@@ -47,7 +47,7 @@ Temperament.belongsToMany(Breed, { through: "breed_temperamento" }); */
 Usuario.hasMany(Favoritos)
 Favoritos.belongsTo(Usuario)
 
-Usuario.hasMany(Cuentas)
+Usuario.hasMany(Cuentas, {foreignKey: 'idusuario', targetKey: 'idcuentas', as:'cuentas_de_usuario'})
 Cuentas.belongsTo(Usuario)
 
 Cuentas.hasMany(Comprar_monedas)
