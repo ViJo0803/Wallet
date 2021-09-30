@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingPage from './components/LandingPage';
-import Home from './components/Home';
+import UserProfile from './components/UserProfile';
 import Register from './components/Register';
 
 const Stack = createStackNavigator();
@@ -24,8 +24,8 @@ export default function App() {
             fontSize: 30,
           }} />
         <Stack.Screen
-          name='Home'
-          component={Home} />
+          name='UserProfile'
+          component={UserProfile} />
         <Stack.Screen
           name='Register'
           component={Register} />

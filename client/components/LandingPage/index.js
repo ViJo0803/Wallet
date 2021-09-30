@@ -10,7 +10,7 @@ function LandingPage({ navigation }) {
             <View style={styles.containerText}>
             <RegisterInit/>
                 <View style={styles.buttonContainer}>
-                    <Button style={styles.button} title="Log In" onPress={() => navigation.navigate('Home')} />
+                    <Button style={styles.button} title="Log In" onPress={() => navigation.navigate('UserProfile')} />
                 </View>
                 <Text>New User</Text>
                 <View style={styles.button}>
