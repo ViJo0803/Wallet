@@ -3,10 +3,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingPage from './components/LandingPage';
-<<<<<<< HEAD
-=======
-import UserProfile from './components/UserProfile';
->>>>>>> UserProfile
 import Register from './components/Register';
 import DrawerBar from './components/Drawer';
 
@@ -28,15 +24,10 @@ export default function App() {
             fontSize: 30,
           }} />
         <Stack.Screen
-<<<<<<< HEAD
           name='Drawer'
           component={DrawerBar}
           options={{ headerShown: false }}
         />
-=======
-          name='UserProfile'
-          component={UserProfile} />
->>>>>>> UserProfile
         <Stack.Screen
           name='Register'
           component={Register} />
