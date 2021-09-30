@@ -26,7 +26,9 @@ export default function App() {
         <Stack.Screen
           name='Drawer'
           component={DrawerBar}
-          options={{ headerShown: false }}
+          options= {{            
+            headerShown: false,
+          }}
         />
         <Stack.Screen
           name='Register'
