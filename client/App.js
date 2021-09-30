@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingPage from './components/LandingPage';
-import Home from './components/Home';
+import DrawerBar from './components/Drawer';
 
 const Stack = createStackNavigator();
 
@@ -17,8 +17,8 @@ export default function App() {
           name='LandingPage'
           component={LandingPage}/>
         <Stack.Screen
-          name='Home'
-          component={Home}
+          name='Drawer'
+          component={DrawerBar}
           options={{headerShown: false}}
           />
       </Stack.Navigator>

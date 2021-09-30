@@ -6,7 +6,7 @@ function LandingPage({ navigation }) {
     return (
         <View>
             <Text>This is LandingPage</Text>
-            <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
+            <Button title="Go Home" onPress={() => navigation.navigate('Drawer')}/>
         </View>
     )
 

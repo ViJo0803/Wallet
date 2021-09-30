@@ -2,21 +2,13 @@ import React, { useState } from 'react'
 import { View, Text, ScrollView, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import 'react-native-gesture-handler';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import LandingPage from '../LandingPage';
-import Transfers from '../Transfers/Transfers';
-import Services from '../Services/Services';
-import Deposit from '../Deposit/Deposit';
-import Statistics from '../Statistics/Statistics';
-import Coins from '../Coins/Coins';
 
 
 
-const Drawer = createDrawerNavigator();
 
 
-function Container(){
+
+function Home(){
     return (
         <View style={[styles.container, {
             flexDirection: "column"
@@ -77,28 +69,7 @@ function Container(){
     )
 }
 
-function Home() {
-    
-    return (
-        
-        
-           <Drawer.Navigator
-                initialRouteName="Home">
-                <Drawer.Screen name="Home" component={Container} />
-                {/* <Drawer.Screen name="User Profile" component={UserProfile} /> */}
-                <Drawer.Screen name="Deposit" component={Deposit} />
-                <Drawer.Screen name="Transfers" component={Transfers} />
-                <Drawer.Screen name="Services" component={Services} />
-                <Drawer.Screen name="Coins" component={Coins} />
-                <Drawer.Screen name="Statistics" component={Statistics} />
-                <Drawer.Screen name="Cerrar Sesion" component={LandingPage} />
-            
-            </Drawer.Navigator> 
 
-        
-        
-        )
-}
 
 
 
