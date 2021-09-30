@@ -9,11 +9,13 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#CEE5F1',
+        flexDirection: "column",
     },
     cuentas: {
         height: '15%',
         justifyContent: "space-around",
         padding: 20,
+        flexDirection: "row",
     },
 
     titleCuenta: {
