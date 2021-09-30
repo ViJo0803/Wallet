@@ -15,7 +15,7 @@ function DrawerBar() {
 
     return (
         <Drawer.Navigator
-            initialRouteName="TabNav">
+            initialRouteName="Home">
             <Drawer.Screen
                 name='Home'
                 component={TabNav}
