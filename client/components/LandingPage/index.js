@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-import RegisterInit from "../RegisterInit";
+import RegisterInit from "../Login";
 import { styles } from "./styles";
 
 function LandingPage({ navigation }) {
