@@ -26,7 +26,7 @@ function Services() {
         });
     }, []);
     return (
-        <View style={{ flex: 1, paddingTop: 40 }}>
+        <View style={{ flex: 1}}>
             <View style={styles.container}>
                 <View style={styles.searchView}>
                     <View style={styles.inputView}>

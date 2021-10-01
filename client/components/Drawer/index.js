@@ -15,13 +15,20 @@ function DrawerBar() {
 
     return (
         <Drawer.Navigator
-            initialRouteName="Home">
+            initialRouteName="Home"
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#93E5AB',
+                },
+                headerTintColor: '#4E878C',
+                
+            }}>
             <Drawer.Screen
                 name='Home'
                 component={TabNav}
             />
             <Drawer.Screen name="User Profile" component={UserProfile} />
-            <Drawer.Screen name="Accounts" component={Accounts} /> 
+            <Drawer.Screen name="Accounts" component={Accounts} />
             <Drawer.Screen name="Statistics" component={Statistics} />
             <Drawer.Screen name="Log out" component={LandingPage} />
         </Drawer.Navigator>

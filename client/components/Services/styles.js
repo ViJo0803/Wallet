@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 12,
         paddingTop: 10,
+        backgroundColor: '#B5FFE1',
     },
     searchView: {
         display: "flex",

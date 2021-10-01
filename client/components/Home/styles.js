@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#CEE5F1',
+        backgroundColor: '#B5FFE1',
         flexDirection: "column",
     },
     cuentas: {

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, Text } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import RegisterInit from "../RegisterInit";
 import { styles } from "./styles";
 
@@ -9,13 +9,14 @@ function LandingPage({ navigation }) {
             <Text style={styles.title}>Mint</Text>
             <View style={styles.containerText}>
                 <RegisterInit navigation={navigation} />
-                <Text>New User</Text>
                 <View style={styles.button}>
-                    <Button
+                    <Text style={styles.plainText}>New User</Text>
+                    <TouchableOpacity
                         style={styles.buttonContainer}
                         title="Register"
-                        onPress={() => navigation.navigate("Register")}
-                    />
+                        onPress={() => navigation.navigate("Register")}>
+                        <Text style={styles.buttonText}>Register</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
