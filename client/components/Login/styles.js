@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     buttonlogin: {
         paddingVertical: 5,
         borderRadius: 12,
-        backgroundColor: "#3395FF",
+        backgroundColor: "#4E878C",
         marginTop: 20,
     },
     textlogin: {

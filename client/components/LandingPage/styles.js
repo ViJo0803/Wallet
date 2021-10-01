@@ -10,15 +10,16 @@ export const styles = StyleSheet.create({
     backgroundColor: "#B5FFE1",
   },
   containerText: {
-    marginTop: "15%",
+    marginTop: "10%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
   title: {
-    fontSize: 30,
+    fontSize: 45,
     fontWeight: "bold",
-    alignSelf: "center",
+    alignSelf: "center",    
+    color: '#5C5C5C',
   },
   button: {
     width: "100%",
@@ -29,13 +30,16 @@ export const styles = StyleSheet.create({
 
   },
   plainText:{
-    
+    fontSize: 15,    
+    fontWeight: "bold",
+    padding: '1%',
+    color: '#5C5C5C',
   },
   buttonContainer: {
     width: "80%",
     paddingVertical: 5,
     borderRadius: 12,
-    backgroundColor: "#3395FF",
+    backgroundColor: "#4E878C",
     marginTop: 5,
   },
   buttonText: {

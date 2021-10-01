@@ -21,7 +21,7 @@ function DrawerBar() {
                 headerStyle: {
                     backgroundColor: '#93E5AB',
                 },
-                headerTintColor: '#FFFFFF',
+                headerTintColor: '#4E878C',
                 
             }}>
             <Drawer.Screen

@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Button, Text } from 'react-native';
-import {styles} from './styles'
+import { styles } from './styles'
 
 
 function Coins({ navigation }) {
     return (
         <View style={styles.container}>
             <Text>This is Coins</Text>
-            <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
+            <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
         </View>
     )
 
