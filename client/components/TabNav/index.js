@@ -5,6 +5,8 @@ import Services from '../Services';
 import Transfers from '../Transfers';
 import Deposit from '../Deposit';
 import Home from '../Home';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 
@@ -21,11 +23,46 @@ function TabNav() {
             screenOptions={{
                 "tabBarActiveTintColor": "darkred"
             }}>
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Coins" component={Coins}/>
-            <Tab.Screen name="Transfers" component={Transfers} />
-            <Tab.Screen name="Services" component={Services} />
-            <Tab.Screen name="Deposit" component={Deposit} />
+            <Tab.Screen 
+            name="Home" 
+            component={Home} 
+            options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons name='home' color={color} size='30px'  />
+                )
+              }}/>
+            <Tab.Screen 
+            name="Coins" 
+            component={Coins} 
+            options={{
+                tabBarIcon: ({ color, size }) => (
+                  <FontAwesome5 name='coins' color={color} size='20px'  />
+                )
+              }}/>
+            <Tab.Screen 
+            name="Transfers" 
+            component={Transfers} 
+            options={{
+                tabBarIcon: ({ color, size }) => (
+                  <FontAwesome5 name='exchange-alt' color={color} size={size} />
+                )
+              }}/>
+            <Tab.Screen 
+            name="Services" 
+            component={Services} 
+            options={{
+                tabBarIcon: ({ color, size }) => (
+                  <FontAwesome5 name='building' color={color} size='20px'  />
+                )
+              }}/>
+            <Tab.Screen 
+            name="Deposit" 
+            component={Deposit} 
+            options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons name='cash-plus' color={color} size='30px' />
+                )
+              }}/>
         </Tab.Navigator>
     )
 }
