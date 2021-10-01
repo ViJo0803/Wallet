@@ -2,11 +2,12 @@ import React from "react";
 import {
   Text,
   View,
-  StyleSheet,
   TextInput,
   TouchableOpacity,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
+
+import { styles } from './styles';
 
 export default function RegisterInit({ navigation }) {
   const {
@@ -55,7 +56,7 @@ export default function RegisterInit({ navigation }) {
         defaultValue=""
       />
 
-      <TouchableOpacity style={styles.buttonlogin} onPress={handleSubmit(() => navigation.navigate("Drawer"))}> 
+      <TouchableOpacity style={styles.buttonlogin} onPress={handleSubmit(() => navigation.navigate("Drawer"))}>
         <Text style={styles.textlogin} >
           Login
         </Text>
@@ -63,29 +64,3 @@ export default function RegisterInit({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  input: {
-    width: "100%",
-    height: 50,
-    borderRadius: 6,
-    marginTop: 10,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    padding: 10,
-    fontSize: 16,
-    color: "#808e9b",
-  },
-  buttonlogin: {
-    paddingVertical: 5,
-    borderRadius: 12,
-    backgroundColor: "#3395FF",
-    marginTop: 20,
-  },
-  textlogin: {
-    fontSize: 18,
-    fontWeight: "500",
-    alignSelf: "center",
-    color: "#fff",
-  },
-});
