@@ -21,7 +21,12 @@ function TabNav() {
         <Tab.Navigator
             initialRouteName="Home"
             screenOptions={{
-                "tabBarActiveTintColor": "darkred"
+                "tabBarActiveTintColor": "#Fff",
+                'tabBarInactiveTintColor': '#5C5C5C',
+                tabBarStyle:{
+                  backgroundColor: '#93E5AB',
+                },
+                headerShown: false,
             }}>
             <Tab.Screen 
             name="Home" 

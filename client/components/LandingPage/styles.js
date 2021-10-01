@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#CEE5F1",
+    backgroundColor: "#B5FFE1",
   },
   containerText: {
     marginTop: "15%",
@@ -21,11 +21,28 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
   },
   button: {
-    borderRadius: 60,
+    width: "100%",
     margin: "5%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+  },
+  plainText:{
+    
   },
   buttonContainer: {
-    borderRadius: 60,
-    margin: "3%",
+    width: "80%",
+    paddingVertical: 5,
+    borderRadius: 12,
+    backgroundColor: "#3395FF",
+    marginTop: 5,
+  },
+  buttonText: {
+    padding:'0 15px',
+    fontSize: 18,
+    fontWeight: "500",
+    alignSelf: "center",
+    color: "#fff",
   },
 });
