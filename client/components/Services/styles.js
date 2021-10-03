@@ -4,14 +4,26 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 12,
-        paddingTop: 10,
+        paddingTop: 10
         backgroundImage: 'linear-gradient(180deg, rgba(248,249,250,1) 0%, rgba(173,181,189,1) 100%)',
+        backgroundColor: '#B5FFE1',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        
+    },
+    text: {
+        fontSize: 18,
+        marginTop: 12,
+        marginBottom: 12,
     },
     searchView: {
+        width: "100%",
         display: "flex",
         flexDirection: "row",
     },
     inputView: {
+        width: "100%",
         flex: 1,
         height: 40,
         backgroundColor: "#dfe4ea",
