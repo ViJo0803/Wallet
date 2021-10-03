@@ -42,17 +42,11 @@ function DrawerBar() {
                 drawerActiveBackgroundColor: '#8fd18e',
                 drawerInactiveBackgroundColor: '#e3e6e9',
             }}>
-            <Drawer.Screen name='Home' component={TabNav}/>
+            {/* <Drawer.Screen name='Home' component={TabNav}/> */}
 
 
-            }}>
-            <Drawer.Screen
-                name='Home'
-                component={TabNav}
-                options={({ route }) => ({
-                    headerTitle: getHeaderTitle(route),
-                })}
-            />
+            
+            <Drawer.Screen name='Home' component={TabNav} options={({ route }) => ({ headerTitle: getHeaderTitle(route),})}/>
 
             <Drawer.Screen name="User Profile" component={UserProfile} />
             <Drawer.Screen name="Accounts" component={Accounts} />
