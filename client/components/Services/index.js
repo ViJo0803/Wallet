@@ -26,8 +26,9 @@ function Services() {
         });
     }, []);
     return (
-        <View style={{ flex: 1}}>
+        <View style={{ flex: 1 }}>
             <View style={styles.container}>
+                <Text style={styles.text}>Services component currently on building stage</Text>
                 <View style={styles.searchView}>
                     <View style={styles.inputView}>
                         <TextInput

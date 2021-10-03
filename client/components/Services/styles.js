@@ -6,12 +6,23 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 12,
         paddingTop: 10,
         backgroundColor: '#B5FFE1',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        
+    },
+    text: {
+        fontSize: 18,
+        marginTop: 12,
+        marginBottom: 12,
     },
     searchView: {
+        width: "100%",
         display: "flex",
         flexDirection: "row",
     },
     inputView: {
+        width: "100%",
         flex: 1,
         height: 40,
         backgroundColor: "#dfe4ea",
