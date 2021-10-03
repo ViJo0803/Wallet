@@ -2,7 +2,8 @@ import * as AuthSession from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 import jwtDecode from 'jwt-decode';
 import * as React from 'react';
-import { Alert, Button, Platform, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, Platform, StyleSheet, Text, View, TextInput } from 'react-native';
+import { useForm, Controller } from "react-hook-form";
 
 // You need to swap out the Auth0 client id and domain with the one from your Auth0 client.
 // In your Auth0 client, you need to also add a url to your authorized redirect urls.
@@ -29,70 +30,103 @@ const redirectUri = AuthSession.makeRedirectUri({
 
 export default function Login({navigation}) {
   const discovery = AuthSession.useAutoDiscovery('https://dev-dp2bcbco.us.auth0.com/authorize');
-
+  const { control, handleSubmit, formState: { errors } } = useForm();
   const [name, setName] = React.useState(null);
-  // Agregar async antes del await
-  const [request,response, promptAsync] = AuthSession.useAuthRequest(
-    {
-      redirectUri,
-      clientSecret,
-      clientId: auth0ClientId,
-      // id_token will return a JWT token
-      responseType: AuthSession.ResponseType.IdToken,
-      // retrieve the user's profile
-      scopes: ['openid', 'profile'],
-      extraParams: {
-        // ideally, this will be a random value
-        nonce: 'nonce',
-      },
-    },
-    discovery
-  );
+
+  // const [request,response, promptAsync] = AuthSession.useAuthRequest(
+  //   {
+  //     redirectUri,
+  //     clientSecret,
+  //     clientId: auth0ClientId,
+  //     // id_token will return a JWT token
+  //     responseType: AuthSession.ResponseType.IdToken,
+  //     // retrieve the user's profile
+  //     scopes: ['openid', 'profile'],
+  //     extraParams: {
+  //       // ideally, this will be a random value
+  //       nonce: 'nonce',
+  //     },
+  //   },
+  //   discovery
+  // );
   
-    console.log("request",request)
-    console.log('response',response)
-  // Retrieve the redirect URL, add this to the callback URL list
-  // of your Auth0 application.
-  /* console.log(`Redirect URL: ${redirectUri}`); */
-  /* setTimeout(function(){ alert("Hello"); }, 6000); */
+  //   console.log("request",request)
+  //   console.log('response',response)
+  // // Retrieve the redirect URL, add this to the callback URL list
+  // // of your Auth0 application.
+  // /* console.log(`Redirect URL: ${redirectUri}`); */
+  // /* setTimeout(function(){ alert("Hello"); }, 6000); */
   
 
-  React.useEffect(() => {
-    if (response) {
-      if (response.error) {
-        Alert.alert(
-          'Authentication error',
-          response.params.error_description || 'something went wrong'
-        );
-        return;
-      }
-      if (response.type === 'success') {
-        // Retrieve the JWT token and decode it
-        const jwtToken = response.params.id_token;
-        const decoded = jwtDecode(jwtToken);
+  // React.useEffect(() => {
+  //   if (response) {
+  //     if (response.error) {
+  //       Alert.alert(
+  //         'Authentication error',
+  //         response.params.error_description || 'something went wrong'
+  //       );
+  //       return;
+  //     }
+  //     if (response.type === 'success') {
+  //       // Retrieve the JWT token and decode it
+  //       const jwtToken = response.params.id_token;
+  //       const decoded = jwtDecode(jwtToken);
 
-        const { name } = decoded;
-        console.log('name adentro de usefect:', decoded)
-        setName(name);
+  //       const { name } = decoded;
+  //       console.log('name adentro de usefect:', decoded)
+  //       setName(name);
         
-      }
-    }
-  }, [response]);
+  //     }
+  //   }
+  // }, [response]);
+
+  const onSubmit = data => console.log(data);
 
   return (
-    <View style={styles.container}>
-      {name ? (
-          navigation.navigate("Drawer"),
-          <Button title="Log out" onPress={() =>setName(null) } />
-      ) : (
-      
-        <Button
-          disabled={!request}
-          title="Log in with Auth0"
-          onPress={() => {promptAsync({ useProxy })}}
-        />
+    <View>
+        <Text>
+        Email:
+        </Text>
+      <Controller
+        control={control}
+        rules={{
+         required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+             <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="Email"
+        defaultValue=""
+      />
 
-      )}
+      {errors.Email && <Text>This is required.</Text>}
+      <Text>
+        Contraseña:
+        </Text>
+      <Controller
+        control={control}
+        rules={{
+         maxLength: 100,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
+            style={styles.input}
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="Contraseña"
+        defaultValue=""
+      />
+      {errors.Contraseña && <Text>This is required.</Text>}
+
+      <Button title="Log in" onPress={handleSubmit(onSubmit)} />
     </View>
   );
 }
