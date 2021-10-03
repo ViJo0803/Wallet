@@ -12,11 +12,12 @@ export const styles = StyleSheet.create({
         padding: 10,
         fontSize: 16,
         color: "#808e9b",
+        backgroundColor: '#DEE2E6'
     },
     buttonlogin: {
         paddingVertical: 5,
         borderRadius: 12,
-        backgroundColor: "#4E878C",
+        backgroundColor: "#80c590",
         marginTop: 20,
     },
     textlogin: {

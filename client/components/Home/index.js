@@ -15,26 +15,26 @@ function Home() {
             <View style={styles.cuentas}>
 
                 <View>
-                    <Text style={styles.titleCuenta}>Cuenta 1</Text>
+                    <Text style={styles.titleCuenta}>Account $</Text>
                     <TextInput
                         style={{
                             height: 40,
                             borderColor: 'gray',
                             borderWidth: 1
                         }}
-                        defaultValue="render saldo"
+                        defaultValue="$ 15.618,45"
                     />
                 </View>
 
                 <View>
-                    <Text style={styles.titleCuenta}>Cuenta 2</Text>
+                    <Text style={styles.titleCuenta}>Account US$</Text>
                     <TextInput
                         style={{
                             height: 40,
                             borderColor: 'gray',
                             borderWidth: 1
                         }}
-                        defaultValue="render saldo"
+                        defaultValue="US$ 2.300"
                     />
                 </View>
             </View>
@@ -45,16 +45,17 @@ function Home() {
             </View>
 
             <ScrollView style={styles.scrollTransfer} >
-                <Text>Transfer 1</Text>
-                <Text>Transfer 2</Text>
-                <Text>Transfer 3</Text>
-                <Text>Transfer 4</Text>
-                <Text>Transfer 5</Text>
-                <Text>Transfer 6</Text>
-                <Text>Transfer 7</Text>
-                <Text>Transfer 8</Text>
-                <Text>Transfer 9</Text>
-                <Text>Transfer 10</Text>
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
+                
             </ScrollView>
         </View>
     )

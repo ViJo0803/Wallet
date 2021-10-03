@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         display: 'flex',        
-        backgroundColor: '#CEE5F1',
+        backgroundImage: 'linear-gradient(180deg, rgba(248,249,250,1) 0%, rgba(173,181,189,1) 100%)',
     },
     image: {
         width: '30%',

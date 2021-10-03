@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#B5FFE1',
+        backgroundImage: 'linear-gradient(180deg, rgba(248,249,250,1) 0%, rgba(173,181,189,1) 100%)',
         flexDirection: "column",
     },
     cuentas: {
@@ -32,5 +32,11 @@ export const styles = StyleSheet.create({
     },
     scrollTransfer: {
         height: '65%',
+    },
+    textTransf:{
+        height: '15%',
+        justifyContent: "space-around",
+        padding: 20,
+            
     }
 });
