@@ -24,7 +24,7 @@ function TabNav() {
                 "tabBarActiveTintColor": "#4E878C",
                 'tabBarInactiveTintColor': '#5C5C5C',
                 tabBarStyle:{
-                  backgroundColor: '#93E5AB',
+                  backgroundColor: '#8fd18e',                  
                 },
                 headerShown: false,
             }}>
