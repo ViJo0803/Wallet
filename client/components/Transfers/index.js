@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Button, Text } from 'react-native';
+import { View, Button, Text, Image } from 'react-native';
 import {styles} from './styles'
 
 
 function Transfers({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text>Transfers component currently on building stage</Text>
+            <Text style={styles.text}>Transfers component currently on building stage</Text>
             <Image
                 source={require('../../assets/transfer.jpg')}
                 style={styles.image} />

@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Button, Text } from 'react-native';
+import { View, Button, Text, Image } from 'react-native';
 import {styles} from './styles'
 
 function Accounts({ navigation }) {
     return (
         <View>
-            <Text>Accounts component currently on building stage</Text>
+            <Text style={styles.text}>Accounts component currently on building stage</Text>
             <Image
                 source={require('../../assets/work_in_progress_o.png')}
                 style={styles.image} />

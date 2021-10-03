@@ -10,6 +10,14 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#B5FFE1',
     },
+    image: {
+        width: '100%',
+        height: '30%',
+        margin: '10px',
+    },
+    text: {
+        fontSize: 18,
+    },
     
     transferDinero: {
         height:'15%',

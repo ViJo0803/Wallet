@@ -6,7 +6,7 @@ import { styles } from './styles'
 function Coins({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text>Coins component currently on building stage</Text>
+            <Text style={styles.text}>Coins component currently on building stage</Text>
             <Image
                 source={require('../../assets/Coins.png')}
                 style={styles.image} />

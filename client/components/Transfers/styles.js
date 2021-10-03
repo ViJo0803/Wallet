@@ -11,4 +11,12 @@ export const styles = StyleSheet.create({
         backgroundColor: '#B5FFE1',
         flexDirection: "column",
     },
+    image: {
+        width: '100%',
+        height: '30%',
+        margin: '10px',
+    },
+    text: {
+        fontSize: 18,
+    }
 })
