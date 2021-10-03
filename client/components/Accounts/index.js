@@ -4,7 +4,7 @@ import {styles} from './styles'
 
 function Accounts({ navigation }) {
     return (
-        <View>
+        <View style={styles.container}>
             <Text style={styles.text}>Accounts component currently on building stage</Text>
             <Image
                 source={require('../../assets/work_in_progress_o.png')}
