@@ -8,28 +8,6 @@ export default function RegisterExtended() {
 
     return (
         <View>
-        <Text>
-        Usuario:
-        </Text>
-      <Controller
-        control={control}
-        rules={{
-         required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-             <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-        name="firstName"
-        defaultValue=""
-      />
-
-      {errors.firstName && <Text>This is required.</Text>}
-      
       <Text>
         DNI:
         </Text>
