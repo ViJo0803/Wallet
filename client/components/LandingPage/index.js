@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-import RegisterInit from "../RegisterInit";
+import Login from "../Login";
 import { styles } from "./styles";
 
 function LandingPage({ navigation }) {
@@ -8,7 +8,7 @@ function LandingPage({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.title}>Mint</Text>
             <View style={styles.containerText}>
-                <RegisterInit navigation={navigation} />
+                <Login navigation={navigation} />
                 <View style={styles.button}>
                     <Text style={styles.plainText}>New User</Text>
                     <TouchableOpacity
