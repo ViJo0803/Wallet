@@ -1,12 +1,15 @@
 import React from 'react'
-import { View, Button, Text } from 'react-native';
+import { View, Button, Text, Image } from 'react-native';
 import { styles } from './styles'
 
 
 function Coins({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text>This is Coins</Text>
+            <Text>Coins component currently on building stage</Text>
+            <Image
+                source={require('../../assets/Coins.png')}
+                style={styles.image} />
             <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
         </View>
     )

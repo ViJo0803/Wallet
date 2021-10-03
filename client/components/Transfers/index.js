@@ -6,7 +6,10 @@ import {styles} from './styles'
 function Transfers({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text>This is transfers</Text>
+            <Text>Transfers component currently on building stage</Text>
+            <Image
+                source={require('../../assets/transfer.jpg')}
+                style={styles.image} />
             <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
         </View>
     )

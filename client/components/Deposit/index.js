@@ -6,7 +6,10 @@ import { styles } from './styles';
 function Deposit({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text>This is deposit</Text>
+            <Text>Deposit component currently on building stage</Text>
+            <Image
+                source={require('../../assets/deposit.jpg')}
+                style={styles.image} />
             <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
 
             <View style={[styles.transferDinero, {
