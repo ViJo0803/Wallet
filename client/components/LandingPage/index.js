@@ -1,5 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
+
 import Login from "../Login";
 import { styles } from "./styles";
 
