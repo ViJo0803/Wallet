@@ -1,65 +1,84 @@
-import React from 'react'
-import { View, Text, ScrollView, TextInput} from 'react-native';
-import { styles } from './styles';
-import 'react-native-gesture-handler';
-
-
+import React from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { styles } from "./styles";
+import { Alert } from "react-native";
 
 function Home() {
-    
-    
-    return (
+  return (
+    <View style={styles.container}>
+      <View style={styles.inputView}>
+        <Text style={styles.titleCuenta}>Account $</Text>
+        <TextInput
+          style={{
+            height: 30,
+            border: 0,
+            fontSize: 17,
+          }}
+          defaultValue="   15.618,45"
+        />
+      </View>
+      <View style={styles.inputView}>
+        <Text style={styles.titleCuenta}>Account US$</Text>
+        <TextInput
+          style={{
+            height: 30,
+            border: 0,
+            fontSize: 17,
+          }}
+          defaultValue="   2.300"
+        />
+      </View>
 
-        <View style={styles.container}>
+      <View>
+        <Text style={styles.titleTransfer}>Transfers</Text>
+      </View>
 
-            <View style={styles.cuentas}>
-
-                <View>
-                    <Text style={styles.titleCuenta}>Account $</Text>
-                    <TextInput
-                        style={{
-                            height: 40,
-                            borderColor: 'gray',
-                            borderWidth: 1
-                        }}
-                        defaultValue="$ 15.618,45"
-                    />
-                </View>
-
-                <View>
-                    <Text style={styles.titleCuenta}>Account US$</Text>
-                    <TextInput
-                        style={{
-                            height: 40,
-                            borderColor: 'gray',
-                            borderWidth: 1
-                        }}
-                        defaultValue="US$ 2.300"
-                    />
-                </View>
-            </View>
-
-
-            <View >
-                <Text style={styles.titleTransfer}>Transfers</Text>
-            </View>
-
-            <ScrollView style={styles.scrollTransfer} >
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                <TextInput sytle={styles.textTransf} defaultValue= '$... date: dd/mm/aa' />
-                
-            </ScrollView>
-        </View>
-    )
+      <ScrollView style={styles.scrollTransfer}>
+        <TouchableOpacity style={styles.userCard}>
+          <View style={styles.userCardRight}>
+            <Text style={styles.textname}>Retiro $ 10 000</Text>
+            <Text style={styles.textdate}>10/09/2021</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.userCard}>
+          <View style={styles.userCardRight}>
+            <Text style={styles.textname}>Deposito $ 80 000</Text>
+            <Text style={styles.textdate}>10/09/2021</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.userCard}>
+          <View style={styles.userCardRight}>
+            <Text style={styles.textname}>Deposito $ 980 000</Text>
+            <Text style={styles.textdate}>10/09/2021</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.userCard}>
+          <View style={styles.userCardRight}>
+            <Text style={styles.textname}>Deposito $ 180 000</Text>
+            <Text style={styles.textdate}>10/09/2021</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.userCard}>
+          <View style={styles.userCardRight}>
+            <Text style={styles.textname}>Retiro $ 80 000</Text>
+            <Text style={styles.textdate}>10/09/2021</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.userCard}>
+          <View style={styles.userCardRight}>
+            <Text style={styles.textname}>Deposito $ 10 000</Text>
+            <Text style={styles.textdate}>10/09/2021</Text>
+          </View>
+        </TouchableOpacity>
+      </ScrollView>
+    </View>
+  );
 }
 
-
-export default Home
+export default Home;
