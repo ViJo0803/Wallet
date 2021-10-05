@@ -3,7 +3,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LandingPage from "./components/LandingPage";
-import Register from "./components/Register";
+import RegisterExtended from "./components/RegisterExtended";
 import DrawerBar from "./components/Drawer";
 
 const Stack = createStackNavigator();
@@ -30,7 +30,7 @@ export default function App() {
             headerShown: false
           }}
         />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="RegisterExtended" component={RegisterExtended} />
       </Stack.Navigator>
     </NavigationContainer>
   );
