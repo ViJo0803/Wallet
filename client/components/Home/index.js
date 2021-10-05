@@ -4,7 +4,7 @@ import {
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import { styles } from "./styles";
 import { Alert } from "react-native";
@@ -18,23 +18,20 @@ function Home() {
           style={{
             height: 30,
             border: 0,
-            fontSize: 17,
+            fontSize: 17
           }}
           defaultValue="   15.618,45"
         />
-      </View>
-      <View style={styles.inputView}>
         <Text style={styles.titleCuenta}>Account US$</Text>
         <TextInput
           style={{
             height: 30,
             border: 0,
-            fontSize: 17,
+            fontSize: 17
           }}
           defaultValue="   2.300"
         />
       </View>
-
       <View>
         <Text style={styles.titleTransfer}>Transfers</Text>
       </View>

@@ -7,47 +7,50 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundImage: 'linear-gradient(180deg, rgba(153,217,140,1) 0%, rgba(26,117,159,1) 100%)',
-     
+    backgroundImage:
+      "linear-gradient(180deg, rgba(153,217,140,1) 0%, rgba(26,117,159,1) 100%)"
   },
   containerText: {
     marginTop: "10%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   title: {
     fontSize: 45,
     fontWeight: "bold",
-    alignSelf: "center",    
-    color: '#5C5C5C',
+    alignSelf: "center",
+    color: "#5C5C5C"
   },
   button: {
     width: "100%",
     margin: "5%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-
+    justifyContent: "center"
   },
-  plainText:{
-    fontSize: 15,    
+  plainText: {
+    fontSize: 15,
     fontWeight: "bold",
-    padding: '1%',
-    color: '#5C5C5C',
+    padding: "1%",
+    color: "#5C5C5C"
   },
   buttonContainer: {
     width: "80%",
     paddingVertical: 5,
     borderRadius: 12,
     backgroundColor: "#80c590",
-    marginTop: 5,
+    marginTop: 5
   },
   buttonText: {
-    padding:'0 15px',
+    padding: "0 15px",
     fontSize: 18,
     fontWeight: "500",
     alignSelf: "center",
-    color: "#fff",
+    color: "#fff"
   },
+  logo: {
+    width: "300px",
+    height: "200px"
+  }
 });
