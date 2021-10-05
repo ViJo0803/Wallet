@@ -7,42 +7,41 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundImage:
-      "linear-gradient(180deg, rgba(248,249,250,1) 0%, rgba(173,181,189,1) 100%)",
-    flexDirection: "column",
+    backgroundColor: "white",
+    flexDirection: "column"
   },
   cuentas: {
     height: "15%",
     justifyContent: "space-around",
     padding: 20,
-    flexDirection: "row",
+    flexDirection: "row"
   },
 
   titleCuenta: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   buttonIngresar: {
     borderRadius: 60,
-    margin: "5%",
+    margin: "5%"
   },
   titleTransfer: {
     fontSize: 20,
     fontWeight: "bold",
+    marginTop: 20
   },
   scrollTransfer: {
     paddingHorizontal: 10,
+    width: "100%"
   },
   inputView: {
     width: "100%",
-    flex: 1,
-    height: 40,
-    backgroundColor: "#dfe4ea",
+    backgroundColor: "#99d98c",
     paddingHorizontal: 10,
-    borderRadius: 6,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
     display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    paddingVertical: 10
   },
   textTransf: {
     backgroundColor: "#2f3542",
@@ -52,9 +51,10 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "center"
   },
   userCard: {
+    width: "100%",
     backgroundColor: "#2f3542",
     paddingVertical: 6,
     paddingHorizontal: 6,
@@ -62,24 +62,24 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "center"
   },
   userImage: {
     width: 40,
     height: 40,
-    borderRadius: 100,
+    borderRadius: 100
   },
   userCardRight: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   textname: {
     fontSize: 16,
     fontWeight: "500",
-    color: "#fff",
+    color: "#fff"
   },
   textdate: {
     fontSize: 12,
     alignContent: "flex-end",
-    color: "#fff",
-  },
+    color: "#fff"
+  }
 });
