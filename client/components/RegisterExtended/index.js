@@ -14,7 +14,7 @@ export default function RegisterExtended({ navigation }) {
     const mail = async () => {
       const value = await AsyncStorage.getItem(MY_STORAGE_KEY)
       let json = JSON.parse(value)
-      console.log("json", json)
+      
       if(json.sub.split("|")[0]==="google-oauth2"){
           const datos = await axios.get('http://localhost:3001/usuarios?mail='+ json.nickname +'@gmail.com' )
           if(datos){
@@ -48,17 +48,35 @@ export default function RegisterExtended({ navigation }) {
       /* console.log(await retrieveData()) */
       await AsyncStorage.mergeItem(MY_STORAGE_KEY, JSON.stringify(data))
       let json = await retrieveData()
-      var res = await axios.post('http://localhost:3001/usuario', json )
-      console.log("respuesta del post",res)
+      console.log("json", json)
 
+      const dataFiltered = {
+        nombre: json.nombre,
+        apellidos: json.apellidos,
+        mail: json.sub.split("|")[0]==="google-oauth2"? json.nickname+ "@gmail.com" :  json.name,
+        hash: json.direccion, 
+        nickname: json.nickname,
+        dni: json.dni,
+        telefono: json.telefono,
+        foto: json.picture,
+        codigo_postal: json.codigo_postal,
+      }
+
+      console.log('datafiltered: ',dataFiltered)
+
+      var res = await axios.post('http://localhost:3001/usuario', dataFiltered )
+      console.log("respuesta del post",res)
     }
+
     /* name() */ // LO PUDE HACER!!!! esto consolelogea el store
     // const name = stringToJson.given_name
      /* retrieveData() */
     /* console.log(name)   */
     /* datos = retrieveData()
 
-    console.log('dat', datos) */
+    console.log('dat', datos) 
+     
+    */
 
     return (
         <View>
