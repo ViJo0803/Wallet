@@ -1,23 +1,23 @@
 import React from "react";
-import { Text, View, StyleSheet,TextInput, Button, Alert } from "react-native";
+import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 
 export default function RegisterExtended() {
-    const { control, handleSubmit, formState: { errors } } = useForm();
+  const { control, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
-    return (
-        <View>
+  return (
+    <View>
       <Text>
         DNI:
-        </Text>
+      </Text>
       <Controller
         control={control}
         rules={{
-         required: true,
+          required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-             <TextInput
+          <TextInput
             style={styles.input}
             onBlur={onBlur}
             onChangeText={onChange}
@@ -32,14 +32,14 @@ export default function RegisterExtended() {
 
       <Text>
         Email:
-        </Text>
+      </Text>
       <Controller
         control={control}
         rules={{
-         required: true,
+          required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-             <TextInput
+          <TextInput
             style={styles.input}
             onBlur={onBlur}
             onChangeText={onChange}
@@ -54,14 +54,14 @@ export default function RegisterExtended() {
 
       <Text>
         Contraseña:
-        </Text>
+      </Text>
       <Controller
         control={control}
         rules={{
-         required: true,
+          required: true,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
-             <TextInput
+          <TextInput
             style={styles.input}
             onBlur={onBlur}
             onChangeText={onChange}
@@ -76,11 +76,11 @@ export default function RegisterExtended() {
 
       <Text>
         Confirmar Contraseña:
-        </Text>
+      </Text>
       <Controller
         control={control}
         rules={{
-         maxLength: 100,
+          maxLength: 100,
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
@@ -96,5 +96,5 @@ export default function RegisterExtended() {
 
       <Button title="Register" onPress={handleSubmit(onSubmit)} />
     </View>
-    )
+  )
 }

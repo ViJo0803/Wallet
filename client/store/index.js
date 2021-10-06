@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import reducer from "./reducer/index";
+import reducer from "./reducer/index.js";
 import thunk from "redux-thunk";
 
 //store with thunk and dev tools

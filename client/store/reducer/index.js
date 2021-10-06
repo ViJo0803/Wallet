@@ -1,4 +1,4 @@
-import {CREATE_USER, LOG_IN} from '../actions/types'
+import {CREATE_USER, LOG_IN} from '../actions/types.js'
 
 const initialState= {
     users:[],

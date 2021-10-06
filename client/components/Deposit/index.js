@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View, Button, Text, TextInput, Image } from 'react-native';
-import { styles } from './styles';
+import { styles } from './styles.js';
 import { CardField, useConfirmPayment } from '@stripe/stripe-react-native'
 
 const API_URL = 'https://localhost:3001'
@@ -8,7 +8,7 @@ const API_URL = 'https://localhost:3001'
 function Deposit({ navigation }) {
     const [email, setEmail] = useState();
     const [cardDetails, setCardDetails] = useState();
-    const { confirmPayment, loading } = useConfirmPayment;
+    const { confirmPayment, loading } = useConfirmPayment();
 
     const fetchPaymentIntentClientSecret = async () => {
         const response = await fetch(`${API_URL}/create-payment-intent`, {
@@ -21,7 +21,7 @@ function Deposit({ navigation }) {
         return { clientSecret, error };
     }
 
-    const handleDepositPress = async () => {
+    const handlePayPress = async () => {
         //1.gather customer's billing information
         if (!cardDetails?.complete || !email) {
             Alert.alert("Please enter complete card details and email");
@@ -75,7 +75,7 @@ function Deposit({ navigation }) {
                 />
             </View>
             <Button
-                onPress={handleDepositPress}
+                onPress={handlePayPress}
                 title='Deposit'
                 disabled={loading} />
             <Button

@@ -2,9 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import LandingPage from "./components/LandingPage";
-import Register from "./components/Register";
-import DrawerBar from "./components/Drawer";
+import LandingPage from "./components/LandingPage/index.js";
+import Register from "./components/Register/index.js";
+import DrawerBar from "./components/Drawer/index.js";
 import { StripeProvider } from '@stripe/stripe-react-native'
 
 const Stack = createStackNavigator();

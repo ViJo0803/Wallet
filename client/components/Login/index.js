@@ -83,7 +83,7 @@ export default function Login({ navigation }) {
     <View style={styles.container}>
       {name ? (
         (navigation.navigate("Drawer"),
-        (<Button title="Log out" onPress={() => setName(null)} />))
+          (<Button title="Log out" onPress={() => setName(null)} />))
       ) : (
         <Button
           disabled={!request}

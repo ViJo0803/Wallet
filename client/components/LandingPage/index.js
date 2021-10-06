@@ -1,9 +1,9 @@
 import React from "react";
 import { View, TouchableOpacity, Image } from "react-native";
 
-import Login from "../Login";
-import RegisterExtended from "../RegisterExtended";
-import { styles } from "./styles";
+import Login from "../Login/index.js";
+import RegisterExtended from "../RegisterExtended/index.js";
+import { styles } from "./styles.js";
 import logoMint from "../../assets/Logo_MintI.png";
 
 function LandingPage({ navigation }) {

@@ -1,10 +1,10 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import LandingPage from '../LandingPage';
-import Statistics from '../Statistics';
+import LandingPage from '../LandingPage/index.js';
+import Statistics from '../Statistics/index.js';
 import UserProfile from '../UserProfile/index'
-import TabNav from '../TabNav';
-import Accounts from '../Accounts';
+import TabNav from '../TabNav/index.js';
+import Accounts from '../Accounts/index.js';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();

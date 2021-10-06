@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import axios from "axios";
-import { styles } from './styles'
+import { styles } from './styles.js'
 
 function Services() {
 

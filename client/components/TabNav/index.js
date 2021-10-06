@@ -1,10 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Coins from "../Coins";
-import Services from "../Services";
-import Transfers from "../Transfers";
-import Deposit from "../Deposit";
-import Home from "../Home";
+import Coins from "../Coins/index.js";
+import Services from "../Services/index.js";
+import Transfers from "../Transfers/index.js";
+import Deposit from "../Deposit/index.js";
+import Home from "../Home/index.js";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 

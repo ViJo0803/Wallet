@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Button, Text, Image } from 'react-native';
-import {styles} from './styles'
+import {styles} from './styles.js'
 
 function Statistics({ navigation }) {
     return (

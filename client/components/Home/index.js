@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
-import { styles } from "./styles";
+import { styles } from "./styles.js";
 import { Alert } from "react-native";
 
 function Home() {
