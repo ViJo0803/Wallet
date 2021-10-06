@@ -32,7 +32,7 @@ router.get("/usuarios", async (req, res) => {
       );
       usuarioEmail.length
       ? res.status(200).send(usuarioEmail)
-      : res.status(404).send("Usuario no registrado");
+      : res.status(204).send(null);
     } else {
       res.status(200).send(usuarios);
     }
