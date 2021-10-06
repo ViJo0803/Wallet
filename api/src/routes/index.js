@@ -50,7 +50,7 @@ router.post("/usuario", async (req, res) => {
     try {
       const paymentIntent = await stripe.paymentIntents.create({
         amount: 1099, // menor denominacion posible de la moneda
-        currency: 'ARS', // moneda que recibe
+        currency: 'usd', // moneda que recibe
         payment_method_types: ["card"], //si se aclara 'card' solo acepta tarjeta
       });
       const clientSecret = paymentIntent.client_secret;
