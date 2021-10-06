@@ -8,6 +8,8 @@ import Home from "../Home";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
+
+
 const Tab = createBottomTabNavigator();
 
 function TabNav() {
@@ -63,19 +65,19 @@ function TabNav() {
           )
         }}
       />
-      <Tab.Screen
-        name="Deposit"
-        component={Deposit}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="cash-plus"
-              color={color}
-              size="30px"
-            />
-          )
-        }}
-      />
+        <Tab.Screen
+          name="Deposit"
+          component={Deposit}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="cash-plus"
+                color={color}
+                size="30px"
+              />
+            )
+          }}
+        />
     </Tab.Navigator>
   );
 }

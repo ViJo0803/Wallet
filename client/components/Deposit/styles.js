@@ -10,30 +10,28 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundImage: 'linear-gradient(180deg, rgba(248,249,250,1) 0%, rgba(173,181,189,1) 100%)',
     },
-    image: {
-        width: '100%',
-        height: '30%',
-        margin: '10px',
-    },
-    text: {
-        fontSize: 18,
-    },
-    
-    transferDinero: {
-        height:'15%',
-        flexDirection:"column",
-        justifyContent:"center",
-        alignItems:"center",
-        padding: 20,
+    innerContainer: {
+        flex: 1,
+        justifyContent: 'center',
         margin: 20,
-      },
-      titleTransfer: {
-          height:'15%',
-          alignSelf:"center",
-          fontSize: 20,
-          fontWeight: 'bold',
-      },
-  });
+    },
+    input: {
+        height: 50,
+        padding: 10,
+        borderRadius: 8,
+        backgroundColor: '#efefefef',
+        borderColor: '#000000',
+        fontSize: 20,
+    },
+    card: {
+        backgroundColor: '#efefefef'
+    },
+    cardContainer: {
+        height: 50,
+        marginVertical: 30,
+    }
+
+});
 
 
 
