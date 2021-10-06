@@ -46,7 +46,8 @@ export default function Login({ navigation }) {
       extraParams: {
         // ideally, this will be a random value
         nonce: "nonce"
-      }
+      }, 
+      prompt: "login",
     },
     discovery
   );
