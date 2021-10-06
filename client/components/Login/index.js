@@ -16,14 +16,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const auth0ClientId = "vdCjaxfukPDOLrGpcwP080wD54xZxAjT";
 const authorizationEndpoint = "https://dev-dp2bcbco.us.auth0.com/authorize"; //dev-zt1p-cha.us.auth0.com
-const clientSecret =
-  "wjmFZIMZAOdEm0VNU-fvKeJZcnWweY8WINQJnUeZ76LSmr2vPK_4bMUvk2ZAswHx";
 
 const useProxy = Platform.select({ web: false, default: true });
 
 const MY_STORAGE_KEY = 'token'
 
-WebBrowser.maybeCompleteAuthSession();
 
 const redirectUri = AuthSession.makeRedirectUri({
   useProxy
@@ -41,7 +38,6 @@ export default function Login({ navigation }) {
   const [request, response, promptAsync] = AuthSession.useAuthRequest(
     {
       redirectUri,
-      clientSecret,
       clientId: auth0ClientId,
       // id_token will return a JWT token
       responseType: AuthSession.ResponseType.IdToken,
@@ -55,12 +51,8 @@ export default function Login({ navigation }) {
     discovery
   );
 
-  /* console.log("request", request);
-  console.log("response", response); */
-  // Retrieve the redirect URL, add this to the callback URL list
-  // of your Auth0 application.
-  /* console.log(`Redirect URL: ${redirectUri}`); */
-  /* setTimeout(function(){ alert("Hello"); }, 6000); */
+  WebBrowser.maybeCompleteAuthSession();
+
 
   const storeData = async () => {
     const decoded1 = jwtDecode(response.params.id_token);
@@ -112,8 +104,8 @@ export default function Login({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {name ? (
-        (navigation.navigate("RegisterExtended"),
+      {request ? (
+        (navigation.navigate("Loading"),
         (<Button title="Log out" onPress={() => setName(null)} />))
       ) : (
         <Button

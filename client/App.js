@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LandingPage from "./components/LandingPage";
 import RegisterExtended from "./components/RegisterExtended";
+import Loading from "./components/Loading";
 import DrawerBar from "./components/Drawer";
 
 const Stack = createStackNavigator();
@@ -31,6 +32,7 @@ export default function App() {
           }}
         />
         <Stack.Screen name="RegisterExtended" component={RegisterExtended} />
+        <Stack.Screen name="Loading" component={Loading} />
       </Stack.Navigator>
     </NavigationContainer>
   );
