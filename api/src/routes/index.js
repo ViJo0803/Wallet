@@ -41,7 +41,7 @@ router.get("/usuarios", async (req, res) => {
 })
 
 
-router.post("/usuario", async (req, res) => {
+router.post("/usuario", async (req, res) =>  {
   const {
     nombre,
     apellidos,
