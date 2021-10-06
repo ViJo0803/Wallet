@@ -46,7 +46,8 @@ export default function Login({ navigation }) {
       extraParams: {
         // ideally, this will be a random value
         nonce: "nonce"
-      }
+      },
+      prompt:'login'
     },
     discovery
   );
@@ -104,8 +105,8 @@ export default function Login({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {request ? (
-        (navigation.navigate("Loading"),
+      {name ? (
+        (navigation.navigate("RegisterExtended"),
         (<Button title="Log out" onPress={() => setName(null)} />))
       ) : (
         <Button

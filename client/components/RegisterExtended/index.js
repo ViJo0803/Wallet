@@ -8,7 +8,42 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function RegisterExtended({ navigation }) {
     const { control, handleSubmit, formState: { errors } } = useForm();
     const MY_STORAGE_KEY = 'token'
-   
+    //if email ya esta en la base de datos => redireccionar a home
+    //llamar a una accion que llame al reducer con un case al GET a wallet, si email = email de async storage no mostrar las preguntas de registro
+    const mail = async () => {
+      const value = await AsyncStorage.getItem(MY_STORAGE_KEY)
+      let json = JSON.parse(value)
+      /* console.log("json", json)
+      console.log(json.sub.split("|")[0]==="google-oauth2") */
+      if(json.sub.split("|")[0]==="google-oauth2"){
+          const datos = await axios.get('http://localhost:3001/usuarios?mail='+ json.nickname +'@gmail.com' )
+          console.log('datos',datos) 
+          if(datos){
+            navigation.navigate("Drawer") 
+          } if (!datos){
+            console.log('usuario no esta en la base de datos')
+          }
+        } else if(json.sub.split("|")[0]==="auth0"){
+          const datos = await axios.get('http://localhost:3001/usuarios?mail='+ json.name)
+          if(datos){
+            navigation.navigate("Drawer") 
+            console.log('registrado por auth0')
+        } if (!datos){
+          console.log('usuario no esta en la base de datos')
+        }
+      } 
+      
+    }   
+
+
+
+    //if( si viene de google){json.nickname +'@gmail.com'}
+    //elseif(si viene de auth0)
+
+    //get a la ruta con el objeto q corresponda // gmail(json.nickname +'@gmail.com') //json.name 
+
+
+    mail()
 
     const retrieveData = async () => {
       try {
@@ -22,9 +57,9 @@ export default function RegisterExtended({ navigation }) {
       }
     }
 
-    
     const registerData = async (data) => {
       /* console.log(await retrieveData()) */
+      console.log(data)
       await AsyncStorage.mergeItem(MY_STORAGE_KEY, JSON.stringify(data))
       let json = await retrieveData()
       console.log("json", json)
