@@ -106,7 +106,7 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       {name ? (
-        (navigation.navigate("RegisterExtended"),
+        (navigation.navigate("Loading"),
         (<Button title="Log out" onPress={() => setName(null)} />))
       ) : (
         <Button
