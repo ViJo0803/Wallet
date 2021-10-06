@@ -8,6 +8,7 @@
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "dependencies": {
+    "@stripe/stripe-react-native": "^0.2.2",
     "axios": "^0.21.2",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -19,6 +20,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.13",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "stripe": "^8.178.0"
   }
 }

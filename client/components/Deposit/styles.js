@@ -33,6 +33,13 @@ export const styles = StyleSheet.create({
           fontSize: 20,
           fontWeight: 'bold',
       },
+      card:{
+        backgroundColor: "#efefefef"
+      },
+      cardContainer:{
+        height: 50,
+        marginVertical: 30,
+      }
   });
 
 

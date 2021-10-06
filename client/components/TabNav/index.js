@@ -63,6 +63,8 @@ function TabNav() {
           )
         }}
       />
+      
+      
       <Tab.Screen
         name="Deposit"
         component={Deposit}
@@ -75,7 +77,11 @@ function TabNav() {
             />
           )
         }}
+        
       />
+
+      
+      
     </Tab.Navigator>
   );
 }
