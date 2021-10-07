@@ -25,11 +25,14 @@ export const datosDeUsuario = async () => {
                 valueCP : datos.data[0].codigo_postal,
                 valueNickname : datos.data[0].nickname,
             }
-            await AsyncStorage.mergeItem(MY_STORAGE_KEY, JSON.stringify(objetoUserProfile))
+            
+            // await AsyncStorage.mergeItem(MY_STORAGE_KEY, JSON.stringify(objetoUserProfile))
+            await AsyncStorage.setItem(MY_STORAGE_KEY, '')
+            await AsyncStorage.setItem(MY_STORAGE_KEY, JSON.stringify(objetoUserProfile)) // antes en esta linea estaba el mergeItem
             return objetoUserProfile
         }
     } catch (error) {
-        console.log(error.message)
+        /* console.log(error.message) */
     }
 }
 

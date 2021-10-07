@@ -1,5 +1,5 @@
 const CREATE_USER ="CREATE USER";
-const LOG_IN = "LOG IN"
+const LOG_IN = "LOG_IN"
 
 
 

@@ -3,8 +3,9 @@ import * as WebBrowser from "expo-web-browser";
 import jwtDecode from "jwt-decode";
 import * as React from "react";
 import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
-//import AsyncStorage from '@react-native-community/async-storage'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+import{ userlogin } from "../../store/actions/index"
 
 // You need to swap out the Auth0 client id and domain with the one from your Auth0 client.
 // In your Auth0 client, you need to also add a url to your authorized redirect urls.
@@ -53,7 +54,7 @@ export default function Login({ navigation }) {
   );
 
   WebBrowser.maybeCompleteAuthSession();
-
+  const dispatch = useDispatch();
 
   const storeData = async () => {
     const decoded1 = jwtDecode(response.params.id_token);
@@ -95,10 +96,13 @@ export default function Login({ navigation }) {
         const jwtToken = response.params.id_token;
         const decoded = jwtDecode(jwtToken);
 
+        
         storeData()
         const { name } = decoded;
         setName(name);
         retrieveData()
+        dispatch(userlogin(decoded))
+        navigation.navigate("Loading")
       }
     }
   }, [response]);
@@ -106,14 +110,17 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       {name ? (
-        (navigation.navigate("Loading"),
-        (<Button title="Log out" onPress={() => setName(null)} />))
+        // (navigation.navigate("Loading"),
+       ( (<Button title="Log out" onPress={() => setName(null)} />))
       ) : (
         <Button
           disabled={!request}
           title="Log in with Auth0"
           onPress={() => {
+         
             promptAsync({ useProxy });
+            // dispatch(userlogin())
+            ;
           }}
         />
       )}
