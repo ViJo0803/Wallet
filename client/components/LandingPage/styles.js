@@ -7,8 +7,6 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundImage:
-      "linear-gradient(180deg, rgba(153,217,140,1) 0%, rgba(26,117,159,1) 100%)"
   },
   containerText: {
     marginTop: "10%",
@@ -50,7 +48,7 @@ export const styles = StyleSheet.create({
     color: "#fff"
   },
   logo: {
-    width: "300px",
-    height: "200px"
+    width: 300,
+    height: 200
   }
 });
