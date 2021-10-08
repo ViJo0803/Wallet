@@ -10,14 +10,15 @@ export function createUser(userData){
             dispatch({ type: CREATE_USER, payload: response.data });
           })
           .catch((error) => console.log(error));
-
-}
+};
 }
 
 export function getUser(mail) {
+
+  
     return async (dispatch) => {
         await axios
-        .get(`http://localhost:3001/user/${mail}`)
+        .get(`http://localhost:3001/user/?mail=${mail}`)
         .then((response) => {
           dispatch({ type: GET_USER, payload: response.data });
         })

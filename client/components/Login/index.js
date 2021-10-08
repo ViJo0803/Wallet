@@ -3,7 +3,7 @@ import * as WebBrowser from "expo-web-browser";
 import jwtDecode from "jwt-decode";
 import * as React from "react";
 import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
-//import AsyncStorage from '@react-native-community/async-storage'
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // You need to swap out the Auth0 client id and domain with the one from your Auth0 client.

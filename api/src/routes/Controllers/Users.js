@@ -91,6 +91,7 @@ async function getUser(req, res, next){
 
 const mail=req.query.mail
 
+
 console.log(mail)
 
 let user = await Usuario.findOne({
