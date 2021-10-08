@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Button, Text, Image } from 'react-native';
-import {styles} from './styles'
+import { styles } from './styles'
 
 
 function Transfers({ navigation }) {
@@ -10,7 +10,7 @@ function Transfers({ navigation }) {
             <Image
                 source={require('../../assets/transfer.jpg')}
                 style={styles.image} />
-            <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
+            <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
         </View>
     )
 

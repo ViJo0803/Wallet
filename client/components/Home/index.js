@@ -7,7 +7,6 @@ import {
   TouchableOpacity
 } from "react-native";
 import { styles } from "./styles";
-import { Alert } from "react-native";
 
 function Home() {
   return (

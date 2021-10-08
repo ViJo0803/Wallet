@@ -1,9 +1,9 @@
-import {CREATE_USER, GET_USER} from '../actions/types'
+import { CREATE_USER, GET_USER } from '../actions/types'
 
-const initialState= {
+const initialState = {
     /* users:[],
     userDetail:[], */
-    User:{
+    User: {
         idusuario: "487c0fe0-2844-11ec-b00b-9fccee04d922",
         nombre: "lucas",
         apellidos: "Masello",
@@ -21,20 +21,20 @@ const initialState= {
                 numerocuenta: 235095431068940,
                 saldo: 0,
                 alias: "jojo@gmail.com",
-                
+
             }
         ]
     }
 }
 
 
-const userReducer= (state= initialState, {type, payload})=>{
-    switch(type){
+const userReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
         case CREATE_USER:
-            return {...state, User:payload};
-        
+            return { ...state, User: payload };
+
         case GET_USER:
-            return {...state,User:payload}
+            return { ...state, User: payload }
 
         default: return state;
     }

@@ -2,8 +2,7 @@ import * as AuthSession from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
 import jwtDecode from "jwt-decode";
 import * as React from "react";
-import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
-//import AsyncStorage from '@react-native-community/async-storage'
+import { Alert, Button, Platform, StyleSheet, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // You need to swap out the Auth0 client id and domain with the one from your Auth0 client.
@@ -46,7 +45,7 @@ export default function Login({ navigation }) {
       extraParams: {
         // ideally, this will be a random value
         nonce: "nonce"
-      }, 
+      },
       prompt: "login",
     },
     discovery
@@ -62,22 +61,22 @@ export default function Login({ navigation }) {
       await AsyncStorage.setItem(MY_STORAGE_KEY, JSON.stringify(decoded1));
 
     } catch (error) {
-        // Error saving data
-        console.log(error.message)
+      // Error saving data
+      console.log(error.message)
     }
   }
-  
+
   const retrieveData = async () => {
     try {
-        const value = await AsyncStorage.getItem(MY_STORAGE_KEY);
-        if (value !== null) {
-          const stringToJson = JSON.parse(value)
-          /* console.log('datos parseados',stringToJson) */
-            // Our data is fetched successfully
-        }
+      const value = await AsyncStorage.getItem(MY_STORAGE_KEY);
+      if (value !== null) {
+        const stringToJson = JSON.parse(value)
+        /* console.log('datos parseados',stringToJson) */
+        // Our data is fetched successfully
+      }
     } catch (error) {
-        // Error retrieving data
-        console.log(error.message)
+      // Error retrieving data
+      console.log(error.message)
     }
   }
 
@@ -107,7 +106,7 @@ export default function Login({ navigation }) {
     <View style={styles.container}>
       {name ? (
         (navigation.navigate("Loading"),
-        (<Button title="Log out" onPress={() => setName(null)} />))
+          (<Button title="Log out" onPress={() => setName(null)} />))
       ) : (
         <Button
           disabled={!request}
