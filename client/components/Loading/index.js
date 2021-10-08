@@ -17,7 +17,6 @@ const loading = async() =>{
     console.log("datos",datos)
     if(datos.status===200) {
       navigation.navigate("Drawer")
-       
     } else if (datos.status===204) {
       navigation.navigate("RegisterExtended")
     }
