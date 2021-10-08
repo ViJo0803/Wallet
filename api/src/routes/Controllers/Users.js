@@ -81,29 +81,24 @@ async function createUser(req, res, next){
 
 async function getUser(req, res, next){
 
-const mail=req.query.mail
+  const mail=req.query.mail
+  console.log(mail)
 
-console.log(mail)
+  let user = await Usuario.findOne({
+    where:{
+      mail:mail
+    }
+  })
 
-let user = await Usuario.findOne({
-  where:{
-    mail:mail
-  }
+  let iduser = user?.idusuario
 
-})
+  user= await Usuario.findByPk(iduser,{ 
+    include:["cuentas"]
+  })
 
+  console.log("user: "+ user)
 
-
-let iduser = user?.idusuario
-
-user= await Usuario.findByPk(iduser,{ 
-  include:["cuentas"]
-}
-)
-
-console.log("user: "+ user)
-
-user?res.send(user): res.send(null)
+  user?res.send(user): res.send(null)
 }
 
 
