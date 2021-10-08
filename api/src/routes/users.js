@@ -7,5 +7,4 @@ const router= Router()
 router.post('/',createUser )
 router.get("/" ,getUser)
 
-
 module.exports=router;

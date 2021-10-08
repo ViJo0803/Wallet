@@ -68,20 +68,37 @@ async function createUser(req, res, next){
   usuarioCreado= await Usuario.findByPk(iduser,{ 
     include:["cuentas"]
   })
-  /* console.log(usuariocreado) */
 
-  // let idusuarioDb = await Usuario.findAll({
-  //   where: { dni: dni },
-  // });
-  // add viene de sequelize
-  // usuariocreado.addusuario(isusuarioDb);
   res.send(usuarioCreado)
 }
 
+const getDbInfo = async () => {
+  return await Usuario.findAll({
+  });
+};
+
+
 
 async function getUser(req, res, next){
+  const mail = req.query.mail;
+  try{
+    let usuarios = await getDbInfo();
+    if (mail) {
+      let usuarioEmail = await usuarios.filter((usuario) =>
+      usuario.mail.toLowerCase().includes(mail.toLowerCase())
+      );
+      usuarioEmail.length
+      ? res.status(200).send(usuarioEmail)
+      : res.status(204).send(null);
+    } else {
+      
+      res.status(200).send(usuarios);
+    }
+      }catch(error){
+        console.log(error)}
 
-  const mail=req.query.mail
+
+  /* const mail=req.query.mail
   console.log(mail)
 
   let user = await Usuario.findOne({
@@ -92,13 +109,13 @@ async function getUser(req, res, next){
 
   let iduser = user?.idusuario
 
-  user= await Usuario.findByPk(iduser,{ 
+  user = await Usuario.findByPk(iduser,{ 
     include:["cuentas"]
   })
 
   console.log("user: "+ user)
 
-  user?res.send(user): res.send(null)
+  user?res.send(user): res.status(404) */
 }
 
 

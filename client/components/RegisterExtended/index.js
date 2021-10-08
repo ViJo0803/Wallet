@@ -8,32 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function RegisterExtended({ navigation }) {
     const { control, handleSubmit, formState: { errors } } = useForm();
     const MY_STORAGE_KEY = 'token'
-    // const mail = async () => {
-    //   const value = await AsyncStorage.getItem(MY_STORAGE_KEY)
-    //   let json = JSON.parse(value)
-    //   /* console.log("json", json)
-    //   console.log(json.sub.split("|")[0]==="google-oauth2") */
-    //   if(json.sub.split("|")[0]==="google-oauth2"){
-    //       const datos = await axios.get('http://localhost:3001/usuarios?mail='+ json.nickname +'@gmail.com' )
-    //       console.log('datos',datos) 
-    //       if(datos){
-    //         navigation.navigate("Drawer") 
-    //       } if (!datos){
-    //         console.log('usuario no esta en la base de datos')
-    //       }
-    //     } else if(json.sub.split("|")[0]==="auth0"){
-    //       const datos = await axios.get('http://localhost:3001/usuarios?mail='+ json.name)
-    //       if(datos){
-    //         navigation.navigate("Drawer") 
-    //         console.log('registrado por auth0')
-    //     } if (!datos){
-    //       console.log('usuario no esta en la base de datos')
-    //     }
-    //   } 
-      
-    // }   
-
-    // mail()
 
     const retrieveData = async () => {
       try {
@@ -64,10 +38,8 @@ export default function RegisterExtended({ navigation }) {
         foto: json.picture,
         codigo_postal: json.codigo_postal,
       }
-
       console.log('datafiltered: ',dataFiltered)
-
-      var res = await axios.post('http://localhost:3001/usuario', dataFiltered )
+      var res = await axios.post('http://localhost:3001/user', dataFiltered )
       console.log("respuesta del post",res)
       navigation.navigate("Drawer")
     }
