@@ -33,7 +33,7 @@ async function createUser(req, res, next){
   } = req.body;
 
   
-   await Usuario.create({
+  let usuariocreado= await Usuario.create({
     nombre,
     apellidos,
     mail,
@@ -59,7 +59,6 @@ async function createUser(req, res, next){
   const cbuGenerado = generarNumeroCuenta()
 
   let account= await Cuentas.create({
-    idcuentas: 1,
     tipomoneda: "AR$",
     numerocuenta: cbuGenerado,
     saldo: 0,
@@ -69,7 +68,7 @@ async function createUser(req, res, next){
 
   /* console.log(account) */
 
-  usuariocreado= Usuario.findByPk(iduser,{ 
+  usuariocreado= await  Usuario.findByPk(iduser,{ 
     include:["cuentas"]
   }
   )
@@ -80,7 +79,11 @@ async function createUser(req, res, next){
   // });
   // add viene de sequelize
   // usuariocreado.addusuario(isusuarioDb);
-  res.send(await usuariocreado)
+
+
+
+  console.log(usuariocreado)
+  res.send(usuariocreado)
 }
 
 

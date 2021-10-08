@@ -13,6 +13,7 @@ web-build/
 vitacoraLuchoM.txt 
 # macOS
 .DS_Store
+*.env
 
 
 package-lock.json

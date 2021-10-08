@@ -1,10 +1,10 @@
 const CREATE_USER ="CREATE USER";
-const LOG_IN = "LOG IN"
+const GET_USER = "GET_USER"
 
 
 
 
 module.exports={
     CREATE_USER,
-    LOG_IN
+    GET_USER
 }

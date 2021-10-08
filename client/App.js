@@ -6,11 +6,15 @@ import LandingPage from "./components/LandingPage";
 import RegisterExtended from "./components/RegisterExtended";
 import Loading from "./components/Loading";
 import DrawerBar from "./components/Drawer";
+import { Provider } from "react-redux";
+import store from "./store/index";;
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    
+    <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -35,5 +39,6 @@ export default function App() {
         <Stack.Screen name="Loading" component={Loading} />
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   );
 }

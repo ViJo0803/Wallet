@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useSelector, useDispatch } from "react-redux";
 import { View, Text, Image, Button} from 'react-native'
 import { styles } from './styles'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -14,14 +14,12 @@ function UserProfile() {
     // Logica> Traerme el mail del asyncstorage y en base a eso hacer la consulta a la base de datos
     // Por ahora que no se puedan editar los datos
     
-    /* function funcionCreadora () {
-        const datosF = getDataAsync()
-        console.log('datosf', datosF)
+    
 
-        /* setTimeout(2000) */
-        /* return (
-            <Text style={styles.text}>AAAAAA{datosF}B</Text>
-        ) */
+        const state = useSelector((state) => state.User);
+
+        console.log( "this is the state ", state)
+
     datosDeUsuario()
     const retrieveData = async () => {
         try {
@@ -40,11 +38,11 @@ function UserProfile() {
     return (
         <View style={styles.container}>
             <Image
-                source={require('../../assets/JimC.jpg')}
+                source={state.foto}
                 style={styles.image} />
             <View style={styles.textBox}>
             <View>
-                <Text style={styles.text}>Name: Jim Carrey</Text>
+                <Text style={styles.text}>Name: {state.nombre} {state.apellidos} </Text>
             </View>
             <View>
             {/* {       
@@ -58,25 +56,22 @@ function UserProfile() {
             } */}
             </View>
             <View>
-                <Text style={styles.text}>Mail: JimCar96@gmail.com</Text>
+                <Text style={styles.text}>Mail: {state.mail}</Text>
             </View>
             <View>
-                <Text style={styles.text}>DNI: 17432564</Text>
+                <Text style={styles.text}>DNI: {state.dni}</Text>
             </View>
             <View>
-                <Text style={styles.text}>Phone: 3534986748</Text>
+                <Text style={styles.text}>Phone: {state.telefono}</Text>
             </View>
             <View>
-                <Text style={styles.text}>CP: 16700</Text>
+                <Text style={styles.text}>CP: {state.codigo_postal}</Text>
             </View>
             
             <View>
-                <Text style={styles.text}>Nickname: Jim</Text>
+                <Text style={styles.text}>Nickname: {state.nickname}</Text>
             </View>
-            <View>
-                <Text style={styles.text}>Password: ********</Text>
-                
-            </View>
+            
             </View>
             
             
