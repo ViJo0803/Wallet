@@ -7,8 +7,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',   
         marginTop: '0',     
         height: '100%',
-        width: '100%',               
-        backgroundImage: 'linear-gradient(180deg, rgba(248,249,250,1) 0%, rgba(173,181,189,1) 100%)',
+        width: '100%',
     },
     image: {
         width: '30%',

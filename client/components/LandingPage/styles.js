@@ -7,8 +7,6 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundImage:
-      "linear-gradient(180deg, rgba(153,217,140,1) 0%, rgba(26,117,159,1) 100%)"
   },
   containerText: {
     marginTop: "10%",
@@ -24,7 +22,6 @@ export const styles = StyleSheet.create({
   },
   button: {
     width: "100%",
-    margin: "5%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -32,7 +29,6 @@ export const styles = StyleSheet.create({
   plainText: {
     fontSize: 15,
     fontWeight: "bold",
-    padding: "1%",
     color: "#5C5C5C"
   },
   buttonContainer: {
@@ -40,7 +36,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     borderRadius: 12,
     backgroundColor: "#80c590",
-    marginTop: 5
   },
   buttonText: {
     padding: "0 15px",
@@ -50,7 +45,7 @@ export const styles = StyleSheet.create({
     color: "#fff"
   },
   logo: {
-    width: "300px",
-    height: "200px"
+    width: '60%',
+    height: '30%'
   }
 });
