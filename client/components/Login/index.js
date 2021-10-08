@@ -3,6 +3,8 @@ import * as WebBrowser from "expo-web-browser";
 import jwtDecode from "jwt-decode";
 import * as React from "react";
 import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
+//import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // You need to swap out the Auth0 client id and domain with the one from your Auth0 client.
 // In your Auth0 client, you need to also add a url to your authorized redirect urls.
@@ -14,12 +16,11 @@ import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
 
 const auth0ClientId = "vdCjaxfukPDOLrGpcwP080wD54xZxAjT";
 const authorizationEndpoint = "https://dev-dp2bcbco.us.auth0.com/authorize"; //dev-zt1p-cha.us.auth0.com
-const clientSecret =
-  "wjmFZIMZAOdEm0VNU-fvKeJZcnWweY8WINQJnUeZ76LSmr2vPK_4bMUvk2ZAswHx";
 
 const useProxy = Platform.select({ web: false, default: true });
 
-WebBrowser.maybeCompleteAuthSession();
+const MY_STORAGE_KEY = 'token'
+
 
 const redirectUri = AuthSession.makeRedirectUri({
   useProxy
@@ -37,7 +38,6 @@ export default function Login({ navigation }) {
   const [request, response, promptAsync] = AuthSession.useAuthRequest(
     {
       redirectUri,
-      clientSecret,
       clientId: auth0ClientId,
       // id_token will return a JWT token
       responseType: AuthSession.ResponseType.IdToken,
@@ -52,12 +52,34 @@ export default function Login({ navigation }) {
     discovery
   );
 
-  console.log("request", request);
-  console.log("response", response);
-  // Retrieve the redirect URL, add this to the callback URL list
-  // of your Auth0 application.
-  /* console.log(`Redirect URL: ${redirectUri}`); */
-  /* setTimeout(function(){ alert("Hello"); }, 6000); */
+  WebBrowser.maybeCompleteAuthSession();
+
+
+  const storeData = async () => {
+    const decoded1 = jwtDecode(response.params.id_token);
+    /* console.log('deco1', decoded1) */
+    try {
+      await AsyncStorage.setItem(MY_STORAGE_KEY, JSON.stringify(decoded1));
+
+    } catch (error) {
+        // Error saving data
+        console.log(error.message)
+    }
+  }
+  
+  const retrieveData = async () => {
+    try {
+        const value = await AsyncStorage.getItem(MY_STORAGE_KEY);
+        if (value !== null) {
+          const stringToJson = JSON.parse(value)
+          /* console.log('datos parseados',stringToJson) */
+            // Our data is fetched successfully
+        }
+    } catch (error) {
+        // Error retrieving data
+        console.log(error.message)
+    }
+  }
 
   React.useEffect(() => {
     if (response) {
@@ -73,9 +95,10 @@ export default function Login({ navigation }) {
         const jwtToken = response.params.id_token;
         const decoded = jwtDecode(jwtToken);
 
+        storeData()
         const { name } = decoded;
-        console.log("name adentro de usefect:", decoded);
         setName(name);
+        retrieveData()
       }
     }
   }, [response]);
@@ -83,7 +106,7 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       {name ? (
-        (navigation.navigate("Drawer"),
+        (navigation.navigate("Loading"),
         (<Button title="Log out" onPress={() => setName(null)} />))
       ) : (
         <Button
