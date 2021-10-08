@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Button, Text, Image } from 'react-native';
-import {styles} from './styles'
+import { styles } from './styles'
 
 function Statistics({ navigation }) {
     return (
@@ -9,7 +9,7 @@ function Statistics({ navigation }) {
             <Image
                 source={require('../../assets/statistics.jpg')}
                 style={styles.image} />
-            <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
+            <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
         </View>
     )
 

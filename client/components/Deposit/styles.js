@@ -18,22 +18,22 @@ export const styles = StyleSheet.create({
     text: {
         fontSize: 18,
     },
-    
+
     transferDinero: {
-        height:'15%',
-        flexDirection:"column",
-        justifyContent:"center",
-        alignItems:"center",
+        height: '15%',
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
         padding: 20,
         margin: 20,
-      },
-      titleTransfer: {
-          height:'15%',
-          alignSelf:"center",
-          fontSize: 20,
-          fontWeight: 'bold',
-      },
-  });
+    },
+    titleTransfer: {
+        height: '15%',
+        alignSelf: "center",
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+});
 
 
 
