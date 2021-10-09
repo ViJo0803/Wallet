@@ -3,8 +3,9 @@ import * as WebBrowser from "expo-web-browser";
 import jwtDecode from "jwt-decode";
 import * as React from "react";
 import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
-
+import { useDispatch } from "react-redux";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import{getToken}  from '../../store/actions/userActions.js'
 
 // You need to swap out the Auth0 client id and domain with the one from your Auth0 client.
 // In your Auth0 client, you need to also add a url to your authorized redirect urls.
@@ -29,6 +30,7 @@ const redirectUri = AuthSession.makeRedirectUri({
 /* console.log('aaa',redirectUri) */
 
 export default function Login({ navigation }) {
+  const dispatch = useDispatch();
   const discovery = AuthSession.useAutoDiscovery(
     "https://dev-dp2bcbco.us.auth0.com/authorize"
   );
@@ -54,33 +56,6 @@ export default function Login({ navigation }) {
 
   WebBrowser.maybeCompleteAuthSession();
 
-
-  const storeData = async () => {
-    const decoded1 = jwtDecode(response.params.id_token);
-    /* console.log('deco1', decoded1) */
-    try {
-      await AsyncStorage.setItem(MY_STORAGE_KEY, JSON.stringify(decoded1));
-
-    } catch (error) {
-        // Error saving data
-        console.log(error.message)
-    }
-  }
-  
-  const retrieveData = async () => {
-    try {
-        const value = await AsyncStorage.getItem(MY_STORAGE_KEY);
-        if (value !== null) {
-          const stringToJson = JSON.parse(value)
-          /* console.log('datos parseados',stringToJson) */
-            // Our data is fetched successfully
-        }
-    } catch (error) {
-        // Error retrieving data
-        console.log(error.message)
-    }
-  }
-
   React.useEffect(() => {
     if (response) {
       if (response.error) {
@@ -94,11 +69,11 @@ export default function Login({ navigation }) {
         // Retrieve the JWT token and decode it
         const jwtToken = response.params.id_token;
         const decoded = jwtDecode(jwtToken);
-
-        storeData()
+        dispatch(getToken(decoded))
+        //storeData()
         const { name } = decoded;
         setName(name);
-        retrieveData()
+       // retrieveData()
       }
     }
   }, [response]);

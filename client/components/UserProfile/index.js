@@ -10,7 +10,11 @@ function UserProfile() {
     // Logica> Traerme el mail del asyncstorage y en base a eso hacer la consulta a la base de datos
     // Por ahora que no se puedan editar los datos
 
-        const state = useSelector((state) => state.User);
+        const state = useSelector((state) => state.users.User);
+        let token= useSelector((state)=>state.users.jwtToken)
+
+        console.log("in user details, this is the token",token)
+        console.log("in user details, this is the state",state)
         
     return (
         <View style={styles.container}>

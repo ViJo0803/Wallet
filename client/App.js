@@ -7,7 +7,7 @@ import RegisterExtended from "./components/RegisterExtended";
 import Loading from "./components/Loading";
 import DrawerBar from "./components/Drawer";
 import { Provider } from "react-redux";
-import store from "./store/index";;
+import store from "./store/index";; 
 
 const Stack = createStackNavigator();
 

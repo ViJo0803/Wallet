@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {CREATE_USER, GET_USER} from "./types"
+import {CREATE_USER, GET_USER, GET_JWT} from "./types"
 
 export function createUser(userData){
     return async (dispatch) => {
@@ -13,9 +13,31 @@ export function createUser(userData){
 };
 }
 
-export function getUser(mail) {
+/*
+export function getToken(token){
+
+  console.log("in actions get token", token)
+
+  return {type: GET_JWT , payload: token}
+  
+}
+
+*/
+
+export function getToken(token) {
+  console.log("in actions get token", token)
+  
+    return({
+      type: GET_JWT,
+      payload:token
+    })
 
   
+}
+
+export function getUser(mail) {
+
+  console.log("in actions get user", mail)
     return async (dispatch) => {
         await axios
         .get(`http://localhost:3001/user/?mail=${mail}`)

@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.8.0",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "0.1.10",
@@ -34,8 +35,8 @@
     "react-native-screens": "~3.4.0",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
-    "redux-thunk": "^2.3.0",
-    "react-redux": "^7.2.5"
+    "react-redux": "^7.2.5",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
