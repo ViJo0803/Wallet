@@ -2,7 +2,7 @@ import {CREATE_USER, GET_USER} from "../actions/types"
 
 
 let initialState={
-    User:{}
+    user:{}
 }
 
 const userReducer= (state= initialState, {type, payload})=>{

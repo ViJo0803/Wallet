@@ -1,4 +1,4 @@
-const axios = require("axios");
+
 const { Usuario, Cuentas } = require("../../db");
 require("dotenv").config();
 
@@ -66,25 +66,12 @@ async function createUser(req, res, next){
     usuarioIdusuario: iduser
   })
 
-  /* console.log(account) */
-
-  usuariocreado= await  Usuario.findByPk(iduser,{ 
-    include:["cuentas"]
-  }
-  )
-  /* console.log(usuariocreado) */
-
-  // let idusuarioDb = await Usuario.findAll({
-  //   where: { dni: dni },
-  // });
-  // add viene de sequelize
-  // usuariocreado.addusuario(isusuarioDb);
-
-
-
-  console.log(usuariocreado)
   res.send(usuariocreado)
 }
+
+
+
+
 
 
 async function getUser(req, res, next){
@@ -100,17 +87,6 @@ let user = await Usuario.findOne({
   }
 
 })
-
-
-
-let iduser = user?.idusuario
-
-user= await Usuario.findByPk(iduser,{ 
-  include:["cuentas"]
-}
-)
-
-console.log("user: "+ user)
 
 user?res.send(user): res.send(null)
 }

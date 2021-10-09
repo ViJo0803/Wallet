@@ -1,34 +1,32 @@
 import React from "react";
 import { Text, View, TextInput, Button, Alert, ActivityIndicator } from "react-native";
 import { useForm, Controller } from "react-hook-form";
+import { useState, useEffect } from "react";
 import axios from "axios"
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getUser } from "../../store/actions";
+import { getUser } from "../../store/actions/userActions";
 import {styles} from "./styles"
 
-export default function Loading({ navigation }) {
+export default async function Loading({ navigation }) {
 
   const dispatch = useDispatch();
   const MY_STORAGE_KEY = 'token'
+  const value = await AsyncStorage.getItem(MY_STORAGE_KEY)
+  let json = JSON.parse(value)
+  const mail= json.sub.split("|")[0]==="google-oauth2" ? json.nickname +'@gmail.com' :  json.name
 
-  const loading = async() =>{
-      const value = await AsyncStorage.getItem(MY_STORAGE_KEY)
-      let json = JSON.parse(value)
-      const mail= json.sub.split("|")[0]==="google-oauth2" ? json.nickname +'@gmail.com' :  json.name 
-      console.log(mail)
-      const datos = await axios.get('http://localhost:3001/user?mail=' + mail )
-      console.log("response",datos.data)
-      if(datos.data) {
-        dispatch(getUser(datos.data.mail)) 
-        navigation.navigate("Drawer")
-      } else{
-        navigation.navigate("RegisterExtended")
-      }
-      
-      }
+  useEffect(()=>{
+    dispatch(getUser(mail))
+  },[])
 
-  loading()
+  const state = useSelector((state) => state.users.user);
+
+
+  state? navigation.navigate("Drawer"):navigation.navigate("RegisterExtended")
+  
+
+  
     
     return (
         <View style={[styles.container, styles.horizontal]}>
