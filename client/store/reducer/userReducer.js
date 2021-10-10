@@ -12,7 +12,8 @@ const userReducer= (state= initialState, {type, payload})=>{
     switch(type){
 
         case CREATE_USER:
-            return {...state, User:payload};
+            console.log("in reducer create user", payload)
+            return {...state, user:payload};
         
 
         case GET_USER:

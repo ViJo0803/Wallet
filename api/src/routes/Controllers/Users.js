@@ -20,11 +20,13 @@ function generarNumeroCuenta(){
 
 async function createUser(req, res, next){
     
+  console.log(req.body)
+
   const {
     nombre,
     apellidos,
     mail,
-    hash, // cambiar a direccion
+    direccion,
     nickname,
     dni,
     telefono,
@@ -37,7 +39,7 @@ async function createUser(req, res, next){
     nombre,
     apellidos,
     mail,
-    hash,  // cambiar a direccion
+    direccion,
     nickname,
     dni,
     telefono,

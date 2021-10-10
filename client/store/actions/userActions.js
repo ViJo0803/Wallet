@@ -3,6 +3,7 @@ import axios from 'axios';
 import {CREATE_USER, GET_USER, GET_JWT} from "./types"
 
 export function createUser(userData){
+  console.log("in actions create User" ,)
     return async (dispatch) => {
         await axios
           .post(`http://localhost:3001/user`, userData)

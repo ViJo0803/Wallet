@@ -26,7 +26,10 @@ useEffect(()=>{
 
 const state= useSelector((state)=>state.users.user)
 
-Object.keys(state).lengt!==0 ?navigation.navigate("Drawer"):navigation.navigate("RegisterExtended")
+
+console.log(Object.keys(state).length)
+
+Object.keys(state).length!==0 ?navigation.navigate("Drawer"):navigation.navigate("RegisterExtended")
 
 
 

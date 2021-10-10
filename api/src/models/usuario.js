@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    hash: {
+    direccion: {
       type: DataTypes.STRING,
       allowNull: false,
     },
