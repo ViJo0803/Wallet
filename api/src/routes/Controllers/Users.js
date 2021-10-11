@@ -1,4 +1,5 @@
 
+const axios = require("axios");
 const { Usuario, Cuentas } = require("../../db");
 require("dotenv").config();
 
@@ -16,17 +17,13 @@ function generarNumeroCuenta(){
   return stringNum
 }
 
-
-
 async function createUser(req, res, next){
     
-  console.log(req.body)
-
   const {
     nombre,
     apellidos,
     mail,
-    direccion,
+    hash, // cambiar a direccion
     nickname,
     dni,
     telefono,
@@ -35,11 +32,11 @@ async function createUser(req, res, next){
   } = req.body;
 
   
-  let usuariocreado= await Usuario.create({
+   let usuarioCreado = await Usuario.create({
     nombre,
     apellidos,
     mail,
-    direccion,
+    hash,  // cambiar a direccion
     nickname,
     dni,
     telefono,
@@ -59,43 +56,53 @@ async function createUser(req, res, next){
 
   /* const CBU = CBUg() */
   const cbuGenerado = generarNumeroCuenta()
+  /* console.log('cbu: ', cbuGenerado) */
 
-  let account= await Cuentas.create({
+  let account = await Cuentas.create({
     tipomoneda: "AR$",
     numerocuenta: cbuGenerado,
     saldo: 0,
     alias: mail,
     usuarioIdusuario: iduser
   })
+  
+  usuarioCreado= await Usuario.findByPk(iduser,{ 
+    include:["cuentas"]
+  })
 
-  res.send(usuariocreado)
+  res.send(usuarioCreado)
 }
 
-
-
+const getDbInfo = async () => {
+  return await Usuario.findAll({
+  });
+};
 
 
 
 async function getUser(req, res, next){
+  const mail = req.query.mail;
+  try{
+    let usuarios = await getDbInfo();
+    if (mail) {
+      let usuarioEmail = await usuarios.filter((usuario) =>
+      usuario.mail.toLowerCase().includes(mail.toLowerCase())
+      );
+      usuarioEmail.length
+      ? res.status(200).send(usuarioEmail)
+      : res.status(204).send(null);
+    } else {
+      
+      res.status(200).send(usuarios);
+    }
+      }catch(error){
+        console.log(error)}
 
-const mail=req.query.mail
 
-
-console.log(mail)
-
-let user = await Usuario.findOne({
-  where:{
-    mail:mail
-  }
-
-})
-
-user?res.send(user): res.send(null)
+  
 }
 
 
 
 
 module.exports= {createUser, getUser}
-
-

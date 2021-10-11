@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Button, Text, TextInput, Image} from 'react-native';
+import { View, Button, Text, Image } from 'react-native';
 import { styles } from './styles';
 
 
@@ -10,25 +10,7 @@ function Deposit({ navigation }) {
             <Image
                 source={require('../../assets/deposit.jpg')}
                 style={styles.image} />
-            <Button title="Go Home" onPress={() => navigation.navigate('Home')}/>
-
-           {/*  <View style={[styles.transferDinero, {
-                flexDirection: "row"
-            }]}>
-                <Button style={styles.buttonIngresar}  title="Ingresar Dinero" onPress={() => {
-                        alert('You tapped the button!');
-                }} />
-                <TextInput
-                style={{
-                    height: 40,
-                    borderColor: 'gray',
-                    borderWidth: 1
-                }}
-                placeholder="Ingrese un monto..."
-                defaultValue=""
-                />
-            </View> */}
-
+            <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
         </View>
     )
 

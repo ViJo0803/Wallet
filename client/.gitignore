@@ -8,7 +8,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
+*.env
 #vitacora de anotaciones de LuchoMazzetti
 vitacoraLuchoM.txt 
 # macOS
