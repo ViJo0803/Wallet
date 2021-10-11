@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import {createUser} from "../../store/actions/userActions"
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createUser } from "../../store/actions/userActions";
+
 import { useDispatch, useSelector } from "react-redux";
 
 export default function RegisterExtended({ navigation }) {
@@ -10,20 +10,17 @@ export default function RegisterExtended({ navigation }) {
     control,
     handleSubmit,
     formState: { errors },
-    
   } = useForm();
- 
 
   const dispatch = useDispatch();
-  const MY_STORAGE_KEY = "token";
 
   let token = useSelector((state) => state.users.jwtToken);
   console.log(" here is the token: ", token);
 
   let json = token.payload;
   console.log("this is the json ", json);
-  const nick= json.nickname;
-  const foto= json.picture;
+  const nick = json.nickname;
+  const foto = json.picture;
 
   const mail =
     json.sub.split("|")[0] === "google-oauth2"
@@ -32,14 +29,14 @@ export default function RegisterExtended({ navigation }) {
 
   console.log("this is the mail ", mail);
 
-  const registerData =  (data) => {
+  const registerData = (data) => {
     console.log("in register data", data);
     console.log("json :", json);
 
     const dataFiltered = {
       nombre: data.nombre,
       apellidos: data.apellidos,
-      mail:mail,        
+      mail: mail,
       direccion: data.direccion,
       nickname: nick,
       dni: data.dni,
@@ -48,21 +45,18 @@ export default function RegisterExtended({ navigation }) {
       codigo_postal: data.codigo_postal,
     };
 
-    post(dataFiltered)
+    post(dataFiltered);
 
     //var res = await axios.post('http://localhost:3001/usuario', dataFiltered )
     //console.log("respuesta del post",res)
     //navigation.navigate("Drawer")
   };
 
-  function post(data){
-    console.log("in handle submit",data)
-    dispatch(createUser(data))
-    navigation.navigate("Drawer")
+  function post(data) {
+    console.log("in handle submit", data);
+    dispatch(createUser(data));
+    navigation.navigate("Drawer");
   }
-
- 
-
 
   return (
     <View>

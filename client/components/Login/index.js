@@ -32,7 +32,7 @@ const redirectUri = AuthSession.makeRedirectUri({
 export default function Login({ navigation }) {
   const dispatch = useDispatch();
   const discovery = AuthSession.useAutoDiscovery(
-    "https://dev-dp2bcbco.us.auth0.com/authorize"
+    authorizationEndpoint
   );
 
   const [name, setName] = React.useState(null);

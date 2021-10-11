@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, TextInput, Button, Alert, ActivityIndicator } from "react-native";
+import React, { useEffect } from "react";
+import {  View, ActivityIndicator } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/actions/userActions";
 import {styles} from "./styles"
@@ -7,7 +7,7 @@ import {styles} from "./styles"
 export default function Loading({ navigation }) {
 
   const dispatch = useDispatch();
-  const MY_STORAGE_KEY = 'token'
+
 
   let token= useSelector((state)=>state.users.jwtToken)
   console.log(" here is the token: ", token);
