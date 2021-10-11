@@ -18,7 +18,7 @@ const userReducer= (state= initialState, {type, payload})=>{
 
         case GET_USER:
             console.log("in reducer get user", payload)
-            return {...state,User:payload};
+            return {...state,user:payload};
         
         case GET_JWT:
             console.log("in reducer get jwt", payload)

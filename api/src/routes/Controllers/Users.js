@@ -73,29 +73,71 @@ async function createUser(req, res, next){
 
 
 
-
-
-
 async function getUser(req, res, next){
+try{
 
-const mail=req.query.mail
+  const mail=req.query.mail
+  
+  let user = await Usuario.findOne({
+    where:{
+      mail:mail
+    }
+  })
+  user?res.send(user): res.send(null)
+} catch (error) {
+  next(error);
+}
+}
+
+async function updateUser (req, res, next){
+
+  const {
+    id,
+    nombre,
+    apellidos,
+    mail,
+    direccion,
+    nickname,
+    dni,
+    telefono,
+    foto,
+    codigo_postal,
+  } = req.body;
+
+  let user = await Usuario.findOne({
+    where:{
+      idusuario:id
+    }
+  })
+
+  user.nombre=nombre;
+  user.apellidos=apellidos;
+  user.mail=mail;
+  user.direccion=direccion;
+  user.nickname=nickname;
+  user.dni=dni;
+  user.telefono=telefono;
+  user.foto=foto;
+  user.codigo_postal= codigo_postal;
 
 
-console.log(mail)
+  console.log(user)
 
-let user = await Usuario.findOne({
-  where:{
-    mail:mail
-  }
+  await user.save();
 
-})
 
-user?res.send(user): res.send(null)
+let user2 = await Usuario.findOne({
+    where:{
+      idusuario:id
+    }
+  })
+
+  res.send(user2)
+
+
 }
 
 
-
-
-module.exports= {createUser, getUser}
+module.exports= {createUser, getUser, updateUser }
 
 
