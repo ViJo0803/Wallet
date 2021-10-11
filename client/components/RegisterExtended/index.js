@@ -86,10 +86,8 @@ export default function RegisterExtended({ navigation }) {
 
     post(dataFiltered);
 
-    //var res = await axios.post('http://localhost:3001/usuario', dataFiltered )
-    //console.log("respuesta del post",res)
-    //navigation.navigate("Drawer")
   };
+    
 
   function post(data) {
     console.log("in handle submit", data);
@@ -209,9 +207,9 @@ export default function RegisterExtended({ navigation }) {
       <Text>
         Foto Perfil:
       </Text>
-
-      <ImagePickerUser />
       
+      <ImagePickerUser />
+            
       <Button title="Register" onPress={handleSubmit(registerData)} />
 
     </View>
@@ -228,7 +226,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: "center",
-
     marginTop: 40
   },
   imgStyle: {
@@ -236,5 +233,4 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: 30,
   }
-
 });
