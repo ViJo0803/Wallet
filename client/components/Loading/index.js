@@ -1,33 +1,41 @@
-import React from "react";
-import { View, ActivityIndicator } from "react-native";
-import axios from "axios"
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { styles } from './styles'
-
+import React, { useEffect } from "react";
+import {  View, ActivityIndicator } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/actions/userActions";
+import {styles} from "./styles"
 
 export default function Loading({ navigation }) {
 
-  const MY_STORAGE_KEY = 'token'
-  const loading = async () => {
-    const value = await AsyncStorage.getItem(MY_STORAGE_KEY)
-    console.log("value", value)
-    let json = JSON.parse(value)
-    console.log("json", json)
-    const datos = await axios.get('http://localhost:3001/user?mail=' + (json.sub.split("|")[0] === "google-oauth2" ? json.nickname + '@gmail.com' : json.name))
-    console.log("datos", datos)
-    if (datos.status === 200) {
-      navigation.navigate("Drawer")
-    } else if (datos.status === 204) {
-      navigation.navigate("RegisterExtended")
-    }
+  const dispatch = useDispatch();
 
-  }
 
-  loading()
+  let token= useSelector((state)=>state.users.jwtToken)
+  console.log(" here is the token: ", token);
 
-  return (
-    <View style={[styles.container, styles.horizontal]}>
-      <ActivityIndicator size="large" color="#0000ff" />
-    </View>
-  )
+  let json = token.payload
+  console.log("this is the json ", json)
+
+  const mail= json.sub.split("|")[0]==="google-oauth2" ? json.nickname +'@gmail.com' :  json.name 
+      
+  console.log("this is the mail ", mail)
+
+
+useEffect(()=>{
+  dispatch(getUser(mail))
+}, [])
+
+const state= useSelector((state)=>state.users.user)
+
+
+console.log(Object.keys(state).length)
+
+Object.keys(state).length!==0 ?navigation.navigate("Drawer"):navigation.navigate("RegisterExtended")
+
+
+
+    return (
+        <View style={[styles.container, styles.horizontal]}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+)
 }
