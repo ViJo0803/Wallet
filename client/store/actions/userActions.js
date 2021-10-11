@@ -6,7 +6,7 @@ export function createUser(userData){
   console.log("in actions create User" ,)
     return async (dispatch) => {
         await axios
-          .post(`http://localhost:3001/user`, userData)
+          .post(`http://localhost:3001/user/create`, userData)
           .then((response) => {
             dispatch({ type: CREATE_USER, payload: response.data });
           })
@@ -41,7 +41,7 @@ export function getUser(mail) {
   console.log("in actions get user", mail)
     return async (dispatch) => {
         await axios
-        .get(`http://localhost:3001/user/?mail=${mail}`)
+        .get(`http://localhost:3001/user/get/?mail=${mail}`)
         .then((response) => {
           dispatch({ type: GET_USER, payload: response.data });
         })

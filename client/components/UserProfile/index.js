@@ -6,6 +6,7 @@ import { styles } from './styles'
 
 
 function UserProfile() {
+<<<<<<< Updated upstream
 
     // Logica> Traerme el mail del asyncstorage y en base a eso hacer la consulta a la base de datos
     // Por ahora que no se puedan editar los datos
@@ -16,6 +17,10 @@ function UserProfile() {
         console.log("in user details, this is the token",token)
         console.log("in user details, this is the state",state)
         
+=======
+    const state = useSelector((state) => state.user);
+    console.log("this is the state ", state)
+>>>>>>> Stashed changes
     return (
         <View style={styles.container}>
             <Image
@@ -25,6 +30,7 @@ function UserProfile() {
             <View>
                 <Text style={styles.text}>Name: {state.nombre} {state.apellidos} </Text>
             </View>
+<<<<<<< Updated upstream
             
             <View>
                 <Text style={styles.text}>Mail: {state.mail}</Text>
@@ -51,6 +57,12 @@ function UserProfile() {
                     <Button title="edit"  style={styles.button} />
                 </View>
             
+=======
+            <View  style={styles.containerButtons}>
+                    <Button title="show"  style={styles.button} />
+                    <Button title="edit"  style={styles.button} onPress={PerformanceNavigationTiming.navigate("EditProfile")}/>
+                </View>
+>>>>>>> Stashed changes
         </View>
     )
 }
