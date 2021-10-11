@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 
 function UserProfile() {
-    const state = useSelector((state) => state.User);
+    const state = useSelector((state) => state.user);
     console.log("this is the state ", state)
     return (
         <View style={styles.container}>

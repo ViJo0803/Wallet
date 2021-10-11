@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TextInput, Button, Alert, Image, Platform} from "react-native";
+import { Text, View, StyleSheet, TextInput, Button, Alert, Image, Platform } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as ImagePicker from 'expo-image-picker';
 import { createUser } from "../../store/actions/userActions";
@@ -209,19 +209,8 @@ export default function RegisterExtended({ navigation }) {
       <Text>
         Foto Perfil:
       </Text>
-      
+
       <ImagePickerUser />
-
-      {/* <Image 
-        style={styles.imgStyle}
-        source={ require('')}
-      />
-      <Controller control={control} rules={{ required: true, }} render={({ field: { onChange, onBlur, value } }) => (
-        <TextInput style={styles.input} onBlur={onBlur} onChangeText={onChange} value={value} />)}
-        name="foto"
-        defaultValue=""
-      /> */}
-
       
       <Button title="Register" onPress={handleSubmit(registerData)} />
 
@@ -247,5 +236,5 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: 30,
   }
-   
+
 });
