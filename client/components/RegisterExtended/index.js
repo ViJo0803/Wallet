@@ -1,8 +1,47 @@
-import React from "react";
-import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet, TextInput, Button, Alert, Image, Platform} from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios"
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ImagePicker from 'expo-image-picker';
+
+
+function ImagePickerUser() {
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button title="Seleccione una imagen" onPress={pickImage} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+    </View>
+  );
+}
 
 
 export default function RegisterExtended({ navigation }) {
@@ -113,7 +152,25 @@ export default function RegisterExtended({ navigation }) {
       />
       {errors.codigo_postal && <Text>This is required.</Text>}
 
+      <Text>
+        Foto Perfil:
+      </Text>
+      
+      <ImagePickerUser />
+
+      {/* <Image 
+        style={styles.imgStyle}
+        source={ require('')}
+      />
+      <Controller control={control} rules={{ required: true, }} render={({ field: { onChange, onBlur, value } }) => (
+        <TextInput style={styles.input} onBlur={onBlur} onChangeText={onChange} value={value} />)}
+        name="foto"
+        defaultValue=""
+      /> */}
+
+      
       <Button title="Register" onPress={handleSubmit(registerData)} />
+
     </View>
   )
 }
@@ -130,5 +187,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     marginTop: 40
+  },
+  imgStyle: {
+    width: 200,
+    height: 200,
+    marginTop: 30,
   }
 });
