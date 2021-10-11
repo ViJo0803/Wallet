@@ -1,3 +1,4 @@
+
 const axios = require("axios");
 const { Usuario, Cuentas } = require("../../db");
 require("dotenv").config();
@@ -98,29 +99,10 @@ async function getUser(req, res, next){
         console.log(error)}
 
 
-  /* const mail=req.query.mail
-  console.log(mail)
-
-  let user = await Usuario.findOne({
-    where:{
-      mail:mail
-    }
-  })
-
-  let iduser = user?.idusuario
-
-  user = await Usuario.findByPk(iduser,{ 
-    include:["cuentas"]
-  })
-
-  console.log("user: "+ user)
-
-  user?res.send(user): res.status(404) */
+  
 }
 
 
 
 
 module.exports= {createUser, getUser}
-
-
