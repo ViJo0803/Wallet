@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import {createUser} from "../../store/actions/userActions"
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function RegisterExtended({ navigation }) {

@@ -5,9 +5,15 @@ import { styles } from './styles'
 
 
 
-function UserProfile() {
-    const state = useSelector((state) => state.user);
-    console.log("this is the state ", state)
+
+function UserProfile( {navigation}  ) {
+
+console.log(navigation)
+
+
+    const state = useSelector((state) => state.users.user);
+
+    console.log("this is the state in user profile", state)
     return (
         <View style={styles.container}>
             <Image
@@ -40,7 +46,7 @@ function UserProfile() {
             
             <View  style={styles.containerButtons}>
                     <Button title="show"  style={styles.button} />
-                    <Button title="edit"  style={styles.button} />
+                    <Button title="edit"  style={styles.button}  onPress={()=> navigation.navigate("EditProfile")}/>
                 </View>
             
         </View>
@@ -50,14 +56,3 @@ function UserProfile() {
 export default UserProfile
 
 
-/*
-nombre
-apellidos
-mail
-nickname
-hash
-dni
-telefono
-foto
-codigo_postal
-*/

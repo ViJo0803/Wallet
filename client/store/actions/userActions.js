@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {CREATE_USER, GET_USER, GET_JWT} from "./types"
+import {CREATE_USER, GET_USER, GET_JWT, UPDATE_USER} from "./types"
 
 export function createUser(userData){
   console.log("in actions create User" ,)
@@ -48,3 +48,16 @@ export function getUser(mail) {
         .catch((error) => console.log(error));
     };
   }
+
+
+export function updateUser(data){
+  console.log("in actions update user", data)
+  return async(dispatch)=>{
+    await axios
+    .put(`http://localhost:3001/user/update/` , data)
+    .then((response)=>{
+      dispatch({ type: UPDATE_USER, payload: response.data });
+    })
+    .catch((error) => console.log(error));
+  }
+}

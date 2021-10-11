@@ -91,8 +91,12 @@ try{
 
 async function updateUser (req, res, next){
 
+  console.log("this is the body" , req.body)
+
+
+
   const {
-    id,
+    idusuario,
     nombre,
     apellidos,
     mail,
@@ -104,12 +108,14 @@ async function updateUser (req, res, next){
     codigo_postal,
   } = req.body;
 
+  console.log("the user id is", idusuario)
+
   let user = await Usuario.findOne({
     where:{
-      idusuario:id
+      idusuario:idusuario
     }
   })
-
+  user.idusuario=idusuario;
   user.nombre=nombre;
   user.apellidos=apellidos;
   user.mail=mail;
@@ -128,7 +134,7 @@ async function updateUser (req, res, next){
 
 let user2 = await Usuario.findOne({
     where:{
-      idusuario:id
+      idusuario:idusuario
     }
   })
 
