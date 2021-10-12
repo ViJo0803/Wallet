@@ -74,8 +74,8 @@ async function createUser(req, res, next){
 
 
 async function getUser(req, res, next){
-try{
 
+try{
   const mail=req.query.mail
   
   let user = await Usuario.findOne({
@@ -87,6 +87,7 @@ try{
 } catch (error) {
   next(error);
 }
+
 }
 
 async function updateUser (req, res, next){
