@@ -19,11 +19,14 @@ function generarNumeroCuenta(){
 
 async function createUser(req, res, next){
     
+
+console.log(req.body)
+
   const {
     nombre,
     apellidos,
     mail,
-    hash, // cambiar a direccion
+    direccion, // cambiar a direccion
     nickname,
     dni,
     telefono,
@@ -36,7 +39,7 @@ async function createUser(req, res, next){
     nombre,
     apellidos,
     mail,
-    hash,  // cambiar a direccion
+    direccion,  // cambiar a direccion
     nickname,
     dni,
     telefono,
@@ -79,6 +82,8 @@ async function getUser(req, res, next){
 
 try{
   const mail=req.query.mail
+
+  console.log("in get user" , mail)
   
   let user = await Usuario.findOne({
     where:{

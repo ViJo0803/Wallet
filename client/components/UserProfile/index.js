@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Button } from "react-native";
 import { styles } from "./styles";
 import { useSelector } from "react-redux";
+
+
 
 function UserProfile({ navigation }) {
   console.log(navigation);

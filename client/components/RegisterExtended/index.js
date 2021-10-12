@@ -5,6 +5,9 @@ import * as ImagePicker from 'expo-image-picker';
 import { createUser } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 
+
+
+
 function ImagePickerUser() {
   const [image, setImage] = useState(null);
 
@@ -43,8 +46,8 @@ function ImagePickerUser() {
 }
 
 
-
 export default function RegisterExtended({ navigation }) {
+
   const {
     control,
     handleSubmit,
@@ -80,7 +83,7 @@ export default function RegisterExtended({ navigation }) {
       nickname: nick,
       dni: data.dni,
       telefono: data.telefono,
-      foto: foto,
+      foto: image,
       codigo_postal: data.codigo_postal,
     };
 
