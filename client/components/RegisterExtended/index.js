@@ -83,7 +83,7 @@ export default function RegisterExtended({ navigation }) {
       nickname: nick,
       dni: data.dni,
       telefono: data.telefono,
-      foto: image,
+      foto: foto,
       codigo_postal: data.codigo_postal,
     };
 
