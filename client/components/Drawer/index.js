@@ -5,6 +5,7 @@ import Statistics from '../Statistics';
 import UserProfile from '../UserProfile/index'
 import TabNav from '../TabNav';
 import Accounts from '../Accounts';
+import Contacts from '../Contacts';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
@@ -44,8 +45,9 @@ function DrawerBar() {
             <Drawer.Screen name='TabNav' component={TabNav} options={({ route }) => ({ headerTitle: getHeaderTitle(route),})}/>
             <Drawer.Screen name="User Profile" component={UserProfile} />
             <Drawer.Screen name="Accounts" component={Accounts} />
+            <Drawer.Screen name="Contacts" component={Contacts} />
             <Drawer.Screen name="Statistics" component={Statistics} />
-            <Drawer.Screen name="Log out" component={LandingPage} />
+            <Drawer.Screen name="Log out" component={LandingPage} options={{headerShown=false}}/>
         </Drawer.Navigator>
     )
 }
