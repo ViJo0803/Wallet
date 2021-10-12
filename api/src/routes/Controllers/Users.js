@@ -90,6 +90,8 @@ try{
       mail:mail
     }
   })
+
+  console.log(user)
   user?res.send(user): res.send(null)
 } catch (error) {
   next(error);

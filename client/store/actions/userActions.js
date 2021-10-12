@@ -6,7 +6,7 @@ export function createUser(userData){
   console.log("in actions create User" ,)
     return async (dispatch) => {
         await axios
-          .post(`http://localhost:3001/user/create`, userData)
+          .post(`http://192.168.0.121:3001/user/create`, userData)
           .then((response) => {
             dispatch({ type: CREATE_USER, payload: response.data });
           })
@@ -41,7 +41,7 @@ export function getUser(mail) {
   console.log("in actions get user", mail)
     return async (dispatch) => {
         await axios
-        .get(`http://localhost:3001/user/get/?mail=${mail}`)
+        .get(`http://192.168.0.121:3001/user/get/?mail=${mail}`)
         .then((response) => {
           dispatch({ type: GET_USER, payload: response.data });
         })
@@ -54,7 +54,7 @@ export function updateUser(data){
   console.log("in actions update user", data)
   return async(dispatch)=>{
     await axios
-    .put(`http://localhost:3001/user/update/` , data)
+    .put(`http://192.168.0.121:3001/user/update/` , data)
     .then((response)=>{
       dispatch({ type: UPDATE_USER, payload: response.data });
     })
