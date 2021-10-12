@@ -47,6 +47,7 @@ export default function RegisterExtended({ navigation }) {
       codigo_postal: data.codigo_postal,
     };
 
+    
     post(dataFiltered)
 
     //var res = await axios.post('http://localhost:3001/usuario', dataFiltered )
