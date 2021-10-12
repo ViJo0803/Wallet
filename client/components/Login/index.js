@@ -4,8 +4,8 @@ import jwtDecode from "jwt-decode";
 import * as React from "react";
 import { Alert, Button, Platform, StyleSheet, Text, View } from "react-native";
 import { useDispatch } from "react-redux";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import{getToken}  from '../../store/actions/userActions.js'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getToken } from "../../store/actions/userActions.js";
 
 // You need to swap out the Auth0 client id and domain with the one from your Auth0 client.
 // In your Auth0 client, you need to also add a url to your authorized redirect urls.
@@ -15,13 +15,12 @@ import{getToken}  from '../../store/actions/userActions.js'
 //
 // You can open this app in the Expo client and check your logs to find out your redirect URL.
 
-const auth0ClientId = "vdCjaxfukPDOLrGpcwP080wD54xZxAjT";
-const authorizationEndpoint = "https://dev-dp2bcbco.us.auth0.com/authorize"; //dev-zt1p-cha.us.auth0.com
+const auth0ClientId = "EAfKmiG5AKNeoFyCt9lpMSgtn76gjYW1";
+const authorizationEndpoint = "https://dev-xfog4lys.us.auth0.com/authorize"; //dev-zt1p-cha.us.auth0.com
 
 const useProxy = Platform.select({ web: false, default: true });
 
-const MY_STORAGE_KEY = 'token'
-
+const MY_STORAGE_KEY = "token";
 
 const redirectUri = AuthSession.makeRedirectUri({
   useProxy
@@ -31,9 +30,7 @@ const redirectUri = AuthSession.makeRedirectUri({
 
 export default function Login({ navigation }) {
   const dispatch = useDispatch();
-  const discovery = AuthSession.useAutoDiscovery(
-    authorizationEndpoint
-  );
+  const discovery = AuthSession.useAutoDiscovery(authorizationEndpoint);
 
   const [name, setName] = React.useState(null);
   // Agregar async antes del await
@@ -48,8 +45,8 @@ export default function Login({ navigation }) {
       extraParams: {
         // ideally, this will be a random value
         nonce: "nonce"
-      }, 
-      prompt: "login",
+      },
+      prompt: "login"
     },
     discovery
   );
@@ -69,11 +66,11 @@ export default function Login({ navigation }) {
         // Retrieve the JWT token and decode it
         const jwtToken = response.params.id_token;
         const decoded = jwtDecode(jwtToken);
-        dispatch(getToken(decoded))
+        dispatch(getToken(decoded));
         //storeData()
         const { name } = decoded;
         setName(name);
-       // retrieveData()
+        // retrieveData()
       }
     }
   }, [response]);
