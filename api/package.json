@@ -13,6 +13,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "expo-image-picker": "^10.2.3",
     "express": "^4.17.1",
     "ioredis": "^4.19.2",
     "jsonwebtoken": "^8.5.1",
