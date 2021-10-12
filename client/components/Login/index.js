@@ -15,8 +15,8 @@ import{getToken}  from '../../store/actions/userActions.js'
 //
 // You can open this app in the Expo client and check your logs to find out your redirect URL.
 
-const auth0ClientId = "vdCjaxfukPDOLrGpcwP080wD54xZxAjT";
-const authorizationEndpoint = "https://dev-dp2bcbco.us.auth0.com/authorize"; //dev-zt1p-cha.us.auth0.com
+const auth0ClientId = "EAfKmiG5AKNeoFyCt9lpMSgtn76gjYW1";
+const authorizationEndpoint = "https://dev-xfog4lys.us.auth0.com/authorize"; 
 
 const useProxy = Platform.select({ web: false, default: true });
 
@@ -26,6 +26,7 @@ const MY_STORAGE_KEY = 'token'
 const redirectUri = AuthSession.makeRedirectUri({
   useProxy
 });
+
 
 /* console.log('aaa',redirectUri) */
 

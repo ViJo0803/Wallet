@@ -1,4 +1,4 @@
-import {CREATE_USER, GET_USER, GET_JWT} from "../actions/types"
+import {CREATE_USER, GET_USER, GET_JWT, UPDATE_USER} from "../actions/types"
 
 
 let initialState={
@@ -18,11 +18,16 @@ const userReducer= (state= initialState, {type, payload})=>{
 
         case GET_USER:
             console.log("in reducer get user", payload)
-            return {...state,User:payload};
+            return {...state,user:payload};
         
         case GET_JWT:
             console.log("in reducer get jwt", payload)
             return {...state, jwtToken:{payload}}
+
+        
+        case UPDATE_USER:
+            console.log("in reducer update user", payload);
+            return {...state, user:payload}
 
 
 

@@ -73,36 +73,80 @@ async function createUser(req, res, next){
   res.send(usuarioCreado)
 }
 
-const getDbInfo = async () => {
-  return await Usuario.findAll({
-  });
-};
-
 
 
 async function getUser(req, res, next){
-  const mail = req.query.mail;
-  try{
-    let usuarios = await getDbInfo();
-    if (mail) {
-      let usuarioEmail = await usuarios.filter((usuario) =>
-      usuario.mail.toLowerCase().includes(mail.toLowerCase())
-      );
-      usuarioEmail.length
-      ? res.status(200).send(usuarioEmail)
-      : res.status(204).send(null);
-    } else {
-      
-      res.status(200).send(usuarios);
-    }
-      }catch(error){
-        console.log(error)}
 
-
+try{
+  const mail=req.query.mail
   
+  let user = await Usuario.findOne({
+    where:{
+      mail:mail
+    }
+  })
+  user?res.send(user): res.send(null)
+} catch (error) {
+  next(error);
+}
+
+}
+
+async function updateUser (req, res, next){
+
+  console.log("this is the body" , req.body)
+
+
+
+  const {
+    idusuario,
+    nombre,
+    apellidos,
+    mail,
+    direccion,
+    nickname,
+    dni,
+    telefono,
+    foto,
+    codigo_postal,
+  } = req.body;
+
+  console.log("the user id is", idusuario)
+
+  let user = await Usuario.findOne({
+    where:{
+      idusuario:idusuario
+    }
+  })
+  user.idusuario=idusuario;
+  user.nombre=nombre;
+  user.apellidos=apellidos;
+  user.mail=mail;
+  user.direccion=direccion;
+  user.nickname=nickname;
+  user.dni=dni;
+  user.telefono=telefono;
+  user.foto=foto;
+  user.codigo_postal= codigo_postal;
+
+
+  console.log(user)
+
+  await user.save();
+
+
+let user2 = await Usuario.findOne({
+    where:{
+      idusuario:idusuario
+    }
+  })
+
+  res.send(user2)
+
+
 }
 
 
+module.exports= {createUser, getUser, updateUser }
 
 
-module.exports= {createUser, getUser}
