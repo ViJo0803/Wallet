@@ -5,7 +5,7 @@ import Statistics from '../Statistics';
 import UserProfile from '../UserProfile/index'
 import TabNav from '../TabNav';
 import Accounts from '../Accounts';
-import Contacts from '../Contacts';
+import ContactTabNav from '../ContactTabNav';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
@@ -36,18 +36,18 @@ function DrawerBar() {
             initialRouteName="TabNav"
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#f8f9fa',    
+                    backgroundColor: '#f8f9fa',
                 },
                 headerTintColor: '#4E878C',
                 drawerActiveBackgroundColor: '#8fd18e',
                 drawerInactiveBackgroundColor: '#e3e6e9',
             }}>
-            <Drawer.Screen name='TabNav' component={TabNav} options={({ route }) => ({ headerTitle: getHeaderTitle(route),})}/>
+            <Drawer.Screen name='TabNav' component={TabNav} options={({ route }) => ({ headerTitle: getHeaderTitle(route), })} />
             <Drawer.Screen name="User Profile" component={UserProfile} />
             <Drawer.Screen name="Accounts" component={Accounts} />
-            <Drawer.Screen name="Contacts" component={Contacts} />
+            <Drawer.Screen name="Contacts" component={ContactTabNav} />
             <Drawer.Screen name="Statistics" component={Statistics} />
-            <Drawer.Screen name="Log out" component={LandingPage} options={{headerShown=false}}/>
+            <Drawer.Screen name="Log out" component={LandingPage} options={{ headerShown=false }} />
         </Drawer.Navigator>
     )
 }
