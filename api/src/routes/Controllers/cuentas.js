@@ -4,6 +4,10 @@ require("dotenv").config();
 
 
 
+
+
+
+
 async function getCuentas(req, res, next){
 
     console.log(req.query.id)
