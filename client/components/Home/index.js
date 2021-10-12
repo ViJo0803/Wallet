@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -8,8 +8,42 @@ import {
 } from "react-native";
 import { styles } from "./styles";
 import { Alert } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
+import { getOperations } from "../../store/actions/operationActions";
 
 function Home() {
+  const dispatch = useDispatch();
+ /*
+  
+ 
+
+  console.log("el balance es" , balance)
+  
+  
+
+  const idCuenta= balance[0].idcuentas
+  console.log("this is the cuenta id",idCuenta )
+  
+  useEffect(() => {
+    dispatch(getOperations(idCuenta));
+  }, [dispatch]);
+ 
+  const transfer = useSelector(state => state.operations.operations);
+
+console.log("this is the transferencias", transfer)
+
+*/
+
+
+const balance = useSelector(state => state.account.accounts);
+  console.log("this is the balance id",balance )
+
+
+
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
@@ -20,7 +54,7 @@ function Home() {
             border: 0,
             fontSize: 17
           }}
-          defaultValue="   15.618,45"
+          defaultValue="10000"
         />
         <Text style={styles.titleCuenta}>Account US$</Text>
         <TextInput

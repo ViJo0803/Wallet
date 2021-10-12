@@ -10,7 +10,7 @@ require("dotenv").config();
 
 async function getCuentas(req, res, next){
 
-    console.log(req.query.id)
+    console.log( "this is the id",req.query.id)
 
     id=req.query.id
 
@@ -21,7 +21,7 @@ async function getCuentas(req, res, next){
         }
     })
 
-    
+    console.log("this is the cuenta", cuentas)
 
     res.send(cuentas)
 

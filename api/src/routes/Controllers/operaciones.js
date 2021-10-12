@@ -5,7 +5,7 @@ require("dotenv").config();
 
 async function postOperaciones(req, res, next){
 
-    const {
+    const { 
          cuentaIdcuentas,
          monto,
          fecha,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import LandingPage from '../LandingPage';
 import Statistics from '../Statistics';
@@ -6,11 +6,25 @@ import UserProfile from '../UserProfile/index'
 import TabNav from '../TabNav';
 import Accounts from '../Accounts';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
+
+
 
 
 const Drawer = createDrawerNavigator();
 
 function getHeaderTitle(route) {
+
+const dispatch = useDispatch();
+  const idUsuario= useSelector(state=> state.users.user.idusuario)
+  console.log("this is the user id", idUsuario)
+
+  useEffect(() => {
+    dispatch(getAccount(idUsuario));
+  }, [dispatch]); 
+
+
 
     const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
 
