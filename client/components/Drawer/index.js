@@ -47,7 +47,7 @@ function DrawerBar() {
             <Drawer.Screen name="Accounts" component={Accounts} />
             <Drawer.Screen name="Contacts" component={ContactTabNav} />
             <Drawer.Screen name="Statistics" component={Statistics} />
-            <Drawer.Screen name="Log out" component={LandingPage} options={{ headerShown=false }} />
+            <Drawer.Screen name="Log out" component={LandingPage} />
         </Drawer.Navigator>
     )
 }
