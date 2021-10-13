@@ -3,10 +3,9 @@ require("dotenv").config();
 
 async function getOperaciones(req, res, next) {
   id = req.query.id;
-
   let operaciones = await Transferencias.findAll({
     where: {
-      cuentaIdcuentas: id
+      id: id
     }
   });
   res.send(operaciones);

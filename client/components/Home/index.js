@@ -13,18 +13,23 @@ import { getOperations } from "../../store/actions/operationsActions";
 
 function Home() {
   const dispatch = useDispatch();
-  const balance = useSelector(state => state.account.accounts);
-  const transfer = useSelector(state => state.operations.operations);
+  const userID = useSelector(state => state.user.idusuario);
 
   useEffect(() => {
-    dispatch(getAccount());
+    dispatch(getAccount(userID));
   }, [dispatch]);
-
-  const totalBalance = balance?.find(el => el.tipomoneda === "AR$");
 
   useEffect(() => {
     dispatch(getOperations(totalBalance?.idcuentas)); //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
   }, [dispatch]);
+
+  const balance = useSelector(state => state.account.accounts);
+  const transfer = useSelector(state => state.operations.operations);
+
+
+  const totalBalance = balance?.find(el => el.tipomoneda === "AR$");
+console.log(totalBalance)
+
 
   return (
     <View style={styles.container}>

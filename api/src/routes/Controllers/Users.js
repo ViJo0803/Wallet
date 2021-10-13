@@ -119,4 +119,4 @@ async function updateUser(req, res, next) {
   res.send(user2);
 }
 
-module.exports = { createUser, getUser, updateUser };
+module.exports = { createUser, getUser, updateUser};
