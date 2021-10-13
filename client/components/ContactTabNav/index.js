@@ -27,7 +27,7 @@ export default function ContactTabNav() {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="user-friends" color={color} size="28px" />
+                        <FontAwesome5 name="user-friends" color={color} size="24px" />
                     )
                 }} />
             <Tab.Screen
@@ -36,7 +36,7 @@ export default function ContactTabNav() {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="user-plus" color={color} size="24px" />
+                        <FontAwesome5 name="user-plus" color={color} size="20px" />
                     )
                 }} />
         </Tab.Navigator>
