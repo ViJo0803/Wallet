@@ -37,7 +37,6 @@ export function getToken(token) {
 }
 
 export function getUser(mail) {
-
   console.log("in actions get user", mail)
     return async (dispatch) => {
         await axios
