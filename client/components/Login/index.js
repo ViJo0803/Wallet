@@ -22,11 +22,9 @@ const useProxy = Platform.select({ web: false, default: true });
 
 const MY_STORAGE_KEY = 'token'
 
-
 const redirectUri = AuthSession.makeRedirectUri({
   useProxy
 });
-
 
 /* console.log('aaa',redirectUri) */
 
@@ -55,6 +53,32 @@ export default function Login({ navigation }) {
     discovery
   );
 
+  const storeData = async () => {
+    const decoded1 = jwtDecode(response.params.id_token);
+    /* console.log('deco1', decoded1) */
+    try {
+      await AsyncStorage.setItem(MY_STORAGE_KEY, JSON.stringify(decoded1));
+
+    } catch (error) {
+        // Error saving data
+        console.log(error.message)
+    }
+  }
+
+  const retrieveData = async () => {
+    try {
+        const value = await AsyncStorage.getItem(MY_STORAGE_KEY);
+        if (value !== null) {
+          const stringToJson = JSON.parse(value)
+          console.log('datos en login',stringToJson) 
+            // Our data is fetched successfully
+        }
+    } catch (error) {
+        // Error retrieving data
+        console.log(error.message)
+    }
+  }
+
   WebBrowser.maybeCompleteAuthSession();
 
   React.useEffect(() => {
@@ -82,8 +106,9 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
       {name ? (
-        (navigation.navigate("Loading"),
-        (<Button title="Log out" onPress={() => setName(null)} />))
+        storeData(),
+        retrieveData(),
+        <Button title="Log out" onPress={() => setName(null)} />
       ) : (
         <Button
           disabled={!request}

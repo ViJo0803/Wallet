@@ -8,101 +8,100 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-function ImagePickerUser() {
-  const [image, setImage] = useState(null);
+// function ImagePickerUser() {
+//   const [image, setImage] = useState(null);
 
-  useEffect(() => {
-    (async () => {
-      if (Platform.OS !== 'web') {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Sorry, we need camera roll permissions to make this work!');
-        }
-      }
-    })();
-  }, []);
+//   useEffect(() => {
+//     (async () => {
+//       if (Platform.OS !== 'web') {
+//         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+//         if (status !== 'granted') {
+//           alert('Sorry, we need camera roll permissions to make this work!');
+//         }
+//       }
+//     })();
+//   }, []);
 
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+//   const pickImage = async () => {
+//     let result = await ImagePicker.launchImageLibraryAsync({
+//       mediaTypes: ImagePicker.MediaTypeOptions.All,
+//       allowsEditing: true,
+//       aspect: [4, 3],
+//       quality: 1,
+//     });
 
-    console.log(result);
+//     console.log(result);
 
-    if (!result.cancelled) {
-      setImage(result.uri);
-    }
-  };
+//     if (!result.cancelled) {
+//       setImage(result.uri);
+//     }
+//   };
 
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button title="Seleccione una imagen" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-    </View>
-  );
-}
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//       <Button title="Seleccione una imagen" onPress={pickImage} />
+//       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+//     </View>
+//   );
+// }
 
 
 export default function RegisterExtended({ navigation }) {
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+//   const {
+//     control,
+//     handleSubmit,
+//     formState: { errors },
+//   } = useForm();
 
-  const dispatch = useDispatch();
+//   const dispatch = useDispatch();
 
-  let token = useSelector((state) => state.users.jwtToken);
-  console.log(" here is the token: ", token);
+//   let token = useSelector((state) => state.users.jwtToken);
+//   console.log(" here is the token: ", token);
 
-  let json = token.payload;
-  console.log("this is the json ", json);
-  const nick = json.nickname;
-  const foto = json.picture;
+//   let json = token.payload;
+//   console.log("this is the json ", json);
+//   const nick = json.nickname;
+//   const foto = json.picture;
 
-  const mail =
-    json.sub.split("|")[0] === "google-oauth2"
-      ? json.nickname + "@gmail.com"
-      : json.name;
+//   const mail =
+//     json.sub.split("|")[0] === "google-oauth2"
+//       ? json.nickname + "@gmail.com"
+//       : json.name;
 
-  console.log("this is the mail ", mail);
+//   console.log("this is the mail ", mail);
 
-  const registerData = (data) => {
-    console.log("in register data", data);
-    console.log("json :", json);
+//   const registerData = (data) => {
+//     console.log("in register data", data);
+//     console.log("json :", json);
 
-    const dataFiltered = {
-      nombre: data.nombre,
-      apellidos: data.apellidos,
-      mail: mail,
-      direccion: data.direccion,
-      nickname: nick,
-      dni: data.dni,
-      telefono: data.telefono,
-      foto: foto,
-      codigo_postal: data.codigo_postal,
-    };
+//     const dataFiltered = {
+//       nombre: data.nombre,
+//       apellidos: data.apellidos,
+//       mail: mail,
+//       direccion: data.direccion,
+//       nickname: nick,
+//       dni: data.dni,
+//       telefono: data.telefono,
+//       foto: foto,
+//       codigo_postal: data.codigo_postal,
+//     };
 
-    post(dataFiltered);
+//     post(dataFiltered);
 
-  };
+//   };
     
 
-  function post(data) {
-    console.log("in handle submit", data);
-    dispatch(createUser(data));
-    navigation.navigate("Drawer");
-  }
+//   function post(data) {
+//     console.log("in handle submit", data);
+//     dispatch(createUser(data));
+//     navigation.navigate("Drawer");
+//   }
 
   return (
     <View>
       <Text>Nombre:</Text>
-      <Controller
-        control={control}
+      {/* <Controller
         rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
@@ -114,48 +113,48 @@ export default function RegisterExtended({ navigation }) {
         )}
         name="nombre"
         defaultValue=""
-      />
-
-      {errors.nombre && <Text>This is required.</Text>}
+      /> */}
+{/* 
+      {errors.nombre && <Text>This is required.</Text>} */}
 
       <Text>Apellido:</Text>
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-        name="apellidos"
-        defaultValue=""
-      />
+      {/* <Controller
+        // control={control}
+        // rules={{ required: true }}
+        // render={({ field: { onChange, onBlur, value } }) => (
+        //   <TextInput
+        //     style={styles.input}
+        //     onBlur={onBlur}
+        //     onChangeText={onChange}
+        //     value={value}
+        //   />
+        // )}
+        // name="apellidos"
+        // defaultValue=""
+      /> */}
 
-      {errors.apellidos && <Text>This is required.</Text>}
+      {/* {errors.apellidos && <Text>This is required.</Text>} */}
 
       <Text>DNI:</Text>
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
+      {/* <Controller
+        // control={control}
+        // rules={{ required: true }}
+        // render={({ field: { onChange, onBlur, value } }) => (
+        //   <TextInput
+        //     style={styles.input}
+        //     onBlur={onBlur}
+        //     onChangeText={onChange}
+        //     value={value}
           />
         )}
         name="dni"
         defaultValue=""
-      />
-
-      {errors.dni && <Text>This is required.</Text>}
+      /> */}
+{/* 
+      {errors.dni && <Text>This is required.</Text>} */}
 
       <Text>Telefono:</Text>
-      <Controller
+      {/* <Controller
         control={control}
         rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => (
@@ -168,12 +167,12 @@ export default function RegisterExtended({ navigation }) {
         )}
         name="telefono"
         defaultValue=""
-      />
+      /> */}
 
-      {errors.telefono && <Text>This is required.</Text>}
+     {/*  {errors.telefono && <Text>This is required.</Text>} */}
 
       <Text>Direccion:</Text>
-      <Controller
+      {/* <Controller
         control={control}
         rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => (
@@ -188,10 +187,10 @@ export default function RegisterExtended({ navigation }) {
         defaultValue=""
       />
 
-      {errors.direccion && <Text>This is required.</Text>}
+      {errors.direccion && <Text>This is required.</Text>} */}
 
       <Text>Codigo Postal:</Text>
-      <Controller
+      {/* <Controller
         control={control}
         rules={{ maxLength: 100 }}
         render={({ field: { onChange, onBlur, value } }) => (
@@ -205,15 +204,15 @@ export default function RegisterExtended({ navigation }) {
         name="codigo_postal"
         defaultValue=""
       />
-      {errors.codigo_postal && <Text>This is required.</Text>}
+      {errors.codigo_postal && <Text>This is required.</Text>} */}
 
       <Text>
         Foto Perfil:
       </Text>
       
-      <ImagePickerUser />
-            
-      <Button title="Register" onPress={handleSubmit(registerData)} />
+      {/* <ImagePickerUser />
+             */}
+      <Button title="Register" /* onPress={handleSubmit(registerData)}  *//>
 
     </View>
   );
