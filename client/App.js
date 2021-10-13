@@ -5,6 +5,7 @@ import LandingPage from "./components/LandingPage";
 import RegisterExtended from "./components/RegisterExtended";
 import Loading from "./components/Loading";
 import DrawerBar from "./components/Drawer";
+import EditProfile from './components/EditUserProfile'
 import { Provider } from "react-redux";
 import store from "./store/index";;
 
@@ -35,6 +36,7 @@ export default function App() {
           />
           <Stack.Screen name="RegisterExtended" component={RegisterExtended} />
           <Stack.Screen name="Loading" component={Loading} />
+          <Stack.Screen name="EditProfile" component={EditProfile} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

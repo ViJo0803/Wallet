@@ -4,6 +4,8 @@ const GET_JWT = "GET TOKEN";
 const GET_ACCOUNT = "GET ACCOUNT";
 const GET_OPERATIONS = "GET OPERATIONS";
 const CREATE_ACCOUNT = "CREATE ACCOUNT";
+const UPDATE_USER ="UPDATE USER"
+
 
 module.exports = {
   GET_JWT,
@@ -11,5 +13,7 @@ module.exports = {
   GET_USER,
   GET_ACCOUNT,
   CREATE_ACCOUNT,
-  GET_OPERATIONS
+  GET_OPERATIONS,
+  UPDATE_USER,
+
 };

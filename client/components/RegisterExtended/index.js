@@ -1,11 +1,53 @@
-import React from "react";
-import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet, TextInput, Button, Alert, Image, Platform } from "react-native";
 import { useForm, Controller } from "react-hook-form";
+import * as ImagePicker from 'expo-image-picker';
 import { createUser } from "../../store/actions/userActions";
-
 import { useDispatch, useSelector } from "react-redux";
 
+
+
+
+function ImagePickerUser() {
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button title="Seleccione una imagen" onPress={pickImage} />
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+    </View>
+  );
+}
+
+
 export default function RegisterExtended({ navigation }) {
+
   const {
     control,
     handleSubmit,
@@ -47,10 +89,8 @@ export default function RegisterExtended({ navigation }) {
 
     post(dataFiltered);
 
-    //var res = await axios.post('http://localhost:3001/usuario', dataFiltered )
-    //console.log("respuesta del post",res)
-    //navigation.navigate("Drawer")
   };
+    
 
   function post(data) {
     console.log("in handle submit", data);
@@ -167,7 +207,14 @@ export default function RegisterExtended({ navigation }) {
       />
       {errors.codigo_postal && <Text>This is required.</Text>}
 
+      <Text>
+        Foto Perfil:
+      </Text>
+      
+      <ImagePickerUser />
+            
       <Button title="Register" onPress={handleSubmit(registerData)} />
+
     </View>
   );
 }
@@ -182,6 +229,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: "center",
-    marginTop: 40,
+    marginTop: 40
   },
+  imgStyle: {
+    width: 200,
+    height: 200,
+    marginTop: 30,
+  }
 });

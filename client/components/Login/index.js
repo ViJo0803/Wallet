@@ -7,44 +7,28 @@ import { useDispatch } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getToken } from "../../store/actions/userActions.js";
 
-// You need to swap out the Auth0 client id and domain with the one from your Auth0 client.
-// In your Auth0 client, you need to also add a url to your authorized redirect urls.
-//
-// For this application, I added https://auth.expo.io/@arielweinberger/with-auth0 because I am
-// signed in as the 'arielweinberger' account on Expo and the name/slug for this app is 'with-auth0'.
-//
-// You can open this app in the Expo client and check your logs to find out your redirect URL.
-
 const auth0ClientId = "EAfKmiG5AKNeoFyCt9lpMSgtn76gjYW1";
-const authorizationEndpoint = "https://dev-xfog4lys.us.auth0.com/authorize"; //dev-zt1p-cha.us.auth0.com
+const authorizationEndpoint = "https://dev-xfog4lys.us.auth0.com/authorize"; 
 
 const useProxy = Platform.select({ web: false, default: true });
-
 const MY_STORAGE_KEY = "token";
 
 const redirectUri = AuthSession.makeRedirectUri({
   useProxy
 });
 
-/* console.log('aaa',redirectUri) */
-
 export default function Login({ navigation }) {
   const dispatch = useDispatch();
   const discovery = AuthSession.useAutoDiscovery(authorizationEndpoint);
-
   const [name, setName] = React.useState(null);
-  // Agregar async antes del await
   const [request, response, promptAsync] = AuthSession.useAuthRequest(
     {
       redirectUri,
       clientId: auth0ClientId,
-      // id_token will return a JWT token
       responseType: AuthSession.ResponseType.IdToken,
-      // retrieve the user's profile
       scopes: ["openid", "profile"],
       extraParams: {
-        // ideally, this will be a random value
-        nonce: "nonce"
+        nonce: "nonce",
       },
       prompt: "login"
     },
@@ -62,15 +46,13 @@ export default function Login({ navigation }) {
         );
         return;
       }
+
       if (response.type === "success") {
-        // Retrieve the JWT token and decode it
         const jwtToken = response.params.id_token;
         const decoded = jwtDecode(jwtToken);
         dispatch(getToken(decoded));
-        //storeData()
         const { name } = decoded;
         setName(name);
-        // retrieveData()
       }
     }
   }, [response]);
