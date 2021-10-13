@@ -3,7 +3,7 @@ require("dotenv").config();
 
 
 
-async function postOperaciones(req, res, next){
+async function doTransfer(req, res, next){
 
     const { 
          cuentaIdcuentas,
@@ -45,4 +45,4 @@ async function getOperaciones(req, res, next) {
   res.send(operaciones);
 }
 
-module.exports = { getOperaciones, postOperaciones };
+module.exports = { getOperaciones, doTransfer };

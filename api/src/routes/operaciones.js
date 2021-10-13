@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const { getOperaciones, postOperaciones } = require("./Controllers/operaciones.js");
+const { getOperaciones, doTransfer } = require("./Controllers/operaciones.js");
 
 const router = Router();
 
 router.get("/", getOperaciones);
-router.post("/", postOperaciones)
+router.post("/", doTransfer);
 
 module.exports = router;
