@@ -4,14 +4,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/actions/userActions";
 import {styles} from "./styles"
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const MY_STORAGE_KEY = 'token'
 
 export default function Loading({ navigation }) {
+  const loading = async() =>{
+    const value = await AsyncStorage.getItem(MY_STORAGE_KEY)
+    console.log("value",value)
+    let json = JSON.parse(value)
+    console.log("json",json)
+    const datos = await axios.get('http://localhost:3001/user/get/?mail=' +  (json.sub.split("|")[0]==="google-oauth2" ? json.nickname +'@gmail.com' :  json.name ))
+    console.log("datos",datos)
+    if(datos.data!=="") {navigation.navigate("Drawer") 
+    }else if(datos.data==="") {navigation.navigate("RegisterExtended") }
+    
+    }
 
-  const dispatch = useDispatch();
+  loading()
 
-
-  let token= useSelector((state)=>state.users.jwtToken)
-  console.log(" here is the token: ", token);
+ /*  console.log(" here is the token: ", token);
 
   let json = token.payload
 
@@ -31,7 +43,7 @@ export default function Loading({ navigation }) {
       navigation.navigate("Drawer")
     }
   }
-  funcionAsync()
+  funcionAsync() */
 
 
   /* useEffect(()=>{
