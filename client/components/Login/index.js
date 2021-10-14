@@ -7,19 +7,23 @@ import { useDispatch } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getToken } from "../../store/actions/userActions.js";
 
+
 const auth0ClientId = "EAfKmiG5AKNeoFyCt9lpMSgtn76gjYW1";
-const authorizationEndpoint = "https://dev-xfog4lys.us.auth0.com/authorize"; 
+const authorizationEndpoint = "https://dev-xfog4lys.us.auth0.com/authorize";
 
 const useProxy = Platform.select({ web: false, default: true });
+
 const MY_STORAGE_KEY = "token";
 
 const redirectUri = AuthSession.makeRedirectUri({
-  useProxy
+  useProxy,
 });
+
 
 export default function Login({ navigation }) {
   const dispatch = useDispatch();
   const discovery = AuthSession.useAutoDiscovery(authorizationEndpoint);
+
   const [name, setName] = React.useState(null);
   const [request, response, promptAsync] = AuthSession.useAuthRequest(
     {
@@ -80,11 +84,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
     textAlign: "center",
-    marginTop: 40
-  }
+    marginTop: 40,
+  },
 });

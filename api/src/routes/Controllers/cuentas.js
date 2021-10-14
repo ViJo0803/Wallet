@@ -1,4 +1,4 @@
-const { Usuario, Cuentas } = require("../../db");
+const { Usuario, Cuentas} = require("../../db");
 require("dotenv").config();
 
 async function getCuentas(req, res, next) {
@@ -8,8 +8,22 @@ async function getCuentas(req, res, next) {
       usuarioIdusuario: id, 
     },
   });
-
   res.send(cuentas);
 }
 
-module.exports = { getCuentas };
+async function DepositAccount(req, res, next) {
+    const { idcuentas, saldo } = req.body;
+    if (idcuentas) {
+        let account = await Cuentas.findOne({
+            where: {
+                idcuentas: idcuentas
+            }
+        })
+        account.saldo = parseInt(account.saldo) + parseInt(saldo);
+        await account.save();
+        return res.send(account)
+    }
+}
+
+module.exports = { getCuentas, DepositAccount}
+
