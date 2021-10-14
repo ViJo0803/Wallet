@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_TRANSFERS,MAKE_TRANSFER } from "./types";
+import { GET_TRANSFERS, MAKE_TRANSFER } from "./types";
 
 export function getTransfers(id) {
 
@@ -16,7 +16,8 @@ export function getTransfers(id) {
 }
 
 
-export function makeTranfer(data){
+export function makeTransfer(data){
+  console.log("in make actions transfers", data)
   return async dispatch =>{
     await axios
     .post(`http://localhost:3001/transfers/create?`, data)

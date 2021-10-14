@@ -18,7 +18,7 @@ export default function Register ({navigation}) {
 
 
       const dispatch = useDispatch();
-    const state= useSelector(state => state.users.user)
+    const state= useSelector(state => state.user.user)
     console.log(" here is the id: ", state.idusuario);
 
     const registerData =  (data) => {

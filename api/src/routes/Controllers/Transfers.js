@@ -13,29 +13,31 @@ async function CreateTransfers(req, res, next) {
       },
     });
 
-    console.log("cuenta de origne",Account_origen)
+   
     let Account_destino = await Cuentas.findOne({
       where: {
         idcuentas: destino,
       },
     });
-    console.log("cuenta de destino",Account_destino)
-    console.log("saldo de origen",Account_origen.saldo)
+    
     if (Account_origen.saldo >= monto && monto > 0) {
 
         Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto);
-        console.log("saldo nuevo origen",Account_origen.saldo)
+        
       await Account_origen.save();
       Account_destino.saldo = parseInt(Account_destino.saldo) + parseInt(monto);
-      console.log("saldo nuevo destino",Account_destino.saldo)
+      
       await Account_destino.save();
 
-      let transfer = await Transferencias.create({
-        monto,
-        destino,
-        fecha,
-        origin: origen,
+        let transfer = await Transferencias.create({
+          monto,
+          destino,
+          fecha,
+          origin: origen,
       });
+
+      
+
 
       return res.send(transfer);
 

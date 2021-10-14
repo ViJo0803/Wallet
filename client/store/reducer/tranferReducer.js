@@ -12,7 +12,9 @@ const transfersReducer = (state = initalState, { type, payload }) => {
 
 
       case MAKE_TRANSFER:
-        return {...state,history:payload }
+     console.log("in tranfer reducer",payload )
+      //   state.history.push(payload)
+      return {...state, };
 
     default:
       return state;

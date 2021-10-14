@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Coins from "../Coins";
 import Services from "../Services";
@@ -7,10 +7,20 @@ import Deposit from "../Deposit";
 import Home from "../Home";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
 const Tab = createBottomTabNavigator();
 
 function TabNav() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  useEffect(() => {
+    dispatch(getAccount(user.idusuario))
+  }, [dispatch])
+
+ 
+
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -30,6 +40,7 @@ function TabNav() {
       <Tab.Screen
         name="Home"
         component={Home}
+        initialParams={{user: user}}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size="30px" />

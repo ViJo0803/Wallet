@@ -11,18 +11,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
 import { getTransfers } from "../../store/actions/transferActions";
 
-function Home({ Navigation, Route }) {
+function Home({route}) {
   const dispatch = useDispatch();
 
-  console.log( "this are the navigation props", Navigation)
-  console.log( "this are the Route props", Route)
-
-  const user = useSelector((state) => state.user.user);
-  console.log(user)
-
-  useEffect(() => {
-    if (user) dispatch(getAccount(user.idusuario));
-  }, [user]);
 
   const balance = useSelector((state) => state.account.accounts);
 
@@ -37,16 +28,12 @@ function Home({ Navigation, Route }) {
   const transfer = useSelector((state) => state.transfer.history);
 
   console.log("historial transferencias", transfer)
-  //const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
 
-  
-
-  
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
         <Text style={styles.titleCuenta}>ARS</Text>
-        <Text style={styles.titleCuenta}>{balance[0]?.saldo}</Text>
+        <Text style={styles.titleCuenta}>{balance?.saldo}</Text>
       </View>
 
       <View>

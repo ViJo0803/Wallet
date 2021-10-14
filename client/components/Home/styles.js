@@ -81,5 +81,12 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     alignContent: "flex-end",
     color: "#fff"
-  }
+  },
+  image: {
+    width: '30%',
+    height: '30%',
+    borderWidth: 4,
+    borderColor: "#20232a",
+    borderRadius: 6,
+},
 });
