@@ -10,7 +10,6 @@ const router = Router();
 
 router.use("/user", Users);
 router.use("/account", Cuentas);
-
 router.use('/transfers', Transfers)
 router.use('/servicesPayment', ServicesPayment)
 
