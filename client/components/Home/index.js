@@ -19,12 +19,6 @@ function Home() {
   const transfer = useSelector((state) => state.operations.operations);
   const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
 
-  console.log(balance);
-  // const totalBalance = useMemo(() => {
-  //   return balance?.find((el) => el.tipomoneda === "AR$");
-  // }, [balance]);
-  console.log(totalBalance);
-
   useEffect(() => {
     if (user) dispatch(getAccount(user.idusuario));
   }, [dispatch, user]);
