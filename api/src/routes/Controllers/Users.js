@@ -101,8 +101,6 @@ async function updateUser (req, res, next){
 
   console.log("this is the body" , req.body)
 
-
-
   const {
     idusuario,
     nombre,
@@ -115,6 +113,8 @@ async function updateUser (req, res, next){
     foto,
     codigo_postal,
   } = req.body;
+
+
 
   console.log("the user id is", idusuario)
 
