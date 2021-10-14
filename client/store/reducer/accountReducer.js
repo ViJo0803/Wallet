@@ -10,7 +10,7 @@ const initalState={
 
 const accountReducer=(state= initalState, {type, payload})=>{
 
-    console.log("in reducer acc")
+    //console.log("in reducer acc")
 switch(type){
 
     case GET_ACCOUNT: 
