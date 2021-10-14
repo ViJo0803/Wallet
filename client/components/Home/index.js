@@ -1,36 +1,39 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   View,
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
+import { getOperations } from "../../store/actions/operationsActions";
 
 function Home() {
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.users.user);
+  const balance = useSelector((state) => state.account.accounts);
+  const transfer = useSelector((state) => state.operations.operations);
+  const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
+
+  useEffect(() => {
+    if (user) dispatch(getAccount(user.idusuario));
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    if (totalBalance) dispatch(getOperations(totalBalance.idcuentas)); //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
+  }, [dispatch, totalBalance]);
+
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
-        <Text style={styles.titleCuenta}>Account $</Text>
-        <TextInput
-          style={{
-            height: 30,
-            border: 0,
-            fontSize: 17
-          }}
-          defaultValue="   15.618,45"
-        />
-        <Text style={styles.titleCuenta}>Account US$</Text>
-        <TextInput
-          style={{
-            height: 30,
-            border: 0,
-            fontSize: 17
-          }}
-          defaultValue="   2.300"
-        />
+        <Text style={styles.titleCuenta}>ARS</Text>
+        <Text style={styles.titleCuenta}>{totalBalance?.saldo}</Text>
       </View>
+
       <View>
         <Text style={styles.titleTransfer}>Transfers</Text>
       </View>
@@ -38,38 +41,12 @@ function Home() {
       <ScrollView style={styles.scrollTransfer}>
         <TouchableOpacity style={styles.userCard}>
           <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Retiro $ 10 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 80 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 980 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 180 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Retiro $ 80 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 10 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
+            {transfer?.map((op) => (
+              <View>
+                <Text style={styles.textname}>{op?.monto}</Text>,
+                <Text style={styles.textdate}>{op?.fecha}</Text>
+              </View>
+            ))}
           </View>
         </TouchableOpacity>
       </ScrollView>
