@@ -2,40 +2,41 @@ const { Transferencias, Cuentas } = require("../../db");
 require("dotenv").config();
 
 async function CreateTransfers(req, res, next) {
-    // destino vendria de favoritos o de un nuevo destino
-    // y seria el nro de cuenta del favorito o nuevo ?
-    const { idcuentas, monto, fecha, destino } = req.body;
-    console.log('body transferencias: ' + req.body.monto);
-    if (idcuentas) {
+  const { origen, id, monto, fecha, destino } = req.body;
 
-        let account = await Cuentas.findOne({
-            where: {
-                idcuentas: idcuentas
-            }
-        })
+  if (cuentaIdcuentas && destino) {
+    let Account_origen = await Cuentas.findOne({
+      where: {
+        idcuentas: origen,
+      },
+    });
+    let Account_destino = await Cuentas.findOne({
+      where: {
+        idcuentas: destino,
+      },
+    });
 
-        if (account.saldo >= monto) {
-            account.saldo = parseInt(account.saldo) - parseInt(monto);
+    if (Account_origen.saldo >= monto && monto > 0) {
 
-            await account.save();
-            console.log(account.saldo);
+        Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto);
+      await Account_origen.save();
+      Account_destino.saldo = parseInt(Account_destino.saldo) + parseInt(monto);
+      await Account_destino.save();
 
-            let transfer = await Transferencias.create({
-                monto: monto,
-                fecha: fecha,
-                destino: destino
-            })
+      let transfer = await Transferencias.create({
+        monto,
+        destino,
+        id,
+        fecha,
+        origin: origen,
+      });
 
+      return res.send(transfer);
 
-            return res.send(transfer)
-
-        } else {
-            res.send("You don't have enough balance for this operation")
-        }
-
-
-
+    } else {
+      res.send("Something went wrong");
     }
+  }
 }
 
-module.exports = { CreateTransfers }
+module.exports = { CreateTransfers };
