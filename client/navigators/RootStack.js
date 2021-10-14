@@ -8,12 +8,20 @@ const { darkLight, brand, primary, tertiary, secondary } = Colors;
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 // screens
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
-import Inicio from "../screens/Inicio";
 import RegisterExntended from "../screens/RegisterExntended";
+import Inicio from "../screens/Inicio";
+
+// components
+import TabNav from "../components/TabNav";
+import UserProfile from "../components/UserProfile";
+import Accounts from "../components/Accounts";
+import Statistics from "../components/Statistics";
+import LandingPage from "../components/LandingPage";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -50,6 +58,7 @@ function RootStack() {
   );
 }
 // <--------------- ROOT Stack (contiene a LoginStack y MainStack ) --------------->
+
 // <--------------------- LOGIN Stack --------------------->
 function LoginStack() {
   return (
@@ -78,10 +87,12 @@ function LoginStack() {
 }
 // <--------------------- LOGIN Stack --------------------->
 
+
 // <--------------------- MAIN Stack --------------------->
+
 function MainStack() {
   return (
-    <Drawer.Navigator
+    <Stack.Navigator
       screenOptions={{
         headerShown: true,
         headerTitleAlign: "center",
@@ -95,8 +106,8 @@ function MainStack() {
         // headerLeft: () => <Ionicons name='ios-menu' color='white' size={30} style={{ marginHorizontal: 15 }} onPress={() => props.navigation.openDrawer()}></Ionicons>,
       }}
     >
-      <Drawer.Screen name="Inicio" component={Inicio} />
-    </Drawer.Navigator>
+      <Stack.Screen name="Inicio" component={Inicio} />
+    </Stack.Navigator>
   );
 }
 

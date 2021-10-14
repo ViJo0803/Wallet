@@ -24,7 +24,7 @@ function Home() {
   }, [dispatch, user]);
 
   useEffect(() => {
-    if (totalBalance) dispatch(getOperations(totalBalance.idcuentas)); //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
+    if (totalBalance) dispatch(getOperations(totalBalance.idcuentas)); 
   }, [dispatch, totalBalance]);
 
   return (

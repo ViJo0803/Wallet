@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Coins from "../Coins";
+// import Coins from "../Coins";
 import Services from "../Services";
 import Transfers from "../Transfers";
 import Deposit from "../Deposit";
@@ -36,7 +36,7 @@ function TabNav() {
           )
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Coins"
         component={Coins}
         options={{
@@ -44,7 +44,7 @@ function TabNav() {
             <FontAwesome5 name="coins" color={color} size="20px" />
           )
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Transfers"
         component={Transfers}

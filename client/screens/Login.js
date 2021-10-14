@@ -141,9 +141,8 @@ const Login = ({ navigation }) => {
         <InnerContainer>
           <PageLogo
             resizeMode="cover"
-            source={require("../assets/expo-bg1.png")}
+            source={require("../assets/logoMintDef.png")}
           />
-          <PageTitle>Flower Crib</PageTitle>
           <SubTitle>Account Login</SubTitle>
 
           <Formik
@@ -167,7 +166,7 @@ const Login = ({ navigation }) => {
               <StyledFormArea>
                 <MyTextInput
                   label="Email Address"
-                  placeholder="andyj@gmail.com"
+                  placeholder="usuario@gmail.com"
                   placeholderTextColor={darkLight}
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
