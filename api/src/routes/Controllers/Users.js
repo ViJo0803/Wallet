@@ -55,10 +55,7 @@ async function createUser(req, res, next) {
     usuarioIdusuario: iduser,
   });
 
-  usuarioCreado = await Usuario.findByPk(iduser, {
-    include: ["cuentas"],
-  });
-
+  usuarioCreado = await Usuario.findByPk(iduser);
   res.send(usuarioCreado);
 }
 

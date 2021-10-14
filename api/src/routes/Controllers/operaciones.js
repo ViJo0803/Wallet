@@ -5,10 +5,11 @@ async function getOperaciones(req, res, next) {
   id = req.query.id;
   let operaciones = await Transferencias.findAll({
     where: {
-      id: id
+      cuentaIdcuentas: id
     }
   });
   res.send(operaciones);
+  console.log(operaciones)
 }
 
 module.exports = { getOperaciones };
