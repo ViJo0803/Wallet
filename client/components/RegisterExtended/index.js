@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TextInput, Button, Alert, Image, Platform } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Button,
+  Alert,
+  Image,
+  Platform,
+} from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import * as ImagePicker from 'expo-image-picker';
+import * as ImagePicker from "expo-image-picker";
 import { createUser } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-
-
-
 
 function ImagePickerUser() {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
     (async () => {
-      if (Platform.OS !== 'web') {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-          alert('Sorry, we need camera roll permissions to make this work!');
+      if (Platform.OS !== "web") {
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
         }
       }
     })();
@@ -38,16 +45,16 @@ function ImagePickerUser() {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button title="Seleccione una imagen" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      {image && (
+        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+      )}
     </View>
   );
 }
 
-
 export default function RegisterExtended({ navigation }) {
-
   const {
     control,
     handleSubmit,
@@ -57,10 +64,8 @@ export default function RegisterExtended({ navigation }) {
   const dispatch = useDispatch();
 
   let token = useSelector((state) => state.users.jwtToken);
-  console.log(" here is the token: ", token);
 
   let json = token.payload;
-  console.log("this is the json ", json);
   const nick = json.nickname;
   const foto = json.picture;
 
@@ -69,12 +74,7 @@ export default function RegisterExtended({ navigation }) {
       ? json.nickname + "@gmail.com"
       : json.name;
 
-  console.log("this is the mail ", mail);
-
   const registerData = (data) => {
-    console.log("in register data", data);
-    console.log("json :", json);
-
     const dataFiltered = {
       nombre: data.nombre,
       apellidos: data.apellidos,
@@ -88,13 +88,9 @@ export default function RegisterExtended({ navigation }) {
     };
 
     post(dataFiltered);
-
   };
-    
 
   function post(data) {
-    console.log("in handle submit", data);
-    dispatch(createUser(data));
     navigation.navigate("Drawer");
   }
 
@@ -207,14 +203,11 @@ export default function RegisterExtended({ navigation }) {
       />
       {errors.codigo_postal && <Text>This is required.</Text>}
 
-      <Text>
-        Foto Perfil:
-      </Text>
-      
-      <ImagePickerUser />
-            
-      <Button title="Register" onPress={handleSubmit(registerData)} />
+      <Text>Foto Perfil:</Text>
 
+      <ImagePickerUser />
+
+      <Button title="Register" onPress={handleSubmit(registerData)} />
     </View>
   );
 }
@@ -229,11 +222,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: "center",
-    marginTop: 40
+    marginTop: 40,
   },
   imgStyle: {
     width: 200,
     height: 200,
     marginTop: 30,
-  }
+  },
 });
