@@ -1,9 +1,11 @@
 const {Router}= require("express")
-const{CreateTransfers}= require("./Controllers/Transfers.js")
+const{CreateTransfers, getTransfers}= require("./Controllers/Transfers.js");
+const { route } = require("./users.js");
 
 const router= Router()
 
-router.post("/", CreateTransfers );
+router.post("/create", CreateTransfers );
+router.get("/get", getTransfers)
 
 
 

@@ -9,29 +9,44 @@ import {
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
-import { getOperations } from "../../store/actions/operationsActions";
+import { getTransfers } from "../../store/actions/transferActions";
 
-function Home() {
+function Home({ Navigation, Route }) {
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.users.user);
-  const balance = useSelector((state) => state.account.accounts);
-  const transfer = useSelector((state) => state.operations.operations);
-  const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
+  console.log( "this are the navigation props", Navigation)
+  console.log( "this are the Route props", Route)
+
+  const user = useSelector((state) => state.user.user);
+  console.log(user)
 
   useEffect(() => {
     if (user) dispatch(getAccount(user.idusuario));
-  }, [dispatch, user]);
+  }, [user]);
 
+  const balance = useSelector((state) => state.account.accounts);
+
+  console.log("cuenta",balance)
   useEffect(() => {
-    if (totalBalance) dispatch(getOperations(totalBalance.idcuentas)); //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
-  }, [dispatch, totalBalance]);
+    if (balance[0]) {dispatch(getTransfers(balance[0].idcuentas))}; //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
+  }, [balance]);
 
+
+  
+
+  const transfer = useSelector((state) => state.transfer.history);
+
+  console.log("historial transferencias", transfer)
+  //const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
+
+  
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
         <Text style={styles.titleCuenta}>ARS</Text>
-        <Text style={styles.titleCuenta}>{totalBalance?.saldo}</Text>
+        <Text style={styles.titleCuenta}>{balance[0]?.saldo}</Text>
       </View>
 
       <View>
