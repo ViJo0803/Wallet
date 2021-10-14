@@ -14,11 +14,11 @@ import { getTransfers } from "../../store/actions/transferActions";
 function Home({ Navigation, Route }) {
   const dispatch = useDispatch();
 
-  console.log( "this are the navigation props", Navigation)
-  console.log( "this are the Route props", Route)
+  console.log("this are the navigation props", Navigation);
+  console.log("this are the Route props", Route);
 
   const user = useSelector((state) => state.user.user);
-  console.log(user)
+  console.log(user);
 
   useEffect(() => {
     if (user) dispatch(getAccount(user.idusuario));
@@ -26,22 +26,18 @@ function Home({ Navigation, Route }) {
 
   const balance = useSelector((state) => state.account.accounts);
 
-  console.log("cuenta",balance)
+  console.log("cuenta", balance);
   useEffect(() => {
-    if (balance[0]) {dispatch(getTransfers(balance[0].idcuentas))}; //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
+    if (balance[0]) {
+      dispatch(getTransfers(balance[0].idcuentas));
+    } //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
   }, [balance]);
-
-
-  
 
   const transfer = useSelector((state) => state.transfer.history);
 
-  console.log("historial transferencias", transfer)
+  console.log("historial transferencias", transfer);
   //const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
 
-  
-
-  
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
@@ -58,7 +54,11 @@ function Home({ Navigation, Route }) {
           <View style={styles.userCardRight}>
             {transfer?.map((op) => (
               <View>
-                <Text style={styles.textname}>{op?.monto}</Text>,
+                {op?.origin == balance[0].idcuentas ? (
+                  <Text style={styles.textname}> {"- " + op?.monto}</Text>
+                ) : (
+                  <Text style={styles.textname}> {"+ " + op?.monto}</Text>
+                )}
                 <Text style={styles.textdate}>{op?.fecha}</Text>
               </View>
             ))}
