@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   View,
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,23 +13,25 @@ import { getOperations } from "../../store/actions/operationsActions";
 
 function Home() {
   const dispatch = useDispatch();
-  const userID = useSelector(state => state.user.idusuario);
+
+  const user = useSelector((state) => state.users.user);
+  const balance = useSelector((state) => state.account.accounts);
+  const transfer = useSelector((state) => state.operations.operations);
+  const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
+
+  console.log(balance);
+  // const totalBalance = useMemo(() => {
+  //   return balance?.find((el) => el.tipomoneda === "AR$");
+  // }, [balance]);
+  console.log(totalBalance);
 
   useEffect(() => {
-    dispatch(getAccount(userID));
-  }, [dispatch]);
+    if (user) dispatch(getAccount(user.idusuario));
+  }, [dispatch, user]);
 
   useEffect(() => {
-    dispatch(getOperations(totalBalance?.idcuentas)); //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
-  }, [dispatch]);
-
-  const balance = useSelector(state => state.account.accounts);
-  const transfer = useSelector(state => state.operations.operations);
-
-
-  const totalBalance = balance?.find(el => el.tipomoneda === "AR$");
-console.log(totalBalance)
-
+    if (totalBalance) dispatch(getOperations(totalBalance.idcuentas)); //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
+  }, [dispatch, totalBalance]);
 
   return (
     <View style={styles.container}>
@@ -45,7 +47,7 @@ console.log(totalBalance)
       <ScrollView style={styles.scrollTransfer}>
         <TouchableOpacity style={styles.userCard}>
           <View style={styles.userCardRight}>
-            {transfer?.map(op => (
+            {transfer?.map((op) => (
               <View>
                 <Text style={styles.textname}>{op?.monto}</Text>,
                 <Text style={styles.textdate}>{op?.fecha}</Text>
