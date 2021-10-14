@@ -29,7 +29,7 @@ const state= useSelector((state)=>state.users.user)
 
 console.log(Object.keys(state).length)
 
-Object.keys(state).length!==0 ?navigation.navigate("Drawer"):navigation.navigate("RegisterExtended")
+Object.keys(state).length!==0 ?navigation.navigate("Drawer" , state):navigation.navigate("RegisterExtended")
 
 
 

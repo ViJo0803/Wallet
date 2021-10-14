@@ -53,8 +53,8 @@ Cuentas.belongsTo(Usuario)
 Cuentas.hasMany(Comprar_monedas)
 Comprar_monedas.belongsTo(Cuentas)
 
-Cuentas.hasMany(Transferencias)
-Transferencias.belongsTo(Cuentas)
+Cuentas.hasMany(Transferencias, {foreignKey: "Origin", sourceKey:'idcuentas'})
+Transferencias.belongsTo(Cuentas, {foreignKey: "Origin", sourceKey:'idcuentas'})
 
 Cuentas.hasMany(Pago_servicios)
 Pago_servicios.belongsTo(Cuentas)

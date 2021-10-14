@@ -12,8 +12,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
 import { getOperations } from "../../store/actions/operationActions";
 
-function Home() {
+function Home(props) {
+
+
+
   const dispatch = useDispatch();
+  console.log("this are the props" ,props)
  /*
   
  

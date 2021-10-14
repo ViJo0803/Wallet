@@ -3,29 +3,7 @@ require("dotenv").config();
 
 
 
-async function doTransfer(req, res, next){
 
-    const { 
-         cuentaIdcuentas,
-         monto,
-         fecha,
-         destino,
-     }= req.body
- 
-     console.log( "this is the body", req.body)
-
-
- let movimiento = await Transferencias.create({
-
-    monto,
-    fecha,
-    destino,
-    cuentaIdcuentas
- })
-
- res.send(movimiento) 
- 
- }
  
 
 
@@ -45,4 +23,4 @@ async function getOperaciones(req, res, next) {
   res.send(operaciones);
 }
 
-module.exports = { getOperaciones, doTransfer };
+module.exports = { getOperaciones };
