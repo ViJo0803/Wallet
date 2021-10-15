@@ -63,7 +63,7 @@ export default function RegisterExtended({ navigation }) {
 
   const dispatch = useDispatch();
 
-  let token = useSelector((state) => state.users.jwtToken);
+  let token = useSelector((state) => state.user.jwtToken);
 
   let json = token.payload;
   const nick = json.nickname;
@@ -90,8 +90,9 @@ export default function RegisterExtended({ navigation }) {
     post(dataFiltered);
   };
 
-  function post(data) {
-    navigation.navigate("Drawer");
+  function post(dataFiltered) {
+    dispatch(createUser(dataFiltered))
+    navigation.navigate("Drawer", {data:dataFiltered});
   }
 
   return (

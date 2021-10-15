@@ -6,7 +6,7 @@ import { styles } from "./styles";
 
 export default function Loading({ navigation }) {
   const dispatch = useDispatch();
-  let token = useSelector((state) => state.users.jwtToken);
+  let token = useSelector((state) => state.user.jwtToken);
   let json = token.payload;
   const mail =
     json.sub.split("|")[0] === "google-oauth2"
@@ -17,9 +17,9 @@ export default function Loading({ navigation }) {
     dispatch(getUser(mail));
   }, []);
 
-  const state = useSelector((state) => state.users.user);
+  const state = useSelector((state) => state.user.user);
   Object.keys(state).length !== 0
-    ? navigation.navigate("Drawer")
+    ? navigation.navigate("Drawer" , {data: state})
     : navigation.navigate("RegisterExtended");
 
   return (
