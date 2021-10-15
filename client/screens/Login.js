@@ -73,7 +73,7 @@ const Login = ({ navigation }) => {
           persistLogin({ ...data[0] }, message, status);
         }
         setSubmitting(false);
-        navigation.navigate('Welcome')
+        navigation.navigate('Drawer')
       })
       .catch((error) => {
         setSubmitting(false);

@@ -11,7 +11,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 // screens
 import Login from "../screens/Login";
-import Inicio from "../screens/Inicio";
 import Signup from "../screens/Signup";
 import RegisterExntended from "../screens/RegisterExntended";
 
