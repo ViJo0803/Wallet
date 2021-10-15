@@ -4,7 +4,7 @@ import {
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,16 +28,16 @@ function Home({ Navigation, Route }) {
 
   console.log("cuenta", balance);
   useEffect(() => {
+
     if (balance[0]) {
       dispatch(getTransfers(balance[0].idcuentas));
-    } //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
+    }
   }, [balance]);
 
   
   const transfers = useSelector((state) => state.transfer.history);
 
-  console.log("historial transferencias", transfers);
-  //const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
+
 
   return (
     <View style={styles.container}>
@@ -66,6 +66,8 @@ function Home({ Navigation, Route }) {
           </View>
         </TouchableOpacity>
       </ScrollView>
+      
+             
     </View>
   );
 }
