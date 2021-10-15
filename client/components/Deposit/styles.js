@@ -13,10 +13,6 @@ export const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '30%',
-        margin: '10px',
-    },
-    text: {
-        fontSize: 18,
     },
 
     transferDinero: {
@@ -24,13 +20,10 @@ export const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: 20,
-        margin: 20,
     },
     titleTransfer: {
         height: '15%',
         alignSelf: "center",
-        fontSize: 20,
         fontWeight: 'bold',
     },
 });

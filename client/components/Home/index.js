@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   View,
   Text,
@@ -7,30 +7,45 @@ import {
   TouchableOpacity
 } from "react-native";
 import { styles } from "./styles";
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
+import { getTransfers } from "../../store/actions/transferActions";
 
-function Home() {
+function Home({ Navigation, Route }) {
+  const dispatch = useDispatch();
+
+  console.log("this are the navigation props", Navigation);
+  console.log("this are the Route props", Route);
+
+  const user = useSelector((state) => state.user.user);
+  console.log(user);
+
+  useEffect(() => {
+    if (user) dispatch(getAccount(user.idusuario));
+  }, [user]);
+
+  const balance = useSelector((state) => state.account.accounts);
+
+  console.log("cuenta", balance);
+  useEffect(() => {
+
+    if (balance[0]) {
+      dispatch(getTransfers(balance[0].idcuentas));
+    }
+  }, [balance]);
+
+  
+  const transfers = useSelector((state) => state.transfer.history);
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
-        <Text style={styles.titleCuenta}>Account $</Text>
-        <TextInput
-          style={{
-            height: 30,
-            border: 0,
-            fontSize: 17
-          }}
-          defaultValue="   15.618,45"
-        />
-        <Text style={styles.titleCuenta}>Account US$</Text>
-        <TextInput
-          style={{
-            height: 30,
-            border: 0,
-            fontSize: 17
-          }}
-          defaultValue="   2.300"
-        />
+        <Text style={styles.titleCuenta}>ARS</Text>
+        <Text style={styles.titleCuenta}>{balance[0]?.saldo}</Text>
       </View>
+
       <View>
         <Text style={styles.titleTransfer}>Transfers</Text>
       </View>
@@ -38,41 +53,21 @@ function Home() {
       <ScrollView style={styles.scrollTransfer}>
         <TouchableOpacity style={styles.userCard}>
           <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Retiro $ 10 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 80 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 980 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 180 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Retiro $ 80 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            <Text style={styles.textname}>Deposito $ 10 000</Text>
-            <Text style={styles.textdate}>10/09/2021</Text>
+            {transfers?.map((op) => (
+              <View>
+                {op?.origin == balance[0].idcuentas ? (
+                  <Text style={styles.textname}> {"- " + op?.monto}</Text>
+                ) : (
+                  <Text style={styles.textname}> {"+ " + op?.monto}</Text>
+                )}
+                <Text style={styles.textdate}>{op?.fecha}</Text>
+              </View>
+            ))}
           </View>
         </TouchableOpacity>
       </ScrollView>
+      
+             
     </View>
   );
 }

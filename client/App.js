@@ -1,44 +1,49 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import LandingPage from "./components/LandingPage";
-import RegisterExtended from "./components/RegisterExtended";
-import Loading from "./components/Loading";
-import DrawerBar from "./components/Drawer";
-import EditProfile from './components/EditUserProfile'
 import { Provider } from "react-redux";
-import store from "./store/index";;
+import store from "./store/index";
+import React, { useState } from "react";
+// React navigation stack
+import RootStack from "../client/navigators/RootStack";
+// apploading
+import AppLoading from "expo-app-loading";
+// async-storage
+import AsyncStorage from "@react-native-async-storage/async-storage";
+// credentials context
+import { CredentialsContext } from "../client/loginComponents/CredentialsContext";
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  const [appReady, setAppReady] = useState(false);
+  const [storedCredentials, setStoredCredentials] = useState("");
+
+  const checkLoginCredentials = () => {
+    AsyncStorage.getItem("flowerCribCredentials")
+      .then((result) => {
+        if (result !== null) {
+          setStoredCredentials(JSON.parse(result));
+        } else {
+          setStoredCredentials(null);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  if (!appReady) {
+    return (
+      <AppLoading
+        startAsync={checkLoginCredentials}
+        onFinish={() => setAppReady(true)}
+        onError={console.warn}
+      />
+    );
+  }
+
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="LandingPage"
-            component={LandingPage}
-            options={{
-              headerShown: false,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 30
-            }}
-          />
-          <Stack.Screen
-            name="Drawer"
-            component={DrawerBar}
-            options={{
-              headerShown: false
-            }}
-          />
-          <Stack.Screen name="RegisterExtended" component={RegisterExtended} />
-          <Stack.Screen name="Loading" component={Loading} />
-          <Stack.Screen name="EditProfile" component={EditProfile} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <CredentialsContext.Provider value={{ storedCredentials, setStoredCredentials }}>
+        <RootStack />
+      </CredentialsContext.Provider>
     </Provider>
   );
 }

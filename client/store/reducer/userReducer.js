@@ -1,41 +1,49 @@
-import {CREATE_USER, GET_USER, GET_JWT, UPDATE_USER} from "../actions/types"
-
+import { CREATE_USER, GET_USER, GET_JWT, UPDATE_USER } from "../actions/types";
 
 let initialState = {
-    jwtToken: {},
-    user: {}
-}
+  jwtToken: {},
+  user: {},
+};
 
 const userReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case CREATE_USER:
+      return { ...state, user: payload };
 
-    console.log("in reducer user")
-    switch (type) {
+    //console.log("in reducer user")
 
         case CREATE_USER:
-            console.log("in reducer create user", payload)
+            //console.log("in reducer create user", payload)
             return { ...state, user: payload };
 
 
         case GET_USER:
-            console.log("in reducer get user", payload)
+            //console.log("in reducer get user", payload)
             return {...state,user:payload};
         
         case GET_JWT:
-            console.log("in reducer get jwt", payload)
+            //console.log("in reducer get jwt", payload)
             return { ...state, jwtToken: { payload } }
 
         
         case UPDATE_USER:
-            console.log("in reducer update user", payload);
+            //console.log("in reducer update user", payload);
             return {...state, user:payload}
 
 
 
+    case GET_USER:
+      return { ...state, user: payload };
 
+    case GET_JWT:
+      return { ...state, jwtToken: { payload } };
 
-        default: return state;
-    }
-}
+    case UPDATE_USER:
+      return { ...state, user: payload };
 
+    default:
+      return state;
+  }
+};
 
 export default userReducer;

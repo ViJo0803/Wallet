@@ -1,11 +1,13 @@
 import userReducer from "./userReducer";
-import accountReducer from "./accountReducer"
+import accountReducer from "./accountReducer";
+import transfersReducer from "./tranferReducer";
 
-import { combineReducers } from "redux"; 
+import { combineReducers } from "redux";
 
 const mainReducers = combineReducers({
-    users: userReducer,
-    account : accountReducer,
-  });
-  
-  export default mainReducers;
+  user: userReducer,
+  account: accountReducer,
+  transfer: transfersReducer,
+});
+
+export default mainReducers;
