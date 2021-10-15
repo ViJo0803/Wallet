@@ -88,4 +88,8 @@ function Transfers({ navigation }) {
   );
 }
 
+<<<<<<< HEAD
 export default Transfers;
+=======
+export default Transfers;
+>>>>>>> main

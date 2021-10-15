@@ -16,9 +16,6 @@ function generarNumeroCuenta() {
 
 async function createUser(req, res, next) {
 
-
-  console.log("in create user" , req.body)
-
   const {
     nombre,
     apellidos,

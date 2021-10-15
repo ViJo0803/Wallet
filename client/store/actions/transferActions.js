@@ -16,14 +16,21 @@ export function getTransfers(id) {
 }
 
 
+<<<<<<< HEAD
 export function makeTransfer(data){
   console.log("in make actions transfers", data)
   return async dispatch =>{
+=======
+export function makeTransfer(data) {
+  return async (dispatch) => {
+>>>>>>> main
     await axios
-    .post(`http://localhost:3001/transfers/create?`, data)
-    .then(response=>{
-      dispatch({type:MAKE_TRANSFER, payload: response.data })
-    })
-    .catch(error => console.log(error));
-  }
+      .post(`http://localhost:3001/transfers/create?`,data);
+    await axios
+      .get(`http://localhost:3001/transfers/get?id=${data.origen}`)
+      .then((response) => {
+        dispatch({ type: GET_TRANSFERS, payload: response.data });
+      })
+      .catch((error) => console.log(error));
+  };
 }
