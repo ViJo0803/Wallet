@@ -1,4 +1,4 @@
-const { Transferencias, Cuentas } = require("../../db");
+const { Transferencias, Cuentas, Favoritos, Usuario } = require("../../db");
 require("dotenv").config();
 
 async function CreateTransfers(req, res, next) {
@@ -13,12 +13,17 @@ async function CreateTransfers(req, res, next) {
       },
     });
 
+
+    console.log("Account_origen",Account_origen)
+
    
     let Account_destino = await Cuentas.findOne({
       where: {
         idcuentas: destino,
       },
     });
+
+    console.log("Account_destino",Account_destino)
     
     if (Account_origen.saldo >= monto && monto > 0) {
 
@@ -36,7 +41,31 @@ async function CreateTransfers(req, res, next) {
           origin: origen,
       });
 
+      const user= await Usuario.findOne({
+        where:{
+            idusuario: Account_destino.usuarioIdusuario
+        }
+    })
+
       
+   console.log(Account_origen.usuarioIdusuario)
+
+      const fav = await Favoritos.findOrCreate({
+        where: {
+        alias:user.nickname,
+        tipo: "contacts",
+        name: user.nombre,
+        lastname: user.apellidos,
+        favorite_account_id:Account_destino.idcuentas,
+        usuarioIdusuario:Account_origen.usuarioIdusuario,
+        }
+    
+    })
+
+
+    console.log(fav)
+
+
 
 
       return res.send(transfer);
@@ -76,6 +105,8 @@ async function CreateTransfers(req, res, next) {
       return 0;
     }
     arr.sort(compare);
+
+    
   
     res.send(arr);
   }

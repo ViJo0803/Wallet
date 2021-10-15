@@ -2,13 +2,20 @@ const { Usuario, Cuentas} = require("../../db");
 require("dotenv").config();
 
 async function getCuentas(req, res, next) {
+  try {
   id = req.query.id;
+  console.log("la ide es ", id)
   let cuentas = await Cuentas.findAll({
     where: {
       usuarioIdusuario: id, 
     },
   });
-  res.send(cuentas);
+
+  console.log("cuenta:",cuentas)
+  res.send(cuentas)
+}catch (error) {
+    next(error);
+  }
 }
 
 
