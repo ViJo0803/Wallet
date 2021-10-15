@@ -33,9 +33,9 @@ function Home({ Navigation, Route }) {
     } //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
   }, [balance]);
 
-  const transfer = useSelector((state) => state.transfer.history);
+  const transfers = useSelector((state) => state.transfer.history);
 
-  console.log("historial transferencias", transfer);
+  console.log("historial transferencias", transfers);
   //const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
 
   return (
@@ -52,7 +52,7 @@ function Home({ Navigation, Route }) {
       <ScrollView style={styles.scrollTransfer}>
         <TouchableOpacity style={styles.userCard}>
           <View style={styles.userCardRight}>
-            {transfer?.map((op) => (
+            {transfers?.map((op) => (
               <View>
                 {op?.origin == balance[0].idcuentas ? (
                   <Text style={styles.textname}> {"- " + op?.monto}</Text>

@@ -46,19 +46,23 @@ async function CreateTransfers(req, res, next) {
   }
 
 
-
-
 async function getTransfers(req, res, next) {
   id = req.query.id;
-  let operaciones = await Transferencias.findAll({
+  
+  let destino = await Transferencias.findAll({
     where: {
-      origin: id
-    }
+      destino: id,
+    },
   });
-  res.send(operaciones);
-  console.log(operaciones)
-}
 
+  let origen = await Transferencias.findAll({
+    where: {
+      origin: id,
+    },
+  });
+
+  res.send(destino.concat(origen));
+}
 
 
 
