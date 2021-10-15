@@ -25,23 +25,9 @@ export default function Inicio({navigation}) {
       <Button
         title="Go to Home"
         onPress={() =>
-          navigation.navigate('Home')
+          navigation.navigate("Drawer")
         }
         />
-
-        <Button
-          title="Go to User Profile"
-          onPress={() =>
-            navigation.navigate('User Profile')
-          }
-        />
-      
-      <Button
-        title="Go to Accounts"
-        onPress={() =>
-          navigation.navigate('Accounts')
-        }
-      />
       
 
       <StyledButton onPress={clearLogin}>

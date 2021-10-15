@@ -11,17 +11,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 // screens
 import Login from "../screens/Login";
+import Inicio from "../screens/Inicio";
 import Signup from "../screens/Signup";
 import RegisterExntended from "../screens/RegisterExntended";
-import Inicio from "../screens/Inicio";
 
 // components
-import TabNav from "../components/TabNav";
-import LandingPage from "../components/LandingPage";
-import Home from "../components/Home/index";
-import UserProfile from "../components/UserProfile/index";
-import Accounts from "../components/Accounts/index";
-import Statistics from "../components/Statistics/index";
+import DrawerBar from "../components/Drawer/index";
+
 
 const Stack = createStackNavigator();
 
@@ -43,13 +39,11 @@ function RootStack() {
                 options={{ headerShown: false }}
               />
             ) : (
-              <>
-                <Stack.Screen
-                  name="Main"
-                  component={MainStack}
-                  options={{ headerShown: false }}
-                />
-              </>
+              <Stack.Screen
+                name="MainStack"
+                component={MainStack}
+                options={{ headerShown: false }}
+              />
             )}
           </Stack.Navigator>
         </NavigationContainer>
@@ -99,7 +93,6 @@ function MainStack() {
         headerStyle: {
           backgroundColor: "indigo",
           shadowColor: "indigo",
-          elevation: 0,
         },
         headerTitleStyle: { color: "white", fontSize: 16 },
         // headerRight: () => <Ionicons name='ios-log-out' color='white' size={30} style={{ marginHorizontal: 15 }}></Ionicons>,
@@ -107,11 +100,13 @@ function MainStack() {
       }}
     >
       <Stack.Screen name="Inicio" component={Inicio} />
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="User Profile" component={UserProfile} />
-      <Stack.Screen name="Accounts" component={Accounts} />
       
       
+      <Stack.Screen
+        name="Drawer"
+        component={DrawerBar}
+      />
+
     </Stack.Navigator>
   );
 }
