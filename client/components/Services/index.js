@@ -83,7 +83,7 @@ function Services() {
                                 />
                                 <View style={styles.userCardRight}>
                                     <Text
-                                        style={{ fontSize: 18, fontWeight: "500" }}
+                                        style={{ fontWeight: "500" }}
                                     >{`${user.name.first} ${user.name.last}`}</Text>
                                     <Text>{`${user?.phone}`}</Text>
                                 </View>

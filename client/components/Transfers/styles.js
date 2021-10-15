@@ -17,6 +17,5 @@ export const styles = StyleSheet.create({
         margin: '10px',
     },
     text: {
-        fontSize: 18,
     }
 })

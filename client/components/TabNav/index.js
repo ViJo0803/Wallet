@@ -19,10 +19,6 @@ function TabNav() {
                 tabBarInactiveTintColor: "#ffffff",
                 tabBarStyle: {
                     backgroundColor: "#8fd18e",
-                    paddingBottom: "6px",
-                    paddingTop: "6px",
-                    paddingLeft: "6px",
-                    paddingRight: "6px"
                 },
                 headerShown: false
             }}
@@ -32,7 +28,7 @@ function TabNav() {
                 component={Home}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={color} size="30px" />
+                        <MaterialCommunityIcons name="home" color={color} size="30" />
                     )
                 }}
             />
@@ -41,7 +37,7 @@ function TabNav() {
                 component={Coins}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="coins" color={color} size="20px" />
+                        <FontAwesome5 name="coins" color={color} size="20" />
                     )
                 }}
             />
@@ -59,7 +55,7 @@ function TabNav() {
                 component={Services}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="building" color={color} size="20px" />
+                        <FontAwesome5 name="building" color={color} size="20" />
                     )
                 }}
             />
@@ -71,7 +67,7 @@ function TabNav() {
                         <MaterialCommunityIcons
                             name="cash-plus"
                             color={color}
-                            size="30px"
+                            size="30"
                         />
                     )
                 }}

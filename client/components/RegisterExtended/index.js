@@ -220,7 +220,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 20,
     textAlign: "center",
     marginTop: 40,
   },

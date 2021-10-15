@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
 
     },
     text: {
-        fontSize: 18,
         marginTop: 12,
         marginBottom: 12,
     },
@@ -36,7 +35,6 @@ export const styles = StyleSheet.create({
     input: {
         flex: 1,
         height: 40,
-        fontSize: 18,
     },
     userCard: {
         backgroundColor: "#fafafa",
@@ -62,7 +60,6 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
     },
     messageBoxText: {
-        fontSize: 20,
         fontWeight: "500",
     },
 });

@@ -16,7 +16,4 @@ export const styles = StyleSheet.create({
         height: '30%',
         margin: '10px',
     },
-    text: {
-        fontSize: 18,
-    },
 })

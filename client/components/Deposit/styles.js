@@ -15,9 +15,6 @@ export const styles = StyleSheet.create({
         height: '30%',
         margin: '10px',
     },
-    text: {
-        fontSize: 18,
-    },
 
     transferDinero: {
         height: '15%',
@@ -30,7 +27,6 @@ export const styles = StyleSheet.create({
     titleTransfer: {
         height: '15%',
         alignSelf: "center",
-        fontSize: 20,
         fontWeight: 'bold',
     },
 });

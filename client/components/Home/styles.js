@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
   },
 
   titleCuenta: {
-    fontSize: 18,
     fontWeight: "bold"
   },
   buttonIngresar: {
@@ -26,7 +25,6 @@ export const styles = StyleSheet.create({
     margin: "5%"
   },
   titleTransfer: {
-    fontSize: 20,
     fontWeight: "bold",
     marginTop: 20
   },
@@ -73,12 +71,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   textname: {
-    fontSize: 16,
     fontWeight: "500",
     color: "#fff"
   },
   textdate: {
-    fontSize: 12,
     alignContent: "flex-end",
     color: "#fff"
   }

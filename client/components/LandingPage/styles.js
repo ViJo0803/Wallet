@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center"
   },
   title: {
-    fontSize: 45,
     fontWeight: "bold",
     alignSelf: "center",
     color: "#5C5C5C"
@@ -28,7 +27,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center"
   },
   plainText: {
-    fontSize: 15,
     fontWeight: "bold",
     padding: "1%",
     color: "#5C5C5C"
@@ -42,7 +40,6 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     padding: "0 15px",
-    fontSize: 18,
     fontWeight: "500",
     alignSelf: "center",
     color: "#fff"

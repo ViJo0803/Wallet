@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderWidth: 1,
     padding: 10,
-    fontSize: 16,
     color: "#808e9b",
     backgroundColor: "#DEE2E6"
   },
@@ -20,7 +19,6 @@ export const styles = StyleSheet.create({
     marginTop: 20
   },
   textlogin: {
-    fontSize: 18,
     fontWeight: "500",
     alignSelf: "center",
     color: "#fff"
