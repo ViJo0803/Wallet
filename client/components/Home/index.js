@@ -33,6 +33,7 @@ function Home({ Navigation, Route }) {
     } //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
   }, [balance]);
 
+  
   const transfers = useSelector((state) => state.transfer.history);
 
   console.log("historial transferencias", transfers);
