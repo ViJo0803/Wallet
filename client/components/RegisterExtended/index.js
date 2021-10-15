@@ -221,11 +221,9 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    marginTop: 40,
   },
   imgStyle: {
-    width: 200,
-    height: 200,
-    marginTop: 30,
+    width: '20%',
+    height: '20%',
   },
 });

@@ -207,7 +207,6 @@ export default function Register ({navigation}) {
     },
     title: {
       textAlign: "center",
-      marginTop: 40,
     },
   });
 

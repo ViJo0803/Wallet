@@ -28,7 +28,7 @@ function TabNav() {
                 component={Home}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="home" color={color} size="30" />
+                        <MaterialCommunityIcons name="home" color={color} size={size} />
                     )
                 }}
             />
@@ -37,7 +37,7 @@ function TabNav() {
                 component={Coins}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="coins" color={color} size="20" />
+                        <FontAwesome5 name="coins" color={color} size={size} />
                     )
                 }}
             />
@@ -55,7 +55,7 @@ function TabNav() {
                 component={Services}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="building" color={color} size="20" />
+                        <FontAwesome5 name="building" color={color} size={size} />
                     )
                 }}
             />
@@ -67,7 +67,7 @@ function TabNav() {
                         <MaterialCommunityIcons
                             name="cash-plus"
                             color={color}
-                            size="30"
+                            size={size}
                         />
                     )
                 }}

@@ -33,19 +33,15 @@ export const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: "80%",
-    paddingVertical: 5,
-    borderRadius: 12,
     backgroundColor: "#80c590",
-    marginTop: 5
   },
   buttonText: {
-    padding: "0 15px",
     fontWeight: "500",
     alignSelf: "center",
     color: "#fff"
   },
   logo: {
-    width: 300,
-    height: 200
+    width: '40%',
+    height: '20%'
   }
 });

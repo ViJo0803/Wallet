@@ -40,8 +40,8 @@ function RootStack() {
               />
             ) : (
               <Stack.Screen
-                name="MainStack"
-                component={MainStack}
+                name="Drawer"
+                component={DrawerBar}
                 options={{ headerShown: false }}
               />
             )}
@@ -51,9 +51,9 @@ function RootStack() {
     </CredentialsContext.Consumer>
   );
 }
-// <--------------- ROOT Stack (contiene a LoginStack y MainStack ) --------------->
 
-// <--------------------- LOGIN Stack --------------------->
+
+
 function LoginStack() {
   return (
     <Stack.Navigator
@@ -76,37 +76,6 @@ function LoginStack() {
         component={RegisterExntended}
         options={{ headerShown: false }}
       />
-    </Stack.Navigator>
-  );
-}
-// <--------------------- LOGIN Stack --------------------->
-
-
-// <--------------------- MAIN Stack --------------------->
-
-function MainStack() {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: true,
-        headerTitleAlign: "center",
-        headerStyle: {
-          backgroundColor: "indigo",
-          shadowColor: "indigo",
-        },
-        headerTitleStyle: { color: "white" },
-        // headerRight: () => <Ionicons name='ios-log-out' color='white' size={30} style={{ marginHorizontal: 15 }}></Ionicons>,
-        // headerLeft: () => <Ionicons name='ios-menu' color='white' size={30} style={{ marginHorizontal: 15 }} onPress={() => props.navigation.openDrawer()}></Ionicons>,
-      }}
-    >
-      <Stack.Screen name="Inicio" component={Inicio} />
-      
-      
-      <Stack.Screen
-        name="Drawer"
-        component={DrawerBar}
-      />
-
     </Stack.Navigator>
   );
 }
