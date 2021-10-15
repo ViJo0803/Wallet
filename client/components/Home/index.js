@@ -14,8 +14,6 @@ import { getTransfers } from "../../store/actions/transferActions";
 function Home({route}) {
   const dispatch = useDispatch();
 
-<<<<<<< HEAD
-=======
   console.log("this are the navigation props", Navigation);
   console.log("this are the Route props", Route);
 
@@ -25,7 +23,6 @@ function Home({route}) {
   useEffect(() => {
     if (user) dispatch(getAccount(user.idusuario));
   }, [user]);
->>>>>>> main
 
   const balance = useSelector((state) => state.account.accounts);
 
@@ -38,16 +35,8 @@ function Home({route}) {
 
   const transfers = useSelector((state) => state.transfer.history);
 
-<<<<<<< HEAD
-  
-
-  const transfer = useSelector((state) => state.transfer.history);
-
-  console.log("historial transferencias", transfer)
-=======
   console.log("historial transferencias", transfers);
   //const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
->>>>>>> main
 
   return (
     <View style={styles.container}>
