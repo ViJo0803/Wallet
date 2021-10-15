@@ -16,13 +16,15 @@ export function getTransfers(id) {
 }
 
 
-export function makeTranfer(data){
-  return async dispatch =>{
+export function makeTransfer(data) {
+  return async (dispatch) => {
     await axios
-    .post(`http://localhost:3001/transfers/create?`, data)
-    .then(response=>{
-      dispatch({type:MAKE_TRANSFER, payload: response.data })
-    })
-    .catch(error => console.log(error));
-  }
+      .post(`http://localhost:3001/transfers/create?`,data);
+    await axios
+      .get(`http://localhost:3001/transfers/get?id=${data.origen}`)
+      .then((response) => {
+        dispatch({ type: GET_TRANSFERS, payload: response.data });
+      })
+      .catch((error) => console.log(error));
+  };
 }

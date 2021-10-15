@@ -46,24 +46,36 @@ async function CreateTransfers(req, res, next) {
   }
 
 
-async function getTransfers(req, res, next) {
-  id = req.query.id;
+  async function getTransfers(req, res, next) {
+    id = req.query.id;
+    let destino = [], origen = [];
+
+    destino = await Transferencias.findAll({
+      where: {
+        destino: id,
+      },
+    });
   
-  let destino = await Transferencias.findAll({
-    where: {
-      destino: id,
-    },
-  });
-
-  let origen = await Transferencias.findAll({
-    where: {
-      origin: id,
-    },
-  });
-
-  res.send(destino.concat(origen));
-}
-
-
+    origen = await Transferencias.findAll({
+      where: {
+        origin: id,
+      },
+    });
+  
+    let arr = destino.concat(origen);
+  
+    function compare(a, b) {
+      if (a.createdAt < b.createdAt) {
+        return 1;
+      }
+      if (a.createdAt > b.createdAt) {
+        return -1;
+      }
+      return 0;
+    }
+    arr.sort(compare);
+  
+    res.send(arr);
+  }
 
 module.exports = { CreateTransfers, getTransfers };
