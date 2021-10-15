@@ -2,7 +2,7 @@ const { Router } = require("express");
 
 const Users = require("./users.js");
 const Cuentas = require("./cuentas.js");
-
+const Contact= require("./contacts")
 const Transfers = require("./transfers.js")
 const ServicesPayment = require("./servicesPayment.js")
 
@@ -12,6 +12,6 @@ router.use("/user", Users);
 router.use("/account", Cuentas);
 router.use('/transfers', Transfers)
 router.use('/servicesPayment', ServicesPayment)
-
+router.use("/contact", Contact);
 
 module.exports = router;

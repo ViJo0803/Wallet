@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    nombre: {
+    alias: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -17,7 +17,15 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    destino: {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    favorite_account_id: {
       type: DataTypes.STRING,
       allowNull: false,
     },

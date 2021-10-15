@@ -11,32 +11,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
 import { getTransfers } from "../../store/actions/transferActions";
 
-function Home({ Navigation, Route }) {
+function Home({route}) {
   const dispatch = useDispatch();
 
-  console.log("this are the navigation props", Navigation);
-  console.log("this are the Route props", Route);
+ 
+  console.log("this are the Route props", route);
 
-  const user = useSelector((state) => state.user.user);
-  console.log(user);
-
+ 
   useEffect(() => {
-    if (user) dispatch(getAccount(user.idusuario));
-  }, [user]);
-
+     dispatch(getAccount(route.params.user.idusuario));
+  }, [dispatch]);
   const balance = useSelector((state) => state.account.accounts);
-
   console.log("cuenta", balance);
   useEffect(() => {
     if (balance[0]) {
       dispatch(getTransfers(balance[0].idcuentas));
-    } //como decirle a esta funcion que no envie nada hasta no tener un valor para poder enviar la peticion a getOperations
+    } 
   }, [balance]);
-
   const transfers = useSelector((state) => state.transfer.history);
 
-  console.log("historial transferencias", transfers);
-  //const totalBalance = balance?.find((el) => el.tipomoneda === "AR$");
 
   return (
     <View style={styles.container}>

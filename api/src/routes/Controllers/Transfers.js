@@ -37,6 +37,13 @@ async function CreateTransfers(req, res, next) {
         origin: origen,
       });
 
+      
+
+      
+
+
+
+
       return res.send(transfer);
 
     } }catch (error) {
