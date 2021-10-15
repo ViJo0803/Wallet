@@ -4,12 +4,13 @@ import {
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
 import { getOperations } from "../../store/actions/operationsActions";
+
 
 function Home() {
   const dispatch = useDispatch();
@@ -50,6 +51,8 @@ function Home() {
           </View>
         </TouchableOpacity>
       </ScrollView>
+      
+             
     </View>
   );
 }

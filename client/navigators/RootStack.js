@@ -7,8 +7,7 @@ const { darkLight, brand, primary, tertiary, secondary } = Colors;
 // React Navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
 
 // screens
 import Login from "../screens/Login";
@@ -18,13 +17,14 @@ import Inicio from "../screens/Inicio";
 
 // components
 import TabNav from "../components/TabNav";
-import UserProfile from "../components/UserProfile";
-import Accounts from "../components/Accounts";
-import Statistics from "../components/Statistics";
 import LandingPage from "../components/LandingPage";
+import Home from "../components/Home/index";
+import UserProfile from "../components/UserProfile/index";
+import Accounts from "../components/Accounts/index";
+import Statistics from "../components/Statistics/index";
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+
 
 // credentials context
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
@@ -107,6 +107,11 @@ function MainStack() {
       }}
     >
       <Stack.Screen name="Inicio" component={Inicio} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="User Profile" component={UserProfile} />
+      <Stack.Screen name="Accounts" component={Accounts} />
+      
+      
     </Stack.Navigator>
   );
 }

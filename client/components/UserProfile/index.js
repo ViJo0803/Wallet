@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 
 
-function UserProfile({ navigation }) {
+function UserProfile({navigation}) {
   console.log(navigation);
 
   const state = useSelector((state) => state.users.user);
@@ -46,6 +46,7 @@ function UserProfile({ navigation }) {
           style={styles.button}
           onPress={() => navigation.navigate("EditProfile")}
         />
+        
       </View>
     </View>
   );
