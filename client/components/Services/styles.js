@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
 
     },
-    text: {
+    text: { 
         fontSize: 18,
         marginTop: 12,
         marginBottom: 12,

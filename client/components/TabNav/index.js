@@ -59,6 +59,7 @@ function TabNav() {
       <Tab.Screen
         name="Transfers"
         component={Transfers}
+        initialParams={{user: user}}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="exchange-alt" color={color} size={size} />
