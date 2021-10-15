@@ -4,7 +4,7 @@ import {
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -65,6 +65,8 @@ function Home({ Navigation, Route }) {
           </View>
         </TouchableOpacity>
       </ScrollView>
+      
+             
     </View>
   );
 }

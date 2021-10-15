@@ -206,9 +206,7 @@ export default function Register ({navigation}) {
       justifyContent: "center",
     },
     title: {
-      fontSize: 20,
       textAlign: "center",
-      marginTop: 40,
     },
   });
 
