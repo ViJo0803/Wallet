@@ -35,7 +35,7 @@ function Home({route}) {
     <View style={styles.container}>
       <View style={styles.inputView}>
         <Text style={styles.titleCuenta}>ARS</Text>
-        <Text style={styles.titleCuenta}>{balance?.saldo}</Text>
+        <Text style={styles.titleCuenta}>{balance[0]?.saldo}</Text>
       </View>
 
       <View>

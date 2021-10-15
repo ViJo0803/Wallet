@@ -16,14 +16,9 @@ export function getTransfers(id) {
 }
 
 
-<<<<<<< HEAD
 export function makeTransfer(data){
   console.log("in make actions transfers", data)
   return async dispatch =>{
-=======
-export function makeTransfer(data) {
-  return async (dispatch) => {
->>>>>>> main
     await axios
       .post(`http://localhost:3001/transfers/create?`,data);
     await axios
