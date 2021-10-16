@@ -93,9 +93,7 @@ const Login = ({ navigation }) => {
       .then((result) => {
         const { type, user } = result;
         const { email, name, photoUrl } = user;
-
-        // let _user = userTrue(email);     
-     
+         
         if (type == "success" ) {
           const { email, name, photoUrl } = user;
          

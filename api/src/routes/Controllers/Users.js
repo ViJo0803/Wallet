@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { Usuario, Cuentas } = require("../../db");
 require("dotenv").config();
+const bcrypt = require('bcrypt');
 
 function generarNumeroCuenta() {
   const cifras = 15;
@@ -64,12 +65,15 @@ async function createUser(req, res, next) {
 async function getUser(req, res, next) {
   try {
     const mail = req.query.mail;
+    const password = req.query.password;
 
     let user = await Usuario.findOne({
       where: {
         mail: mail,
       },
     });
+
+
     user ? res.send(user) : res.send(null);
   } catch (error) {
     next(error);

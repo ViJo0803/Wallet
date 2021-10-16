@@ -23,8 +23,8 @@ function Home({ Navigation, Route }) {
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
   const { email, name, photoUrl } = storedCredentials
-  
-  console.log("email Home",email)
+
+  console.log("email Home", email)
 
   // async function pepe(){
   //   await axios.get(`http://192.168.1.114:3001/user/get/?mail=${email}`)
@@ -34,10 +34,9 @@ function Home({ Navigation, Route }) {
   useEffect(() => {
     dispatch(getUser(email));
   }, []);
-  
+
   const user = useSelector((state) => state.user.user);
-  const balance = useSelector((state) => state.account.accounts);
-  
+
   useEffect(() => {
 
     if (user) {
@@ -54,14 +53,14 @@ function Home({ Navigation, Route }) {
         foto: photoUrl,
         codigo_postal: "",
       };
-      
+
       dispatch(createUser(dataFiltered))
       dispatch(getAccount(user.idusuario));
     }
     if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
   }, [dispatch, user, balance]);
 
-
+  const balance = useSelector((state) => state.account.accounts);
   const transfers = useSelector((state) => state.transfer.history);
 
   return (
@@ -74,13 +73,13 @@ function Home({ Navigation, Route }) {
       <View>
         <Text style={styles.titleTransfer}>Transfers</Text>
       </View>
-
+ 
       <ScrollView style={styles.scrollTransfer}>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            {transfers?.map((op, i) => (
-              <View
+        <View style={styles.userCardRight}>
+          {transfers?.map((op, i) => (
+            <TouchableOpacity style={styles.userCard}
               key={i}>
+              <View>
                 {op?.origin == balance[0].idcuentas ? (
                   <Text style={styles.textname}> {"- " + op?.monto}</Text>
                 ) : (
@@ -88,9 +87,9 @@ function Home({ Navigation, Route }) {
                 )}
                 <Text style={styles.textdate}>{op?.fecha}</Text>
               </View>
-            ))}
-          </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+          ))}
+        </View>
       </ScrollView>
 
 
