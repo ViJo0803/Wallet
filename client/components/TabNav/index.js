@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Coins from "../Coins/index.js";
 import Services from "../Services/index.js";
@@ -7,6 +7,8 @@ import Deposit from "../Deposit/index.js";
 import Home from "../Home/index";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
 
 const Tab = createBottomTabNavigator();
 

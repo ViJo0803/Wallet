@@ -61,6 +61,7 @@ async function createUser(req, res, next) {
   res.send(usuarioCreado);
 }
 
+
 async function getUser(req, res, next) {
   try {
     const mail = req.query.mail;

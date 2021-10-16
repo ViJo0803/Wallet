@@ -18,8 +18,7 @@ import axios from "axios";
 //
 import { CredentialsContext } from '../../loginComponents/CredentialsContext';
 
-function Home({ Navigation, Route }) {
-
+function Home({route}) {
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
   const { email, name, photoUrl } = storedCredentials
