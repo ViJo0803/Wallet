@@ -16,8 +16,10 @@ function generarNumeroCuenta() {
 }
 
 async function createUser(req, res, next) {
+  // ;
 
   const {
+    password,
     nombre,
     apellidos,
     mail,
@@ -30,6 +32,7 @@ async function createUser(req, res, next) {
   } = req.body;
 
   let usuarioCreado = await Usuario.create({
+    password: bcrypt.hashSync(password, 10),
     nombre,
     apellidos,
     mail,
@@ -73,8 +76,10 @@ async function getUser(req, res, next) {
       },
     });
 
+    const comparePassword = await bcrypt.compare(password , user.password);
+    if(!comparePassword){ res.send(422)}
 
-    user ? res.send(user) : res.send(null);
+    user ? res.send(user) : res.send(null); 
   } catch (error) {
     next(error);
   }
