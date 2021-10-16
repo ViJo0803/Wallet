@@ -30,7 +30,6 @@
     "react-native-vector-icons": "^8.1.0",
     "react-redux": "^7.2.5",
     "redux-thunk": "^2.3.0",
-    "expo-image-picker": "~10.2.2",
     "@react-native-community/datetimepicker": "3.5.2",
     "expo-app-loading": "^1.0.1",
     "expo-constants": "~11.0.1",

@@ -15,6 +15,7 @@ import Signup from "../screens/Signup";
 import RegisterExntended from "../screens/RegisterExntended";
 
 // components
+import LandingPage from "../components/LandingPage/index";
 import DrawerBar from "../components/Drawer/index";
 
 
@@ -30,7 +31,8 @@ function RootStack() {
     <CredentialsContext.Consumer>
       {({ storedCredentials }) => (
         <NavigationContainer style={{ backgroundColor: "red" }}>
-          <Stack.Navigator>
+          <Stack.Navigator
+            initialRouteName={'LoginStack' || "LandingPage"}>
             {!storedCredentials ? (
               <Stack.Screen
                 name="LoginStack"
@@ -43,6 +45,11 @@ function RootStack() {
                 component={DrawerBar}
                 options={{ headerShown: false }}
               />
+           /*    <Stack.Screen
+                name="LandingPage"
+                component={LandingPage}
+                options={{ headerShown: false }}
+              /> */
             )}
           </Stack.Navigator>
         </NavigationContainer>
@@ -71,7 +78,7 @@ function LoginStack() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="RegisterExntended"
+        name="RegisterExtended"
         component={RegisterExntended}
         options={{ headerShown: false }}
       />

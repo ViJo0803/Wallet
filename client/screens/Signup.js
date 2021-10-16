@@ -80,7 +80,7 @@ const Signup = ({ navigation }) => {
       .then((response) => {
         const result = response.data;
         const { status, message, data } = result;
-
+        console.log("data Signup", data);
         if (status !== 'SUCCESS') {
           handleMessage(message, status);
         } else {
@@ -95,6 +95,16 @@ const Signup = ({ navigation }) => {
       });
   };
 
+  /* data Signup Object {
+    "__v": 0,
+    "_id": "6169f9f6aed3c7000438b341",
+    "dateOfBirth": "1974-01-12T03:00:00.000Z",
+    "email": "marcolucianomazzetti@gmail.com",
+    "name": "Juan Carlos",
+    "password": "$2b$10$pae30HLhH1T0Ztx1DVj54eLGeUGvpjbeuGkQtKR2I0v965YYJAX5K",
+  } */
+
+  
   const handleMessage = (message, type = '') => {
     setMessage(message);
     setMessageType(type);

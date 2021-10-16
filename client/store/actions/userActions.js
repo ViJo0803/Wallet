@@ -4,10 +4,9 @@ import axios from "axios";
 import { CREATE_USER, GET_USER, GET_JWT, UPDATE_USER } from "./types";
 
 export function createUser(userData) {
-  console.log("in actions create User");
   return async (dispatch) => {
     await axios
-      .post(`http://localhost:3001/user/create`, userData) // .post(`http://192.168.0.121:3001/user/create`, userData)
+      .post(`http://localhost:3001/user/create`, userData) 
       .then((response) => {
         dispatch({ type: CREATE_USER, payload: response.data });
       })
@@ -26,9 +25,9 @@ export function getToken(token) {
 export function getUser(mail) {
   return async (dispatch) => {
     await axios
-      .get(`http://localhost:3001/user/get/?mail=${mail}`)
+      .get(`http://192.168.1.114:3001/user/get/?mail=${mail}`)
       .then((response) => {
-        dispatch({ type: GET_USER, payload: response.data });
+       dispatch({ type: GET_USER, payload: response.data });
       })
       .catch((error) => console.log(error));
   };

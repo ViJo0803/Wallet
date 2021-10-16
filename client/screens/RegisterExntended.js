@@ -73,7 +73,7 @@ const Signup = ({ navigation }) => {
     useContext(CredentialsContext);
 
   // Form handling
-  const handleSignup = (credentials, setSubmitting) => {
+  const handleSignup = (credentials, setSubmitting) => { //Crear un usuario en nuestra db -> se crea una cuenta
     handleMessage(null);
     const url = "https://whispering-headland-00232.herokuapp.com/user/signup";
     axios
