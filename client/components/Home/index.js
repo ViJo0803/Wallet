@@ -24,26 +24,18 @@ function Home({ Navigation, Route }) {
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
   const { email, name, photoUrl } = storedCredentials
   
-  console.log("email Home",email)
-
-  // async function pepe(){
-  //   await axios.get(`http://192.168.1.114:3001/user/get/?mail=${email}`)
-  //  .then(response => console.log("response home", response) ) }
-  // pepe();
 
   useEffect(() => {
     dispatch(getUser(email));
   }, []);
   
   const user = useSelector((state) => state.user.user);
-  const balance = useSelector((state) => state.account.accounts);
   
   useEffect(() => {
-
     if (user) {
       dispatch(getAccount(user.idusuario));
     } else {
-      const dataFiltered = {
+        const dataFiltered = {
         nombre: name.split(" ")[0],
         apellidos: name.split(" ")[1],
         mail: email,
@@ -61,7 +53,7 @@ function Home({ Navigation, Route }) {
     if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
   }, [dispatch, user, balance]);
 
-
+  const balance = useSelector((state) => state.account.accounts);
   const transfers = useSelector((state) => state.transfer.history);
 
   return (

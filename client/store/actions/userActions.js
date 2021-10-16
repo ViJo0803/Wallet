@@ -46,15 +46,4 @@ export function updateUser(data) {
   };
 }
 
-//   console.log("in actions get user", mail)
-//     return async (dispatch) => {
-//         await axios
-//         .get(`http://192.168.0.121:3001/user/get/?mail=${mail}`)
-//         .then((response) => {
-//           dispatch({ type: GET_USER, payload: response.data });
-//         })
-//         .catch((error) => console.log(error));
-//     };
-//   }
-
 
