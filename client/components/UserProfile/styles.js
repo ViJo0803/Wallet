@@ -5,16 +5,13 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '0',
         height: '100%',
         width: '100%',
     },
     image: {
         width: '30%',
         height: '30%',
-        borderWidth: 4,
         borderColor: "#20232a",
-        borderRadius: 6,
     },
     textBox: {
         alignItems: 'flex-start'

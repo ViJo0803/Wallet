@@ -3,13 +3,13 @@ import { View, Button, Text, Image } from 'react-native';
 import { styles } from './styles'
 
 
-function Coins({ navigation }) {
+function Coins({ navigation}) {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Coins component currently on building stage</Text>
             <Image
                 source={require('../../assets/Coins.png')}
-                style={styles.image} />
+                style={styles.image} /> 
             <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
         </View>
     )

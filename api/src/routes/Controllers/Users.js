@@ -47,6 +47,7 @@ async function createUser(req, res, next) {
   });
 
   let iduser = user.idusuario;
+
   const cbuGenerado = generarNumeroCuenta();
   let account = await Cuentas.create({
     tipomoneda: "AR$",

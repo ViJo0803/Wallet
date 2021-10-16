@@ -221,13 +221,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 20,
     textAlign: "center",
-    marginTop: 40,
   },
   imgStyle: {
-    width: 200,
-    height: 200,
-    marginTop: 30,
+    width: '20%',
+    height: '20%',
   },
 });
