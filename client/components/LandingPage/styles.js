@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center"
   },
   title: {
-    fontSize: 45,
     fontWeight: "bold",
     alignSelf: "center",
     color: "#5C5C5C"
@@ -28,27 +27,21 @@ export const styles = StyleSheet.create({
     justifyContent: "center"
   },
   plainText: {
-    fontSize: 15,
     fontWeight: "bold",
     padding: "1%",
     color: "#5C5C5C"
   },
   buttonContainer: {
     width: "80%",
-    paddingVertical: 5,
-    borderRadius: 12,
     backgroundColor: "#80c590",
-    marginTop: 5
   },
   buttonText: {
-    padding: "0 15px",
-    fontSize: 18,
     fontWeight: "500",
     alignSelf: "center",
     color: "#fff"
   },
   logo: {
-    width: 300,
-    height: 200
+    width: '40%',
+    height: '20%'
   }
 });

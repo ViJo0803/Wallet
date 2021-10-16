@@ -20,13 +20,12 @@ import { Icon } from "react-native-elements";
 import axios from "axios";
 import { getContacts } from "../../store/actions/contactsActions";
 
-function Transfers({route}) {
+function Transfers({ route }) {
   const [searchText, setSearchText] = useState("");
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
 
-  console.log("routes", route)
-
+  console.log("routes", route);
 
   const dispatch = useDispatch();
   const {
@@ -52,7 +51,7 @@ function Transfers({route}) {
 
   useEffect(() => {
     StatusBar.setBarStyle("dark-content", false);
-    dispatch(getContacts(route.params.user.idusuario))
+    // // dispatch(getContacts(route.params.user.idusuario))
 
     axios.get("https://randomuser.me/api/?results=150").then(({ data }) => {
       //aca va la accion que se trae los contactos
@@ -60,55 +59,54 @@ function Transfers({route}) {
     });
   }, []);
 
-  const lista= useSelector((state)=> state.contacts.contacts)
-console.log("lista de amigos",lista)
-
+  const lista = useSelector((state) => state.contacts.contacts);
+  console.log("lista de amigos", lista);
 
   return (
     <View style={styles.container}>
-      <View> 
-      <Text>Destino:</Text>
+      <View>
+        <Text>Destino:</Text>
 
-      <Controller
-        control={control}
-        rules={{
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-        name="Destino"
-        defaultValue=""
-      />
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="Destino"
+          defaultValue=""
+        />
 
-      {errors.Destino && <Text>This is required.</Text>}
+        {errors.Destino && <Text>This is required.</Text>}
 
-      <Text>Monto:</Text>
-      <Controller
-        control={control}
-        rules={{
-          required: true,
-          maxLength: 100,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-        name="Monto"
-        defaultValue=""
-      />
-      {errors.Monto && <Text>This is required.</Text>}
+        <Text>Monto:</Text>
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+            maxLength: 100,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="Monto"
+          defaultValue=""
+        />
+        {errors.Monto && <Text>This is required.</Text>}
 
-      <Button title="Transferir" onPress={handleSubmit(onSubmit)} />
+        <Button title="Transferir" onPress={handleSubmit(onSubmit)} />
       </View>
 
       <View style={styles.searchView}>
@@ -147,42 +145,41 @@ console.log("lista de amigos",lista)
         </View>
       </View>
       {filteredUsers ? (
-                    <ScrollView>
-                        {filteredUsers?.map((user) => (
-                            <TouchableOpacity
-                                key={user.name.first + user.phone}
-                                style={styles.userCard}
-                                onPress={() => {
-                                    Alert.alert(
-                                        `${user.name.first} ${user.name.last}`,
-                                        `You can call me at ${user.phone}`
-                                    );
-                                }}
-                            >
-                                <Image
-                                    style={styles.userImage}
-                                    source={{ uri: user.picture?.large }}
-                                />
-                                <View style={styles.userCardRight}>
-                                    <Text
-                                        style={{ fontSize: 18, fontWeight: "500" }}
-                                    >{`${user.name.first} ${user.name.last}`}</Text>
-                                    <Text>{`${user?.phone}`}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        ))}
-                        <View style={{ height: 50 }}></View>
-                    </ScrollView>
-                ) : searchText.length > 0 ? (
-                    <View style={styles.messageBox}>
-                        <Text style={styles.messageBoxText}>No user found</Text>
-                    </View>
-                ) : (
-                    <View style={styles.messageBox}>
-                        <Text style={styles.messageBoxText}>Search for users</Text>
-                    </View>
-                )}
-
+        <ScrollView>
+          {filteredUsers?.map((user) => (
+            <TouchableOpacity
+              key={user.name.first + user.phone}
+              style={styles.userCard}
+              onPress={() => {
+                Alert.alert(
+                  `${user.name.first} ${user.name.last}`,
+                  `You can call me at ${user.phone}`
+                );
+              }}
+            >
+              <Image
+                style={styles.userImage}
+                source={{ uri: user.picture?.large }}
+              />
+              <View style={styles.userCardRight}>
+                <Text
+                  style={{ fontSize: 18, fontWeight: "500" }}
+                >{`${user.name.first} ${user.name.last}`}</Text>
+                <Text>{`${user?.phone}`}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+          <View style={{ height: 50 }}></View>
+        </ScrollView>
+      ) : searchText.length > 0 ? (
+        <View style={styles.messageBox}>
+          <Text style={styles.messageBoxText}>No user found</Text>
+        </View>
+      ) : (
+        <View style={styles.messageBox}>
+          <Text style={styles.messageBoxText}>Search for users</Text>
+        </View>
+      )}
     </View>
   );
 }

@@ -13,9 +13,5 @@ export const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '50%',
-        margin: '10px',
-    },
-    text: {
-        fontSize: 18,
     },
 })

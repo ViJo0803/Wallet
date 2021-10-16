@@ -1,35 +1,59 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useContext } from "react";
 import {
   View,
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
 import { getTransfers } from "../../store/actions/transferActions";
+import { getUser } from "../../store/actions/userActions";
+import { createUser } from "../../store/actions/userActions";
+import axios from "axios";
 
-function Home({route}) {
+
+//
+import { CredentialsContext } from '../../loginComponents/CredentialsContext';
+
+function Home({ route }) {
   const dispatch = useDispatch();
+  const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
+  const { email, name, photoUrl } = storedCredentials
 
- 
-  console.log("this are the Route props", route);
 
- 
   useEffect(() => {
-     dispatch(getAccount(route.params.user.idusuario));
-  }, [dispatch]);
+    dispatch(getUser(email));
+  }, []);
+  
   const balance = useSelector((state) => state.account.accounts);
-  console.log("cuenta", balance);
+  const user = useSelector((state) => state.user.user);
+  
   useEffect(() => {
-    if (balance[0]) {
-      dispatch(getTransfers(balance[0].idcuentas));
-    } 
-  }, [balance]);
-  const transfers = useSelector((state) => state.transfer.history);
+    if (user) {
+      dispatch(getAccount(user.idusuario));
+    } else {
+      const dataFiltered = {
+        nombre: name.split(" ")[0],
+        apellidos: name.split(" ")[1],
+        mail: email,
+        direccion: "",
+        nickname: email.split("@")[0],
+        dni: "",
+        telefono: "",
+        foto: photoUrl,
+        codigo_postal: "", 
+      };
 
+      dispatch(createUser(dataFiltered))
+      dispatch(getAccount(user.idusuario));
+    }
+    if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
+  }, [dispatch, user]);
+
+  const transfers = useSelector((state) => state.transfer.history);
 
   return (
     <View style={styles.container}>
@@ -43,9 +67,10 @@ function Home({route}) {
       </View>
 
       <ScrollView style={styles.scrollTransfer}>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            {transfers?.map((op) => (
+        <View style={styles.userCardRight}>
+          {transfers?.map((op, i) => (
+            <TouchableOpacity style={styles.userCard}
+              key={i}>
               <View>
                 {op?.origin == balance[0].idcuentas ? (
                   <Text style={styles.textname}> {"- " + op?.monto}</Text>
@@ -54,10 +79,12 @@ function Home({route}) {
                 )}
                 <Text style={styles.textdate}>{op?.fecha}</Text>
               </View>
-            ))}
-          </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+          ))}
+        </View>
       </ScrollView>
+
+
     </View>
   );
 }
