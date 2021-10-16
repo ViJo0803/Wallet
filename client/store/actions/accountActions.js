@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { url } from './const';
 
 import {GET_ACCOUNT, CREATE_ACCOUNT} from "./types"
 
@@ -6,7 +7,7 @@ import {GET_ACCOUNT, CREATE_ACCOUNT} from "./types"
 export function getAccount(id){
     return async (dispatch)=>{
         await axios
-        .get(`http://192.168.1.114:3001/account/get/?id=${id}`)
+        .get(`${url}/account/get/?id=${id}`)
         .then((response) => {
           dispatch({ type: GET_ACCOUNT, payload: response.data });
         })
@@ -18,7 +19,7 @@ export function getAccount(id){
   export function createAccount(userData){
     return async (dispatch) => {
         await axios
-          .post(`http://192.168.1.114:3001/account/update`, userData)
+          .post(`${url}/account/update`, userData)
           .then((response) => {
             dispatch({ type: CREATE_ACCOUNT, payload: response.data });
           })
