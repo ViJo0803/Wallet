@@ -18,23 +18,24 @@ import axios from "axios";
 //
 import { CredentialsContext } from '../../loginComponents/CredentialsContext';
 
-function Home({route}) {
+function Home({ route }) {
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
   const { email, name, photoUrl } = storedCredentials
-  
+
 
   useEffect(() => {
     dispatch(getUser(email));
   }, []);
   
+  const balance = useSelector((state) => state.account.accounts);
   const user = useSelector((state) => state.user.user);
   
   useEffect(() => {
     if (user) {
       dispatch(getAccount(user.idusuario));
     } else {
-        const dataFiltered = {
+      const dataFiltered = {
         nombre: name.split(" ")[0],
         apellidos: name.split(" ")[1],
         mail: email,
@@ -43,16 +44,15 @@ function Home({route}) {
         dni: "",
         telefono: "",
         foto: photoUrl,
-        codigo_postal: "",
+        codigo_postal: "", 
       };
-      
+
       dispatch(createUser(dataFiltered))
       dispatch(getAccount(user.idusuario));
     }
     if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
-  }, [dispatch, user, balance]);
+  }, [dispatch, user]);
 
-  const balance = useSelector((state) => state.account.accounts);
   const transfers = useSelector((state) => state.transfer.history);
 
   return (
@@ -67,11 +67,11 @@ function Home({route}) {
       </View>
 
       <ScrollView style={styles.scrollTransfer}>
-        <TouchableOpacity style={styles.userCard}>
-          <View style={styles.userCardRight}>
-            {transfers?.map((op, i) => (
-              <View
+        <View style={styles.userCardRight}>
+          {transfers?.map((op, i) => (
+            <TouchableOpacity style={styles.userCard}
               key={i}>
+              <View>
                 {op?.origin == balance[0].idcuentas ? (
                   <Text style={styles.textname}> {"- " + op?.monto}</Text>
                 ) : (
@@ -79,9 +79,9 @@ function Home({route}) {
                 )}
                 <Text style={styles.textdate}>{op?.fecha}</Text>
               </View>
-            ))}
-          </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+          ))}
+        </View>
       </ScrollView>
 
 
