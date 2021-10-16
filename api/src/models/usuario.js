@@ -11,27 +11,27 @@ module.exports = (sequelize) => {
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull:  true,
     },
     apellidos: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull:  true,
     },
     mail: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull:  true,
     },
     direccion: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull:  true,
     },
     nickname: {
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull: true,
     },
       dni: {
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull: true,
     },
       telefono: {
       type: DataTypes.STRING,

@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { StatusBar } from "expo-status-bar";
-
-// formik
 import { Formik } from "formik";
-
 import {
   StyledContainer,
   PageLogo,
@@ -26,33 +24,22 @@ import {
   Colors,
 } from "../loginComponents/styles";
 import { View, ActivityIndicator } from "react-native";
-
-//colors
 const { darkLight, brand, primary } = Colors;
-
-// icon
 import { Octicons, Fontisto, Ionicons } from "@expo/vector-icons";
-
-// keyboard avoiding view
 import KeyboardAvoidingWrapper from '../loginComponents/KeyboardAvoidingWrapper';
-
-// api client
 import axios from "axios";
-
-// Google Signin
 import * as Google from "expo-google-app-auth";
-
-// Async storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-// credentials context
 import { CredentialsContext } from '../loginComponents/CredentialsContext';
+import { getUser } from "../store/actions/userActions";
+
 
 const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
   const [googleSubmitting, setGoogleSubmitting] = useState(false);
+  
 
   // credentials context
   const { storedCredentials, setStoredCredentials } =
@@ -87,7 +74,12 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  let estado
+  const userTrue = (email) =>{
+    getUser(email)
+    const _user = useSelector((state) => state.user.user);
+    return _user
+      }
+
 
   const handleGoogleSignin = () => {
     setGoogleSubmitting(true);
@@ -96,19 +88,24 @@ const Login = ({ navigation }) => {
       androidClientId: `869980078790-d1s7hh4j3i9t7a6gho3n0ehstg8n4tvj.apps.googleusercontent.com`,
       scopes: ["profile", "email"],
     };
-
+   
     Google.logInAsync(config)
       .then((result) => {
         const { type, user } = result;
-        if (type == "success") {
+        const { email, name, photoUrl } = user;
+
+        // let _user = userTrue(email);     
+     
+        if (type == "success" ) {
           const { email, name, photoUrl } = user;
+         
           persistLogin(
             { email, name, photoUrl },
             "Google signin successful",
             "SUCCESS"
           );
-          estado = 'Listo'
-          //navigation.navigate("Inicio")
+         
+
         } else {
           handleMessage("Google Signin was cancelled");
         }
@@ -123,6 +120,7 @@ const Login = ({ navigation }) => {
 
   // Persisting login
   const persistLogin = (credentials, message, status) => {
+
     AsyncStorage.setItem("flowerCribCredentials", JSON.stringify(credentials))
       .then(() => {
         handleMessage(message, status);
