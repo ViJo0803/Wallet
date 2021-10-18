@@ -1,11 +1,42 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button, Alert } from "react-native";
+
 import { CardField, useConfirmPayment } from "@stripe/stripe-react-native";
+//---------------deposit----------------
+import { useEffect, useContext } from "react";
+import { ScrollView, TouchableOpacity } from "react-native";
+
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
+import { getUser } from "../../store/actions/userActions";
+import { CredentialsContext } from "../../loginComponents/CredentialsContext";
+//-----------------deposit-----------------
 
 //ADD localhost address of your server
-const API_URL = "http://f766-2800-200-f190-8e7-68f5-ded8-3baa-d7b6.ngrok.io";
+const API_URL = "http://ee14-2800-200-f190-8e7-74a1-1d05-3014-8f6d.ngrok.io";
 
 const StripeApp = (props) => {
+  //--------------deposit---------------------
+  const dispatch = useDispatch();
+  const { storedCredentials, setStoredCredentials } =
+    useContext(CredentialsContext);
+  const { email1 } = storedCredentials;
+
+  useEffect(() => {
+    dispatch(getUser(email1));
+  }, []);
+
+  const { user } = useSelector((state) => state.user);
+  const balance = useSelector((state) => state.account.accounts);
+
+  useEffect(() => {
+    dispatch(getAccount(user.idusuario));
+  }, []);
+  const cuentas = useSelector((state1) => state1.accounts);
+  console.log("userrrrrrrrrrrrr" + user.idusuario);
+  console.log("cuenta" + balance[1].idcuentas);
+  //----------------------deposit--------------------
+
   const [email, setEmail] = useState();
   const [cardDetails, setCardDetails] = useState();
   const { confirmPayment, loading } = useConfirmPayment();
@@ -57,6 +88,13 @@ const StripeApp = (props) => {
 
   return (
     <View style={styles.container}>
+      <TextInput
+        autoCapitalize="none"
+        placeholder="Monto a Cargar"
+        keyboardType="email-address"
+        // onChange={(value) => setEmail(value.nativeEvent.text)}
+        style={styles.input}
+      ></TextInput>
       <TextInput
         autoCapitalize="none"
         placeholder="E-mail"

@@ -4,7 +4,7 @@ import {
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,23 +14,22 @@ import { getUser } from "../../store/actions/userActions";
 import { createUser } from "../../store/actions/userActions";
 import axios from "axios";
 
-
 //
-import { CredentialsContext } from '../../loginComponents/CredentialsContext';
+import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 
 function Home({ route }) {
   const dispatch = useDispatch();
-  const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
-  const { email, name, photoUrl } = storedCredentials
-
+  const { storedCredentials, setStoredCredentials } =
+    useContext(CredentialsContext);
+  const { email, name, photoUrl } = storedCredentials;
 
   useEffect(() => {
     dispatch(getUser(email));
   }, []);
-  
+
   const balance = useSelector((state) => state.account.accounts);
   const user = useSelector((state) => state.user.user);
-  
+
   useEffect(() => {
     if (user) {
       dispatch(getAccount(user.idusuario));
@@ -44,10 +43,10 @@ function Home({ route }) {
         dni: "",
         telefono: "",
         foto: photoUrl,
-        codigo_postal: "", 
+        codigo_postal: "",
       };
 
-      dispatch(createUser(dataFiltered))
+      dispatch(createUser(dataFiltered));
       dispatch(getAccount(user.idusuario));
     }
     if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
@@ -69,8 +68,7 @@ function Home({ route }) {
       <ScrollView style={styles.scrollTransfer}>
         <View style={styles.userCardRight}>
           {transfers?.map((op, i) => (
-            <TouchableOpacity style={styles.userCard}
-              key={i}>
+            <TouchableOpacity style={styles.userCard} key={i}>
               <View>
                 {op?.origin == balance[0].idcuentas ? (
                   <Text style={styles.textname}> {"- " + op?.monto}</Text>
@@ -83,8 +81,6 @@ function Home({ route }) {
           ))}
         </View>
       </ScrollView>
-
-
     </View>
   );
 }

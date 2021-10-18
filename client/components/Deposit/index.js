@@ -1,7 +1,4 @@
 import React from "react";
-import { View, Button, Text, Image } from "react-native";
-import { styles } from "./styles";
-
 //-----------Stripe-------------
 import StripeApp from "../Stripe/StripeApp";
 import { StripeProvider } from "@stripe/stripe-react-native";
