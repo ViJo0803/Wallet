@@ -1,4 +1,6 @@
+
 export const url = "http://9203-2800-200-f190-8e7-3d26-f78b-9071-51c0.ngrok.io";
+// export const url = "http://192.168.0.65:3001";
 
 // En windows abrir cmd
 // escribir comando:
@@ -11,3 +13,4 @@ export const url = "http://9203-2800-200-f190-8e7-3d26-f78b-9071-51c0.ngrok.io";
 //                                             !!!.!!!.!.!!
 //Copiar esa IP en, export const url = 'http://192.168.0.65:3001'
 //
+
