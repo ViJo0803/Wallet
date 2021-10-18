@@ -1,4 +1,4 @@
-import { GET_CONTACT, UPDATE_CONTACT } from "../actions/types";
+import { GET_CONTACT, GET_ALL_CONTACT, UPDATE_CONTACT } from "../actions/types";
 
 const initalState = {
     contacts: [],
@@ -9,6 +9,10 @@ const initalState = {
     switch (type) {
       case GET_CONTACT:
         return { ...state, contacts: payload };
+      case GET_ALL_CONTACT:
+        
+        return { ...state, contacts: payload };
+
       case UPDATE_CONTACT:
         return { ...state }; 
       default:

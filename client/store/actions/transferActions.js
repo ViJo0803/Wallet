@@ -1,7 +1,7 @@
 import axios from "axios";
 import { url } from "./const";
 
-import { GET_TRANSFERS,MAKE_TRANSFER } from "./types";
+import { GET_TRANSFERS, MAKE_TRANSFER } from "./types";
 
 export function getTransfers(id) {
 
