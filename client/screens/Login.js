@@ -213,7 +213,7 @@ const Login = ({ navigation }) => {
 
                 <Line />
 
-                {!googleSubmitting && (
+                {/* {!googleSubmitting && (
                   <StyledButton onPress={handleGoogleSignin} google={true}>
                     <Fontisto name="google" size={25} color={primary} />
                     <ButtonText google={true}>Sign in with Google</ButtonText>
@@ -223,7 +223,7 @@ const Login = ({ navigation }) => {
                   <StyledButton disabled={true} google={true}>
                     <ActivityIndicator size="large" color={primary} />
                   </StyledButton>
-                )}
+                )} */}
 
                 <ExtraView>
                   <ExtraText>Don't have an account already? </ExtraText>

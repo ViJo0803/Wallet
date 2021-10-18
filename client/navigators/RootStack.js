@@ -42,8 +42,8 @@ function RootStack() {
               />
             ) : (
               <Stack.Screen
-                name="ExtendedCredentialsContext"
-                component={ExtendedCredentialsContext}
+                name="DrawerBar"
+                component={DrawerBar}
                 options={{ headerShown: false }}
               />
            /*    <Stack.Screen

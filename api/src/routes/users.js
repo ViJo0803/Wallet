@@ -7,5 +7,6 @@ router.post('/create',createUser )
 router.post("/get" ,getUser)
 router.put('/update',updateUser )
 
+
 module.exports=router;
 
