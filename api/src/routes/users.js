@@ -4,7 +4,7 @@ const{createUser, getUser, updateUser, doTransfer}= require("./Controllers/Users
 const router = Router();
 
 router.post('/create',createUser )
-router.get("/get" ,getUser)
+router.post("/get" ,getUser)
 router.put('/update',updateUser )
 
 module.exports=router;

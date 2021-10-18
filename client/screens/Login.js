@@ -32,6 +32,7 @@ import * as Google from "expo-google-app-auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CredentialsContext } from '../loginComponents/CredentialsContext';
 import { getUser } from "../store/actions/userActions";
+import url from '../store/actions/const'
 
 
 const Login = ({ navigation }) => {
@@ -47,13 +48,13 @@ const Login = ({ navigation }) => {
 
   const handleLogin = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = "https://whispering-headland-00232.herokuapp.com/user/signin";
+    const url = `${url}/user/get}`;
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
         const { status, message, data } = result;
-
+        console.log("handle loggin data", result)
         if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {

@@ -73,8 +73,8 @@ async function createUser(req, res, next) {
 
 async function getUser(req, res, next) {
   try {
-    const mail = req.query.mail;
-    const password = req.query.password;
+    const mail = req.body.mail;
+    const password = req.body.password;
 
     let user = await Usuario.findOne({
       where: {
@@ -87,15 +87,15 @@ async function getUser(req, res, next) {
       res.send(null).status(422);
     }
 
-    let res = { status, message, data }
+    let response = {  status:"",  message:"", data:[] }
     delete user.password;
 
     if (user) {
-      res.status = "SUCCESS"
-      res.message= "Welcome"
-      res.data = [user]
+      response.status = "SUCCESS"
+      response.message= "Welcome"
+      response.data = [user]
      console.log(user)
-      res.send(res);
+      res.send(response);
     } else {
       res.send(null);
     }
