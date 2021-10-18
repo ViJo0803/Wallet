@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
-import { StatusBar } from 'expo-status-bar';
+import React, { useState, useContext } from "react";
+import { StatusBar } from "expo-status-bar";
 
 // formik
-import { Formik } from 'formik';
+import { Formik } from "formik";
 
 import {
   StyledContainer,
@@ -23,29 +23,29 @@ import {
   TextLinkContent,
   SubTitle,
   Colors,
-} from '../loginComponents/styles';
-import { View, TouchableOpacity, ActivityIndicator } from 'react-native';
+} from "../loginComponents/styles";
+import { View, TouchableOpacity, ActivityIndicator } from "react-native";
 
 //colors
 const { darkLight, brand, primary } = Colors;
 
 // icon
-import { Octicons, Ionicons } from '@expo/vector-icons';
+import { Octicons, Ionicons } from "@expo/vector-icons";
 
 // Datetimepicker
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 // keyboard avoiding view
-import KeyboardAvoidingWrapper from '../loginComponents/KeyboardAvoidingWrapper';
+import KeyboardAvoidingWrapper from "../loginComponents/KeyboardAvoidingWrapper";
 
 // api client
-import axios from 'axios';
+import axios from "axios";
 
 // Async storage
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // credentials context
-import { CredentialsContext } from '../loginComponents/CredentialsContext';
+import { CredentialsContext } from "../loginComponents/CredentialsContext";
 
 const Signup = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
@@ -65,32 +65,34 @@ const Signup = ({ navigation }) => {
   };
 
   const showDatePicker = () => {
-    setShow('date');
+    setShow("date");
   };
 
-    // credentials context
-    const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+  // credentials context
+  const { storedCredentials, setStoredCredentials } =
+    useContext(CredentialsContext);
 
   // Form handling
   const handleSignup = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = 'https://whispering-headland-00232.herokuapp.com/user/signup';
+    console.log("credentials",credentials)
+    const url = "http://192.168.0.65:3001" + "/user/create/";
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
         const { status, message, data } = result;
         console.log("data Signup", data);
-        if (status !== 'SUCCESS') {
+        if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {
-          persistLogin({ ...data } ,message, status);
+          persistLogin({ ...data }, message, status);
         }
         setSubmitting(false);
       })
       .catch((error) => {
         setSubmitting(false);
-        handleMessage('An error occurred. Check your network and try again');
+        handleMessage("An error occurred. Check your network and try again");
         console.log(error.toJSON());
       });
   };
@@ -104,33 +106,44 @@ const Signup = ({ navigation }) => {
     "password": "$2b$10$pae30HLhH1T0Ztx1DVj54eLGeUGvpjbeuGkQtKR2I0v965YYJAX5K",
   } */
 
-  
-  const handleMessage = (message, type = '') => {
+  const handleMessage = (message, type = "") => {
     setMessage(message);
     setMessageType(type);
   };
 
   // Persisting login after signup
   const persistLogin = (credentials, message, status) => {
-    AsyncStorage.setItem('flowerCribCredentials', JSON.stringify(credentials))
+    AsyncStorage.setItem("flowerCribCredentials", JSON.stringify(credentials))
       .then(() => {
         handleMessage(message, status);
         setStoredCredentials(credentials);
       })
       .catch((error) => {
-        handleMessage('Persisting login failed');
-        console.log(error)
+        handleMessage("Persisting login failed");
+        console.log(error);
       });
   };
+
+  // const {
+  //   nombre,
+  //   apellidos,
+  //   mail,
+  //   direccion,
+  //   nickname,
+  //   dni,
+  //   telefono,
+  //   foto,
+  //   codigo_postal,
+  // }
 
   return (
     <KeyboardAvoidingWrapper>
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageTitle>Flower Crib</PageTitle>
+          <PageTitle>MINT</PageTitle>
           <SubTitle>Account Signup</SubTitle>
-          {show && (
+          {/* {show && (
             <DateTimePicker
               testID="dateTimePicker"
               value={date}
@@ -139,71 +152,135 @@ const Signup = ({ navigation }) => {
               display="default"
               onChange={onChange}
               style={{
-                backgroundColor: 'yellow',
+                backgroundColor: "yellow",
               }}
             />
-          )}
+          )} */}
 
           <Formik
-            initialValues={{ name: '', email: '', dateOfBirth: '', password: '', confirmPassword: '' }}
+            initialValues={{
+              nombre: "",
+              apellidos: "",
+              mail: "",
+              nickname: "",
+              direccion: "",
+              dni: "",
+              telefono: "",
+              codigo_postal: "",
+              password: "",
+              confirmPassword: "",
+            }}
             onSubmit={(values, { setSubmitting }) => {
-              values = { ...values, dateOfBirth: dob };
+              values = { ...values, foto: "" };
               if (
-                values.email == '' ||
-                values.password == '' ||
-                values.name == '' ||
-                values.dateOfBirth == '' ||
-                values.confirmPassword == ''
+                values.nombre == "" ||
+                values.apellidos == "" ||
+                values.mail == "" ||
+                values.nickname == "" ||
+                values.direccion == "" ||
+                values.dni == "" ||
+                values.telefono == "" ||
+                values.codigo_postal == "" ||
+                values.password == "" ||
+                values.confirmPassword == ""
               ) {
-                handleMessage('Please fill in all fields');
+                handleMessage("Please fill in all fields");
                 setSubmitting(false);
               } else if (values.password !== values.confirmPassword) {
-                handleMessage('Passwords do not match');
+                handleMessage("Passwords do not match");
                 setSubmitting(false);
               } else {
                 handleSignup(values, setSubmitting);
               }
             }}
           >
-            {({ handleChange, handleBlur, handleSubmit, values, isSubmitting }) => (
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              isSubmitting,
+            }) => (
               <StyledFormArea>
                 <MyTextInput
-                  label="Full Name"
-                  placeholder="Richard Barnes"
+                  label="Name"
+                  placeholder="Richard"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange('name')}
-                  onBlur={handleBlur('name')}
-                  value={values.name}
+                  onChangeText={handleChange("nombre")}
+                  onBlur={handleBlur("nombre")}
+                  value={values.nombre}
                   icon="person"
                 />
                 <MyTextInput
+                  label="Last Name"
+                  placeholder="Barnes"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("apellidos")}
+                  onBlur={handleBlur("apellidos")}
+                  value={values.apellidos}
+                  icon="person"
+                />
+                 <MyTextInput
                   label="Email Address"
                   placeholder="andyj@gmail.com"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  value={values.email}
+                  onChangeText={handleChange("mail")}
+                  onBlur={handleBlur("mail")}
+                  value={values.mail}
                   keyboardType="email-address"
                   icon="mail"
                 />
                 <MyTextInput
-                  label="Date of Birth"
-                  placeholder="YYYY - MM - DD"
+                  label="Nickname"
+                  placeholder="Rick"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange('dateOfBirth')}
-                  onBlur={handleBlur('dateOfBirth')}
-                  value={dob ? dob.toDateString() : ''}
-                  icon="calendar"
-                  editable={false}
-                  isDate={true}
-                  showDatePicker={showDatePicker}
+                  onChangeText={handleChange("nickname")}
+                  onBlur={handleBlur("nickname")}
+                  value={values.nickname}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Adress"
+                  placeholder="Adress 5000"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("direccion")}
+                  onBlur={handleBlur("direccion")}
+                  value={values.direccion}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Dni"
+                  placeholder="12.345.678"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("dni")}
+                  onBlur={handleBlur("dni")}
+                  value={values.dni}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Phone"
+                  placeholder="012345678910"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("telefono")}
+                  onBlur={handleBlur("telefono")}
+                  value={values.telefono}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Postal Code"
+                  placeholder="Rick"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("codigo_postal")}
+                  onBlur={handleBlur("codigo_postal")}
+                  value={values.codigo_postal}
+                  icon="mail"
                 />
                 <MyTextInput
                   label="Password"
                   placeholder="* * * * * * * *"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
+                  onChangeText={handleChange("password")}
+                  onBlur={handleBlur("password")}
                   value={values.password}
                   secureTextEntry={hidePassword}
                   icon="lock"
@@ -215,8 +292,8 @@ const Signup = ({ navigation }) => {
                   label="Confirm Password"
                   placeholder="* * * * * * * *"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange('confirmPassword')}
-                  onBlur={handleBlur('confirmPassword')}
+                  onChangeText={handleChange("confirmPassword")}
+                  onBlur={handleBlur("confirmPassword")}
                   value={values.confirmPassword}
                   secureTextEntry={hidePassword}
                   icon="lock"
@@ -240,7 +317,7 @@ const Signup = ({ navigation }) => {
                 <Line />
                 <ExtraView>
                   <ExtraText>Already have an account? </ExtraText>
-                  <TextLink onPress={() => navigation.navigate('Login')}>
+                  <TextLink onPress={() => navigation.navigate("Login")}>
                     <TextLinkContent>Login</TextLinkContent>
                   </TextLink>
                 </ExtraView>
@@ -253,7 +330,16 @@ const Signup = ({ navigation }) => {
   );
 };
 
-const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, isDate, showDatePicker, ...props }) => {
+const MyTextInput = ({
+  label,
+  icon,
+  isPassword,
+  hidePassword,
+  setHidePassword,
+  isDate,
+  showDatePicker,
+  ...props
+}) => {
   return (
     <View>
       <LeftIcon>
@@ -274,7 +360,11 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, i
             setHidePassword(!hidePassword);
           }}
         >
-          <Ionicons name={hidePassword ? 'md-eye-off' : 'md-eye'} size={30} color={darkLight} />
+          <Ionicons
+            name={hidePassword ? "md-eye-off" : "md-eye"}
+            size={30}
+            color={darkLight}
+          />
         </RightIcon>
       )}
     </View>

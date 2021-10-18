@@ -47,10 +47,12 @@ const Login = ({ navigation }) => {
     useContext(CredentialsContext);
 
   const handleLogin = (credentials, setSubmitting) => {
+    console.log("credentials", credentials)
     handleMessage(null);
-    const url = `${url}/user/get}`;
+    const _url = "http://192.168.0.65:3001" + "/user/get/";
+    console.log("url",_url)
     axios
-      .post(url, credentials)
+      .post(_url, credentials)
       .then((response) => {
         const result = response.data;
         const { status, message, data } = result;
@@ -61,8 +63,7 @@ const Login = ({ navigation }) => {
           persistLogin({ ...data[0] }, message, status);
         }
         setSubmitting(false);
-        navigation.navigate('Drawer')
-      })
+            })
       .catch((error) => {
         setSubmitting(false);
         handleMessage("An error occurred. Check your network and try again");
@@ -145,9 +146,9 @@ const Login = ({ navigation }) => {
           <SubTitle>Account Login</SubTitle>
 
           <Formik
-            initialValues={{ email: "", password: "" }}
+            initialValues={{ mail: "", password: "" }}
             onSubmit={(values, { setSubmitting }) => {
-              if (values.email == "" || values.password == "") {
+              if (values.mail == "" || values.password == "") {
                 handleMessage("Please fill in all fields");
                 setSubmitting(false);
               } else {
@@ -167,9 +168,9 @@ const Login = ({ navigation }) => {
                   label="Email Address"
                   placeholder="usuario@gmail.com"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange("email")}
-                  onBlur={handleBlur("email")}
-                  value={values.email}
+                  onChangeText={handleChange("mail")}
+                  onBlur={handleBlur("mail")}
+                  value={values.mail}
                   keyboardType="email-address"
                   icon="mail"
                 />

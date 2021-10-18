@@ -64,7 +64,23 @@ async function createUser(req, res, next) {
         usuarioIdusuario: usuarioCreado.idusuario,
       });
 
-      res.send(usuarioCreado);
+      let response = {  status:"",  message:"", data:[] }
+      delete usuarioCreado.password;
+  
+      if (usuarioCreado) {
+        response.status = "SUCCESS"
+        response.message= "Welcome"
+        response.data = [usuarioCreado]
+       console.log(usuarioCreado)
+        res.send(response);
+      } else {
+        response.status = "NOT SUCCESS"
+        response.message= "Not Welcome"
+        response.data = []
+        res.send(response);
+      }
+
+    
     
   } catch (error) {
     next(error);
@@ -82,11 +98,12 @@ async function getUser(req, res, next) {
       },
     });
 
-    const comparePassword = await bcrypt.compare(password, user.password);
-    if (!comparePassword) {
-      res.send(null).status(422);
+    if (user) {
+      const comparePassword = await bcrypt.compare(password, user.password);
+      if (!comparePassword) {
+        res.send("Password does not match").status(422);
+      }
     }
-
     let response = {  status:"",  message:"", data:[] }
     delete user.password;
 
@@ -97,7 +114,10 @@ async function getUser(req, res, next) {
      console.log(user)
       res.send(response);
     } else {
-      res.send(null);
+      response.status = "NOT SUCCESS"
+      response.message= "Not Welcome"
+      response.data = []
+      res.send(response);
     }
   } catch (error) {
     next(error);

@@ -21,44 +21,19 @@ import { CredentialsContext } from '../../loginComponents/CredentialsContext';
 function Home({ route }) {
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
-  const { email, name, photoUrl } = storedCredentials
+  const { mail, name, photoUrl } = storedCredentials
+console.log("credentials home", storedCredentials)
 
-
-  useEffect(() => {
-    console.log(1)
-    dispatch(getUser(email));
-  }, []);
+  // useEffect(() => {
+  //   console.log(1)
+  //   dispatch(getUser(mail));
+  //   dispatch(getAccount(user.idusuario));
+  //   dispatch(getTransfers(balance[0].idcuentas));
+  // }, []);
   
   const balance = useSelector((state) => state.account.accounts);
-  console.log(2)
   const user = useSelector((state) => state.user.user);
-  console.log(3)
-  
-  useEffect(() => {
-    console.log(4)
-    if (user) {
-      dispatch(getAccount(user.idusuario));
-    } else {
-      const dataFiltered = {
-        nombre: name.split(" ")[0],
-        apellidos: name.split(" ")[1],
-        mail: email,
-        direccion: "",
-        nickname: email.split("@")[0],
-        dni: "",
-        telefono: "",
-        foto: photoUrl,
-        codigo_postal: "", 
-      };
-
-      dispatch(createUser(dataFiltered))
-      dispatch(getAccount(user.idusuario));
-    }
-    if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
-  }, [dispatch, user]);
-  console.log(5)
   const transfers = useSelector((state) => state.transfer.history);
-  console.log(6)
 
   return (
     <View style={styles.container}>
