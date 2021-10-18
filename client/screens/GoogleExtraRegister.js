@@ -45,9 +45,10 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // credentials context
-import { ExtendedCredentialsContext } from "../loginComponents/CredentialsContext";
+import { CredentialsContext, ExtendedCredentialsContext } from '../loginComponents/CredentialsContext';
 
-const Signup = ({ navigation }) => {
+
+const GoogleExtraRegister = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date(2000, 0, 1));
@@ -68,11 +69,16 @@ const Signup = ({ navigation }) => {
     setShow("date");
   };
 
+  const { storedCredentials, setStoredCredentials } =
+  useContext(CredentialsContext);
+
   // credentials context
   const { extendedCredentials, setExtendedCredentials } = useContext(
     ExtendedCredentialsContext
   );
-const {familyName, givenName, photoUrl,  email } = extendedCredentials
+
+const {familyName, givenName, photoUrl,  email } = storedCredentials
+
   // Form handling
   const handleSignup = (credentials, setSubmitting) => {
     handleMessage(null);
@@ -125,18 +131,6 @@ const {familyName, givenName, photoUrl,  email } = extendedCredentials
       });
   };
 
-  // const {
-  //   nombre,
-  //   apellidos,
-  //   mail,
-  //   direccion,
-  //   nickname,
-  //   dni,
-  //   telefono,
-  //   foto,
-  //   codigo_postal,
-  // }
-
   return (
     <KeyboardAvoidingWrapper>
       <StyledContainer>
@@ -144,25 +138,9 @@ const {familyName, givenName, photoUrl,  email } = extendedCredentials
         <InnerContainer>
           <PageTitle>MINT</PageTitle>
           <SubTitle>Account Signup</SubTitle>
-          {/* {show && (
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={date}
-              mode="date"
-              is24Hour={true}
-              display="default"
-              onChange={onChange}
-              style={{
-                backgroundColor: "yellow",
-              }}
-            />
-          )} */}
 
           <Formik
             initialValues={{
-              nombre: "",
-              apellidos: "",
-              mail: "",
               nickname: "",
               direccion: "",
               dni: "",
@@ -172,11 +150,8 @@ const {familyName, givenName, photoUrl,  email } = extendedCredentials
               confirmPassword: "",
             }}
             onSubmit={(values, { setSubmitting }) => {
-              values = { ...values, foto: "" };
+              values = { ...values, foto:photoUrl, apellidos:familyName, nombre:givenName, mail:email };
               if (
-                values.nombre == "" ||
-                values.apellidos == "" ||
-                values.mail == "" ||
                 values.nickname == "" ||
                 values.direccion == "" ||
                 values.dni == "" ||
@@ -203,35 +178,7 @@ const {familyName, givenName, photoUrl,  email } = extendedCredentials
               isSubmitting,
             }) => (
               <StyledFormArea>
-                <MyTextInput
-                  label="Name"
-                  placeholder="Richard"
-                  placeholderTextColor={darkLight}
-                  onChangeText={handleChange("nombre")}
-                  onBlur={handleBlur("nombre")}
-                  value={values.nombre}
-                  icon="person"
-                />
-                <MyTextInput
-                  label="Last Name"
-                  placeholder="Barnes"
-                  placeholderTextColor={darkLight}
-                  onChangeText={handleChange("apellidos")}
-                  onBlur={handleBlur("apellidos")}
-                  value={values.apellidos}
-                  icon="person"
-                />
                  <MyTextInput
-                  label="Email Address"
-                  placeholder="andyj@gmail.com"
-                  placeholderTextColor={darkLight}
-                  onChangeText={handleChange("mail")}
-                  onBlur={handleBlur("mail")}
-                  value={values.mail}
-                  keyboardType="email-address"
-                  icon="mail"
-                />
-                <MyTextInput
                   label="Nickname"
                   placeholder="Rick"
                   placeholderTextColor={darkLight}
@@ -372,4 +319,4 @@ const MyTextInput = ({
   );
 };
 
-export default Signup;
+export default GoogleExtraRegister;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 
 //colors
 import { Colors } from "../loginComponents/styles";
@@ -13,7 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import RegisterExntended from "../screens/RegisterExntended";
-import ExtendedCredentialsContext  from "../loginComponents/ExtendedCredentialsContext";
+import CredentialsNav  from "../loginComponents/CredentialsNav";
 
 // components
 import LandingPage from "../components/LandingPage/index";
@@ -28,6 +28,7 @@ import { CredentialsContext } from "../loginComponents/CredentialsContext";
 
 // <--------------- ROOT Stack (contiene a LoginStack y MainStack ) --------------->
 function RootStack() {
+  
   return (
     <CredentialsContext.Consumer>
       {({ storedCredentials }) => (
@@ -42,15 +43,10 @@ function RootStack() {
               />
             ) : (
               <Stack.Screen
-                name="ExtendedCredentialsContext"
-                component={ExtendedCredentialsContext}
+                name="CredentialsNav"
+                component={CredentialsNav}
                 options={{ headerShown: false }}
               />
-           /*    <Stack.Screen
-                name="LandingPage"
-                component={LandingPage}
-                options={{ headerShown: false }}
-              /> */
             )}
           </Stack.Navigator>
         </NavigationContainer>

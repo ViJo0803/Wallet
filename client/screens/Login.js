@@ -63,7 +63,7 @@ const Login = ({ navigation }) => {
         if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {
-          persistLogin({ ...data[0] }, message, status);
+          persistLoginExtended({ ...data[0] }, message, status);
         }
         setSubmitting(false);
             })
@@ -100,24 +100,21 @@ const Login = ({ navigation }) => {
        
         if (type == "success" ) {
           const { email, name, photoUrl } = user;
-          // const url2 = "http://192.168.0.65:3001" + "/user/google_login/";
-     
-          // axios
-          //   .post(url2, email)
-          //   .then((response) => {
-          //     const result = response.data;
-          //     const { status, message, data } = result;
-          //     if (status !== "SUCCESS") {
-          //       handleMessage(message, status);
-          //     } else {
-          //       persistLogin({ ...data[0] }, message, status);
-          //     }
-          persistLogin(
-            { email, name, photoUrl },
-            "Google signin successful",
-            "SUCCESS"
-          );
-         
+          const url2 = "http://192.168.0.65:3001" + "/user/google_login/";
+            axios
+            .post(url2, {mail: email})
+            .then((response) => {
+              console.log("response login googel", response)
+              const result = response.data;
+              const { status, message, data } = result;
+              if (status !== "SUCCESS") {
+                handleMessage(message, status);
+                persistLogin(user,  "Google signin successful",  "SUCCESS");
+            
+              } else {
+                persistLoginExtended({ ...data[0] },  "Google signin successful","SUCCESS");
+              }
+            })
 
         } else {
           handleMessage("Google Signin was cancelled");
@@ -138,6 +135,21 @@ const Login = ({ navigation }) => {
       .then(() => {
         handleMessage(message, status);
         setStoredCredentials(credentials);
+        })
+      .catch((error) => {
+        handleMessage("Persisting login failed");
+        console.log(error);
+      });
+  };
+
+  // Persisting login
+  const persistLoginExtended = (credentials, message, status) => {
+
+    AsyncStorage.setItem("flowerCribCredentials", JSON.stringify(credentials))
+      .then(() => {
+        handleMessage(message, status);
+        setStoredCredentials(credentials);
+        setExtendedCredentials(credentials);
       })
       .catch((error) => {
         handleMessage("Persisting login failed");

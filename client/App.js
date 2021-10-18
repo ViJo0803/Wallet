@@ -10,13 +10,14 @@ import AppLoading from "expo-app-loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 // credentials context
 import { CredentialsContext } from "../client/loginComponents/CredentialsContext";
+import { ExtendedCredentialsContext } from "../client/loginComponents/CredentialsContext";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   const [appReady, setAppReady] = useState(false);
   const [storedCredentials, setStoredCredentials] = useState("");
-
+  const [extendedCredentials, setExtendedCredentials] = useState("");
   const checkLoginCredentials = () => {
     AsyncStorage.getItem("flowerCribCredentials")
       .then((result) => {
@@ -41,8 +42,14 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <CredentialsContext.Provider value={{ storedCredentials, setStoredCredentials }}>
-        <RootStack />
+      <CredentialsContext.Provider
+        value={{ storedCredentials, setStoredCredentials }}
+      >
+        <ExtendedCredentialsContext.Provider
+          value={{ extendedCredentials, setExtendedCredentials }}
+        >
+          <RootStack />
+        </ExtendedCredentialsContext.Provider>
       </CredentialsContext.Provider>
     </Provider>
   );

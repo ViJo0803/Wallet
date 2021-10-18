@@ -191,4 +191,37 @@ async function updateUser(req, res, next) {
   }
 }
 
-module.exports = { createUser, getUser, updateUser };
+async function googlein (req, res, next) {
+  const {  
+    mail,
+  } = req.body;
+
+  console.log("body en googlein", req.body)
+  
+  let user = await Usuario.findOne({
+    where: {
+      mail: mail,
+    },
+  });
+
+let response = {  status:"",  message:"", data:[] }
+try {
+  if (user) {
+    response.status = "SUCCESS"
+    response.message= "Welcome"
+    response.data = [user]
+   console.log(user)
+    res.send(response);
+  } else {
+    response.status = "NOT SUCCESS"
+    response.message= "Not Welcome"
+    response.data = []
+    res.send(response).status(204);
+  }
+} catch (error) {
+  next(error);
+}
+}
+
+
+module.exports = { createUser, getUser, updateUser, googlein };

@@ -1,28 +1,19 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { CredentialsContext } from "./CredentialsContext";
+import { ExtendedCredentialsContext } from "./CredentialsContext";
 import { createStackNavigator } from "@react-navigation/stack";
 import DrawerBar from "../components/Drawer/index";
+import GoogleExtraRegister from "../screens/GoogleExtraRegister";
 
 const Stack = createStackNavigator();
 
-export default function ExtendedCredentialsContext() {
+export default function CredentialsNav() {
 
-  const { extendedCredentials, setExtendedCredentials } = useContext(
-    ExtendedCredentialsContext
-  );
-
-  //chequeo de back por datos que le faltan a google
-
-  //const user = get de usuario con mail
-  //user.dni ? setExtendedCredentials : ''
-  
-  
   return (
-    <CredentialsContext.Consumer>
+    <ExtendedCredentialsContext.Consumer>
       {({ extendedCredentials }) => {
         <Stack.Navigator>
-          {!extendedCredentials.dni ? (
+          {!extendedCredentials ? (
             <Stack.Screen
               name="ExtraRegister"
               component={GoogleExtraRegister}
@@ -37,6 +28,6 @@ export default function ExtendedCredentialsContext() {
           )}
         </Stack.Navigator>;
       }}
-    </CredentialsContext.Consumer>
+    </ExtendedCredentialsContext.Consumer>
   );
 }

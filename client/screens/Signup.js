@@ -45,7 +45,8 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // credentials context
-import { CredentialsContext } from "../loginComponents/CredentialsContext";
+import { CredentialsContext, ExtendedCredentialsContext } from '../loginComponents/CredentialsContext';
+
 
 const Signup = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
@@ -71,6 +72,10 @@ const Signup = ({ navigation }) => {
   // credentials context
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
+
+    const { extendedCredentials, setExtendedCredentials } = useContext(
+      ExtendedCredentialsContext
+    );
 
   // Form handling
   const handleSignup = (credentials, setSubmitting) => {
@@ -117,6 +122,7 @@ const Signup = ({ navigation }) => {
       .then(() => {
         handleMessage(message, status);
         setStoredCredentials(credentials);
+        setExtendedCredentials(credentials);
       })
       .catch((error) => {
         handleMessage("Persisting login failed");
