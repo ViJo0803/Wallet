@@ -12,8 +12,10 @@ import { getUser } from "../../store/actions/userActions";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 //-----------------deposit-----------------
 
+import { URL_STRIPE_3000 } from "../../../constantes"
+
 //ADD localhost address of your server
-const API_URL = "http://ee14-2800-200-f190-8e7-74a1-1d05-3014-8f6d.ngrok.io";
+const URL_STRIPE_3000 = "http://ee14-2800-200-f190-8e7-74a1-1d05-3014-8f6d.ngrok.io";
 
 const StripeApp = (props) => {
   //--------------deposit---------------------
@@ -42,7 +44,7 @@ const StripeApp = (props) => {
   const { confirmPayment, loading } = useConfirmPayment();
 
   const fetchPaymentIntentClientSecret = async () => {
-    const response = await fetch(`${API_URL}/create-payment-intent`, {
+    const response = await fetch(`${URL_STRIPE_3000}/create-payment-intent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
