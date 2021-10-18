@@ -64,7 +64,7 @@ export default function Register ({navigation}) {
             />
           )}
           name="nombre"
-          defaultValue={state.nombre}
+          defaultValue={state.nombre} 
         />
   
         {errors.nombre && <Text>This is required.</Text>}

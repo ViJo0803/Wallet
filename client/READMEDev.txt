@@ -5,3 +5,8 @@ Adentro de LoginStack estan las screens Login, Signup, RegisterExtended
 Adentro de MainStack estan las screens de la app despues del login (Inicio)
 
 El problema es que no podemos hacer andar el MainStack!!
+
+
+chequear IP en /screens/Signup
+chequear IP en /screens/GoogleExtraRegister
+chequear IP en /actions/const

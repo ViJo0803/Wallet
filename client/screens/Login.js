@@ -30,7 +30,7 @@ import KeyboardAvoidingWrapper from '../loginComponents/KeyboardAvoidingWrapper'
 import axios from "axios";
 import * as Google from "expo-google-app-auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { CredentialsContext } from '../loginComponents/CredentialsContext';
+import { CredentialsContext, ExtendedCredentialsContext } from '../loginComponents/CredentialsContext';
 import { getUser } from "../store/actions/userActions";
 import url from '../store/actions/const'
 
@@ -41,10 +41,13 @@ const Login = ({ navigation }) => {
   const [messageType, setMessageType] = useState();
   const [googleSubmitting, setGoogleSubmitting] = useState(false);
   
-
   // credentials context
   const { storedCredentials, setStoredCredentials } =
-    useContext(CredentialsContext);
+  useContext(CredentialsContext);
+
+  const { extendedCredentials, setExtendedCredentials } = useContext(
+    ExtendedCredentialsContext
+  );
 
   const handleLogin = (credentials, setSubmitting) => {
     console.log("credentials", credentials)
@@ -94,13 +97,21 @@ const Login = ({ navigation }) => {
     Google.logInAsync(config)
       .then((result) => {
         const { type, user } = result;
-        const { email, name, photoUrl } = user;
-
-        // let _user = userTrue(email);     
-     
+       
         if (type == "success" ) {
           const { email, name, photoUrl } = user;
-         
+          // const url2 = "http://192.168.0.65:3001" + "/user/google_login/";
+     
+          // axios
+          //   .post(url2, email)
+          //   .then((response) => {
+          //     const result = response.data;
+          //     const { status, message, data } = result;
+          //     if (status !== "SUCCESS") {
+          //       handleMessage(message, status);
+          //     } else {
+          //       persistLogin({ ...data[0] }, message, status);
+          //     }
           persistLogin(
             { email, name, photoUrl },
             "Google signin successful",

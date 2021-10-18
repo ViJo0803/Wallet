@@ -45,7 +45,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // credentials context
-import { CredentialsContext } from "../loginComponents/CredentialsContext";
+import { ExtendedCredentialsContext } from "../loginComponents/CredentialsContext";
 
 const Signup = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
@@ -69,19 +69,21 @@ const Signup = ({ navigation }) => {
   };
 
   // credentials context
-  const { storedCredentials, setStoredCredentials } =
-    useContext(CredentialsContext);
-
+  const { extendedCredentials, setExtendedCredentials } = useContext(
+    ExtendedCredentialsContext
+  );
+const {familyName, givenName, photoUrl,  email } = extendedCredentials
   // Form handling
-  const handleSignup = (credentials, setSubmitting) => { //Crear un usuario en nuestra db -> se crea una cuenta
+  const handleSignup = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = "https://whispering-headland-00232.herokuapp.com/user/signup";
+    console.log("credentials",credentials)
+    const url = "http://192.168.0.65:3001" + "/user/create/";
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
         const { status, message, data } = result;
-
+        console.log("data Signup", data);
         if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {
@@ -95,6 +97,15 @@ const Signup = ({ navigation }) => {
         console.log(error.toJSON());
       });
   };
+
+  /* data Signup Object {
+    "__v": 0,
+    "_id": "6169f9f6aed3c7000438b341",
+    "dateOfBirth": "1974-01-12T03:00:00.000Z",
+    "email": "marcolucianomazzetti@gmail.com",
+    "name": "Juan Carlos",
+    "password": "$2b$10$pae30HLhH1T0Ztx1DVj54eLGeUGvpjbeuGkQtKR2I0v965YYJAX5K",
+  } */
 
   const handleMessage = (message, type = "") => {
     setMessage(message);
@@ -114,14 +125,26 @@ const Signup = ({ navigation }) => {
       });
   };
 
+  // const {
+  //   nombre,
+  //   apellidos,
+  //   mail,
+  //   direccion,
+  //   nickname,
+  //   dni,
+  //   telefono,
+  //   foto,
+  //   codigo_postal,
+  // }
+
   return (
     <KeyboardAvoidingWrapper>
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageTitle>Register Extended</PageTitle>
+          <PageTitle>MINT</PageTitle>
           <SubTitle>Account Signup</SubTitle>
-          {show && (
+          {/* {show && (
             <DateTimePicker
               testID="dateTimePicker"
               value={date}
@@ -133,23 +156,33 @@ const Signup = ({ navigation }) => {
                 backgroundColor: "yellow",
               }}
             />
-          )}
+          )} */}
 
           <Formik
             initialValues={{
-              name: "",
-              email: "",
-              dateOfBirth: "",
+              nombre: "",
+              apellidos: "",
+              mail: "",
+              nickname: "",
+              direccion: "",
+              dni: "",
+              telefono: "",
+              codigo_postal: "",
               password: "",
               confirmPassword: "",
             }}
             onSubmit={(values, { setSubmitting }) => {
-              values = { ...values, dateOfBirth: dob };
+              values = { ...values, foto: "" };
               if (
-                values.email == "" ||
-                values.password == "" ||  
-                values.name == "" ||
-                values.dateOfBirth == "" ||
+                values.nombre == "" ||
+                values.apellidos == "" ||
+                values.mail == "" ||
+                values.nickname == "" ||
+                values.direccion == "" ||
+                values.dni == "" ||
+                values.telefono == "" ||
+                values.codigo_postal == "" ||
+                values.password == "" ||
                 values.confirmPassword == ""
               ) {
                 handleMessage("Please fill in all fields");
@@ -171,35 +204,77 @@ const Signup = ({ navigation }) => {
             }) => (
               <StyledFormArea>
                 <MyTextInput
-                  label="Full Name"
-                  placeholder="Richard Barnes"
+                  label="Name"
+                  placeholder="Richard"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange("name")}
-                  onBlur={handleBlur("name")}
-                  value={values.name}
+                  onChangeText={handleChange("nombre")}
+                  onBlur={handleBlur("nombre")}
+                  value={values.nombre}
                   icon="person"
                 />
                 <MyTextInput
+                  label="Last Name"
+                  placeholder="Barnes"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("apellidos")}
+                  onBlur={handleBlur("apellidos")}
+                  value={values.apellidos}
+                  icon="person"
+                />
+                 <MyTextInput
                   label="Email Address"
                   placeholder="andyj@gmail.com"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange("email")}
-                  onBlur={handleBlur("email")}
-                  value={values.email}
+                  onChangeText={handleChange("mail")}
+                  onBlur={handleBlur("mail")}
+                  value={values.mail}
                   keyboardType="email-address"
                   icon="mail"
                 />
                 <MyTextInput
-                  label="Date of Birth"
-                  placeholder="YYYY - MM - DD"
+                  label="Nickname"
+                  placeholder="Rick"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange("dateOfBirth")}
-                  onBlur={handleBlur("dateOfBirth")}
-                  value={dob ? dob.toDateString() : ""}
-                  icon="calendar"
-                  editable={false}
-                  isDate={true}
-                  showDatePicker={showDatePicker}
+                  onChangeText={handleChange("nickname")}
+                  onBlur={handleBlur("nickname")}
+                  value={values.nickname}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Adress"
+                  placeholder="Adress 5000"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("direccion")}
+                  onBlur={handleBlur("direccion")}
+                  value={values.direccion}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Dni"
+                  placeholder="12.345.678"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("dni")}
+                  onBlur={handleBlur("dni")}
+                  value={values.dni}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Phone"
+                  placeholder="012345678910"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("telefono")}
+                  onBlur={handleBlur("telefono")}
+                  value={values.telefono}
+                  icon="person"
+                />
+                <MyTextInput
+                  label="Postal Code"
+                  placeholder="Rick"
+                  placeholderTextColor={darkLight}
+                  onChangeText={handleChange("codigo_postal")}
+                  onBlur={handleBlur("codigo_postal")}
+                  value={values.codigo_postal}
+                  icon="mail"
                 />
                 <MyTextInput
                   label="Password"

@@ -13,6 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import RegisterExntended from "../screens/RegisterExntended";
+import ExtendedCredentialsContext  from "../loginComponents/ExtendedCredentialsContext";
 
 // components
 import LandingPage from "../components/LandingPage/index";
@@ -41,8 +42,8 @@ function RootStack() {
               />
             ) : (
               <Stack.Screen
-                name="Drawer"
-                component={DrawerBar}
+                name="ExtendedCredentialsContext"
+                component={ExtendedCredentialsContext}
                 options={{ headerShown: false }}
               />
            /*    <Stack.Screen
