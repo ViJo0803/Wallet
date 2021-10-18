@@ -36,7 +36,7 @@ export function getUser(mail) {
 }
 
 export function updateUser(data) {
-  console.log("in actions update user", data);
+  //console.log("in actions update user", data);
   return async (dispatch) => {
     await axios
       .put(`${URL_API_3001}/user/update/`, data)

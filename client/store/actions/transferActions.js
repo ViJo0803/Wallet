@@ -8,7 +8,7 @@ import { GET_TRANSFERS,MAKE_TRANSFER } from "./types";
 
 export function getTransfers(id) {
 
-  console.log("in actions transfers", id)
+  //console.log("in actions transfers", id)
   return async dispatch => {
     await axios
       .get(`${URL_API_3001}/transfers/get?id=${id}`)

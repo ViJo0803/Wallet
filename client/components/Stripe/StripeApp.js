@@ -9,10 +9,14 @@ import { ScrollView, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
 import { getUser } from "../../store/actions/userActions";
+import { deposit } from "../../store/actions/accountActions";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 //-----------------deposit-----------------
 import { URL_STRIPE_3000} from "../../constantes"
+import { URL_API_3001 } from "../../constantes";
+import axios from "axios";
 
+//let montoCargado = ''
 
 //ADD localhost address of your server
 
@@ -22,6 +26,14 @@ const StripeApp = (props) => {
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
   const { email1 } = storedCredentials;
+
+
+  /* const useEffectDispatch = async (id, paymentAmount) => {
+    useEffect(() => {
+      dispatch(deposit(id, paymentAmount));
+    }, []);
+  } */
+
 
   useEffect(() => {
     dispatch(getUser(email1));
@@ -33,13 +45,14 @@ const StripeApp = (props) => {
   useEffect(() => {
     dispatch(getAccount(user.idusuario));
   }, []);
-  const cuentas = useSelector((state1) => state1.accounts);
-  console.log("userrrrrrrrrrrrr" + user.idusuario);
-  console.log("cuenta" + balance[1].idcuentas);
+  //const cuentas = useSelector((state1) => state1.accounts);
+  //console.log("user " + user.idusuario);
+  //console.log("cuenta " + balance[0].idcuentas);
   //----------------------deposit--------------------
 
   const [email, setEmail] = useState();
   const [cardDetails, setCardDetails] = useState();
+  const [paymentAmount, setPaymentAmount] = useState();
   const { confirmPayment, loading } = useConfirmPayment();
 
   const fetchPaymentIntentClientSecret = async () => {
@@ -54,12 +67,15 @@ const StripeApp = (props) => {
     return { clientSecret, error };
   };
 
+  
   const handlePayPress = async () => {
+    console.log(paymentAmount)
     //1.Gather the customer's billing information (e.g., email)
     if (!cardDetails?.complete || !email) {
       Alert.alert("Please enter Complete card details and Email");
       return;
     }
+
     const billingDetails = {
       email: email,
     };
@@ -78,7 +94,14 @@ const StripeApp = (props) => {
           alert(`Payment Confirmation Error ${error.message}`);
         } else if (paymentIntent) {
           alert("Payment Successful");
-          console.log("Payment successful ", paymentIntent);
+          const id = balance[0].idcuentas
+          // hay que conseguir el idcuenta a partir del idusuario
+          // useEffectDispatch(id, paymentAmount)
+          dispatch(deposit(id, paymentAmount))
+          //"http://4c54-181-31-250-253.ngrok.io"  3001
+
+          // hacer el put a salario aca
+
         }
       }
     } catch (e) {
@@ -93,7 +116,7 @@ const StripeApp = (props) => {
         autoCapitalize="none"
         placeholder="Monto a Cargar"
         keyboardType="email-address"
-        // onChange={(value) => setEmail(value.nativeEvent.text)}
+        onChange={(value) => setPaymentAmount(value.nativeEvent.text)}
         style={styles.input}
       ></TextInput>
       <TextInput
