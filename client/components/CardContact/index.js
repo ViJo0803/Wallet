@@ -5,23 +5,32 @@ import {getContacts } from "../../store/actions/contactsActions";
 
 
 function CardContact(alias) {
-    const dispatch = useDispatch();
+  console.log("props de cardcontact; " + alias)
+  const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contacts.contacts);
+  console.log('state contacts: ' + contacts[0].alias)
 
   useEffect(() => {
     dispatch(getContacts(alias));
-  }, []);
+    console.log("este es la prop de getcontacts: " + alias)
+  }, [alias, dispatch]);
     
     return (
         <View >
-            <Text >Contact Details</Text>
-            <Text >Alias:{contacts.alias} </Text>
-            <Text >Name:{contacts.name} </Text>
-            <Text >Lastname:{contacts.lastname} </Text>
-            <Text >Tipo:{contacts.tipo} </Text>
+            {contacts?.map((el)=> (
+               <View>
+               <Text >Contact Details</Text>
+               <Text >Alias:{el.alias} </Text>
+               <Text >Name:{el.name} </Text>
+               <Text >Lastname:{el.lastname} </Text>
+               <Text >Tipo:{el.tipo} </Text>
+               </View>
+            ))}
+            
             
             
         </View>
+        
     )
 
 }
