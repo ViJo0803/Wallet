@@ -13,7 +13,7 @@ import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 //-----------------deposit-----------------
 
 //ADD localhost address of your server
-const API_URL = "http://ee14-2800-200-f190-8e7-74a1-1d05-3014-8f6d.ngrok.io";
+const API_URL = "http://da4c-2800-200-f190-8e7-3d26-f78b-9071-51c0.ngrok.io";
 
 const StripeApp = (props) => {
   //--------------deposit---------------------
@@ -23,7 +23,7 @@ const StripeApp = (props) => {
   const { email1 } = storedCredentials;
 
   useEffect(() => {
-    dispatch(getUser(email1));
+    dispatch(getUser(email));
   }, []);
 
   const { user } = useSelector((state) => state.user);
@@ -34,7 +34,7 @@ const StripeApp = (props) => {
   }, []);
   const cuentas = useSelector((state1) => state1.accounts);
   console.log("userrrrrrrrrrrrr" + user.idusuario);
-  console.log("cuenta" + balance[1].idcuentas);
+  // console.log("cuenta" + balance[1].idcuentas);
   //----------------------deposit--------------------
 
   const [email, setEmail] = useState();
