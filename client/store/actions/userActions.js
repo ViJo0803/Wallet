@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { url } from "./const";
+import { url } from "./const";  
 
 import { CREATE_USER, GET_USER, GET_JWT, UPDATE_USER } from "./types";
 

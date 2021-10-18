@@ -11,9 +11,6 @@ const {
     favorite_account_id
 }= req.body
 
-
-
-
 const usuarioIdusuario=idusuario;
 
 

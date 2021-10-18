@@ -22,14 +22,15 @@ function Home({ route }) {
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
   const { email, name, photoUrl } = storedCredentials
-
+  console.log("email",email)
 
   useEffect(() => {
     dispatch(getUser(email));
+    
   }, []);
   
-  const balance = useSelector((state) => state.account.accounts);
   const user = useSelector((state) => state.user.user);
+  const balance = useSelector((state) => state.account.accounts);
   
   useEffect(() => {
     if (user) {

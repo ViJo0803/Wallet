@@ -26,20 +26,17 @@ import {
 import { View, ActivityIndicator } from "react-native";
 const { darkLight, brand, primary } = Colors;
 import { Octicons, Fontisto, Ionicons } from "@expo/vector-icons";
-import KeyboardAvoidingWrapper from '../loginComponents/KeyboardAvoidingWrapper';
+import KeyboardAvoidingWrapper from "../loginComponents/KeyboardAvoidingWrapper";
 import axios from "axios";
 import * as Google from "expo-google-app-auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { CredentialsContext } from '../loginComponents/CredentialsContext';
-import { getUser } from "../store/actions/userActions";
-
+import { CredentialsContext } from "../loginComponents/CredentialsContext";
 
 const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
   const [googleSubmitting, setGoogleSubmitting] = useState(false);
-  
 
   // credentials context
   const { storedCredentials, setStoredCredentials } =
@@ -47,6 +44,7 @@ const Login = ({ navigation }) => {
 
   const handleLogin = (credentials, setSubmitting) => {
     handleMessage(null);
+    // const url = "http://192.168.0.65:3001/user/get/?mail=${mail}";
     const url = "https://whispering-headland-00232.herokuapp.com/user/signin";
     axios
       .post(url, credentials)
@@ -60,7 +58,6 @@ const Login = ({ navigation }) => {
           persistLogin({ ...data[0] }, message, status);
         }
         setSubmitting(false);
-        navigation.navigate('Drawer')
       })
       .catch((error) => {
         setSubmitting(false);
@@ -74,12 +71,11 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  const userTrue = (email) =>{
-    getUser(email)
+  const userTrue = (email) => {
+    getUser(email);
     const _user = useSelector((state) => state.user.user);
-    return _user
-      }
-
+    return _user;
+  };
 
   const handleGoogleSignin = () => {
     setGoogleSubmitting(true);
@@ -88,39 +84,42 @@ const Login = ({ navigation }) => {
       androidClientId: `869980078790-d1s7hh4j3i9t7a6gho3n0ehstg8n4tvj.apps.googleusercontent.com`,
       scopes: ["profile", "email"],
     };
-   
-    Google.logInAsync(config)
-      .then((result) => {
-        const { type, user } = result;
+
+    Google.logInAsync(config).then((result) => {
+      const { type, user } = result;
+      if (type == "success") {
         const { email, name, photoUrl } = user;
-
-        // let _user = userTrue(email);     
-     
-        if (type == "success" ) {
-          const { email, name, photoUrl } = user;
-         
-          persistLogin(
-            { email, name, photoUrl },
-            "Google signin successful",
-            "SUCCESS"
-          );
-         
-
-        } else {
-          handleMessage("Google Signin was cancelled");
-        }
-        setGoogleSubmitting(false);
-      })
-      .catch((error) => {
-        handleMessage("An error occurred. Check your network and try again");
-        console.log(error);
-        setGoogleSubmitting(false);
-      });
+        const url =
+          "https://whispering-headland-00232.herokuapp.com/user/signin";
+        axios
+          .post(url, credentials)
+          .then((response) => {
+            const result = response.data;
+            const { status, message, data } = result;
+            if (status !== "SUCCESS") {
+              handleMessage("Google Signin was cancelled");
+            } else {
+              persistLogin(
+                { email, name, photoUrl },
+                "Google signin successful",
+                "SUCCESS"
+              );
+            }
+            setGoogleSubmitting(false);
+          })
+          .catch((error) => {
+            handleMessage(
+              "An error occurred. Check your network and try again"
+            );
+            console.log(error);
+            setGoogleSubmitting(false);
+          });
+      }
+    });
   };
 
   // Persisting login
   const persistLogin = (credentials, message, status) => {
-
     AsyncStorage.setItem("flowerCribCredentials", JSON.stringify(credentials))
       .then(() => {
         handleMessage(message, status);
