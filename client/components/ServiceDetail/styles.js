@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   },
   userImage: {
     width: "15%",
-    height: "100%",
+    height: "15%",
     padding:1,
   },
   messageBox: {

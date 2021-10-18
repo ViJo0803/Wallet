@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  Image,
 } from "react-native";
 import { services } from "./servicesList";
 import { Icon, ListItem } from "react-native-elements";
@@ -19,15 +20,16 @@ function ServicesIndex({ navigation }) {
   let services = allServices();
 
   const handleChange = (e) => {
-    setInput(e.toLowerCase());
+    setInput(e);
   };
 
   if (input.length > 0) {
     const search = services.filter((i) => {
-      return i.name.match(input);
+      return i.name.match(input.toLowerCase());
     });
 
     services = search;
+    console.log("services", services);
   }
 
   return (
@@ -38,17 +40,21 @@ function ServicesIndex({ navigation }) {
         onChangeText={handleChange}
         value={input}
       />
+
       <ScrollView>
         {services.map((op, i) => (
-          <ListItem key={i}>
-            <View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate("ServiceDetail", { op })}
-              >
-                <Text> {op.name}</Text>
-              </TouchableOpacity>
+          <TouchableOpacity
+            key={i}
+            style={styles.userCard}
+            onPress={() => navigation.navigate("ServiceDetail", { op })}
+            >
+
+            <Image source={op.image} style={styles.userImage} />
+            
+            <View style={styles.userCardRight}>
+              <Text  style={{ fontWeight: "500" }}> {op.name}</Text>
             </View>
-          </ListItem>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
