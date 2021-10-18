@@ -4,54 +4,54 @@ require("dotenv").config();
 
 async function addContact(req, res, next){
 
-const {
-    idusuario,
-    alias,
-    tipo,
-    favorite_account_id
-}= req.body
+    try{
+        const {
+            idusuario,
+            alias,
+            tipo,
+            favorite_account_id
+        }= req.body
+
+        console.log("user id",idusuario)
+        console.log("cuenta id",favorite_account_id)
 
 
+        const account= await Cuentas.findOne({
+            where:{
+                idcuentas: favorite_account_id
+            }
+        })
 
+       
 
-const usuarioIdusuario=idusuario;
+        const user= await Usuario.findOne ({
+            where: {
+                idusuario: account.usuarioIdusuario,
+            }
+        })
 
+        console.log("cuenta", account)
 
-const account= await Cuentas.findOne({
-    where: {
-        idcuentas: favorite_account_id,
-    },
-  });
+        const fav = await Favoritos.create({
+            
+            alias,
+            tipo,
+            name: user.nombre,
+            lastname: user.apellidos,
+            favorite_account_id,
+            usuarioIdusuario:idusuario,
 
-const user= await Usuario.findOne({
-    where:{
-        idusuario: account.usuarioIdusuario
+        })
+        res.send(fav)
+ 
+    }catch (error) {
+        next(error);
+      }
+        
     }
-})
-
-const fav = await Favoritos.create({
-
-    alias,
-    tipo,
-    name: user.nombre,
-    lastname: user.apellidos,
-    favorite_account_id,
-    usuarioIdusuario,
-
-
-})
-
-
-res.send(fav)
-
-
-
-
-
-}
-
-
-
+    
+    
+    
 async function getContacts(req, res, next){
 
     id=req.query.id

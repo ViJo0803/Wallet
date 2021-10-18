@@ -25,13 +25,17 @@ function Home({ route }) {
 
 
   useEffect(() => {
+    console.log(1)
     dispatch(getUser(email));
   }, []);
   
   const balance = useSelector((state) => state.account.accounts);
+  console.log(2)
   const user = useSelector((state) => state.user.user);
+  console.log(3)
   
   useEffect(() => {
+    console.log(4)
     if (user) {
       dispatch(getAccount(user.idusuario));
     } else {
@@ -52,8 +56,9 @@ function Home({ route }) {
     }
     if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
   }, [dispatch, user]);
-
+  console.log(5)
   const transfers = useSelector((state) => state.transfer.history);
+  console.log(6)
 
   return (
     <View style={styles.container}>

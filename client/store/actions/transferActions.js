@@ -24,7 +24,7 @@ export function makeTransfer(data) {
     await axios
       .get(`${url}/transfers/get?id=${data.origen}`)
       .then((response) => {
-        dispatch({ type: GET_TRANSFERS, payload: response.data });
+        dispatch({ type: MAKE_TRANSFER, payload: response.data });
       })
       .catch((error) => console.log(error));
   };

@@ -21,6 +21,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull:  true,
     },
+    password:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     direccion: {
       type: DataTypes.STRING,
       allowNull:  true,
@@ -41,7 +45,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull:false,
     },
-        codigo_postal: {
+      codigo_postal: {
       type: DataTypes.STRING,
       allowNull:false,
     },

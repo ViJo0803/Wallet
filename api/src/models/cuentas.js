@@ -4,16 +4,11 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   sequelize.define("cuentas", {
     idcuentas: {
-      type: DataTypes.UUID, //Unique ID 
-      defaultValue: DataTypes.UUIDV4, // Genera el id
+      type: DataTypes.BIGINT, //Unique ID
       allowNull: false,
       primaryKey: true
     },
     tipomoneda: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    numerocuenta: {
       type: DataTypes.STRING,
       allowNull: false,
     },

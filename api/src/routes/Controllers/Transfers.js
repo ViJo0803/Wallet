@@ -4,7 +4,7 @@ require("dotenv").config();
 async function CreateTransfers(req, res, next) {
   const { origen, monto, fecha, destino } = req.body;
 
-  console.log(req.body)
+ if(!origen || !monto || !fecha || !destino){res.status(411).send("Must fill all params")};
 
   try {
     let Account_origen = await Cuentas.findOne({
@@ -12,15 +12,18 @@ async function CreateTransfers(req, res, next) {
         idcuentas: origen,
       },
     });
+    if(Account_origen){ res.status(404).send(" Origin Account not found or wrong param")}
 
-    console.log("cuenta de origne",Account_origen)
+    
     let Account_destino = await Cuentas.findOne({
       where: {
         idcuentas: destino,
       },
     });
-    console.log("cuenta de destino",Account_destino)
-    console.log("saldo de origen",Account_origen.saldo)
+   
+    if(Account_destino){ res.status(404).send("Destiny Account not found or wrong param")}
+
+
     if (Account_origen.saldo >= monto && monto > 0) {
 
         Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto);
@@ -37,16 +40,13 @@ async function CreateTransfers(req, res, next) {
         origin: origen,
       });
 
-      
+      !transfer? res.status(500).send("Ups, something went wrong, try again later"):res.send(transfer);
 
-      
+    } else{
+      res.status(406).send("Insufficient funds")
+    }
 
-
-
-
-      return res.send(transfer);
-
-    } }catch (error) {
+  }catch (error) {
       next(error);
     }
     
@@ -54,35 +54,48 @@ async function CreateTransfers(req, res, next) {
 
 
   async function getTransfers(req, res, next) {
-    id = req.query.id;
-    let destino = [], origen = [];
 
-    destino = await Transferencias.findAll({
-      where: {
-        destino: id,
-      },
-    });
-  
-    origen = await Transferencias.findAll({
-      where: {
-        origin: id,
-      },
-    });
-  
-    let arr = destino.concat(origen);
-  
-    function compare(a, b) {
-      if (a.createdAt < b.createdAt) {
-        return -1;
+    try{
+
+      id = req.query.id;
+      if(!id){res.status(411).send("Missing id")}
+      
+      let destino = [], origen = [];
+      
+      destino = await Transferencias.findAll({
+        where: {
+          destino: id,
+        },
+      });
+     
+
+
+      origen = await Transferencias.findAll({
+        where: {
+          origin: id,
+        },
+      });
+      
+    
+
+
+      let arr = destino.concat(origen);
+      
+      function compare(a, b) {
+        if (a.createdAt < b.createdAt) {
+          return -1;
+        }
+        if (a.createdAt > b.createdAt) {
+          return 1;
+        }
+        return 0;
       }
-      if (a.createdAt > b.createdAt) {
-        return 1;
-      }
-      return 0;
+      arr.sort(compare);
+      
+      res.send(arr);
+    }catch (error) {
+      next(error);
     }
-    arr.sort(compare);
-  
-    res.send(arr);
-  }
-
+    }
+    
 module.exports = { CreateTransfers, getTransfers };

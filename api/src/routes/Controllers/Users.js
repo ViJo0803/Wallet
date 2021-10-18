@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { Usuario, Cuentas } = require("../../db");
 require("dotenv").config();
+const bcrypt = require("bcrypt");
 
 function generarNumeroCuenta() {
   const cifras = 15;
@@ -15,70 +16,95 @@ function generarNumeroCuenta() {
 }
 
 async function createUser(req, res, next) {
-
   const {
     nombre,
     apellidos,
     mail,
     direccion,
     nickname,
+    password,
     dni,
     telefono,
     foto,
     codigo_postal,
   } = req.body;
 
-  let usuarioCreado = await Usuario.create({
-    nombre,
-    apellidos,
-    mail,
-    direccion,
-    nickname,
-    dni,
-    telefono,
-    foto,
-    codigo_postal,
-  });
+  try {
+    let acc;
+    let cbuGenerado;
+    let usuarioCreado;
 
-  let user = await Usuario.findOne({
-    where: {
-      mail: mail,
-    },
-  });
+      usuarioCreado = await Usuario.create({
+        password: bcrypt.hashSync(password, 10),
+        nombre,
+        apellidos,
+        mail,
+        direccion,
+        nickname,
+        dni,
+        telefono,
+        foto,
+        codigo_postal,
+      });
 
-  let iduser = user.idusuario;
+      do {
+        cbuGenerado = generarNumeroCuenta();
+        acc = await Cuentas.findOne({
+          where: {
+            idcuentas: cbuGenerado,
+          },
+        });
+      } while (acc);
 
-  const cbuGenerado = generarNumeroCuenta();
-  let account = await Cuentas.create({
-    tipomoneda: "AR$",
-    numerocuenta: cbuGenerado,
-    saldo: 0,
-    alias: mail,
-    usuarioIdusuario: iduser,
-  });
+      let account = await Cuentas.create({
+        idcuentas: cbuGenerado,
+        tipomoneda: "AR$",
+        saldo: 0,
+        alias: mail,
+        usuarioIdusuario: usuarioCreado.idusuario,
+      });
 
-  usuarioCreado = await Usuario.findByPk(iduser);
-  res.send(usuarioCreado);
+      res.send(usuarioCreado);
+    
+  } catch (error) {
+    next(error);
+  }
 }
-
 
 async function getUser(req, res, next) {
   try {
     const mail = req.query.mail;
+    const password = req.query.password;
 
     let user = await Usuario.findOne({
       where: {
         mail: mail,
       },
     });
-    user ? res.send(user) : res.send(null);
+
+    const comparePassword = await bcrypt.compare(password, user.password);
+    if (!comparePassword) {
+      res.send(null).status(422);
+    }
+
+    let res = { status, message, data }
+    delete user.password;
+
+    if (user) {
+      res.status = "SUCCESS"
+      res.message= "Welcome"
+      res.data = [user]
+     console.log(user)
+      res.send(res);
+    } else {
+      res.send(null);
+    }
   } catch (error) {
     next(error);
   }
 }
 
 async function updateUser(req, res, next) {
-
   const {
     idusuario,
     nombre,
@@ -92,32 +118,57 @@ async function updateUser(req, res, next) {
     codigo_postal,
   } = req.body;
 
-  let user = await Usuario.findOne({
-    where: {
-      idusuario: idusuario,
-    },
-  });
+  if (
+    !idusuario ||
+    !nombre ||
+    !apellidos ||
+    !mail ||
+    !direccion ||
+    !nickname ||
+    !dni ||
+    !telefono ||
+    !foto ||
+    !codigo_postal
+  ) {
+    res.status(500).send("Missing params");
+  }
 
-  user.idusuario = idusuario;
-  user.nombre = nombre;
-  user.apellidos = apellidos;
-  user.mail = mail;
-  user.direccion = direccion;
-  user.nickname = nickname;
-  user.dni = dni;
-  user.telefono = telefono;
-  user.foto = foto;
-  user.codigo_postal = codigo_postal;
+  try {
+    let user = await Usuario.findOne({
+      where: {
+        idusuario: idusuario,
+      },
+    });
 
-  await user.save();
+    if (!user) {
+      res.status(404).send("No user with that id");
+    }
 
-  let user2 = await Usuario.findOne({
-    where: {
-      idusuario: idusuario,
-    },
-  });
+    user.idusuario = idusuario;
+    user.nombre = nombre;
+    user.apellidos = apellidos;
+    user.mail = mail;
+    user.direccion = direccion;
+    user.nickname = nickname;
+    user.dni = dni;
+    user.telefono = telefono;
+    user.foto = foto;
+    user.codigo_postal = codigo_postal;
 
-  res.send(user2);
+    await user.save();
+
+    let user2 = await Usuario.findOne({
+      where: {
+        idusuario: idusuario,
+      },
+    });
+    if (!user2) {
+      res.status(500).send("Ups, something went wrong");
+    }
+    res.send(user2);
+  } catch (error) {
+    next(error);
+  }
 }
 
-module.exports = { createUser, getUser, updateUser};
+module.exports = { createUser, getUser, updateUser };

@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 
 
-function UserProfile({navigation}) {
-  console.log(navigation);
+function UserProfile() {
+  
 
   const state = useSelector((state) => state.user.user);
 
