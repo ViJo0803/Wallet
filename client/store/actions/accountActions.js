@@ -1,6 +1,6 @@
 import axios from 'axios';
 //import { url } from './const';
-import { URL_API_3001 } from "../../../constantes"
+import { URL_API_3001 } from "../../constantes"
 
 import {GET_ACCOUNT, CREATE_ACCOUNT} from "./types"
 

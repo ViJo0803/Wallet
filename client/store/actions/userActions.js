@@ -1,7 +1,7 @@
 
 import axios from "axios";
 //import { url } from "./const";
-import { URL_API_3001 } from "../../../constantes"
+import { URL_API_3001 } from "../../constantes"
 
 import { CREATE_USER, GET_USER, GET_JWT, UPDATE_USER } from "./types";
 

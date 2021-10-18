@@ -11,11 +11,10 @@ import { getAccount } from "../../store/actions/accountActions";
 import { getUser } from "../../store/actions/userActions";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 //-----------------deposit-----------------
+import { URL_STRIPE_3000} from "../../constantes"
 
-import { URL_STRIPE_3000 } from "../../../constantes"
 
 //ADD localhost address of your server
-const URL_STRIPE_3000 = "http://ee14-2800-200-f190-8e7-74a1-1d05-3014-8f6d.ngrok.io";
 
 const StripeApp = (props) => {
   //--------------deposit---------------------
