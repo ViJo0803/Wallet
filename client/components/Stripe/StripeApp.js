@@ -101,12 +101,11 @@ const StripeApp = (props) => {
         } else if (paymentIntent) {
           alert("Payment Successful");
           const id = balance[0].idcuentas
+          const idUsuario = user.idusuario
           // hay que conseguir el idcuenta a partir del idusuario
           // useEffectDispatch(id, paymentAmount)
-          dispatch(deposit(id, paymentAmount))
-          //"http://4c54-181-31-250-253.ngrok.io"  3001
-
-          // hacer el put a salario aca
+          dispatch(deposit(id, paymentAmount, idUsuario))
+          //dispatch(getAccount(id))
 
         }
       }

@@ -24,7 +24,7 @@ function Home({ route }) {
   useEffect(() => {
     console.log("in use efect get user")
     dispatch(getUser(email));
-  }, []);
+  },[dispatch]);
 
 
   const balance = useSelector((state) => state.account.accounts)

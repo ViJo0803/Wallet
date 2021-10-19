@@ -50,7 +50,6 @@ function Accounts() {
                 )}
                 <Text style={styles.textdate}>{op?.fecha}</Text>
               </View>
-              onPress={() => {navigation.navigate("CardContact", {alias: "el.alias"})}}
             </TouchableOpacity>
           ))}
         </View>
@@ -59,6 +58,6 @@ function Accounts() {
       </View>
     )
 
-
+                }
 
 export default Accounts;

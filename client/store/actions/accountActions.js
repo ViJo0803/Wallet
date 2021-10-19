@@ -26,11 +26,12 @@ export function createAccount(userData) {
   };
 }
 */
-export function deposit(id, monto){
+export function deposit(id, monto, idusuario){
 return async(dispatch)=>{
   await axios
   .put(`${URL_API_3001}/account/update/?id=${id}&monto=${monto}`)
   .then((response)=>{
+    dispatch(getAccount(idusuario))
     dispatch({type:DEPOSIT, payload: response.data})
   })
 }
