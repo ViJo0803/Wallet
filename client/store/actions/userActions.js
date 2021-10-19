@@ -1,8 +1,9 @@
 
 import axios from "axios";
 import { url } from "./const";
-
+import {getAccount} from "./accountActions"
 import { CREATE_USER, GET_USER, GET_JWT, UPDATE_USER } from "./types";
+import { useSelector, useDispatch } from "react-redux";
 
 export function createUser(userData) {
   return async (dispatch) => {
@@ -24,10 +25,13 @@ export function getToken(token) {
 }
 
 export function getUser(mail) {
+
   return async (dispatch) => {
     await axios
       .get(`${url}/user/get/?mail=${mail}`)
       .then((response) => {
+        console.log(response.data)
+       dispatch(getAccount(response.data.idusuario))
        dispatch({ type: GET_USER, payload: response.data });
       })
       .catch((error) => console.log(error));
