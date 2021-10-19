@@ -33,7 +33,13 @@ function Accounts() {
     return (
 
         <View style={styles.container}>
+        <View>
 
+        <Text>{balance[0].idcuentas}</Text>
+
+        <Text>{balance[0].alias}</Text>
+
+        </View>
       
 
       <ScrollView style={styles.scrollTransfer}>
@@ -49,12 +55,10 @@ function Accounts() {
                 )}
                 <Text style={styles.textdate}>{op?.fecha}</Text>
               </View>
-              onPress={() => {navigation.navigate("CardContact", {alias: "el.alias"})}}
             </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
-
       </View>
     )
 

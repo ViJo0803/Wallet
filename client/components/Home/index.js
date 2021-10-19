@@ -14,7 +14,7 @@ import { getUser } from "../../store/actions/userActions";
 //
 import { CredentialsContext } from '../../loginComponents/CredentialsContext';
 
-function Home({ route }) {
+function Home() {
 
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
