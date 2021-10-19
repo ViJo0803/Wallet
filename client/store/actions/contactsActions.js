@@ -4,7 +4,7 @@ import axios from "axios";
 export function getContacts(userId) {
   return async (dispatch) => {
     await axios
-      .get(`${url}/contact/get/?id=${userId}`)
+      .get(`/contact/get/?id=${userId}`)
       .then((response) => {
         dispatch({ type: GET_CONTACT, payload: response.data });
       })
@@ -15,7 +15,7 @@ export function getContacts(userId) {
 export function updateContacts(data) {
   return async (dispatch) => {
     await axios
-      .put(`${url}/contact/update/`, date)
+      .put(`/contact/update/`, date)
       .then((response) => {
         dispatch({ type: UPDATE_CONTACT, payload: response.data });
       })

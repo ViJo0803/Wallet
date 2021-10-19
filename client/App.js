@@ -10,7 +10,11 @@ import AppLoading from "expo-app-loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 // credentials context
 import { CredentialsContext } from "../client/loginComponents/CredentialsContext";
+//----------dep
+import axios from "axios";
 
+axios.defaults.baseURL = "http://a777-179-6-101-89.ngrok.io";
+//---------------dep
 const Stack = createStackNavigator();
 
 export default function App() {

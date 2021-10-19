@@ -7,7 +7,7 @@ import { GET_ACCOUNT, CREATE_ACCOUNT, DEPOSIT } from "./types";
 export function getAccount(id) {
   return async (dispatch) => {
     await axios
-      .get(`${URL_API_3001}/account/get/?id=${id}`)
+      .get(`/account/get/?id=${id}`)
       .then((response) => {
         dispatch({ type: GET_ACCOUNT, payload: response.data });
       })
@@ -26,20 +26,19 @@ export function createAccount(userData) {
   };
 }
 */
-export function deposit(id, monto, idusuario){
-return async(dispatch)=>{
-  await axios
-  .put(`${URL_API_3001}/account/update/?id=${id}&monto=${monto}`)
-  .then((response)=>{
-    dispatch(getAccount(idusuario))
-    dispatch({type:DEPOSIT, payload: response.data})
-  })
-}
+export function deposit(id, monto, idusuario) {
+  return async (dispatch) => {
+    await axios
+      .put(`/account/update/?id=${id}&monto=${monto}`)
+      .then((response) => {
+        dispatch(getAccount(idusuario));
+        dispatch({ type: DEPOSIT, payload: response.data });
+      });
+  };
 }
 
 export function updateAccount(userData) {
   return async (dispatch) => {
-    await axios
-    .put
-  }
+    await axios.put;
+  };
 }
