@@ -8,40 +8,36 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-
 const Drawer = createDrawerNavigator();
 
 function getHeaderTitle(route) {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
 
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-
-    switch (routeName) {
-        case 'Coins':
-            return 'Coins';
-        case 'Transfers':
-            return 'Transfers';
-        case 'Services':
-            return 'Services';
-        case 'Deposit':
-            return 'Deposit';
-        default: return 'Home'
-    }
+  switch (routeName) {
+    case "Coins":
+      return "Coins";
+    case "Transfers":
+      return "Transfers";
+    case "Services":
+      return "Services";
+    case "Deposit":
+      return "Deposit";
+    default:
+      return "Home";
+  }
 }
 
-
 function DrawerBar() {
+  const { storedCredentials, setStoredCredentials } =
+    useContext(CredentialsContext);
 
-    const { storedCredentials, setStoredCredentials } =
-        useContext(CredentialsContext);
-
-    const clearLogin = () => {
-        AsyncStorage.removeItem("flowerCribCredentials")
-            .then(() => {
-                setStoredCredentials("");
-            })
-            .catch((error) => console.log(error));
-    };
+  const clearLogin = () => {
+    AsyncStorage.removeItem("flowerCribCredentials")
+      .then(() => {
+        setStoredCredentials("");
+      })
+      .catch((error) => console.log(error));
+  };
 
     return (
         <Drawer.Navigator
@@ -70,4 +66,4 @@ function DrawerBar() {
     )
 }
 
-export default DrawerBar
+export default DrawerBar;

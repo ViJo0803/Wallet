@@ -2,7 +2,6 @@
 export const url = "3001"
 
 
-
 // En windows abrir cmd
 // escribir comando:
 
@@ -14,3 +13,4 @@ export const url = "3001"
 //                                             !!!.!!!.!.!!
 //Copiar esa IP en, export const url = 'http://192.168.0.65:3001'
 //
+
