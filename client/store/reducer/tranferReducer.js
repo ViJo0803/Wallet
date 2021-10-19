@@ -9,7 +9,6 @@ const transfersReducer = (state = initalState, { type, payload }) => {
     case GET_TRANSFERS:
       return { ...state, history: payload };
 
-
       case MAKE_TRANSFER:
         return {...state,history:payload }
 

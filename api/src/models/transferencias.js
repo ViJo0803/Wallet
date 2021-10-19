@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    fecha: {
+    alias: {
       type: DataTypes.STRING,
       allowNull: false,
     },
