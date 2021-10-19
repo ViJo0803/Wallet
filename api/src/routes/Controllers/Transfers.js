@@ -2,7 +2,7 @@ const { Transferencias, Cuentas } = require("../../db");
 require("dotenv").config();
 
 async function CreateTransfers(req, res, next) {
-  const { origen, monto, alias, destino } = req.body;
+  const { origen, monto, alias, destino, fecha } = req.body;
 
 
   try {
@@ -30,11 +30,10 @@ async function CreateTransfers(req, res, next) {
         destino,
         fecha,
         origin: Account_origen.idcuentas,
+        alias
       });
 
-           
-
-      return res.send(transfer);
+    return res.send(transfer);
 
     }else res.send(null).status(204)
    }catch (error) {
@@ -42,7 +41,6 @@ async function CreateTransfers(req, res, next) {
     }
     
   }
-
 
   async function getTransfers(req, res, next) {
     id = req.query.id;
@@ -53,26 +51,13 @@ async function CreateTransfers(req, res, next) {
         destino: id,
       },
     });
-
-    
-      
-
-
- 
-    console.log("este es el destino ", destino)
-
-  
-    origen = await Transferencias.findAll({
+   
+     origen = await Transferencias.findAll({
       where: {
         origin: id,
       },
     });
 
-
-   
-      
-    
-    console.log("este es el origen ", origen)
   
     let arr = destino.concat(origen);
   
