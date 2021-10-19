@@ -1,37 +1,76 @@
-import React, { useEffect} from 'react'
-import { View,Text} from 'react-native';
+import React, { useEffect } from 'react'
+import { View, Text, TextInput, Button } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
-import {getContacts } from "../../store/actions/contactsActions";
+import { useForm, Controller } from "react-hook-form";
+import { getContacts } from "../../store/actions/contactsActions";
+import { makeTransfer } from "../../store/actions/contactsActions";
 
+function CardContact(userId) {
 
-function CardContact(alias) {
-  console.log("props de cardcontact; " + alias)
   const dispatch = useDispatch();
+  const users = useSelector((state) => state.user.user)
   const contacts = useSelector((state) => state.contacts.contacts);
-  console.log('state contacts: ' + contacts[0].alias)
+  const transfer = useSelector((state) => state.history);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+
+  } = useForm();
 
   useEffect(() => {
-    dispatch(getContacts(alias));
-    console.log("este es la prop de getcontacts: " + alias)
-  }, [alias, dispatch]);
+    dispatch(getContacts(userId));
+
+  }, []);
+  
+  const dataTransfer = (data) => {
+    const dataFiltered = {
+      monto: data.value,
+      destino: contacts.alias,
+      origen: users.userId
+    }
+    post(dataFiltered)
+  }
+  function post(data){
+       
+    dispatch(makeTransfer(data))
+   
+  }
+
     
-    return (
-        <View >
-            {contacts?.map((el)=> (
-               <View>
-               <Text >Contact Details</Text>
-               <Text >Alias:{el.alias} </Text>
-               <Text >Name:{el.name} </Text>
-               <Text >Lastname:{el.lastname} </Text>
-               <Text >Tipo:{el.tipo} </Text>
-               </View>
-            ))}
+  return (
+    <View >
+      <Text >Contact Details</Text>
+      <Text >Alias:{contacts.alias} </Text>
+      <Text >Name:{contacts.name} </Text>
+      <Text >Lastname:{contacts.lastname} </Text>
+      <Text >Tipo:{contacts.tipo} </Text>
+      <Text>Monto:</Text>
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput
             
-            
-            
-        </View>
-        
-    )
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="monto"
+
+      />
+
+      {errors.monto && <Text>This is required.</Text>}
+
+      <View>
+        <Button title="Make a trasnfer" onPress={handleSubmit(dataTransfer)} />
+      </View>
+
+    </View>
+
+  )
 
 }
 

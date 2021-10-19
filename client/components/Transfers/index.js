@@ -31,7 +31,7 @@ function Transfers({ navigation }) {
           {contacts?.map((el, i) => (
             <TouchableOpacity
               key={el.alias}
-              onPress={() => {navigation.navigate("CardContact", {sortBy: 'el.alias'} )}}
+              onPress={() => {navigation.navigate("Card Contact")}}
               >
               
               <View>
@@ -46,9 +46,9 @@ function Transfers({ navigation }) {
       <View>
         
         <Button
-          title="Add"
+          title="Add Contact"
           
-          onPress={() => navigation.navigate("AddContact")}
+          onPress={() => navigation.navigate("Add Contact")}
         />
       </View>
 
