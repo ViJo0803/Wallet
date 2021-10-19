@@ -46,7 +46,7 @@ export default function Register ({navigation}) {
        
         console.log("in handle submit",data)
         dispatch(updateUser(data))
-        navigation.navigate("Drawer") 
+        navigation.navigate("Home") 
       }
 
     return (

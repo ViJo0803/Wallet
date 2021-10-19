@@ -1,14 +1,16 @@
 import axios from "axios";
-import { url } from "./const";
+//import { url } from "./const";
+
+import { URL_API_3001 } from "../../constantes"
+
 
 import { GET_TRANSFERS,MAKE_TRANSFER } from "./types";
 
 export function getTransfers(id) {
 
-  console.log("in actions transfers", id)
   return async dispatch => {
     await axios
-      .get(`${url}/transfers/get?id=${id}`)
+      .get(`${URL_API_3001}/transfers/get?id=${id}`)
       .then(response => {
         dispatch({ type: GET_TRANSFERS, payload: response.data });
       })
@@ -20,9 +22,9 @@ export function getTransfers(id) {
 export function makeTransfer(data) {
   return async (dispatch) => {
     await axios
-      .post(`${url}/transfers/create?`,data);
+      .post(`${URL_API_3001}/transfers/create?`,data);
     await axios
-      .get(`${url}/transfers/get?id=${data.origen}`)
+      .get(`${URL_API_3001}/transfers/get?id=${data.origen}`)
       .then((response) => {
         dispatch({ type: GET_TRANSFERS, payload: response.data });
       })
