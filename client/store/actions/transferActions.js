@@ -39,6 +39,9 @@ export function servicePayment(data, idusuario) {
     await axios
       .post(`${URL_API_3001}/servicesPayment`, data)
       .then((response) => {
+        console.log("response.satus",response)
+        if (response.data !== "") alert("Payment Successful");
+        else if (response.data === "") alert("Something went Wrong");
         dispatch(getAccount(idusuario))
         })
       .catch((error) => console.log(error));
