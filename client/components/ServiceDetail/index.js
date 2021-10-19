@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Button,
@@ -11,32 +11,27 @@ import {
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { styles } from "./styles";
-import { makeTransfer } from "../../store/actions/transferActions";
+import { servicePayment } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
 
 
 function ServiceDetail({ route, navigation }) {
   const dispatch = useDispatch();
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [monto, setMonto] = useState();
 
-  // const origen = useSelector((state) => state.account.accounts[0].idcuentas);
+  const origen = useSelector((state) => state.account.accounts[0].numerocuenta);
+  const { user } = useSelector((state) => state.user);
+  const idUsuario = user.idusuario
 
-  // console.log("origen", origen)
-
-  const onSubmit = (data) => {
-    // const dataFiltered = {
-    //   destino: data.Destino,
-    //   origen: origen,
-    //   monto: parseInt(data.Monto),
-    //   fecha: "2021-10-13 14:58:21.706-03",
-    // };
-
-    console.log("data", data)
-    dispatch(makeTransfer(dataFiltered))
+  const onSubmit = () => {
+    const dataFiltered = {
+      destino: op.name,
+      origen: origen,
+      monto: monto,
+      fecha: "2021-10-13 14:58:21.706-03",
+    };
+    console.log(dataFiltered)
+    dispatch(servicePayment(dataFiltered,idUsuario))
   
   }
 
@@ -52,48 +47,17 @@ function ServiceDetail({ route, navigation }) {
     </View>
 
     <View style={styles.container}>
-    <Text>Destino:</Text>
 
-    <Controller
-      control={control}
-      rules={{
-        required: true,
-      }}
-      render={({ field: { onChange, onBlur, value } }) => (
-        <TextInput
-          // style={styles.input}
-          onBlur={onBlur}
-          onChangeText={onChange}
-          value={value}
-        />
-      )}
-      name="Destino"
-      defaultValue= {op.name}
-    />
-
-    {errors.Destino && <Text>This is required.</Text>}
-
+     
     <Text>Monto:</Text>
-    <Controller
-      control={control}
-      rules={{
-        required: true,
-        maxLength: 100,
-      }}
-      render={({ field: { onChange, onBlur, value } }) => (
-        <TextInput
-          // style={styles.input}
-          onBlur={onBlur}
-          onChangeText={onChange}
-          value={value}
-        />
-      )}
-      name="Monto"
-      defaultValue=""
-    />
-    {errors.Monto && <Text>This is required.</Text>}
-
-    <Button title="Pagar" onPress={handleSubmit(onSubmit)} />
+    <TextInput
+    // style={styles.input}
+    
+    placeholder="Monto"
+    onChange={(value) => setMonto(value.nativeEvent.text)}
+  />
+    
+    <Button title="Pagar" onPress={onSubmit} />
   </View>
   </View>
 

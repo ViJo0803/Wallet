@@ -5,7 +5,7 @@ async function ServPayment(req, res, next) {
   // nombre del servicio a pagar
   // monto a pagar
   // la cuenta de donde viene la plata
-
+  console.log("body serv", req.body)
   const { origen, destino, monto, fecha } = req.body;
 
   try {
@@ -20,8 +20,9 @@ async function ServPayment(req, res, next) {
         nombre: destino,
       },
     });
-
+    
     if (!servicio) {
+      
        servicio = await Servicios.create({
         monto: monto,
         fecha_vencimiento: fecha,
@@ -34,9 +35,12 @@ async function ServPayment(req, res, next) {
         },
       });
     }
+    /* console.log('servicio',servicio)
+    console.log('acc origen', typeof Account_origen.saldo)
+    console.log('monto', typeof monto) */
 
-
-    if (Account_origen.saldo >= monto && monto > 0) {
+    if (parseInt(Account_origen.saldo) >= parseInt(monto) && parseInt(monto) > 0) {
+     
       Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto);
       await Account_origen.save();
       
@@ -49,7 +53,7 @@ async function ServPayment(req, res, next) {
       });
 
       return res.send(pago);
-    }
+    }else res.send(null).status(204)
   } catch (error) {
     next(error);
   }
