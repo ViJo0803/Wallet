@@ -1,4 +1,7 @@
-export const url = "http://192.168.0.121:3001";
+
+export const url = "3001"
+
+
 
 // En windows abrir cmd
 // escribir comando:

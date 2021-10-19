@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useContext } from "react";
 
 import { styles } from './styles'
@@ -58,6 +59,6 @@ function Accounts() {
       </View>
     )
 
-}
 
-export default Accounts
+
+export default Accounts;

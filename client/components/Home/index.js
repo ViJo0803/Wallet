@@ -4,26 +4,28 @@ import {
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../store/actions/userActions";
 
-
 //
-import { CredentialsContext } from '../../loginComponents/CredentialsContext';
+import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 
 function Home({ route }) {
 
   const dispatch = useDispatch();
+
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
   const { email, name, photoUrl } = storedCredentials
+
 
   useEffect(() => {
     console.log("in use efect get user")
     dispatch(getUser(email));
   }, []);
+
 
   const balance = useSelector((state) => state.account.accounts)
  
@@ -32,6 +34,9 @@ function Home({ route }) {
   console.log(balance)
 
 /*
+
+  const balance = useSelector((state) => state.account.accounts);
+  const user = useSelector((state) => state.user.user);
   useEffect(() => {
     if (user) {
       dispatch(getAccount(user.idusuario));
@@ -45,10 +50,10 @@ function Home({ route }) {
         dni: "",
         telefono: "",
         foto: photoUrl,
-        codigo_postal: "", 
+        codigo_postal: "",
       };
 
-      dispatch(createUser(dataFiltered))
+      dispatch(createUser(dataFiltered));
       dispatch(getAccount(user.idusuario));
     }
     if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
@@ -57,25 +62,12 @@ function Home({ route }) {
 
 
 
-
- 
-
-  
-
- 
-
-  
-  
-
-
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
         <Text style={styles.titleCuenta}>ARS</Text>
         <Text style={styles.titleCuenta}>{balance[0]?.saldo}</Text>
       </View>
-
-
 
     </View>
   );
