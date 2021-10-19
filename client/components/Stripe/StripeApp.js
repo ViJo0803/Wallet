@@ -9,11 +9,16 @@ import { ScrollView, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
 import { getUser } from "../../store/actions/userActions";
+import { deposit } from "../../store/actions/accountActions";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 //-----------------deposit-----------------
+import { URL_STRIPE_3000} from "../../constantes"
+import { URL_API_3001 } from "../../constantes";
+import axios from "axios";
+
+//let montoCargado = ''
 
 //ADD localhost address of your server
-const API_URL = "http://da4c-2800-200-f190-8e7-3d26-f78b-9071-51c0.ngrok.io";
 
 const StripeApp = (props) => {
   //--------------deposit---------------------
@@ -22,9 +27,17 @@ const StripeApp = (props) => {
     useContext(CredentialsContext);
   const { email1 } = storedCredentials;
 
-  useEffect(() => {
+
+  /* const useEffectDispatch = async (id, paymentAmount) => {
+    useEffect(() => {
+      dispatch(deposit(id, paymentAmount));
+    }, []);
+  } */
+
+
+  /* useEffect(() => {
     dispatch(getUser(email));
-  }, []);
+  }, []); */
 
   const { user } = useSelector((state) => state.user);
   const balance = useSelector((state) => state.account.accounts);
@@ -32,17 +45,24 @@ const StripeApp = (props) => {
   useEffect(() => {
     dispatch(getAccount(user.idusuario));
   }, []);
-  const cuentas = useSelector((state1) => state1.accounts);
-  console.log("userrrrrrrrrrrrr" + user.idusuario);
+
+  //const cuentas = useSelector((state1) => state1.accounts);
+  //console.log("userrrrrrrrrrrrr" + user.idusuario);
   // console.log("cuenta" + balance[1].idcuentas);
+
+  //const cuentas = useSelector((state1) => state1.accounts);
+  //console.log("user " + user.idusuario);
+  //console.log("cuenta " + balance[0].idcuentas);
+
   //----------------------deposit--------------------
 
   const [email, setEmail] = useState();
   const [cardDetails, setCardDetails] = useState();
+  const [paymentAmount, setPaymentAmount] = useState();
   const { confirmPayment, loading } = useConfirmPayment();
 
   const fetchPaymentIntentClientSecret = async () => {
-    const response = await fetch(`${API_URL}/create-payment-intent`, {
+    const response = await fetch(`${URL_STRIPE_3000}/create-payment-intent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,12 +73,15 @@ const StripeApp = (props) => {
     return { clientSecret, error };
   };
 
+  
   const handlePayPress = async () => {
+    console.log(paymentAmount)
     //1.Gather the customer's billing information (e.g., email)
     if (!cardDetails?.complete || !email) {
       Alert.alert("Please enter Complete card details and Email");
       return;
     }
+
     const billingDetails = {
       email: email,
     };
@@ -77,7 +100,14 @@ const StripeApp = (props) => {
           alert(`Payment Confirmation Error ${error.message}`);
         } else if (paymentIntent) {
           alert("Payment Successful");
-          console.log("Payment successful ", paymentIntent);
+          const id = balance[0].idcuentas
+          // hay que conseguir el idcuenta a partir del idusuario
+          // useEffectDispatch(id, paymentAmount)
+          dispatch(deposit(id, paymentAmount))
+          //"http://4c54-181-31-250-253.ngrok.io"  3001
+
+          // hacer el put a salario aca
+
         }
       }
     } catch (e) {
@@ -92,7 +122,7 @@ const StripeApp = (props) => {
         autoCapitalize="none"
         placeholder="Monto a Cargar"
         keyboardType="email-address"
-        // onChange={(value) => setEmail(value.nativeEvent.text)}
+        onChange={(value) => setPaymentAmount(value.nativeEvent.text)}
         style={styles.input}
       ></TextInput>
       <TextInput
