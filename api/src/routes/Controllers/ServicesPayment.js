@@ -11,7 +11,7 @@ async function ServPayment(req, res, next) {
   try {
     let Account_origen = await Cuentas.findOne({
       where: {
-        idcuentas: origen,
+        numerocuenta: origen,
       },
     });
 
