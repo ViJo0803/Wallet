@@ -8,30 +8,37 @@ import {
 } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllContacts } from "../../store/actions/contactsActions";
+import { getContacts } from "../../store/actions/contactsActions";
 
 function Transfers({ navigation }) {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contacts.contacts);
+  const user = useSelector((state)=> state.user.user)
+  console.log("contactos @@@@")
+  console.log("contactos ", contacts)
+  console.log("contactos &&&&&& ", contacts)
+  console.log("contactos &&&&&& ", user)
+  
 
   useEffect(() => {
-    dispatch(getAllContacts());
-  }, []);
+    dispatch(getContacts(user.idusuario));
+  }, [dispatch]);
 
   return (
     
     
     <View style={styles.container}>
 
-      
+      <Text>List of favourites</Text>
 
       <ScrollView>
       
+      <Text>in ScrollView</Text>
         <View>
-          {contacts?.map((el, i) => (
+          {contacts?.map((el) => (
             <TouchableOpacity
-              key={el.alias}
-              onPress={() => {navigation.navigate("Card Contact")}}
+              key={el.id}
+              onPress={() => {navigation.navigate("Card Contact", {el})}}
               >
               
               <View>

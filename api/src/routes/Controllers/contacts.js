@@ -7,6 +7,8 @@ async function addContact(req, res, next) {
     const {
         idusuario,
         alias,
+        name,
+        lastname,
         tipo,
         favorite_account_id
     } = req.body
@@ -45,9 +47,6 @@ async function addContact(req, res, next) {
     res.send(fav)
 
 
-
-
-
 }
 
 
@@ -55,7 +54,7 @@ async function addContact(req, res, next) {
 async function getContacts(req, res, next) {
 
     id = req.query.id
-    console.log(id)
+    console.log("controller getcontacts id ", id)
 
 
         const favs = await Favoritos.findAll({
@@ -70,13 +69,11 @@ async function getContacts(req, res, next) {
 
 }
 
-
+//esta funcionando
 async function getAllContacts(req, res, next) {
 
     const allContacts = await Favoritos.findAll()
-
     res.send(allContacts)
-
 
 }
 

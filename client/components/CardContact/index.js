@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react'
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { getContacts } from "../../store/actions/contactsActions";
-import { makeTransfer } from "../../store/actions/contactsActions";
+import { makeTransfer } from "../../store/actions/transferActions";
 
-function CardContact(userId) {
+function CardContact({navigation, route}) {
 
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.user.user)
+  const user = useSelector((state) => state.user.user)
   const contacts = useSelector((state) => state.contacts.contacts);
   const transfer = useSelector((state) => state.history);
+  const userAccount = useSelector((state) => state.account.accounts);
+ 
+  const{el}= route.params
 
   const {
     control,
@@ -19,34 +22,30 @@ function CardContact(userId) {
 
   } = useForm();
 
-  useEffect(() => {
-    dispatch(getContacts(userId));
-
-  }, []);
   
+ 
   const dataTransfer = (data) => {
+    console.log("data value ", data.monto)
     const dataFiltered = {
-      monto: data.value,
-      destino: contacts.alias,
-      origen: users.userId
+      monto: data.monto,
+      destino: el.favorite_account_id,
+      origen: userAccount[0].idcuentas, 
+      alias: el.alias,
+      fecha: "2021-10-13 14:58:21.706-03",
     }
-    post(dataFiltered)
+    dispatch(makeTransfer(dataFiltered))
   }
   function post(data){
-       
-    dispatch(makeTransfer(data))
-   
-  }
 
+  }
     
   return (
     <View >
       <Text >Contact Details</Text>
-      <Text >Alias:{contacts.alias} </Text>
-      <Text >Name:{contacts.name} </Text>
-      <Text >Lastname:{contacts.lastname} </Text>
-      <Text >Tipo:{contacts.tipo} </Text>
-      <Text>Monto:</Text>
+      <Text >Name: {el.name} {el.lastname}</Text>
+      <Text >Alias: {el.alias} </Text>
+      <Text >Tipo: {el.tipo} </Text>
+      <Text>Monto: </Text>
       <Controller
         control={control}
         rules={{ required: true }}
