@@ -16,8 +16,6 @@ import Signup from "../screens/Signup";
 import RegisterExntended from "../screens/RegisterExntended";
 import CheckNav from "./CheckNav";
 
-
-
 // credentials context
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
 
@@ -27,8 +25,7 @@ function RootStack() {
     <CredentialsContext.Consumer>
       {({ storedCredentials }) => (
         <NavigationContainer style={{ backgroundColor: "red" }}>
-          <Stack.Navigator
-            initialRouteName={'LoginStack' || "LandingPage"}>
+          <Stack.Navigator initialRouteName={"LoginStack" || "LandingPage"}>
             {!storedCredentials ? (
               <Stack.Screen
                 name="LoginStack"
@@ -48,8 +45,6 @@ function RootStack() {
     </CredentialsContext.Consumer>
   );
 }
-
-
 
 function LoginStack() {
   return (

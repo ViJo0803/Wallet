@@ -41,7 +41,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <CredentialsContext.Provider value={{ storedCredentials, setStoredCredentials }}>
+      <CredentialsContext.Provider
+        value={{ storedCredentials, setStoredCredentials }}
+      >
         <RootStack />
       </CredentialsContext.Provider>
     </Provider>
