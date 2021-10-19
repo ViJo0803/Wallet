@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-// import { styles } from "./styles";
+import { styles } from "./styles";
 import { makeTransfer } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
 import { getContacts } from "../../store/actions/contactsActions";
