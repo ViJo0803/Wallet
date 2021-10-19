@@ -3,7 +3,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerI
 import Statistics from '../Statistics/index.js';
 import UserProfile from '../UserProfile/index'
 import TabNav from '../TabNav/index.js';
-import Accounts from '../Accounts/index.js';
+import AccountNav from '../Accounts/AccountNav/index.js';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -64,7 +64,7 @@ function DrawerBar() {
             }}>
             <Drawer.Screen name='TabNav' component={TabNav} options={({ route }) => ({ headerTitle: getHeaderTitle(route), })} />
             <Drawer.Screen name="User Profile" component={UserProfile} />
-            <Drawer.Screen name="Accounts" component={Accounts} />
+            <Drawer.Screen name="Accounts" component={AccountNav} />
             <Drawer.Screen name="Statistics" component={Statistics} />
         </Drawer.Navigator>
     )
