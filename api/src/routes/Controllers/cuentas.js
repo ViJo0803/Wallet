@@ -13,7 +13,11 @@ async function getCuentas(req, res, next) {
 
 
 async function DepositAccount(req, res, next) {
-    const { idcuentas, saldo } = req.body;
+    const idcuentas = req.query.id 
+    const saldo  = req.query.monto;
+
+    console.log('ruta ',idcuentas,' ',saldo)
+
     if (idcuentas) {
         let account = await Cuentas.findOne({
             where: {
@@ -21,6 +25,7 @@ async function DepositAccount(req, res, next) {
             }
         })
         account.saldo = parseInt(account.saldo) + parseInt(saldo);
+        console.log('saldo final',account.saldo)
         await account.save();
         return res.send(account)
     }
