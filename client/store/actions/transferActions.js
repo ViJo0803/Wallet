@@ -22,7 +22,11 @@ export function getTransfers(id) {
 export function makeTransfer(data) {
   return async (dispatch) => {
     await axios
-      .post(`${URL_API_3001}/transfers/create?`,data);
+        .post(`${URL_API_3001}/transfers/create`,data);
+      .then((response)=>{
+        if (response.data !== "") alert("Transfer Successful");
+        else if (response.data === "") alert("Something went Wrong");
+      })
     await axios
       .get(`${URL_API_3001}/transfers/get?id=${data.origen}`)
       .then((response) => {

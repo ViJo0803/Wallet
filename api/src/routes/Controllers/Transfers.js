@@ -4,7 +4,6 @@ require("dotenv").config();
 async function CreateTransfers(req, res, next) {
   const { origen, monto, alias, destino } = req.body;
 
-  console.log(req.body)
 
   try {
     let Account_origen = await Cuentas.findOne({
@@ -13,39 +12,32 @@ async function CreateTransfers(req, res, next) {
       },
     });
 
-
-    console.log("ORIGEN", Account_origen)
-
-   
     let Account_destino = await Cuentas.findOne({
       where: {
         idcuentas: destino,
       },
     });
-
-    console.log("DESTINO",Account_destino)
     
+  
     if (Account_origen.saldo >= monto && monto > 0) {
-
-        Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto);
-       
+        Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto); 
       await Account_origen.save();
       Account_destino.saldo = parseInt(Account_destino.saldo) + parseInt(monto);
-      
-      await Account_destino.save();
+        await Account_destino.save();
 
       let transfer = await Transferencias.create({
-        monto:monto,
-        destino:destino,
-        alias: alias,
-        origin: origen,
+        monto,
+        destino,
+        fecha,
+        origin: Account_origen.idcuentas,
       });
 
-    console.log(transfer)
+           
 
       return res.send(transfer);
 
-    } }catch (error) {
+    }else res.send(null).status(204)
+   }catch (error) {
       next(error);
     }
     
