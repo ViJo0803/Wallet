@@ -1,4 +1,4 @@
-export const url = "http://7ae6-2800-200-f190-8e7-74a1-1d05-3014-8f6d.ngrok.io";
+export const url = "http://9203-2800-200-f190-8e7-3d26-f78b-9071-51c0.ngrok.io";
 
 // En windows abrir cmd
 // escribir comando:

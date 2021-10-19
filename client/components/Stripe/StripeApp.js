@@ -36,7 +36,7 @@ const StripeApp = (props) => {
 
 
   useEffect(() => {
-    dispatch(getUser(email1));
+    dispatch(getUser(email));
   }, []);
 
   const { user } = useSelector((state) => state.user);
@@ -45,9 +45,15 @@ const StripeApp = (props) => {
   useEffect(() => {
     dispatch(getAccount(user.idusuario));
   }, []);
+
+  //const cuentas = useSelector((state1) => state1.accounts);
+  //console.log("userrrrrrrrrrrrr" + user.idusuario);
+  // console.log("cuenta" + balance[1].idcuentas);
+
   //const cuentas = useSelector((state1) => state1.accounts);
   //console.log("user " + user.idusuario);
   //console.log("cuenta " + balance[0].idcuentas);
+
   //----------------------deposit--------------------
 
   const [email, setEmail] = useState();

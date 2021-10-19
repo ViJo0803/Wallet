@@ -8,19 +8,13 @@ const { darkLight, brand, primary, tertiary, secondary } = Colors;
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+const Stack = createStackNavigator();
 
 // screens
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import RegisterExntended from "../screens/RegisterExntended";
-
-// components
-import LandingPage from "../components/LandingPage/index";
-import DrawerBar from "../components/Drawer/index";
-
-
-const Stack = createStackNavigator();
-
+import CheckNav from "./CheckNav";
 
 // credentials context
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
@@ -31,8 +25,7 @@ function RootStack() {
     <CredentialsContext.Consumer>
       {({ storedCredentials }) => (
         <NavigationContainer style={{ backgroundColor: "red" }}>
-          <Stack.Navigator
-            initialRouteName={'LoginStack' || "LandingPage"}>
+          <Stack.Navigator initialRouteName={"LoginStack" || "LandingPage"}>
             {!storedCredentials ? (
               <Stack.Screen
                 name="LoginStack"
@@ -41,15 +34,10 @@ function RootStack() {
               />
             ) : (
               <Stack.Screen
-                name="Drawer"
-                component={DrawerBar}
+                name="CheckNav"
+                component={CheckNav}
                 options={{ headerShown: false }}
               />
-           /*    <Stack.Screen
-                name="LandingPage"
-                component={LandingPage}
-                options={{ headerShown: false }}
-              /> */
             )}
           </Stack.Navigator>
         </NavigationContainer>
@@ -57,8 +45,6 @@ function RootStack() {
     </CredentialsContext.Consumer>
   );
 }
-
-
 
 function LoginStack() {
   return (
