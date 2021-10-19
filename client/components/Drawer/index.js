@@ -3,45 +3,41 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerI
 import Statistics from '../Statistics/index.js';
 import UserProfile from '../UserProfile/index'
 import TabNav from '../TabNav/index.js';
-import Accounts from '../Accounts/index.js';
+import AccountNav from '../Accounts/AccountNav/index.js';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-
 const Drawer = createDrawerNavigator();
 
 function getHeaderTitle(route) {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
 
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-
-    switch (routeName) {
-        case 'Coins':
-            return 'Coins';
-        case 'Transfers':
-            return 'Transfers';
-        case 'Services':
-            return 'Services';
-        case 'Deposit':
-            return 'Deposit';
-        default: return 'Home'
-    }
+  switch (routeName) {
+    case "Coins":
+      return "Coins";
+    case "Transfers":
+      return "Transfers";
+    case "Services":
+      return "Services";
+    case "Deposit":
+      return "Deposit";
+    default:
+      return "Home";
+  }
 }
 
-
 function DrawerBar() {
+  const { storedCredentials, setStoredCredentials } =
+    useContext(CredentialsContext);
 
-    const { storedCredentials, setStoredCredentials } =
-        useContext(CredentialsContext);
-
-    const clearLogin = () => {
-        AsyncStorage.removeItem("flowerCribCredentials")
-            .then(() => {
-                setStoredCredentials("");
-            })
-            .catch((error) => console.log(error));
-    };
+  const clearLogin = () => {
+    AsyncStorage.removeItem("flowerCribCredentials")
+      .then(() => {
+        setStoredCredentials("");
+      })
+      .catch((error) => console.log(error));
+  };
 
     return (
         <Drawer.Navigator
@@ -64,10 +60,10 @@ function DrawerBar() {
             }}>
             <Drawer.Screen name='TabNav' component={TabNav} options={({ route }) => ({ headerTitle: getHeaderTitle(route), })} />
             <Drawer.Screen name="User Profile" component={UserProfile} />
-            <Drawer.Screen name="Accounts" component={Accounts} />
+            <Drawer.Screen name="Accounts" component={AccountNav} />
             <Drawer.Screen name="Statistics" component={Statistics} />
         </Drawer.Navigator>
     )
 }
 
-export default DrawerBar
+export default DrawerBar;

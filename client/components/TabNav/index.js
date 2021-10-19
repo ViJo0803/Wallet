@@ -8,9 +8,15 @@ import Home from "../Home/index";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
+import { useSelector, useDispatch } from "react-redux";
+import { getAccount } from "../../store/actions/accountActions";
+import ServiceNav from "../Services/ServiceNav/index.js";
+
 const Tab = createBottomTabNavigator();
 
 function TabNav() {
+  
+
     return (
         <Tab.Navigator
             initialRouteName="Home"
@@ -71,9 +77,9 @@ function TabNav() {
                         />
                     )
                 }}
-            />
-        </Tab.Navigator>
-    );
+      />
+    </Tab.Navigator>
+  );
 }
 
 export default TabNav;

@@ -2,9 +2,8 @@ const { Transferencias, Cuentas } = require("../../db");
 require("dotenv").config();
 
 async function CreateTransfers(req, res, next) {
-  const { origen, monto, fecha, destino } = req.body;
+  const { origen, monto, alias, destino } = req.body;
 
-  console.log(req.body)
 
   try {
     let Account_origen = await Cuentas.findOne({
@@ -18,6 +17,7 @@ async function CreateTransfers(req, res, next) {
         idcuentas: destino,
       },
     });
+    
   
     if (Account_origen.saldo >= monto && monto > 0) {
         Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto); 
@@ -33,6 +33,7 @@ async function CreateTransfers(req, res, next) {
       });
 
            
+
       return res.send(transfer);
 
     }else res.send(null).status(204)
@@ -52,12 +53,26 @@ async function CreateTransfers(req, res, next) {
         destino: id,
       },
     });
+
+    
+      
+
+
+ 
+    console.log("este es el destino ", destino)
+
   
     origen = await Transferencias.findAll({
       where: {
         origin: id,
       },
     });
+
+
+   
+      
+    
+    console.log("este es el origen ", origen)
   
     let arr = destino.concat(origen);
   

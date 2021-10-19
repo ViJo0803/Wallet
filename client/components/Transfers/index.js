@@ -6,7 +6,9 @@ import {
   Button,
   TouchableOpacity
 } from "react-native";
-import { styles } from "./styles";
+import { useForm, Controller } from "react-hook-form";
+// import { styles } from "./styles";
+import { makeTransfer } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
 import { getContacts } from "../../store/actions/contactsActions";
 
@@ -14,19 +16,13 @@ function Transfers({ navigation }) {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contacts.contacts);
   const user = useSelector((state)=> state.user.user)
-  console.log("contactos @@@@")
-  console.log("contactos ", contacts)
-  console.log("contactos &&&&&& ", contacts)
-  console.log("contactos &&&&&& ", user)
-  
 
   useEffect(() => {
     dispatch(getContacts(user.idusuario));
   }, [dispatch]);
 
   return (
-    
-    
+        
     <View style={styles.container}>
 
       <Text>List of favourites</Text>
