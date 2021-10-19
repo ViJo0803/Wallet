@@ -35,9 +35,9 @@ const StripeApp = (props) => {
   } */
 
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(getUser(email));
-  }, []);
+  }, []); */
 
   const { user } = useSelector((state) => state.user);
   const balance = useSelector((state) => state.account.accounts);
