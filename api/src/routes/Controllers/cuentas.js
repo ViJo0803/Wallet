@@ -3,9 +3,8 @@ require("dotenv").config();
 
 async function getCuentas(req, res, next) {
   id = req.query.id;
-  if(id !== undefined){
-   
-    let cuentas = await Cuentas.findAll({
+  if(typeof(id)== "string" && id.length==36 ) { 
+      let cuentas = await Cuentas.findAll({
       where: {
         usuarioIdusuario: id, 
       },
