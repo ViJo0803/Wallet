@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 function TransferNav() {
     return (
-        <Stack.Navigator initialRouteName="TransferIndex" >
+        <Stack.Navigator initialRouteName="TransferIndex" screenOptions={{ headerShown: false}}>
             <Stack.Screen name="Transfer to favourite" component={Transfers} />
             <Stack.Screen name="Card Contact" component={CardContact} />
             <Stack.Screen name="Add Contact" component={AddContact} />
