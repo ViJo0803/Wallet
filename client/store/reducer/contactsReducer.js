@@ -10,9 +10,7 @@ const initalState = {
       case GET_CONTACT:
         return { ...state, contacts: payload };
       case GET_ALL_CONTACT:
-        
         return { ...state, contacts: payload };
-
       case UPDATE_CONTACT:
         return { ...state }; 
       default:
