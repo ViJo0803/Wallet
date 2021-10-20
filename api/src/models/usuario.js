@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
     },
       foto: {
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull:true,
     },
         codigo_postal: {
       type: DataTypes.STRING,
