@@ -29,3 +29,4 @@ conn.sync({ force: false }).then(() => {
   }); /* .catch(err => console.error(err)); */
 });
 // Here the server is starting to listen in port 3001
+

@@ -25,7 +25,6 @@ function CardContact({navigation, route}) {
   
  
   const dataTransfer = (data) => {
-    console.log("data value ", data.monto)
     const dataFiltered = {
       monto: data.monto,
       destino: el.favorite_account_id,
@@ -33,7 +32,7 @@ function CardContact({navigation, route}) {
       alias: el.alias,
       fecha: "2021-10-13 14:58:21.706-03",
     }
-    dispatch(makeTransfer(dataFiltered))
+    dispatch(makeTransfer(dataFiltered, user.idusuario))
   }
   function post(data){
 

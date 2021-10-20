@@ -21,6 +21,9 @@ async function ServPayment(req, res, next) {
       },
     });
     
+
+    // cargar en la bd la lista de servicios y en esta comprobacion mandar un alert con "este servicio no esta disponible en este momento."
+    //crear la ruta de get servicios y conectarla al front
     if (!servicio) {
       
        servicio = await Servicios.create({
@@ -50,6 +53,7 @@ async function ServPayment(req, res, next) {
       let pago = await Pago_servicios.create({
         fecha: fecha,
         servicioId: servicio.id,
+      //  cuentasIdcuentas:Account_origen.idcuentas
       });
 
       return res.send(pago);

@@ -19,7 +19,7 @@ export function getTransfers(id) {
 }
 
 
-export function makeTransfer(data) {
+export function makeTransfer(data, idusuario) {
   return async (dispatch) => {
     await axios
       .post(`${URL_API_3001}/transfers/create`,data)
@@ -27,9 +27,10 @@ export function makeTransfer(data) {
         if (response.data !== "") alert("Transfer Successful");
         else if (response.data === "") alert("Something went Wrong");
       })
-    await axios
+      await axios
       .get(`${URL_API_3001}/transfers/get?id=${data.origen}`)
       .then((response) => {
+        dispatch(getAccount(idusuario))
         dispatch({ type: GET_TRANSFERS, payload: response.data });
       })
       .catch((error) => console.log(error));

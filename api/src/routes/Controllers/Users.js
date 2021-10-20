@@ -65,13 +65,14 @@ async function createUser(req, res, next) {
 async function getUser(req, res, next) {
   try {
     const mail = req.query.mail;
-
-    let user = await Usuario.findOne({
-      where: {
-        mail: mail,
-      },
-    });
-    user ? res.send(user) : res.send(null);
+    if (mail){
+      let user = await Usuario.findOne({
+        where: {
+          mail: mail,
+        },
+      });
+      user ? res.send(user).status(200) : res.send(null).status(204);
+    }else res.send(null);
   } catch (error) {
     next(error);
   }

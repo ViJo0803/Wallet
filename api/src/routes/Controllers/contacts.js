@@ -5,23 +5,14 @@ require("dotenv").config();
 async function addContact(req, res, next) {
 
     const {
-        idusuario,
         alias,
-        name,
-        lastname,
-        tipo,
-        favorite_account_id
+        idusuario
     } = req.body
-
-
-
-
-    const usuarioIdusuario = idusuario;
-
-
+  
+   
     const account = await Cuentas.findOne({
         where: {
-            idcuentas: favorite_account_id,
+            alias: alias,
         },
     });
 
@@ -31,22 +22,17 @@ async function addContact(req, res, next) {
         }
     })
 
-    const fav = await Favoritos.create({
+    if (user) {
+        const fav = await Favoritos.create({
+            alias: account.alias,
+            name: user.nombre,
+            lastname: user.apellidos,
+            favorite_account_id: account.idcuentas,
+            usuarioIdusuario: idusuario,
+        })
 
-        alias,
-        tipo,
-        name: user.nombre,
-        lastname: user.apellidos,
-        favorite_account_id,
-        usuarioIdusuario,
-
-
-    })
-
-
-    res.send(fav)
-
-
+        res.send(fav).status(200)
+    }else res.send(null).status(204)
 }
 
 
@@ -70,6 +56,7 @@ async function getContacts(req, res, next) {
 }
 
 //esta funcionando
+// getall no hace falta se púede borrar
 async function getAllContacts(req, res, next) {
 
     const allContacts = await Favoritos.findAll()

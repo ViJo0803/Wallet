@@ -13,59 +13,36 @@ export default function AddContact() {
         control,
         handleSubmit,
         formState: { errors },
-
     } = useForm();
 
-
     const dispatch = useDispatch();
-    const state = useSelector(state => state.contacts.contacts)
-    console.log(" here is the id: ", state.idusuario);
+    const contacts = useSelector(state => state.contacts.contacts)
+    const user = useSelector((state) => state.user.user);
 
     const registerData = (data) => {
-        console.log("in register data", data);
 
-
-        const dataFiltered = {
-            alias,
-            tipo,
-            name: contacts.name,
-            lastname: contacts.apellidos,
-            favorite_account_id,
-            usuarioIdusuario,
-        };
-
-        post(dataFiltered)
-    }
-
-
-    function post(data) {
-
-        console.log("in handle submit", data)
-        dispatch(updateContacts(data))
-        // navigation.navigate("TransferIndex")
+        dispatch(updateContacts({alias:data.alias, idusuario: user.idusuario}))
     }
 
     return (
         <View>
-            <Text>Name:</Text>
+            <Text>Alias:</Text>
             <Controller
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
-                        
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
                     />
                 )}
-                name="name"
-                defaultValue={state.name}
-            />
+                name="alias"
+               />
 
-            {errors.name && <Text>This is required.</Text>}
+            {errors.alias && <Text>This is required.</Text>}
 
-            <Text>Lastname:</Text>
+            {/* <Text>Lastname:</Text>
             <Controller
                 control={control}
                 rules={{ required: true }}
@@ -79,9 +56,9 @@ export default function AddContact() {
                 )}
                 name="lastname"
                 defaultValue={state.lastname}
-            />
+            /> */}
 
-            {errors.lastname && <Text>This is required.</Text>}
+            {/* {errors.lastname && <Text>This is required.</Text>} */}
 
             <Button title="Add" onPress={handleSubmit(registerData)} />
         </View>

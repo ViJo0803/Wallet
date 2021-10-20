@@ -29,7 +29,7 @@ function ServicesIndex({ navigation }) {
     });
 
     services = search;
-    console.log("services", services);
+
   }
 
   return (
