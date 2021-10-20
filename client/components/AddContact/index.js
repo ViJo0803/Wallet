@@ -22,7 +22,7 @@ export default function AddContact() {
 
     const registerData = (data) => {
 
-        dispatch(updateContacts({alias:data.alias, idusuario: user.idusuario}))
+        dispatch(updateContacts({alias:data.alias, idusuario: user.idusuario}, user.idusuario))
     }
 
     return (

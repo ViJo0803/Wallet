@@ -25,13 +25,14 @@ export function getAllContacts() {
   };
 }
 
-export function updateContacts(data) {
+export function updateContacts(data, userId) {
   return async (dispatch) => {
     await axios
       .post(`${URL_API_3001}/contact/add/`, data)
       .then((response) => {
         if (response.data !== {}) alert("Contact added successfully");
         else if (response.data === {}) alert("Something went Wrong");
+        dispatch(getContacts(userId))
         dispatch({ type: UPDATE_CONTACT, payload: response.data });
       })
       .catch((error) => console.log(error));
