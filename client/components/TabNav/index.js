@@ -58,7 +58,7 @@ function TabNav() {
             />
             <Tab.Screen
                 name="Services"
-                component={Services}
+                component={ServiceNav}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="building" color={color} size={size} />

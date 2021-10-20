@@ -26,41 +26,7 @@ function Home({ route }) {
     dispatch(getUser(email));
   },[dispatch]);
 
-
   const balance = useSelector((state) => state.account.accounts)
- 
-  
-  //;
-  console.log(balance)
-
-/*
-
-  const balance = useSelector((state) => state.account.accounts);
-  const user = useSelector((state) => state.user.user);
-  useEffect(() => {
-    if (user) {
-      dispatch(getAccount(user.idusuario));
-    } else {
-      const dataFiltered = {
-        nombre: name.split(" ")[0],
-        apellidos: name.split(" ")[1],
-        mail: email,
-        direccion: "",
-        nickname: email.split("@")[0],
-        dni: "",
-        telefono: "",
-        foto: photoUrl,
-        codigo_postal: "",
-      };
-
-      dispatch(createUser(dataFiltered));
-      dispatch(getAccount(user.idusuario));
-    }
-    if (balance[0]) dispatch(getTransfers(balance[0].idcuentas));
-  }, [balance]);
-*/
-
-
 
   return (
     <View style={styles.container}>
