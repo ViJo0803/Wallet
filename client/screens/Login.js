@@ -73,11 +73,11 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  const userTrue = (email) =>{
-    getUser(email)
-    const _user = useSelector((state) => state.user.user);
-    return _user
-      }
+  // const userTrue = (email) =>{
+  //   getUser(email)
+  //   const _user = useSelector((state) => state.user.user);
+  //   return _user
+  //     }
 
 
   const handleGoogleSignin = () => {
