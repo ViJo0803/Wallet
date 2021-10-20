@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Services from "../Services/index.js";
+import ServiceNav from "../Services/ServiceNav/index.js";
 import TransferNav from "../Transfers/TransferNav/index.js";
 import Deposit from "../Deposit/index.js";
 import Home from "../Home/index";
@@ -28,9 +28,10 @@ function TabNav() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="Main Tab"
         component={Home}
         options={{
+          tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
@@ -47,7 +48,7 @@ function TabNav() {
       />
       <Tab.Screen
         name="Services"
-        component={Services}
+        component={ServiceNav}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="building" color={color} size={size} />
