@@ -15,17 +15,6 @@ import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 
 function Home({ route }) {
 
-  const dispatch = useDispatch();
-
-  const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
-  const { email, name, photoUrl } = storedCredentials
-
-
-  useEffect(() => {
-    console.log("in use efect get user")
-    dispatch(getUser(email));
-  },[dispatch]);
-
   const balance = useSelector((state) => state.account.accounts)
 
   return (
