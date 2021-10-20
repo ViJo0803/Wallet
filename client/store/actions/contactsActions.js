@@ -30,6 +30,7 @@ export function updateContacts(data) {
     await axios
       .post(`${URL_API_3001}/contact/add/`, data)
       .then((response) => {
+        
         dispatch({ type: UPDATE_CONTACT, payload: response.data });
       })
       .catch((error) => console.log(error));

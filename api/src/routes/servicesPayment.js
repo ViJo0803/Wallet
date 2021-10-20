@@ -5,6 +5,4 @@ const router= Router()
 
 router.post("/", ServPayment);
 
-
-
 module.exports=router;
