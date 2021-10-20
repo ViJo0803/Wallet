@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { StatusBar } from "expo-status-bar";
 import { Formik } from "formik";
 import {
   StyledContainer,
   PageLogo,
-  PageTitle,
-  SubTitle,
   StyledInputLabel,
   StyledFormArea,
   StyledButton,
@@ -21,25 +19,24 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
-  Colors,
 } from "../loginComponents/styles";
 import { View, ActivityIndicator } from "react-native";
-const { darkLight, brand, primary } = Colors;
 import { Octicons, Fontisto, Ionicons } from "@expo/vector-icons";
-import KeyboardAvoidingWrapper from '../loginComponents/KeyboardAvoidingWrapper';
+import KeyboardAvoidingWrapper from "../loginComponents/KeyboardAvoidingWrapper";
 import axios from "axios";
 import * as Google from "expo-google-app-auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { CredentialsContext } from '../loginComponents/CredentialsContext';
+import { CredentialsContext } from "../loginComponents/CredentialsContext";
 import { getUser } from "../store/actions/userActions";
+import { colors } from "../utils/colors";
 
+const { lightGray, brand, primary } = colors;
 
 const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
   const [googleSubmitting, setGoogleSubmitting] = useState(false);
-  
 
   // credentials context
   const { storedCredentials, setStoredCredentials } =
@@ -73,12 +70,11 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  const userTrue = (email) =>{
-    getUser(email)
+  const userTrue = (email) => {
+    getUser(email);
     const _user = useSelector((state) => state.user.user);
-    return _user
-      }
-
+    return _user;
+  };
 
   const handleGoogleSignin = () => {
     setGoogleSubmitting(true);
@@ -87,24 +83,22 @@ const Login = ({ navigation }) => {
       androidClientId: `869980078790-d1s7hh4j3i9t7a6gho3n0ehstg8n4tvj.apps.googleusercontent.com`,
       scopes: ["profile", "email"],
     };
-   
+
     Google.logInAsync(config)
       .then((result) => {
         const { type, user } = result;
         const { email, name, photoUrl } = user;
 
-        // let _user = userTrue(email);     
-     
-        if (type == "success" ) {
+        // let _user = userTrue(email);
+
+        if (type == "success") {
           const { email, name, photoUrl } = user;
-         
+
           persistLogin(
             { email, name, photoUrl },
             "Google signin successful",
             "SUCCESS"
           );
-         
-
         } else {
           handleMessage("Google Signin was cancelled");
         }
@@ -119,7 +113,6 @@ const Login = ({ navigation }) => {
 
   // Persisting login
   const persistLogin = (credentials, message, status) => {
-
     AsyncStorage.setItem("flowerCribCredentials", JSON.stringify(credentials))
       .then(() => {
         handleMessage(message, status);
@@ -140,7 +133,6 @@ const Login = ({ navigation }) => {
             resizeMode="cover"
             source={require("../assets/logoMintDef.png")}
           />
-          <SubTitle>Account Login</SubTitle>
 
           <Formik
             initialValues={{ email: "", password: "" }}
@@ -161,20 +153,20 @@ const Login = ({ navigation }) => {
               isSubmitting,
             }) => (
               <StyledFormArea>
-                <MyTextInput
+                <TextInput
                   label="Email Address"
                   placeholder="usuario@gmail.com"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
                   value={values.email}
                   keyboardType="email-address"
                   icon="mail"
                 />
-                <MyTextInput
+                <TextInput
                   label="Password"
                   placeholder="* * * * * * * *"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
                   value={values.password}
@@ -201,7 +193,7 @@ const Login = ({ navigation }) => {
 
                 {!googleSubmitting && (
                   <StyledButton onPress={handleGoogleSignin} google={true}>
-                    <Fontisto name="google" size={25} color={primary} />
+                    <Fontisto name="google" size={25} color={brand} />
                     <ButtonText google={true}>Sign in with Google</ButtonText>
                   </StyledButton>
                 )}
@@ -214,7 +206,7 @@ const Login = ({ navigation }) => {
                 <ExtraView>
                   <ExtraText>Don't have an account already? </ExtraText>
                   <TextLink onPress={() => navigation.navigate("Signup")}>
-                    <TextLinkContent>Signup</TextLinkContent>
+                    <TextLinkContent>Sign up</TextLinkContent>
                   </TextLink>
                 </ExtraView>
               </StyledFormArea>
@@ -226,7 +218,7 @@ const Login = ({ navigation }) => {
   );
 };
 
-const MyTextInput = ({
+const TextInput = ({
   label,
   icon,
   isPassword,
@@ -250,7 +242,7 @@ const MyTextInput = ({
           <Ionicons
             name={hidePassword ? "md-eye-off" : "md-eye"}
             size={30}
-            color={darkLight}
+            color={lightGray}
           />
         </RightIcon>
       )}

@@ -24,12 +24,11 @@ import {
   TextLink,
   TextLinkContent,
   SubTitle,
-  Colors,
 } from "../loginComponents/styles";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
 
-//colors
-const { darkLight, brand, primary } = Colors;
+import { colors } from "../utils/colors";
+const { lightGray, brand, primary } = colors;
 
 // icon
 import { Octicons, Ionicons } from "@expo/vector-icons";
@@ -173,7 +172,7 @@ export default function NewRegisterExt({ navigation }) {
                   // <MyTextInput
                   //   label="Name"
                   //   placeholder="Richard"
-                  //   placeholderTextColor={darkLight}
+                  //   placeholderTextColor={lightGray}
                   //   onChangeText={handleChange("nombre")}
                   //   onBlur={handleBlur("nombre")}
                   //   value={values.nombre}
@@ -183,7 +182,7 @@ export default function NewRegisterExt({ navigation }) {
                 <MyTextInput
                   label="Last Name"
                   placeholder="Barnes"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("apellidos")}
                   onBlur={handleBlur("apellidos")}
                   value={values.apellidos}
@@ -192,7 +191,7 @@ export default function NewRegisterExt({ navigation }) {
                 <MyTextInput
                   label="Nickname"
                   placeholder="Rick"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("nickname")}
                   onBlur={handleBlur("nickname")}
                   value={values.nickname}
@@ -201,7 +200,7 @@ export default function NewRegisterExt({ navigation }) {
                 {/* <MyTextInput
                   label="Email Address"
                   placeholder="andyj@gmail.com"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("mail")}
                   onBlur={handleBlur("mail")}
                   value={values.mail}
@@ -211,7 +210,7 @@ export default function NewRegisterExt({ navigation }) {
                 <MyTextInput
                   label="Adress"
                   placeholder="Adress 5000"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("direccion")}
                   onBlur={handleBlur("direccion")}
                   value={values.direccion}
@@ -220,7 +219,7 @@ export default function NewRegisterExt({ navigation }) {
                 <MyTextInput
                   label="Dni"
                   placeholder="12.345.678"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("dni")}
                   onBlur={handleBlur("dni")}
                   value={values.dni}
@@ -229,7 +228,7 @@ export default function NewRegisterExt({ navigation }) {
                 <MyTextInput
                   label="Phone"
                   placeholder="012345678910"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("telefono")}
                   onBlur={handleBlur("telefono")}
                   value={values.telefono}
@@ -238,7 +237,7 @@ export default function NewRegisterExt({ navigation }) {
                 <MyTextInput
                   label="Postal Code"
                   placeholder="Rick"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("codigo_postal")}
                   onBlur={handleBlur("codigo_postal")}
                   value={values.codigo_postal}
@@ -299,7 +298,7 @@ const MyTextInput = ({
           <Ionicons
             name={hidePassword ? "md-eye-off" : "md-eye"}
             size={30}
-            color={darkLight}
+            color={lightGray}
           />
         </RightIcon>
       )}

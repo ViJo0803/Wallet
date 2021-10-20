@@ -1,27 +1,17 @@
 import styled from "styled-components/native";
 import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import Constants from "expo-constants";
+import { colors } from "../utils/colors.js";
 
 const StatusBarHeight = Constants.statusBarHeight;
 
-// colors
-export const Colors = {
-  primary: "#FFFFFF",
-  secondary: "#E7F1E5",
-  tertiary: "#232020",
-  darkLight: "#9CA3AF",
-  brand: "#5271FF",
-  green: "#50FF90",
-  red: "#EF4444",
-};
-
-const { primary, secondary, tertiary, darkLight, brand, green, red } = Colors;
+const { primary, secondary, tertiary, lightGray, brand, green, red } = colors;
 
 export const StyledContainer = styled.View`
   flex: 1;
   padding: 25px;
   padding-top: ${StatusBarHeight + 30}px;
-  background-color: ${Colors.primary};
+  background-color: ${colors.primary};
 `;
 
 export const InnerContainer = styled.View`
@@ -37,8 +27,8 @@ export const WelcomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
-  width: 250px;
-  height: 200px;
+  width: 300;
+  height: 250;
 `;
 
 export const Avatar = styled.Image`
@@ -61,7 +51,7 @@ export const PageTitle = styled.Text`
   font-size: 30px;
   text-align: center;
   font-weight: bold;
-  color: ${Colors.brand};
+  color: ${colors.brand};
   padding: 10px;
 
   ${(props) =>
@@ -107,14 +97,14 @@ export const StyledInputLabel = styled.Text`
 
 export const LeftIcon = styled.View`
   left: 15px;
-  top: 38px;
+  top: 34px;
   position: absolute;
   z-index: 1;
 `;
 
 export const RightIcon = styled.TouchableOpacity`
   right: 15px;
-  top: 38px;
+  top: 33px;
   position: absolute;
   z-index: 1;
 `;
@@ -129,11 +119,12 @@ export const StyledButton = styled.TouchableOpacity`
   height: 60px;
 
   ${(props) =>
-    props.google == true &&
+    props.google &&
     `
     background-color: ${green};
     flex-direction: row;
     justify-content: center;
+    color: ${brand};
   `}
 `;
 
@@ -142,9 +133,9 @@ export const ButtonText = styled.Text`
   font-size: 16px;
 
   ${(props) =>
-    props.google == true &&
+    props.google &&
     `
-    color: ${primary};
+    color: ${brand};
     padding: 25px;
   `}
 `;
@@ -158,7 +149,7 @@ export const MsgBox = styled.Text`
 export const Line = styled.View`
   height: 1px;
   width: 100%;
-  background-color: ${darkLight};
+  background-color: ${lightGray};
   margin-vertical: 10px;
 `;
 

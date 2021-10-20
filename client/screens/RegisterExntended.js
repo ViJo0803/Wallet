@@ -22,12 +22,12 @@ import {
   TextLink,
   TextLinkContent,
   SubTitle,
-  Colors,
 } from "../loginComponents/styles";
+import { colors } from "../utils/colors";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
 
 //colors
-const { darkLight, brand, primary } = Colors;
+const { lightGray, brand, primary } = colors;
 
 // icon
 import { Octicons, Ionicons } from "@expo/vector-icons";
@@ -174,7 +174,7 @@ const Signup = ({ navigation }) => {
                 <MyTextInput
                   label="Full Name"
                   placeholder="Richard Barnes"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("name")}
                   onBlur={handleBlur("name")}
                   value={values.name}
@@ -183,7 +183,7 @@ const Signup = ({ navigation }) => {
                 <MyTextInput
                   label="Email Address"
                   placeholder="andyj@gmail.com"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
                   value={values.email}
@@ -193,7 +193,7 @@ const Signup = ({ navigation }) => {
                 <MyTextInput
                   label="Date of Birth"
                   placeholder="YYYY - MM - DD"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("dateOfBirth")}
                   onBlur={handleBlur("dateOfBirth")}
                   value={dob ? dob.toDateString() : ""}
@@ -205,7 +205,7 @@ const Signup = ({ navigation }) => {
                 <MyTextInput
                   label="Password"
                   placeholder="* * * * * * * *"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
                   value={values.password}
@@ -218,7 +218,7 @@ const Signup = ({ navigation }) => {
                 <MyTextInput
                   label="Confirm Password"
                   placeholder="* * * * * * * *"
-                  placeholderTextColor={darkLight}
+                  placeholderTextColor={lightGray}
                   onChangeText={handleChange("confirmPassword")}
                   onBlur={handleBlur("confirmPassword")}
                   value={values.confirmPassword}
@@ -290,7 +290,7 @@ const MyTextInput = ({
           <Ionicons
             name={hidePassword ? "md-eye-off" : "md-eye"}
             size={30}
-            color={darkLight}
+            color={lightGray}
           />
         </RightIcon>
       )}
