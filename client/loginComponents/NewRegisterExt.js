@@ -103,7 +103,7 @@ export default function NewRegisterExt({ navigation }) {
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
 
-  const { email, name } = storedCredentials;
+  const { email, name, photoUrl} = storedCredentials;
 
   const handleMessage = (message, type = "") => {
     setMessage(message);
@@ -143,7 +143,7 @@ export default function NewRegisterExt({ navigation }) {
               codigo_postal: "",
             }}
             onSubmit={(values, { setSubmitting }) => {
-              values = { ...values, foto: "" };
+              values = { ...values, foto: photoUrl };
               if (
                 // values.nombre == "" ||
                 values.apellidos == "" ||

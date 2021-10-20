@@ -4,7 +4,6 @@ import { styles } from "./styles";
 import { useSelector } from "react-redux";
 
 
-
 function UserProfile({navigation}) {
   console.log(navigation);
 
@@ -15,7 +14,7 @@ function UserProfile({navigation}) {
     return (
         <View style={styles.container}>
             <Image
-                source={state.foto}
+                source={state.foto || require("../../assets/avatar.png")} 
                 style={styles.image} />
             <View style={styles.textBox}>
                 <View>
