@@ -23,16 +23,16 @@ export default function CheckNav() {
 
   return (
     <Stack.Navigator>
-      {user ? (
+        {!Object.keys(user).length ? ( 
         <Stack.Screen
-          name="Drawer"
-          component={DrawerBar}
-          options={{ headerShown: false }}
+        name="NewRegisterExt"
+        component={NewRegisterExt}
+        options={{ headerShown: false }}
         />
       ) : (
         <Stack.Screen
-          name="NewRegisterExt"
-          component={NewRegisterExt}
+          name="Drawer"
+          component={DrawerBar}
           options={{ headerShown: false }}
         />
       )}
