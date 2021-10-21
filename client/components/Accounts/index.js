@@ -23,7 +23,7 @@ function Accounts() {
   console.log("Historial de transferencia", history);
 
   useEffect(() => {
-    dispatch(getTransfers(balance[0].idcuentas));
+    dispatch(getTransfers(balance[0]?.idcuentas));
   }, []);
 
   return (
