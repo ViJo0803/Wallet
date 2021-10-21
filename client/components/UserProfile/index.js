@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button } from "react-native";
+import { View, Button, ScrollView } from "react-native";
 import { styles } from "./styles";
 import { useSelector } from "react-redux";
 import {
@@ -44,6 +44,9 @@ function UserProfile({ navigation }) {
           <Caption style={styles.caption}>{state.mail}</Caption>
         </View>
       </View>
+
+
+      <ScrollView>
       <View style={styles.wrapperbox}>
         <View style={styles.infobox}>
           <Title style={styles.title}>$ {balance[0].saldo}</Title>
@@ -88,7 +91,7 @@ function UserProfile({ navigation }) {
           </View>
         </TouchableRipple>
       </View>
-
+      </ScrollView>
     </View>
   );
 }
