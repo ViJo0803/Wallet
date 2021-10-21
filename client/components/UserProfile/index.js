@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button } from "react-native";
+import { View, Button, ScrollView } from "react-native";
 import { styles } from "./styles";
 import { useSelector } from "react-redux";
 import {
@@ -26,7 +26,7 @@ function UserProfile({ navigation }) {
         style={styles.image}
         size={200}
       />
-
+       <ScrollView>
       <View>
         <Title style={styles.title}>
           {state.nombre} {state.apellidos}
@@ -49,6 +49,7 @@ function UserProfile({ navigation }) {
           <Caption style={styles.caption}>{state.mail}</Caption>
         </View>
       </View>
+   
       <View style={styles.wrapperbox}>
         <View style={styles.infobox}>
           <Title style={styles.title}>$ {balance[0].saldo}</Title>
@@ -99,27 +100,12 @@ function UserProfile({ navigation }) {
           </View>
         </TouchableRipple>
       </View>
-      <View style={styles.menuWrapper}>
-        <TouchableRipple
-          onPress={
-            () =>
-              console.log(
-                "Deberia ir a Editar perfil :)"
-              ) /*</View>navigation,navigate(edituserprofile)*/
-          }
-        >
-          <View style={styles.menuItem}>
-            <Icon
-              style={styles.icon}
-              name="share-outline"
-              size={20}
-              color={"#FF6347"}
-            />
-            <Text style={styles.text}>Edit Profile</Text>
-          </View>
-        </TouchableRipple>
+      <View style={styles.qrContainer} >
+      <Text style={styles.qrText}>Share Alias</Text>
+      <QRCode  size={400} value={balance[0].alias} />
+     
       </View>
-      <QRCode value={balance[0].alias} />
+      </ScrollView>
     </View>
   );
 }

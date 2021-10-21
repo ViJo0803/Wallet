@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontFamily: "sans-serif",
     fontSize: 18,
+    marginLeft:15
   },
   containerButtons: {
     display: "flex",
@@ -80,4 +81,23 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
   },
+  qrContainer:{
+    marginTop:25,
+    alignContent:"center",
+    justifyContent:"center",
+    alignItems:"center",
+   
+
+
+  },
+  qr:{
+    marginTop:20,
+    paddingVertical:8
+  },
+  qrText:{
+    fontSize:18,
+    color:"#232020",
+    marginBottom:10
+  }
+
 });
