@@ -18,7 +18,7 @@ import { View, Image, TouchableOpacity } from "react-native"
 const Drawer = createDrawerNavigator();
 
 
-function DrawerBar({ navigation}) {
+function DrawerBar({ navigation }) {
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
 
@@ -32,7 +32,7 @@ function DrawerBar({ navigation}) {
 
   function GoHome() {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate("Main")} style={{marginRight:20}}>
+      <TouchableOpacity onPress={() => navigation.navigate("Main")} style={{ marginRight: 20 }}>
         <FontAwesome5 name="home" color={colors.brand} size={30} />
       </TouchableOpacity>
     )
@@ -43,7 +43,7 @@ function DrawerBar({ navigation}) {
     return (
       <View>
         <Image
-          style={{ width: 50, height: 50, marginLeft:105 }}
+          style={{ width: 50, height: 50 }}
           source={require('../../assets/isotipoMintDef.png')}
         />
       </View>
@@ -53,7 +53,9 @@ function DrawerBar({ navigation}) {
   return (
     <Drawer.Navigator
       initialRouteName="TabNav"
-      screenOptions={{headerTitle: () => <LogoTitle />,
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerTitle: () => <LogoTitle />,
         headerRight: () => <GoHome />,
         headerStyle: {
           backgroundColor: colors.primary,
