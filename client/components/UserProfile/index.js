@@ -22,7 +22,7 @@ function UserProfile({ navigation }) {
   return (
     <View style={styles.container}>
       <Avatar.Image
-        source={require("../../assets/JimC.jpg")}
+        source={ state.foto? {uri: state.foto} : require("../../assets/avatar.png")}
         style={styles.image}
         size={200}
       />
