@@ -11,13 +11,27 @@ export const styles = StyleSheet.create({
       flexDirection: "column"
     },
     cuentas: {
-      height: "15%",
+      marginTop:30,
+      padding: 10,
+      backgroundColor: "#5271FF",
+      height: "20%",
       justifyContent: "space-around",
-      flexDirection: "row"
+      flexDirection: "column",
+      width: "100%",
+      alignItems:"center",
+      justifyContent:'center',
+      borderRadius: 8
     },
-  
+    saldo: {
+      fontSize:80,
+      color:"#E7F1E5",
+      marginTop:3,
+      padding: 5,
+    },
     titleCuenta: {
-      fontWeight: "bold"
+      fontWeight: "bold",
+      color:"#FFFFFF", 
+      fontSize: 25.0
     },
     buttonIngresar: {
       margin: "5%"
@@ -26,32 +40,37 @@ export const styles = StyleSheet.create({
       fontWeight: "bold",
     },
     scrollTransfer: {
-      width: "100%"
+      width: "100%",
+      marginTop:60
     },
     inputView: {
       width: "100%",
       backgroundColor: "#99d98c",
       display: "flex",
+      
     },
-    textTransf: {
-      backgroundColor: "#2f3542",
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center"
-    },
+  
     userCard: {
       width: "100%",
-      backgroundColor: "#2f3542",
+      backgroundColor: "#FFFFFF",
       display: "flex",
       flexDirection: "row",
-      alignItems: "center"
+      alignItems: "center",
+      alignSelf:"flex-end",
+      alignContent:"space-between",
+      justifyContent:"space-between",
+     padding:10
     },
     textname: {
+      fontSize:45,
       fontWeight: "500",
-      color: "#fff"
+      color:  "#5271FF",
+      padding: 10
     },
     textdate: {
       alignContent: "flex-end",
-      color: "#fff"
+      color: "#232020",
+      fontSize:35,
+      padding: 10
     }
   });
