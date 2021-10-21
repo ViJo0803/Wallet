@@ -58,16 +58,18 @@ export default function QRScan({ navigation}) {
       <Text style={styles.maintext}>{text}</Text>
 
       {scanned && (
-        <Button
-          title={"Scan again?"}
-          onPress={() => setScanned(false)}
-          color="tomato"
-        />,
-        <Button
-          title={"Add Contact"}
-          onPress={() => navigation.navigate("Add Contact", {data:text})}
-          color="tomato"
-        />
+        <View>
+          <Button
+            title={"Scan again?"}
+            onPress={() => setScanned(false)}
+            color="tomato"
+          />
+          <Button
+            title={"Add Contact"}
+            onPress={() => navigation.navigate("Add Contact", {data:text})}
+            color="tomato"
+          />
+        </View>
       )}
     </View>
   );

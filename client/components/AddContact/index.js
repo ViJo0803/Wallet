@@ -39,7 +39,7 @@ export default function AddContact({ route }) {
                     />
                 )}
                 name="alias"
-                defaultValue={route.params?.data}
+                defaultValue={`${route.params?.data}`}
             />
 
             {errors.alias && <Text>This is required.</Text>}
