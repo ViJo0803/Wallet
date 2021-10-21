@@ -133,7 +133,7 @@ export default function NewRegisterExt({ navigation }) {
           <Formik
             initialValues={{
               nombre: name,
-              apellidos: "",
+              //apellidos: "",
               mail: email,
               nickname: "",
               direccion: "",
@@ -145,7 +145,7 @@ export default function NewRegisterExt({ navigation }) {
               values = { ...values, foto: photoUrl };
               if (
                 // values.nombre == "" ||
-                values.apellidos == "" ||
+                //values.apellidos == "" ||
                 // values.mail == "" ||
                 values.nickname == "" ||
                 values.direccion == "" ||
@@ -179,7 +179,8 @@ export default function NewRegisterExt({ navigation }) {
                   //   icon="person"
                   // />
                 }
-                <MyTextInput
+
+             {/*    <MyTextInput
                   label="Last Name"
                   placeholder="Barnes"
                   placeholderTextColor={lightGray}
@@ -187,7 +188,7 @@ export default function NewRegisterExt({ navigation }) {
                   onBlur={handleBlur("apellidos")}
                   value={values.apellidos}
                   icon="person"
-                />
+                /> */}
                 <MyTextInput
                   label="Nickname"
                   placeholder="Rick"

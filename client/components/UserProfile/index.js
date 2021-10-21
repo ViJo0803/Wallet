@@ -102,7 +102,7 @@ function UserProfile({ navigation }) {
       </View>
       <View style={styles.qrContainer} >
       <Text style={styles.qrText}>Share Alias</Text>
-      <QRCode  size={400} value={balance[0].alias} />
+      <QRCode  size={300} value={balance[0].alias} />
      
       </View>
       </ScrollView>
