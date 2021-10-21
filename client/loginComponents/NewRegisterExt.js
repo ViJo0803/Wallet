@@ -224,6 +224,8 @@ export default function NewRegisterExt({ navigation }) {
                   onBlur={handleBlur("dni")}
                   value={values.dni}
                   icon="person"
+                  keyboardType="numeric"
+
                 />
                 <MyTextInput
                   label="Phone"
@@ -233,15 +235,19 @@ export default function NewRegisterExt({ navigation }) {
                   onBlur={handleBlur("telefono")}
                   value={values.telefono}
                   icon="person"
+                  keyboardType="numeric"
+
                 />
                 <MyTextInput
                   label="Postal Code"
-                  placeholder="Rick"
+                  placeholder="5000"
                   placeholderTextColor={lightGray}
                   onChangeText={handleChange("codigo_postal")}
                   onBlur={handleBlur("codigo_postal")}
                   value={values.codigo_postal}
                   icon="mail"
+                  keyboardType="numeric"
+
                 />
                 <MsgBox type={messageType}>{message}</MsgBox>
 
