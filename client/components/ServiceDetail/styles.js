@@ -1,46 +1,70 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E7F1E5",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
-  searchView: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-  },
-  inputView: {
-    width: "100%",
-    flex: 1,
-    height: "40%",
-    backgroundColor: "#dfe4ea",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  input: {
-    flex: 1,
-  },
   userCard: {
-    backgroundColor: "#fafafa",
     display: "flex",
-    flexDirection: "row",
     alignItems: "center",
   },
   userImage: {
-    width: "15%",
-    height: "15%",
-  },
-  messageBox: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    width: 80,
+    height: 80,
+    resizeMode: "cover",
+    padding: 1,
+    borderRadius: 50,
+    marginTop: 100,
   },
   messageBoxText: {
-    fontWeight: "500",
+    fontWeight: "700",
+    textTransform: "uppercase",
+  },
+  button: {
+    padding: 15,
+    backgroundColor: colors.brand,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    height: 60,
+    width: "90%",
+  },
+  buttonContainer: {
+    display: "flex",
+    alignItems: "center",
+    marginVertical: 60,
+  },
+  buttonText: {
+    color: colors.primary,
+    textTransform: "uppercase",
+    fontSize: 18,
+    fontWeight: "700",
+    letterSpacing: 1.5,
+  },
+  input: {
+    padding: 15,
+    height: 60,
+    width: "90%",
+    borderWidth: 2,
+    borderColor: colors.brand,
+    borderRadius: 5,
+    backgroundColor: colors.secondary,
+    fontSize: 18,
+  },
+  inputContainer: {
+    display: "flex",
+    alignItems: "center",
+  },
+  subtitle: {
+    textTransform: "capitalize",
+  },
+  subtitleII: {
+    textTransform: "capitalize",
+    marginVertical: 5,
+    marginLeft: 20,
   },
 });

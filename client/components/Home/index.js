@@ -7,11 +7,9 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors } from "../../utils/colors.js";
 
-
 function Home({ navigation }) {
-
-  const balance = useSelector((state) => state.account.accounts)
-  const state = useSelector((state) => state.user.user)
+  const balance = useSelector((state) => state.account.accounts);
+  const state = useSelector((state) => state.user.user);
 
   return (
     <View style={styles.container}>
@@ -41,14 +39,17 @@ function Home({ navigation }) {
         </View>
         <View style={styles.buttonCard}>
           <TouchableOpacity onPress={() => navigation.navigate("Deposit")}>
-            <MaterialCommunityIcons name="cash-plus" color={colors.brand} size={70} />
+            <MaterialCommunityIcons
+              name="cash-plus"
+              color={colors.brand}
+              size={70}
+            />
           </TouchableOpacity>
           <Text>Deposit</Text>
         </View>
       </View>
-    </View >
+    </View>
   );
 }
 
 export default Home;
-
