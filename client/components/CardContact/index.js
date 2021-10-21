@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text, TextInput, Button, } from 'react-native';
+import { View, Text, TextInput, Button, Alert } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { getContacts } from "../../store/actions/contactsActions";
@@ -63,9 +63,27 @@ function CardContact({navigation, route}) {
       {errors.monto && <Text>This is required.</Text>}
 
       <View>
-        <Button title="Make a trasnfer" onPress={handleSubmit(dataTransfer)} />
-      </View>
+        
+        
+        
+        <Button title="Transfer" onPress={() =>{
+          
+          Alert.alert(
+            "Make Transfer",
+            "Are you sure?",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "OK", onPress: handleSubmit(dataTransfer) }
+            ]
+          );
 
+        } } />
+      </View>
+      
     </View>
 
   )

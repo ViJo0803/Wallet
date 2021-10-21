@@ -25,163 +25,17 @@ export function getAllContacts() {
   };
 }
 
-export function updateContacts(data) {
+export function updateContacts(data, userId) {
   return async (dispatch) => {
     await axios
       .post(`${URL_API_3001}/contact/add/`, data)
       .then((response) => {
+        if (response.data !== {}) alert("Contact added successfully");
+        else if (response.data === {}) alert("Something went Wrong");
+        dispatch(getContacts(userId))
         dispatch({ type: UPDATE_CONTACT, payload: response.data });
       })
       .catch((error) => console.log(error));
   };
 }
 
-// return (dispatch) => {
-//   dispatch({
-//     type: GET_ALL_CONTACT,
-//     payload:  [
-//       {
-//         alias: "pepe",
-//         tipo: "nada",
-//         name: "jose",
-//         lastname: "perez",
-
-//       },
-//       {
-//         alias: "nick",
-//         tipo: "algo",
-//         name: "pedro",
-//         lastname: "lopez",
-
-//       },
-//       {
-//         alias: "titu",
-//         tipo: "ni",
-//         name: "juan",
-//         lastname: "garcia",
-
-//       },
-//       {
-//         alias: "tuca",
-//         tipo: "nose",
-//         name: "alejandro",
-//         lastname: "alvarez",
-
-//       },
-//       {
-//         alias: "chicho",
-//         tipo: "yoquese",
-//         name: "Facundo",
-//         lastname: "manes",
-
-//       },
-//       {
-//         alias: "lito",
-//         tipo: "noimporta",
-//         name: "Jorge",
-//         lastname: "gonzalez",
-
-//       },
-//     ]
-//   })
-// }
-
-// return (dispatch) => {
-//   dispatch({
-//     type: GET_ALL_CONTACT,
-//     payload:  [
-//       {
-//         alias: "pepe",
-//         tipo: "nada",
-//         name: "jose",
-//         lastname: "perez",
-
-//       },
-//       {
-//         alias: "nick",
-//         tipo: "algo",
-//         name: "pedro",
-//         lastname: "lopez",
-
-//       },
-//       {
-//         alias: "titu",
-//         tipo: "ni",
-//         name: "juan",
-//         lastname: "garcia",
-
-//       },
-//       {
-//         alias: "tuca",
-//         tipo: "nose",
-//         name: "alejandro",
-//         lastname: "alvarez",
-
-//       },
-//       {
-//         alias: "chicho",
-//         tipo: "yoquese",
-//         name: "Facundo",
-//         lastname: "manes",
-
-//       },
-//       {
-//         alias: "lito",
-//         tipo: "noimporta",
-//         name: "Jorge",
-//         lastname: "gonzalez",
-
-//       },
-//     ]
-//   })
-// }
-
-//  return (dispatch) => {
-//     dispatch({
-//       type: GET_ALL_CONTACT,
-//       payload:  [
-//         {
-//           alias: "pepe",
-//           tipo: "nada",
-//           name: "jose",
-//           lastname: "perez",
-
-//         },
-//         {
-//           alias: "nick",
-//           tipo: "algo",
-//           name: "pedro",
-//           lastname: "lopez",
-
-//         },
-//         {
-//           alias: "titu",
-//           tipo: "ni",
-//           name: "juan",
-//           lastname: "garcia",
-
-//         },
-//         {
-//           alias: "tuca",
-//           tipo: "nose",
-//           name: "alejandro",
-//           lastname: "alvarez",
-
-//         },
-//         {
-//           alias: "chicho",
-//           tipo: "yoquese",
-//           name: "Facundo",
-//           lastname: "manes",
-
-//         },
-//         {
-//           alias: "lito",
-//           tipo: "noimporta",
-//           name: "Jorge",
-//           lastname: "gonzalez",
-
-//         },
-//       ]
-//     })
-//   }

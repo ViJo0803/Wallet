@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Formik } from "formik";
 import {
@@ -27,7 +26,6 @@ import axios from "axios";
 import * as Google from "expo-google-app-auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
-import { getUser } from "../store/actions/userActions";
 import { colors } from "../utils/colors";
 
 const { lightGray, brand, primary } = colors;
@@ -70,11 +68,12 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  const userTrue = (email) => {
-    getUser(email);
-    const _user = useSelector((state) => state.user.user);
-    return _user;
-  };
+  // const userTrue = (email) =>{
+  //   getUser(email)
+  //   const _user = useSelector((state) => state.user.user);
+  //   return _user
+  //     }
+
 
   const handleGoogleSignin = () => {
     setGoogleSubmitting(true);

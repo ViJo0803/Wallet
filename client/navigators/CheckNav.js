@@ -16,11 +16,11 @@ export default function CheckNav() {
   const { email } = storedCredentials;
 
   useEffect(() => {
-    dispatch(getUser(email));
+    email? dispatch(getUser(email)) : user = {};
   }, [dispatch]);
 
   const user = useSelector((state) => state.user.user);
-
+console.log("usre checknav", user)
   return (
     <Stack.Navigator>
         {!Object.keys(user).length ? ( 

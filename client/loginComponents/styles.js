@@ -27,8 +27,8 @@ export const WelcomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
-  width: 300;
-  height: 250;
+  width: 300px;
+  height: 250px;
 `;
 
 export const Avatar = styled.Image`
