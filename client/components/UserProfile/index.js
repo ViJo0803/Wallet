@@ -56,7 +56,7 @@ function UserProfile() {
       </View>
 
       <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={()=>console.log("Deberia ir a transfers a ver mis contactos :)")/*</View>navigation,navigate(transfers)*/}>
+        <TouchableRipple onPress={()=>console.log("Deberia ir a transfers a ver mis contactos :)")/*</View>navigation,navigate(TransferIndex)*/}>
         <View style={styles.menuItem}>
           <Icon style={styles.icon} name="heart-outline"  size={20} color={"#FF6347"}/>
           <Text style={styles.text}>A favoritos</Text>
