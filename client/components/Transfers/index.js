@@ -24,7 +24,6 @@ function Transfers({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>List of favourites</Text>
-
       <ScrollView>
         <Text>in ScrollView</Text>
         <View>
@@ -52,6 +51,7 @@ function Transfers({ navigation }) {
           <Text style={styles.buttonText}>Add contact</Text>
         </Pressable>
       </View>
+      <TouchableOpacity onPress={() => navigation.navigate("Main")}><Text>Go Home</Text></TouchableOpacity>
     </View>
   );
 }
