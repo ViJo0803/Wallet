@@ -1,12 +1,20 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#E7F1E5",
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingBottom: 50,
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  searchInput: {
+    backgroundColor: colors.primary,
+    borderColor: colors.tertiary,
+    padding: 12,
+    fontSize: 20,
+    margin: 10,
+    borderRadius: 10,
   },
   searchView: {
     width: "100%",
@@ -26,16 +34,25 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   userCard: {
-    backgroundColor: "#fafafa",
     display: "flex",
-    flexDirection: "row",
     alignItems: "center",
-    padding: 8
+    margin: 25,
+    width: 80,
+    height: 80,
+  },
+  userCardText: {
+    marginTop: 5,
+    fontWeight: "700",
+    fontSize: 12,
+    textAlign: "center",
+    textTransform: "uppercase",
   },
   userImage: {
-    width: "15%",
+    width: "100%",
     height: "100%",
-    padding:1,
+    resizeMode: "cover",
+    padding: 1,
+    borderRadius: 50,
   },
   messageBox: {
     flex: 1,

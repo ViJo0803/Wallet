@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Button, Alert } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Alert,
+  Pressable,
+} from "react-native";
 
 import { CardField, useConfirmPayment } from "@stripe/stripe-react-native";
 //---------------deposit----------------
@@ -12,9 +19,10 @@ import { getUser } from "../../store/actions/userActions";
 import { deposit } from "../../store/actions/accountActions";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 //-----------------deposit-----------------
-import { URL_STRIPE_3000} from "../../constantes"
+import { URL_STRIPE_3000 } from "../../constantes";
 import { URL_API_3001 } from "../../constantes";
 import axios from "axios";
+import { colors } from "../../utils/colors";
 
 //let montoCargado = ''
 
@@ -27,13 +35,11 @@ const StripeApp = (props) => {
     useContext(CredentialsContext);
   const { email1 } = storedCredentials;
 
-
   /* const useEffectDispatch = async (id, paymentAmount) => {
     useEffect(() => {
       dispatch(deposit(id, paymentAmount));
     }, []);
   } */
-
 
   /* useEffect(() => {
     dispatch(getUser(email));
@@ -73,9 +79,8 @@ const StripeApp = (props) => {
     return { clientSecret, error };
   };
 
-  
   const handlePayPress = async () => {
-    console.log(paymentAmount)
+    console.log(paymentAmount);
     //1.Gather the customer's billing information (e.g., email)
     if (!cardDetails?.complete || !email) {
       Alert.alert("Please enter Complete card details and Email");
@@ -100,13 +105,12 @@ const StripeApp = (props) => {
           alert(`Payment Confirmation Error ${error.message}`);
         } else if (paymentIntent) {
           alert("Payment Successful");
-          const id = balance[0].idcuentas
-          const idUsuario = user.idusuario
+          const id = balance[0].idcuentas;
+          const idUsuario = user.idusuario;
           // hay que conseguir el idcuenta a partir del idusuario
           // useEffectDispatch(id, paymentAmount)
-          dispatch(deposit(id, paymentAmount, idUsuario))
+          dispatch(deposit(id, paymentAmount, idUsuario));
           //dispatch(getAccount(id))
-
         }
       }
     } catch (e) {
@@ -117,9 +121,10 @@ const StripeApp = (props) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Enter your deposit</Text>
       <TextInput
         autoCapitalize="none"
-        placeholder="Monto a Cargar"
+        placeholder="Amount"
         keyboardType="email-address"
         onChange={(value) => setPaymentAmount(value.nativeEvent.text)}
         style={styles.input}
@@ -142,7 +147,13 @@ const StripeApp = (props) => {
           setCardDetails(cardDetails);
         }}
       />
-      <Button onPress={handlePayPress} title="Pay" disabled={loading} />
+      <Pressable
+        onPress={handlePayPress}
+        disabled={loading}
+        style={styles.button}
+      >
+        <Text style={styles.buttonText}>Pay</Text>
+      </Pressable>
     </View>
   );
 };
@@ -154,19 +165,42 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     margin: 20,
   },
+  title: {
+    fontSize: 25,
+    color: colors.tertiary,
+    textTransform: "uppercase",
+    fontWeight: "700",
+    marginBottom: 50,
+  },
   input: {
-    backgroundColor: "#efefefef",
-
+    backgroundColor: colors.primary,
     borderRadius: 8,
     fontSize: 20,
     height: 50,
     padding: 10,
+    marginBottom: 15,
   },
   card: {
-    backgroundColor: "#efefefef",
+    backgroundColor: colors.primary,
   },
   cardContainer: {
     height: 50,
     marginVertical: 30,
+  },
+  button: {
+    padding: 15,
+    backgroundColor: colors.brand,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    marginVertical: 5,
+    height: 60,
+  },
+  buttonText: {
+    color: colors.primary,
+    textTransform: "uppercase",
+    fontSize: 18,
+    fontWeight: "700",
+    letterSpacing: 1.5,
   },
 });

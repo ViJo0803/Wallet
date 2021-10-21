@@ -25,7 +25,6 @@ async function addContact(req, res, next) {
     if (user) {
         const fav = await Favoritos.create({
             alias: account.alias,
-            tipo: "cuenta",
             name: user.nombre,
             lastname: user.apellidos,
             favorite_account_id: account.idcuentas,
@@ -57,6 +56,7 @@ async function getContacts(req, res, next) {
 }
 
 //esta funcionando
+// getall no hace falta se púede borrar
 async function getAllContacts(req, res, next) {
 
     const allContacts = await Favoritos.findAll()

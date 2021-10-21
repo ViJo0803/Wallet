@@ -39,23 +39,25 @@ function ServicesIndex({ navigation }) {
         placeholder="Search"
         onChangeText={handleChange}
         value={input}
+        style={styles.searchInput}
       />
 
       <ScrollView>
-        {services.map((op, i) => (
-          <TouchableOpacity
-            key={i}
-            style={styles.userCard}
-            onPress={() => navigation.navigate("ServiceDetail", { op })}
+        <View style={styles.container}>
+          {services.map((op, i) => (
+            <TouchableOpacity
+              key={i}
+              style={styles.userCard}
+              onPress={() => navigation.navigate("ServiceDetail", { op })}
             >
+              <Image source={op.image} style={styles.userImage} />
 
-            <Image source={op.image} style={styles.userImage} />
-            
-            <View style={styles.userCardRight}>
-              <Text  style={{ fontWeight: "500" }}> {op.name}</Text>
-            </View>
-          </TouchableOpacity>
-        ))}
+              <View>
+                <Text style={styles.userCardText}>{op.name}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
       </ScrollView>
     </View>
   );

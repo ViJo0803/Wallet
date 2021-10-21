@@ -11,6 +11,7 @@ export function createUser(userData) {
     await axios
       .post(`${URL_API_3001}/user/create`, userData) 
       .then((response) => {
+        if(response.data !== "")dispatch(getAccount(response.data.idusuario))
         dispatch({ type: CREATE_USER, payload: response.data });
       })
       .catch((error) => console.log(error));
@@ -31,8 +32,7 @@ export function getUser(mail) {
     await axios
       .get(`${URL_API_3001}/user/get/?mail=${mail}`)
       .then((response) => {
-        console.log(response.data)
-       dispatch(getAccount(response.data.idusuario))
+       if(response.data !== "")dispatch(getAccount(response.data.idusuario))
        dispatch({ type: GET_USER, payload: response.data });
       })
       .catch((error) => console.log(error));

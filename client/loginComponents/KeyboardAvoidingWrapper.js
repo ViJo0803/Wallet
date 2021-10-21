@@ -1,17 +1,23 @@
-import React from 'react';
+import React from "react";
 
 // keyboard avoiding view
-import { KeyboardAvoidingView, Keyboard, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Keyboard,
+  ScrollView,
+  TouchableWithoutFeedback,
+} from "react-native";
 
-//colors
-import { Colors } from '../loginComponents/styles';
-const { primary } = Colors;
+import { colors } from "../utils/colors";
+const { primary } = colors;
 
 const KeyboardAvoidingWrapper = ({ children }) => {
   return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: primary }}>
       <ScrollView>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>{children}</TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          {children}
+        </TouchableWithoutFeedback>
       </ScrollView>
     </KeyboardAvoidingView>
   );

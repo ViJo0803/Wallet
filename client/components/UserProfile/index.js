@@ -11,9 +11,12 @@ import {
 } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+
 function UserProfile() {
+
   const state = useSelector((state) => state.user.user);
   const balance = useSelector((state) => state.account.accounts);
+
 
   console.log("this is the state ", state);
   return (
@@ -59,6 +62,7 @@ function UserProfile() {
           <Text style={styles.text}>A favoritos</Text>
         </View>
         </TouchableRipple>
+
       </View>
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={()=>console.log("Deberia ir a pay services :)")/*</View>navigation,navigate(servicios)*/}>
