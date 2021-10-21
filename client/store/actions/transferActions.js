@@ -38,6 +38,8 @@ export function makeTransfer(data, idusuario) {
 }
 
 export function servicePayment(data, idusuario) {
+  console.log("in service payment data", data )
+  console.log("in service payment idusuario", idusuario )
   return async (dispatch) => {
     await axios
       .post(`${URL_API_3001}/servicesPayment`, data)
