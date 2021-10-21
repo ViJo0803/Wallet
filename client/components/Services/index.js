@@ -59,6 +59,7 @@ function ServicesIndex({ navigation }) {
           ))}
         </View>
       </ScrollView>
+      <TouchableOpacity onPress={() => navigation.navigate("Main")}><Text>Go Home</Text></TouchableOpacity>
     </View>
   );
 }

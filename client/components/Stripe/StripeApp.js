@@ -28,7 +28,7 @@ import { colors } from "../../utils/colors";
 
 //ADD localhost address of your server
 
-const StripeApp = (props) => {
+const StripeApp = ({ navigation}) => {
   //--------------deposit---------------------
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } =
@@ -154,6 +154,7 @@ const StripeApp = (props) => {
       >
         <Text style={styles.buttonText}>Pay</Text>
       </Pressable>
+      <TouchableOpacity onPress={() => navigation.navigate("Main")}><Text>Go Home</Text></TouchableOpacity>
     </View>
   );
 };
