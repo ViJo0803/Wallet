@@ -102,7 +102,7 @@ export default function NewRegisterExt({ navigation }) {
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
 
-  const { email, name, photoUrl} = storedCredentials;
+  const { email, name, photoUrl } = storedCredentials;
 
   const handleMessage = (message, type = "") => {
     setMessage(message);
@@ -114,7 +114,7 @@ export default function NewRegisterExt({ navigation }) {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageTitle>Register Extended</PageTitle>
+          <PageTitle> Extended Register </PageTitle>
 
           {show && (
             <DateTimePicker

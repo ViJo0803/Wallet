@@ -121,7 +121,7 @@ const StripeApp = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Enter your deposit</Text>
+      <Text style={styles.title}> PUT YOUR CARD INFORMATION </Text>
       <TextInput
         autoCapitalize="none"
         placeholder="Amount"
@@ -171,6 +171,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontWeight: "700",
     marginBottom: 50,
+    marginLeft: 10,
   },
   input: {
     backgroundColor: colors.primary,

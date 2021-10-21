@@ -21,15 +21,6 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
   },
-  inputView: {
-    width: "100%",
-    flex: 1,
-    height: "40%",
-    backgroundColor: "#dfe4ea",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-  },
   input: {
     flex: 1,
   },

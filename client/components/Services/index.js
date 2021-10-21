@@ -8,7 +8,6 @@ import {
   Image,
 } from "react-native";
 import { services } from "./servicesList";
-import { Icon, ListItem } from "react-native-elements";
 import { styles } from "./styles";
 
 const allServices = () => {
@@ -29,7 +28,6 @@ function ServicesIndex({ navigation }) {
     });
 
     services = search;
-
   }
 
   return (
