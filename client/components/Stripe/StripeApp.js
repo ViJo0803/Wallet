@@ -154,7 +154,6 @@ const StripeApp = ({ navigation}) => {
       >
         <Text style={styles.buttonText}>Pay</Text>
       </Pressable>
-      <TouchableOpacity onPress={() => navigation.navigate("Main")}><Text>Go Home</Text></TouchableOpacity>
     </View>
   );
 };
