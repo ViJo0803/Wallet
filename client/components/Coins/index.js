@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button, Image } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
-import QRCode from "react-native-qrcode-svg";
 
 function Coins({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -73,7 +72,6 @@ function Coins({ navigation }) {
           color="tomato"
         />
       )}
-      <QRCode value="http://awesome.link.qr" />
     </View>
   );
 }
