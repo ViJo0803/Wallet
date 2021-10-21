@@ -11,6 +11,9 @@ import {
 } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+//-----------------
+import QRCode from 'react-native-qrcode-svg';
+
 
 function UserProfile() {
 
@@ -88,7 +91,9 @@ function UserProfile() {
         </View>
         </TouchableRipple>
       </View>
-
+      <QRCode
+      value="http://awesome.link.qr"
+    />
     </View>
   );
 }
