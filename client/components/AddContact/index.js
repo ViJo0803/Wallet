@@ -30,7 +30,10 @@ export default function AddContact() {
             <Text>Alias:</Text>
             <Controller
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: true, pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: "Entered value does not match email format"
+                  } }}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
                         onBlur={onBlur}
@@ -41,10 +44,21 @@ export default function AddContact() {
                 name="alias"
                />
 
-            {errors.alias && <Text>This is required.</Text>}
+            {errors.alias && <Text>This Alias does not exist.</Text>}
             
             <Button title="Add" onPress={handleSubmit(registerData)} />
         </View>
     );
 }
 
+// <input
+//         id="email"
+//         {...register("email", {
+//           required: "required",
+//           pattern: {
+//             value: /\S+@\S+\.\S+/,
+//             message: "Entered value does not match email format"
+//           }
+//         })}
+//         type="email"
+//       />

@@ -49,11 +49,11 @@ function UserProfile({ navigation }) {
       <ScrollView>
       <View style={styles.wrapperbox}>
         <View style={styles.infobox}>
-          <Title style={styles.title}>$ {balance[0].saldo}</Title>
+          <Title style={styles.title}>$ {balance[0]?.saldo}</Title>
           <Caption style={styles.caption}>Wallet</Caption>
         </View>
         <View style={styles.infobox}>
-          <Title style={styles.title}>{balance[0].numerocuenta}</Title>
+          <Title style={styles.title}>{balance[0]?.numerocuenta}</Title>
           <Caption style={styles.caption}>CVU</Caption>
         </View>
       </View>

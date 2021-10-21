@@ -30,8 +30,8 @@ export function updateContacts(data, userId) {
     await axios
       .post(`${URL_API_3001}/contact/add/`, data)
       .then((response) => {
-        if (response.data !== {}) alert("Contact added successfully");
-        else if (response.data === {}) alert("Something went Wrong");
+        if (response.data === {}) alert("Something went Wrong");
+        else if (response.data !== {}) alert("Contact added successfully");
         dispatch(getContacts(userId))
         dispatch({ type: UPDATE_CONTACT, payload: response.data });
       })

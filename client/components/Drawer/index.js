@@ -108,7 +108,7 @@ function DrawerBar() {
           ),
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Statistics"
         component={Statistics}
         options={{
@@ -116,7 +116,7 @@ function DrawerBar() {
             <FontAwesome5 name="chart-bar" color={colors.brand} size={20} />
           ),
         }}
-      />
+      /> */}
     </Drawer.Navigator>
   );
 }
