@@ -20,7 +20,7 @@ function Home({ navigation }) {
       </View>
       <View style={styles.buttonGrid}>
         <View style={styles.buttonCard}>
-          <TouchableOpacity onPress={() => navigation.navigate("Main")}>
+          <TouchableOpacity onPress={() => navigation.navigate("QRScan")}>
             <Ionicons name="md-qr-code-sharp" color={colors.brand} size={70} />
           </TouchableOpacity>
           <Text>Scan with QR</Text>
