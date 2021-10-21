@@ -43,8 +43,8 @@ function DrawerBar({ navigation }) {
     return (
       <View>
         <Image
-          style={{ width: 50, height: 50 }}
-          source={require('../../assets/isotipoMintDef.png')}
+          style={{ width: 75, height: 75 }}
+          source={require('../../assets/IsotipoSinBG.png')}
         />
       </View>
     );
