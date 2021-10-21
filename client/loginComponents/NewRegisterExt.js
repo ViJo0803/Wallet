@@ -19,11 +19,6 @@ import {
   ButtonText,
   MsgBox,
   Line,
-  ExtraView,
-  ExtraText,
-  TextLink,
-  TextLinkContent,
-  SubTitle,
   Colors,
 } from "../loginComponents/styles";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
@@ -70,33 +65,9 @@ export default function NewRegisterExt({ navigation }) {
   };
   //---------------post
   const handleSignup = (credentials, setSubmitting) => {
-    //opcion 1
 
     dispatch(createUser(credentials));
 
-    // opcion 2
-    //Crear un usuario en nuestra db -> se crea una cuenta
-    // handleMessage(null);
-    // const url =
-    //   "http://9203-2800-200-f190-8e7-3d26-f78b-9071-51c0.ngrok.io/user/create";
-    // axios
-    //   .post(url, credentials)
-    //   .then((response) => {
-    //     const result = response.data;
-    //     const { status, message, data } = result;
-
-    //     if (status !== "SUCCESS") {
-    //       handleMessage(message, status);
-    //     } else {
-    //       persistLogin({ ...data }, message, status);
-    //     }
-    //     setSubmitting(false);
-    //   })
-    //   .catch((error) => {
-    //     setSubmitting(false);
-    //     handleMessage("An error occurred. Check your network and try again");
-    //     console.log(error.toJSON());
-    //   });
   };
   //----------------post
   // credentials context
@@ -145,9 +116,7 @@ export default function NewRegisterExt({ navigation }) {
             onSubmit={(values, { setSubmitting }) => {
               values = { ...values, foto: "" };
               if (
-                // values.nombre == "" ||
                 values.apellidos == "" ||
-                // values.mail == "" ||
                 values.nickname == "" ||
                 values.direccion == "" ||
                 values.dni == "" ||
@@ -169,17 +138,7 @@ export default function NewRegisterExt({ navigation }) {
               isSubmitting,
             }) => (
               <StyledFormArea>
-                {
-                  // <MyTextInput
-                  //   label="Name"
-                  //   placeholder="Richard"
-                  //   placeholderTextColor={darkLight}
-                  //   onChangeText={handleChange("nombre")}
-                  //   onBlur={handleBlur("nombre")}
-                  //   value={values.nombre}
-                  //   icon="person"
-                  // />
-                }
+
                 <MyTextInput
                   label="Last Name"
                   placeholder="Barnes"
@@ -198,16 +157,7 @@ export default function NewRegisterExt({ navigation }) {
                   value={values.nickname}
                   icon="person"
                 />
-                {/* <MyTextInput
-                  label="Email Address"
-                  placeholder="andyj@gmail.com"
-                  placeholderTextColor={darkLight}
-                  onChangeText={handleChange("mail")}
-                  onBlur={handleBlur("mail")}
-                  value={values.mail}
-                  keyboardType="email-address"
-                  icon="mail"
-                /> */}
+
                 <MyTextInput
                   label="Adress"
                   placeholder="Adress 5000"

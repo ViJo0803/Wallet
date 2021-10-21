@@ -1,9 +1,6 @@
 import axios from "axios";
-//import { url } from "./const";
-
 import { URL_API_3001 } from "../../constantes"
-import {getAccount} from "./accountActions"
-
+import { getAccount } from "./accountActions"
 import { GET_TRANSFERS, MAKE_TRANSFER } from "./types";
 
 export function getTransfers(id) {
@@ -22,12 +19,12 @@ export function getTransfers(id) {
 export function makeTransfer(data, idusuario) {
   return async (dispatch) => {
     await axios
-      .post(`${URL_API_3001}/transfers/create`,data)
-      .then((response)=>{
+      .post(`${URL_API_3001}/transfers/create`, data)
+      .then((response) => {
         if (response.data !== "") alert("Transfer Successful");
         else if (response.data === "") alert("Something went Wrong");
       })
-      await axios
+    await axios
       .get(`${URL_API_3001}/transfers/get?id=${data.origen}`)
       .then((response) => {
         dispatch(getAccount(idusuario))
@@ -45,7 +42,7 @@ export function servicePayment(data, idusuario) {
         if (response.data !== "") alert("Payment Successful");
         else if (response.data === "") alert("Something went Wrong");
         dispatch(getAccount(idusuario))
-        })
+      })
       .catch((error) => console.log(error));
   };
 }

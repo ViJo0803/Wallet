@@ -1,5 +1,4 @@
 import express from "express";
-import { resolve } from "path";
 
 const app = express();
 const port = 3000; //add your port here
@@ -22,7 +21,7 @@ app.post("/create-payment-intent", async (req, res) => {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: 1099, //lowest denomination of particular currency
-      currency: "usd", 
+      currency: "usd",
       payment_method_types: ["card"], //by default
     });
 

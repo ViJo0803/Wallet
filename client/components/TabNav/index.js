@@ -1,21 +1,16 @@
 import React, { useEffect, useMemo } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Coins from "../Coins/index.js";
-import Services from "../Services/index.js";
 import TransferNav from "../Transfers/TransferNav/index.js";
 import Deposit from "../Deposit/index.js";
 import Home from "../Home/index";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-
-import { useSelector, useDispatch } from "react-redux";
-import { getAccount } from "../../store/actions/accountActions";
 import ServiceNav from "../Services/ServiceNav/index.js";
 
 const Tab = createBottomTabNavigator();
 
 function TabNav() {
-  
+
 
     return (
         <Tab.Navigator
@@ -38,15 +33,7 @@ function TabNav() {
                     )
                 }}
             />
-            <Tab.Screen
-                name="Coins"
-                component={Coins}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="coins" color={color} size={size} />
-                    )
-                }}
-            />
+
             <Tab.Screen
                 name="TransferNav"
                 component={TransferNav}
@@ -77,9 +64,9 @@ function TabNav() {
                         />
                     )
                 }}
-      />
-    </Tab.Navigator>
-  );
+            />
+        </Tab.Navigator>
+    );
 }
 
 export default TabNav;

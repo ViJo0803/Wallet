@@ -5,10 +5,9 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Image,
+  Image
 } from "react-native";
 import { services } from "./servicesList";
-import { Icon, ListItem } from "react-native-elements";
 import { styles } from "./styles";
 
 const allServices = () => {
@@ -47,12 +46,12 @@ function ServicesIndex({ navigation }) {
             key={i}
             style={styles.userCard}
             onPress={() => navigation.navigate("ServiceDetail", { op })}
-            >
+          >
 
             <Image source={op.image} style={styles.userImage} />
-            
+
             <View style={styles.userCardRight}>
-              <Text  style={{ fontWeight: "500" }}> {op.name}</Text>
+              <Text style={{ fontWeight: "500" }}> {op.name}</Text>
             </View>
           </TouchableOpacity>
         ))}

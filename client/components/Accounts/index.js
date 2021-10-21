@@ -1,42 +1,35 @@
 
-import React, { useEffect, useMemo, useContext } from "react";
-
+import React, { useEffect } from "react";
 import { styles } from './styles'
 import {
-    View,
-    Text,
-    ScrollView,
-    TextInput,
-    TouchableOpacity
-  } from "react-native";
-  import { getTransfers } from "../../store/actions/transferActions";
-  import { useSelector, useDispatch } from "react-redux";
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity
+} from "react-native";
+import { getTransfers } from "../../store/actions/transferActions";
+import { useSelector, useDispatch } from "react-redux";
 
 function Accounts() {
 
-//para navegar al detalle --> navigation.navigate('TransactionDetail')
+  //para navegar al detalle --> navigation.navigate('TransactionDetail')
+  const dispatch = useDispatch()
+
+  const balance = useSelector((state) => state.account.accounts);
+  console.log(balance)
+
+  const history = useSelector((state) => state.transfer.history);
+  console.log("Historial de transferencia", history)
+
+  useEffect(() => {
+    dispatch(getTransfers(balance[0].idcuentas))
+  }, [])
 
 
+  return (
 
-     const dispatch = useDispatch()
-  
-    const balance = useSelector((state) => state.account.accounts);
-    console.log(balance)
-
-    const history = useSelector((state) => state.transfer.history);
-    console.log("Historial de transferencia",history)
-
-    useEffect(() => {
-        dispatch(getTransfers(balance[0].idcuentas))
-    },[])
-
-
-    return (
-
-        <View style={styles.container}>
-
-      
-
+    <View style={styles.container}>
       <ScrollView style={styles.scrollTransfer}>
         <View style={styles.userCardRight}>
           {history?.map((op, i) => (
@@ -54,10 +47,9 @@ function Accounts() {
           ))}
         </View>
       </ScrollView>
+    </View>
+  )
 
-      </View>
-    )
-
-                }
+}
 
 export default Accounts;

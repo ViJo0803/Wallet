@@ -1,24 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Button, Alert } from "react-native";
+import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
 
 import { CardField, useConfirmPayment } from "@stripe/stripe-react-native";
 //---------------deposit----------------
 import { useEffect, useContext } from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
-
 import { useSelector, useDispatch } from "react-redux";
 import { getAccount } from "../../store/actions/accountActions";
-import { getUser } from "../../store/actions/userActions";
 import { deposit } from "../../store/actions/accountActions";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 //-----------------deposit-----------------
-import { URL_STRIPE_3000} from "../../constantes"
-import { URL_API_3001 } from "../../constantes";
-import axios from "axios";
+import { URL_STRIPE_3000 } from "../../constantes"
 
-//let montoCargado = ''
-
-//ADD localhost address of your server
 
 const StripeApp = (props) => {
   //--------------deposit---------------------
@@ -27,32 +19,12 @@ const StripeApp = (props) => {
     useContext(CredentialsContext);
   const { email1 } = storedCredentials;
 
-
-  /* const useEffectDispatch = async (id, paymentAmount) => {
-    useEffect(() => {
-      dispatch(deposit(id, paymentAmount));
-    }, []);
-  } */
-
-
-  /* useEffect(() => {
-    dispatch(getUser(email));
-  }, []); */
-
   const { user } = useSelector((state) => state.user);
   const balance = useSelector((state) => state.account.accounts);
 
   useEffect(() => {
     dispatch(getAccount(user.idusuario));
   }, []);
-
-  //const cuentas = useSelector((state1) => state1.accounts);
-  //console.log("userrrrrrrrrrrrr" + user.idusuario);
-  // console.log("cuenta" + balance[1].idcuentas);
-
-  //const cuentas = useSelector((state1) => state1.accounts);
-  //console.log("user " + user.idusuario);
-  //console.log("cuenta " + balance[0].idcuentas);
 
   //----------------------deposit--------------------
 
@@ -73,10 +45,9 @@ const StripeApp = (props) => {
     return { clientSecret, error };
   };
 
-  
+
   const handlePayPress = async () => {
     console.log(paymentAmount)
-    //1.Gather the customer's billing information (e.g., email)
     if (!cardDetails?.complete || !email) {
       Alert.alert("Please enter Complete card details and Email");
       return;
@@ -85,10 +56,8 @@ const StripeApp = (props) => {
     const billingDetails = {
       email: email,
     };
-    //2.Fetch the intent client secret from the backend
     try {
       const { clientSecret, error } = await fetchPaymentIntentClientSecret();
-      //2. confirm the payment
       if (error) {
         console.log("Unable to process payment");
       } else {
@@ -102,17 +71,15 @@ const StripeApp = (props) => {
           alert("Payment Successful");
           const id = balance[0].idcuentas
           const idUsuario = user.idusuario
-          // hay que conseguir el idcuenta a partir del idusuario
-          // useEffectDispatch(id, paymentAmount)
           dispatch(deposit(id, paymentAmount, idUsuario))
-          //dispatch(getAccount(id))
+
 
         }
       }
     } catch (e) {
       console.log(e);
     }
-    //3.Confirm the payment with the card details
+
   };
 
   return (

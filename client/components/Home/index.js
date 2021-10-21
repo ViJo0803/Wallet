@@ -1,11 +1,5 @@
 import React, { useEffect, useMemo, useContext } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text } from "react-native";
 import { styles } from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../store/actions/userActions";
@@ -18,13 +12,13 @@ function Home({ route }) {
   const dispatch = useDispatch();
 
   const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
-  const { email, name, photoUrl } = storedCredentials
+  const { email } = storedCredentials
 
 
   useEffect(() => {
     console.log("in use efect get user")
     dispatch(getUser(email));
-  },[dispatch]);
+  }, [dispatch]);
 
   const balance = useSelector((state) => state.account.accounts)
 

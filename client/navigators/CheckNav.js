@@ -23,11 +23,11 @@ export default function CheckNav() {
 
   return (
     <Stack.Navigator>
-        {!Object.keys(user).length ? ( 
+      {!Object.keys(user).length ? (
         <Stack.Screen
-        name="NewRegisterExt"
-        component={NewRegisterExt}
-        options={{ headerShown: false }}
+          name="NewRegisterExt"
+          component={NewRegisterExt}
+          options={{ headerShown: false }}
         />
       ) : (
         <Stack.Screen

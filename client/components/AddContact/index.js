@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, Button} from "react-native";
+import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { updateContacts } from "../../store/actions/contactsActions"
-
-
-
 
 export default function AddContact() {
 
@@ -18,11 +15,11 @@ export default function AddContact() {
     const dispatch = useDispatch();
     const contacts = useSelector(state => state.contacts.contacts)
     const user = useSelector((state) => state.user.user);
-    
+
 
     const registerData = (data) => {
 
-        dispatch(updateContacts({alias:data.alias, idusuario: user.idusuario}, user.idusuario))
+        dispatch(updateContacts({ alias: data.alias, idusuario: user.idusuario }, user.idusuario))
     }
 
     return (
@@ -39,10 +36,10 @@ export default function AddContact() {
                     />
                 )}
                 name="alias"
-               />
+            />
 
             {errors.alias && <Text>This is required.</Text>}
-            
+
             <Button title="Add" onPress={handleSubmit(registerData)} />
         </View>
     );

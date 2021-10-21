@@ -5,7 +5,6 @@ import { Formik } from "formik";
 import {
   StyledContainer,
   PageLogo,
-  PageTitle,
   SubTitle,
   StyledInputLabel,
   StyledFormArea,
@@ -39,7 +38,7 @@ const Login = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
   const [googleSubmitting, setGoogleSubmitting] = useState(false);
-  
+
 
   // credentials context
   const { storedCredentials, setStoredCredentials } =
@@ -73,11 +72,11 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  const userTrue = (email) =>{
+  const userTrue = (email) => {
     getUser(email)
     const _user = useSelector((state) => state.user.user);
     return _user
-      }
+  }
 
 
   const handleGoogleSignin = () => {
@@ -87,23 +86,21 @@ const Login = ({ navigation }) => {
       androidClientId: `869980078790-d1s7hh4j3i9t7a6gho3n0ehstg8n4tvj.apps.googleusercontent.com`,
       scopes: ["profile", "email"],
     };
-   
+
     Google.logInAsync(config)
       .then((result) => {
         const { type, user } = result;
         const { email, name, photoUrl } = user;
 
-        // let _user = userTrue(email);     
-     
-        if (type == "success" ) {
+        if (type == "success") {
           const { email, name, photoUrl } = user;
-         
+
           persistLogin(
             { email, name, photoUrl },
             "Google signin successful",
             "SUCCESS"
           );
-         
+
 
         } else {
           handleMessage("Google Signin was cancelled");

@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Button,
-  Text,
-  Image,
-  TextInput,
-  SafeAreaView,
-  StyleSheet,
-  Alert,
-} from "react-native";
-import { useForm, Controller } from "react-hook-form";
+import { View, Button, Text, Image, TextInput } from "react-native";
 import { styles } from "./styles";
 import { servicePayment } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
@@ -31,35 +21,33 @@ function ServiceDetail({ route, navigation }) {
       fecha: "2021-10-13 14:58:21.706-03",
     };
     console.log(dataFiltered)
-    dispatch(servicePayment(dataFiltered,idUsuario))
-  
+    dispatch(servicePayment(dataFiltered, idUsuario))
+
   }
 
   const { op } = route.params;
   return (
 
     <View>
-    <View>
-      <Image source={op.image} style={styles.userImage} />
-      <Text> {op.name}</Text>
-      <Text> {op.type}</Text>
-      <Text> {op.paymentId}</Text>
+      <View>
+        <Image source={op.image} style={styles.userImage} />
+        <Text> {op.name}</Text>
+        <Text> {op.type}</Text>
+        <Text> {op.paymentId}</Text>
+      </View>
+
+      <View style={styles.container}>
+
+        <Text>Monto:</Text>
+        <TextInput
+
+          placeholder="Monto"
+          onChange={(value) => setMonto(value.nativeEvent.text)}
+        />
+
+        <Button title="Pagar" onPress={onSubmit} />
+      </View>
     </View>
-
-    <View style={styles.container}>
-
-     
-    <Text>Monto:</Text>
-    <TextInput
-    // style={styles.input}
-    
-    placeholder="Monto"
-    onChange={(value) => setMonto(value.nativeEvent.text)}
-  />
-    
-    <Button title="Pagar" onPress={onSubmit} />
-  </View>
-  </View>
 
   );
 }

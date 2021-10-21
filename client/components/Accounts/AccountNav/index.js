@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import {createStackNavigator} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import Accounts from "../index.js"
 import TransactionDetail from "../transactionDetail.js"
 
@@ -9,15 +8,15 @@ const Stack = createStackNavigator()
 export default function AccountNav() {
     return (
         <Stack.Navigator
-        initialRouteName="AccountIndex">
+            initialRouteName="AccountIndex">
             <Stack.Screen
-            name="AccountIndex"
-            component={Accounts}
-            headerShown={false}/>
+                name="AccountIndex"
+                component={Accounts}
+                headerShown={false} />
             <Stack.Screen
-            name="TransactionDetail"
-            component={TransactionDetail}
-            headerShown={false}/>
+                name="TransactionDetail"
+                component={TransactionDetail}
+                headerShown={false} />
         </Stack.Navigator>
     )
 }

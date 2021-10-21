@@ -68,8 +68,8 @@ const Signup = ({ navigation }) => {
     setShow('date');
   };
 
-    // credentials context
-    const {storedCredentials, setStoredCredentials} = useContext(CredentialsContext);
+  // credentials context
+  const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
 
   // Form handling
   const handleSignup = (credentials, setSubmitting) => {
@@ -84,7 +84,7 @@ const Signup = ({ navigation }) => {
         if (status !== 'SUCCESS') {
           handleMessage(message, status);
         } else {
-          persistLogin({ ...data } ,message, status);
+          persistLogin({ ...data }, message, status);
         }
         setSubmitting(false);
       })
@@ -104,7 +104,7 @@ const Signup = ({ navigation }) => {
     "password": "$2b$10$pae30HLhH1T0Ztx1DVj54eLGeUGvpjbeuGkQtKR2I0v965YYJAX5K",
   } */
 
-  
+
   const handleMessage = (message, type = '') => {
     setMessage(message);
     setMessageType(type);

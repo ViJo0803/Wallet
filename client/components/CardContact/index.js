@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { View, Text, TextInput, Button, Alert } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
-import { getContacts } from "../../store/actions/contactsActions";
 import { makeTransfer } from "../../store/actions/transferActions";
 
-function CardContact({navigation, route}) {
+function CardContact({ navigation, route }) {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user)
-  const contacts = useSelector((state) => state.contacts.contacts);
-  const transfer = useSelector((state) => state.history);
   const userAccount = useSelector((state) => state.account.accounts);
- 
-  const{el}= route.params
+
+  const { el } = route.params
 
   const {
     control,
@@ -22,22 +19,22 @@ function CardContact({navigation, route}) {
 
   } = useForm();
 
-  
- 
+
+
   const dataTransfer = (data) => {
     const dataFiltered = {
       monto: data.monto,
       destino: el.favorite_account_id,
-      origen: userAccount[0].idcuentas, 
+      origen: userAccount[0].idcuentas,
       alias: el.alias,
       fecha: "2021-10-13 14:58:21.706-03",
     }
     dispatch(makeTransfer(dataFiltered, user.idusuario))
   }
-  function post(data){
+  function post(data) {
 
   }
-    
+
   return (
     <View >
       <Text >Contact Details</Text>
@@ -50,7 +47,7 @@ function CardContact({navigation, route}) {
         rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
-            
+
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
@@ -63,11 +60,9 @@ function CardContact({navigation, route}) {
       {errors.monto && <Text>This is required.</Text>}
 
       <View>
-        
-        
-        
-        <Button title="Transfer" onPress={() =>{
-          
+
+        <Button title="Transfer" onPress={() => {
+
           Alert.alert(
             "Make Transfer",
             "Are you sure?",
@@ -81,9 +76,9 @@ function CardContact({navigation, route}) {
             ]
           );
 
-        } } />
+        }} />
       </View>
-      
+
     </View>
 
   )

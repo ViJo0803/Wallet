@@ -10,9 +10,9 @@ const accountReducer = (state = initalState, { type, payload }) => {
       return { ...state, accounts: payload };
     case CREATE_ACCOUNT:
       return { ...state, accounts: payload };
-      
+
     case DEPOSIT:
-    return{...state, accounts:payload}
+      return { ...state, accounts: payload }
     default:
       return state;
   }
