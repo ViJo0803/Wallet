@@ -19,7 +19,7 @@ function UserProfile() {
   return (
     <View style={styles.container}>
       <Avatar.Image
-        source={require("../../assets/JimC.jpg")}
+        source={require("../../assets/Isotipo_MINT.png")}
         style={styles.image}
         size={200}
       />
@@ -40,12 +40,16 @@ function UserProfile() {
           <Icon name="email" color={"#232020"} size={15} style={styles.icon} />
           <Caption style={styles.caption}>{state.mail}</Caption>
         </View>
-      </View>
-      <View style={styles.wrapperbox}>
-        <View style={styles.infobox}>
-          <Title style={styles.title}>$ {balance[0].saldo}</Title>
-          <Caption style={styles.caption}>Wallet</Caption>
+        <View style={styles.adress}>
+          <Icon name="account-key" color={"#232020"} size={15} style={styles.icon} />
+          <Caption style={styles.caption}>{balance[0].alias}</Caption>
         </View>
+      </View>
+
+
+
+
+      <View style={styles.wrapperbox}>
         <View style={styles.infobox}>
           <Title style={styles.title}>{balance[0].numerocuenta}</Title>
           <Caption style={styles.caption}>CVU</Caption>

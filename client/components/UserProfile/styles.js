@@ -25,12 +25,6 @@ export const styles = StyleSheet.create({
     fontFamily: "sans-serif",
     fontSize: 18,
   },
-  containerButtons: {
-    display: "flex",
-    width: "50%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
   button: {
     width: "25%",
     backgroundColor: "#8fd18e",
@@ -52,18 +46,18 @@ export const styles = StyleSheet.create({
     marginLeft: 15,
   },
   wrapperbox: {
-    borderTopColor: "#9CA3AF",
+    borderTopColor: "#232020",
     borderTopWidth: 1,
-    borderBottomColor: "#9CA3AF",
+    borderBottomColor: "#232020",
     borderBottomWidth: 1,
     flexDirection: "row",
     height: 100,
+    alignItems:"center",
+    justifyContent:"center"
   },
   infobox: {
     alignItems: "center",
     justifyContent: "center",
-    borderRightColor: "#9CA3AF",
-    borderRightWidth: 1,
     width: "50%",
   },
   menuItem: {

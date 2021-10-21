@@ -56,16 +56,10 @@ async function getContacts(req, res, next) {
 
 }
 
-//esta funcionando
-async function getAllContacts(req, res, next) {
-
-    const allContacts = await Favoritos.findAll()
-    res.send(allContacts)
-
-}
 
 
-module.exports = { addContact, getContacts, getAllContacts }
+
+module.exports = { addContact, getContacts }
 
 
 
