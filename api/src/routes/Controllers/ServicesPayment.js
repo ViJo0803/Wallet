@@ -53,7 +53,7 @@ async function ServPayment(req, res, next) {
       let pago = await Pago_servicios.create({
         fecha: fecha,
         servicioId: servicio.id,
-      //  cuentasIdcuentas:Account_origen.idcuentas
+        cuentaIdcuentas: Account_origen.idcuentas
       });
 
       return res.send(pago);
