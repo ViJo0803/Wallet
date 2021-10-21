@@ -52,11 +52,11 @@ function UserProfile({ navigation }) {
    
       <View style={styles.wrapperbox}>
         <View style={styles.infobox}>
-          <Title style={styles.title}>$ {balance[0].saldo}</Title>
+          <Title style={styles.title}>$ {balance[0]?.saldo}</Title>
           <Caption style={styles.caption}>Wallet</Caption>
         </View>
         <View style={styles.infobox}>
-          <Title style={styles.title}>{balance[0].numerocuenta}</Title>
+          <Title style={styles.title}>{balance[0]?.numerocuenta}</Title>
           <Caption style={styles.caption}>CVU</Caption>
         </View>
       </View>
@@ -102,7 +102,7 @@ function UserProfile({ navigation }) {
       </View>
       <View style={styles.qrContainer} >
       <Text style={styles.qrText}>Share Alias</Text>
-      <QRCode  size={300} value={balance[0].alias} />
+      <QRCode  size={300} value={balance[0]?.alias} />
      
       </View>
       </ScrollView>

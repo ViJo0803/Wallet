@@ -7,6 +7,7 @@ const initalState = {
 const accountReducer = (state = initalState, { type, payload }) => {
   switch (type) {
     case GET_ACCOUNT:
+      console.log("in account reducer", payload)
       return { ...state, accounts: payload };
     case CREATE_ACCOUNT:
       return { ...state, accounts: payload };

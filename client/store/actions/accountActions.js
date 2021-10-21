@@ -5,6 +5,7 @@ import { URL_API_3001 } from "../../constantes";
 import { GET_ACCOUNT, CREATE_ACCOUNT, DEPOSIT } from "./types";
 
 export function getAccount(id) {
+  console.log("id",id)
   return async (dispatch) => {
     await axios
       .get(`${URL_API_3001}/account/get/?id=${id}`)
@@ -28,6 +29,8 @@ export function createAccount(userData) {
 */
 export function deposit(id, monto, idusuario){
 return async(dispatch)=>{
+  console.log("in actions")
+  console.log("id usuario:",idusuario , "id:", id, "monto:", monto)
   await axios
   .put(`${URL_API_3001}/account/update/?id=${id}&monto=${monto}`)
   .then((response)=>{

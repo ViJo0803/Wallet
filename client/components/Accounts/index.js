@@ -30,7 +30,7 @@ function Accounts() {
     <View style={styles.container}>
       <View style={styles.cuentas}>
         <Text style={styles.titleCuenta}>Saldo AR$</Text>
-        <Text style={styles.saldo}>{balance[0].saldo} </Text>
+        <Text style={styles.saldo}>{balance[0]?.saldo} </Text>
       </View>
 
       <ScrollView style={styles.scrollTransfer}>

@@ -109,6 +109,7 @@ const StripeApp = ({ navigation}) => {
           const idUsuario = user.idusuario;
           // hay que conseguir el idcuenta a partir del idusuario
           // useEffectDispatch(id, paymentAmount)
+          console.log("id usuario:",idUsuario , "id:", id, "monto:", paymentAmount)
           dispatch(deposit(id, paymentAmount, idUsuario));
           //dispatch(getAccount(id))
         }
