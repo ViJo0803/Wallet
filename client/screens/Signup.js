@@ -144,7 +144,6 @@ const Signup = ({ navigation }) => {
               }}
             />
           )}
-
           <Formik
             initialValues={{
               name: "",

@@ -20,10 +20,10 @@ export default function CheckNav() {
   }, [dispatch]);
 
   const user = useSelector((state) => state.user.user);
-console.log("usre checknav", user)
+
   return (
     <Stack.Navigator>
-        {!Object.keys(user).length ? ( 
+        {Object.keys(user).length===0 ? ( 
         <Stack.Screen
         name="NewRegisterExt"
         component={NewRegisterExt}

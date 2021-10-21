@@ -12,5 +12,4 @@ router.get("/get", getAllContacts);
 
 
 
-
 module.exports=router;
