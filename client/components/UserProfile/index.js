@@ -11,12 +11,12 @@ import {
 } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-
+//-------------qr------------------
+import QRCode from "react-native-qrcode-svg";
+//------------qr------------------------
 function UserProfile({ navigation }) {
-
   const state = useSelector((state) => state.user.user);
   const balance = useSelector((state) => state.account.accounts);
-
 
   console.log("this is the state ", state);
   return (
@@ -32,7 +32,12 @@ function UserProfile({ navigation }) {
           {state.nombre} {state.apellidos}
         </Title>
         <View style={styles.adress}>
-          <Icon style={styles.icon} color={"#232020"} name="map-marker-radius" size={15} />
+          <Icon
+            style={styles.icon}
+            color={"#232020"}
+            name="map-marker-radius"
+            size={15}
+          />
           <Caption style={styles.caption}>{state.direccion}</Caption>
         </View>
         <View style={styles.adress}>
@@ -58,16 +63,25 @@ function UserProfile({ navigation }) {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => navigation.navigate("Transfers")}>
           <View style={styles.menuItem}>
-            <Icon style={styles.icon} name="heart-outline" size={20} color={"#FF6347"} />
+            <Icon
+              style={styles.icon}
+              name="heart-outline"
+              size={20}
+              color={"#FF6347"}
+            />
             <Text style={styles.text}>To Favourites</Text>
           </View>
         </TouchableRipple>
-
       </View>
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => navigation.navigate("Services")}>
           <View style={styles.menuItem}>
-            <Icon style={styles.icon} name="credit-card" size={20} color={"#FF6347"} />
+            <Icon
+              style={styles.icon}
+              name="credit-card"
+              size={20}
+              color={"#FF6347"}
+            />
             <Text style={styles.text}>Make a Service Payment</Text>
           </View>
         </TouchableRipple>
@@ -75,20 +89,37 @@ function UserProfile({ navigation }) {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => navigation.navigate("Deposit")}>
           <View style={styles.menuItem}>
-            <Icon style={styles.icon} name="account-check-outline" size={20} color={"#FF6347"} />
+            <Icon
+              style={styles.icon}
+              name="account-check-outline"
+              size={20}
+              color={"#FF6347"}
+            />
             <Text style={styles.text}>Recharge Your Wallet</Text>
           </View>
         </TouchableRipple>
       </View>
       <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => console.log("Deberia ir a Editar perfil :)")/*</View>navigation,navigate(edituserprofile)*/}>
+        <TouchableRipple
+          onPress={
+            () =>
+              console.log(
+                "Deberia ir a Editar perfil :)"
+              ) /*</View>navigation,navigate(edituserprofile)*/
+          }
+        >
           <View style={styles.menuItem}>
-            <Icon style={styles.icon} name="share-outline" size={20} color={"#FF6347"} />
+            <Icon
+              style={styles.icon}
+              name="share-outline"
+              size={20}
+              color={"#FF6347"}
+            />
             <Text style={styles.text}>Edit Profile</Text>
           </View>
         </TouchableRipple>
       </View>
-
+      <QRCode value={balance[0].alias} />
     </View>
   );
 }
