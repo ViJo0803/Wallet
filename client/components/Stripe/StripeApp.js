@@ -153,7 +153,7 @@ const StripeApp = ({ navigation}) => {
         disabled={loading}
         style={styles.button}
       >
-        <Text style={styles.buttonText}>Pay</Text>
+        <Text style={styles.buttonText}>Recharge Balance</Text>
       </Pressable>
     </View>
   );

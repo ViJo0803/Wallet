@@ -48,7 +48,6 @@ function CardContact({ navigation, route }) {
           <View>
             <Text style={styles.fields}>Alias: {el.alias} </Text>
           </View>
-          <Text style={styles.fields}>Tipo: {el.tipo} </Text>
 
           <View style={styles.inputContainer}>
             <Text style={styles.fields}>Monto: </Text>
@@ -76,8 +75,8 @@ function CardContact({ navigation, route }) {
         
         
         
-        <Button title="Transfer" onPress={() =>{
-          
+        <Button title="Transfer" style={styles.buton} onPress={() =>{
+
           Alert.alert(
             "Make Transfer",
             "Are you sure?",
@@ -90,10 +89,9 @@ function CardContact({ navigation, route }) {
               { text: "OK", onPress: handleSubmit(dataTransfer) }
             ]
           );
-
         } } />
       </View>
-      
+    
     </View>
   );
 }
