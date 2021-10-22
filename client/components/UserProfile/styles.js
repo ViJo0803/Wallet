@@ -81,4 +81,23 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
   },
+  qrContainer:{
+    marginTop:25,
+    alignContent:"center",
+    justifyContent:"center",
+    alignItems:"center",
+   
+
+
+  },
+  qr:{
+    marginTop:20,
+    paddingVertical:8
+  },
+  qrText:{
+    fontSize:18,
+    color:"#232020",
+    marginBottom:10
+  }
+
 });
