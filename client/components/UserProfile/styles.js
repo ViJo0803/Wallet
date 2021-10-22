@@ -90,7 +90,7 @@ export const styles = StyleSheet.create({
     lineHeight: 26,
   },
   qrContainer:{
-    marginTop:25,
+    marginVertical:25,
     alignContent:"center",
     justifyContent:"center",
     alignItems:"center",
@@ -99,6 +99,7 @@ export const styles = StyleSheet.create({
 
   },
   qr:{
+
     marginTop:20,
     paddingVertical:8
   },

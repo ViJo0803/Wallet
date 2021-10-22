@@ -5,7 +5,6 @@ async function ServPayment(req, res, next) {
   // nombre del servicio a pagar
   // monto a pagar
   // la cuenta de donde viene la plata
-  console.log("body serv", req.body)
   const { origen, destino, monto, fecha } = req.body;
 
   try {
@@ -80,14 +79,16 @@ async function getServicePayment(req, res, next){
 
   try{
     const id= req.query.id
-    
-    const payments= await Pago_servicios.findAll({
+
+    if(typeof(id)== "string" && id.length==36 )
+    {const payments= await Pago_servicios.findAll({
       where:{
         cuentaIdcuentas:id
       }
     })
 
-    res.send(payments)
+    res.send(payments).status(200)
+  }else res.send(null).status(204)
 
   }catch (error) {
     next(error);

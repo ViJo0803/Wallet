@@ -28,8 +28,8 @@ function Accounts() {
   const payments = useSelector((state) => state.account.payments);
   console.log("Historial de Pagos a servicios", payments);
   useEffect(() => {
-    dispatch(getTransfers(balance[0]?.idcuentas));
-    dispatch(getPaymentHistory(balance[0]?.idcuentas));
+    if(balance !==undefined && balance !== null) dispatch(getTransfers(balance[0]?.idcuentas));
+    if(balance !==undefined && balance !== null) dispatch(getPaymentHistory(balance[0]?.idcuentas));
   }, []);
 
   return (
@@ -40,7 +40,7 @@ function Accounts() {
       </View>
 
       <View style={styles.titles}>
-      <Title style={styles.titleCuenta}>Recents transfers</Title>
+      <Title style={styles.titleCuenta}>Recent transfers</Title>
       </View>
       
 
@@ -51,7 +51,7 @@ function Accounts() {
           {history?.map((op, i) => (
             <View style={styles.userCard} key={i}>
               <View>
-                {op?.origin == balance[0]?.idcuentas ? (
+                {op?.origin == balance[0].idcuentas ? (
                   <Text style={styles.textname}> {"- " + op?.monto}</Text>
                 ) : (
                   <Text style={styles.textname}> {"+ " + op?.monto}</Text>
@@ -64,7 +64,7 @@ function Accounts() {
       </ScrollView>
 
       <View style={styles.titles}>
-      <Title style={styles.titleCuenta}>Payments History</Title>
+      <Title style={styles.titleCuenta}>Payment History</Title>
       </View>
       
         <ScrollView style={styles.scrollTransfer}>

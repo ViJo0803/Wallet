@@ -50,7 +50,7 @@ function UserProfile({ navigation }) {
         </View>
         <View style={styles.adress}>
           <Icon name="account-key" color={"#232020"} size={15} style={styles.icon} />
-          <Caption style={styles.caption}>{balance[0].alias}</Caption>
+          <Caption style={styles.caption}>{balance[0]?.alias}</Caption>
         </View>
       </View>
 

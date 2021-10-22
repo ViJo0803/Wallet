@@ -31,7 +31,7 @@ export function updateContacts(data, userId) {
       .post(`${URL_API_3001}/contact/add/`, data)
       .then((response) => {
         console.log("response post contact", response)
-        if (response.data === {}) alert("Something went Wrong");
+        if (response.data === "") alert("Something went Wrong");
         else if (response.data[1] === true) alert("Contact added successfully");
         else if (response.data[1] === false) alert("Contact already exist");
         dispatch(getContacts(userId))

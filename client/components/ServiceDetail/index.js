@@ -17,6 +17,7 @@ function ServiceDetail({ route, navigation }) {
   const [monto, setMonto] = useState();
 
   const origen = useSelector((state) => state.account.accounts[0].numerocuenta);
+  const idcuentas = useSelector((state) => state.account.accounts[0].idcuentas);
   const { user } = useSelector((state) => state.user);
   const idUsuario = user.idusuario;
 
@@ -28,7 +29,7 @@ function ServiceDetail({ route, navigation }) {
       fecha: "2021-10-13 14:58:21.706-03",
     };
     console.log(dataFiltered);
-    dispatch(servicePayment(dataFiltered, idUsuario));
+    dispatch(servicePayment(dataFiltered, idUsuario, idcuentas));
   };
 
   const { op } = route.params;

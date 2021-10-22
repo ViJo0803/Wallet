@@ -16,7 +16,7 @@ async function addContact(req, res, next) {
         },
     });
 
-    if(Object.keys(account).length!==0){
+    if(account !==undefined && account !==null ){
 
     const user = await Usuario.findOne({
         where: {
