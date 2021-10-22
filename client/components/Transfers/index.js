@@ -11,8 +11,9 @@ import { styles } from "./styles";
 import { makeTransfer } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
 import { getContacts } from "../../store/actions/contactsActions";
-import {  Title, TouchableRipple } from "react-native-paper";
+import { Title, TouchableRipple } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+
 function Transfers({ navigation }) {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contacts.contacts);
@@ -24,7 +25,6 @@ function Transfers({ navigation }) {
 
   return (
     <View style={styles.container}>
-
       <Title style={styles.title}>Contact List</Title>
 
       <ScrollView>
@@ -52,12 +52,12 @@ function Transfers({ navigation }) {
         </View>
       </ScrollView>
       <View>
-        <Pressable
-          onPress={() => navigation.navigate("Add Contact")}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Add contact</Text>
-        </Pressable>
+        <TouchableRipple onPress={() => navigation.navigate("Add Contact")}>
+          <View style={styles.button_container}>
+            <Icon name="account-multiple-plus" size={40} style={styles.addIcon} />
+            <Title style={styles.buttonText}>Add Contact</Title>
+          </View>
+        </TouchableRipple>
       </View>
     </View>
   );
