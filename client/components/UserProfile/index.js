@@ -26,7 +26,7 @@ function UserProfile({ navigation }) {
         style={styles.image}
         size={200}
       />
-       <ScrollView>
+     
       <View>
         <Title style={styles.title}>
           {state.nombre} {state.apellidos}
@@ -53,11 +53,11 @@ function UserProfile({ navigation }) {
       <ScrollView>
       <View style={styles.wrapperbox}>
         <View style={styles.infobox}>
-          <Title style={styles.title}>$ {balance[0]?.saldo}</Title>
+          <Title style={styles.cvu}>${balance[0]?.saldo}</Title>
           <Caption style={styles.caption}>Wallet</Caption>
         </View>
         <View style={styles.infobox}>
-          <Title style={styles.title}>{balance[0]?.numerocuenta}</Title>
+          <Title style={styles.cvu}>{balance[0]?.numerocuenta}</Title>
           <Caption style={styles.caption}>CVU</Caption>
         </View>
       </View>
@@ -75,7 +75,7 @@ function UserProfile({ navigation }) {
           </View>
         </TouchableRipple>
       </View>
-      <View style={styles.menuWrapper}>
+      <View >
         <TouchableRipple onPress={() => navigation.navigate("Services")}>
           <View style={styles.menuItem}>
             <Icon
@@ -104,7 +104,6 @@ function UserProfile({ navigation }) {
       <View style={styles.qrContainer} >
       <Text style={styles.qrText}>Share Alias</Text>
       <QRCode  size={300} value={balance[0]?.alias} />
-     
       </View>
       </ScrollView>
     </View>

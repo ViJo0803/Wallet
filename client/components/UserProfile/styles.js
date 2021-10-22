@@ -32,6 +32,13 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
+  cvu:{
+    fontSize: 18,
+    color: "#5271FF",
+    
+    alignSelf:"center",
+    
+  },
   button: {
     width: "25%",
     backgroundColor: "#8fd18e",
@@ -69,10 +76,9 @@ export const styles = StyleSheet.create({
   },
   menuItem: {
     alignItems: "center",
-    
     flexDirection: "row",
-    paddingVertical: 15,
-    paddingHorizontal: 30,
+    paddingVertical: 8,
+    paddingHorizontal: 2,
   },
   menuItemText: {
     color: "#232020",
