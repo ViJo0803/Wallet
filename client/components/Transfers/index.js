@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { View, Text, ScrollView, Button, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { styles } from "./styles";
 import { makeTransfer } from "../../store/actions/transferActions";
@@ -43,15 +49,14 @@ function Transfers({ navigation }) {
           ))}
         </View>
       </ScrollView>
-      <View >
-        <TouchableRipple onPress={() => navigation.navigate("Add Contact")}>
-        <View style={styles.button_container}>
-        <Icon name="account-multiple-plus" size={40} style={styles.icon} />
-        <Title style={styles.button}>"Add Contact"</Title>
-        </View>
-        </TouchableRipple>
+      <View>
+        <Pressable
+          onPress={() => navigation.navigate("Add Contact")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Add contact</Text>
+        </Pressable>
       </View>
-      
     </View>
   );
 }

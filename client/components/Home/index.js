@@ -1,40 +1,20 @@
-import React, { useEffect, useMemo, useContext } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { View, Text, } from "react-native";
 import { styles } from "./styles";
-import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../../store/actions/userActions";
+import { useSelector } from "react-redux";
 
-//
-import { CredentialsContext } from "../../loginComponents/CredentialsContext";
-
-function Home({ route }) {
-
-  const dispatch = useDispatch();
-
-  const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
-  const { email, name, photoUrl } = storedCredentials
-
-
-  useEffect(() => {
-    console.log("in use efect get user")
-    dispatch(getUser(email));
-  },[dispatch]);
+function Home() {
 
   const balance = useSelector((state) => state.account.accounts)
+  const state = useSelector((state) => state.user.user)
 
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
-        <Text style={styles.titleCuenta}>ARS</Text>
-        <Text style={styles.titleCuenta}>{balance[0]?.saldo}</Text>
+        <Text style={styles.welcome}>Welcome, {state.nombre}</Text>
+        <Text style={styles.title}>Current balance</Text>
+        <Text style={styles.title}>{balance[0]?.saldo || 0} ARS</Text>
       </View>
-
     </View>
   );
 }

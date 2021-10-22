@@ -16,23 +16,23 @@ export default function CheckNav() {
   const { email } = storedCredentials;
 
   useEffect(() => {
-    dispatch(getUser(email));
+    email? dispatch(getUser(email)) : user = {};
   }, [dispatch]);
 
   const user = useSelector((state) => state.user.user);
-
+console.log("usre checknav", user)
   return (
     <Stack.Navigator>
-      {user ? (
+        {!Object.keys(user).length ? ( 
         <Stack.Screen
-          name="Drawer"
-          component={DrawerBar}
-          options={{ headerShown: false }}
+        name="NewRegisterExt"
+        component={NewRegisterExt}
+        options={{ headerShown: false }}
         />
       ) : (
         <Stack.Screen
-          name="NewRegisterExt"
-          component={NewRegisterExt}
+          name="Drawer"
+          component={DrawerBar}
           options={{ headerShown: false }}
         />
       )}

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { View, Text, TextInput, Button } from "react-native";
+import React, { useEffect } from 'react'
+import { View, Text, TextInput, Button, Alert } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { getContacts } from "../../store/actions/contactsActions";
@@ -72,14 +72,28 @@ function CardContact({ navigation, route }) {
         </View>
       </View >
 
-      <View style={styles.butonContainer}>
-        <TouchableRipple  style={styles.buton}  onPress={handleSubmit(dataTransfer)} >
-      <View> 
-        <Title style={styles.buttonText}>Make a transfer</Title>
+      <View>
+        
+        
+        
+        <Button title="Transfer" onPress={() =>{
+          
+          Alert.alert(
+            "Make Transfer",
+            "Are you sure?",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "OK", onPress: handleSubmit(dataTransfer) }
+            ]
+          );
+
+        } } />
       </View>
-         
-        </TouchableRipple>
-      </View>
+      
     </View>
   );
 }

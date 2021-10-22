@@ -1,16 +1,14 @@
 import React from "react";
 
 //colors
-import { Colors } from "../loginComponents/styles";
-const { darkLight, brand, primary, tertiary, secondary } = Colors;
+import { colors } from "../utils/colors";
+const { lightGray, brand, primary, tertiary, secondary } = colors;
 
 // React Navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-
 const Stack = createStackNavigator();
-
 
 // screens
 import Login from "../screens/Login";
@@ -20,8 +18,6 @@ import CheckNav from "./CheckNav";
 import ServiceDetail from "../components/ServiceDetail/index.js";
 // components
 import DrawerBar from "../components/Drawer/index";
-
-
 
 // credentials context
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
@@ -45,7 +41,6 @@ function RootStack() {
                 component={CheckNav}
                 options={{ headerShown: false }}
               />
-
             )}
           </Stack.Navigator>
         </NavigationContainer>

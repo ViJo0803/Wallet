@@ -30,12 +30,10 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    padding: 8
   },
   userImage: {
     width: "15%",
     height: "15%",
-    padding:1,
   },
   messageBox: {
     flex: 1,
