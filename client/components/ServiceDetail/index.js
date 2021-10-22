@@ -9,6 +9,7 @@ import {
 import { styles } from "./styles";
 import { servicePayment } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
+import { Title, TouchableRipple } from "react-native-paper";
 
 function ServiceDetail({ route, navigation }) {
   const dispatch = useDispatch();
@@ -33,14 +34,16 @@ function ServiceDetail({ route, navigation }) {
 
   const { op } = route.params;
   return (
-    <View>
+    <View >
       <View style={styles.userCard}>
         <Image source={op.image} style={styles.userImage} />
+        <View style={styles.titlescontainer}>
         <Text style={styles.messageBoxText}> {op.name}</Text>
         <Text style={styles.subtitle}> {op.type}</Text>
       </View>
+      </View>
       <View>
-        <Text style={styles.subtitleII}> {op.paymentId}</Text>
+        <Title style={styles.subtitleII}> {op.paymentId}</Title>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -49,7 +52,7 @@ function ServiceDetail({ route, navigation }) {
         />
       </View>
       <View>
-        <Text style={styles.subtitleII}>Payment Amount</Text>
+        <Title style={styles.subtitleII}>Payment Amount</Title>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -59,7 +62,7 @@ function ServiceDetail({ route, navigation }) {
       </View>
       <View style={styles.buttonContainer}>
         <Pressable onPress={onSubmit} style={styles.button}>
-          <Text style={styles.buttonText}> ACCEPT </Text>
+          <Title style={styles.buttonText}> ACCEPT </Title>
         </Pressable>
       </View>
     </View>

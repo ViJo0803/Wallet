@@ -11,18 +11,22 @@ export const styles = StyleSheet.create({
   userCard: {
     display: "flex",
     alignItems: "center",
+    height:"45%",
+    justifyContent:"space-evenly",
+    
   },
   userImage: {
-    width: 80,
-    height: 80,
+    width: "22%",
+    height: "35%",
     resizeMode: "cover",
-    padding: 1,
-    borderRadius: 50,
-    marginTop: 100,
+    borderRadius: 9999,
+    marginTop: "8%",
   },
   messageBoxText: {
+   
     fontWeight: "700",
     textTransform: "uppercase",
+    fontSize:25
   },
   button: {
     padding: 15,
@@ -36,7 +40,7 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     display: "flex",
     alignItems: "center",
-    marginVertical: 60,
+    marginVertical: "8%",
   },
   buttonText: {
     color: colors.primary,
@@ -47,7 +51,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     padding: 15,
-    height: 60,
+
     width: "90%",
     borderWidth: 2,
     borderColor: colors.brand,
@@ -61,10 +65,16 @@ export const styles = StyleSheet.create({
   },
   subtitle: {
     textTransform: "capitalize",
+    fontSize:15
   },
   subtitleII: {
     textTransform: "capitalize",
-    marginVertical: 5,
-    marginLeft: 20,
+    marginLeft: "4.7%",
+    fontSize:20
   },
+
+  titlescontainer:{
+    alignItems:"center"
+    
+  }
 });
