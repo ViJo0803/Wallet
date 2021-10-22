@@ -208,6 +208,11 @@ const Login = ({ navigation }) => {
                     <TextLinkContent>Sign up</TextLinkContent>
                   </TextLink>
                 </ExtraView>
+                <ExtraView>
+                  <TextLink onPress={() => navigation.navigate("F.A.Q.")}>
+                    <TextLinkContent>F A Q</TextLinkContent>
+                  </TextLink>
+                </ExtraView>
               </StyledFormArea>
             )}
           </Formik>

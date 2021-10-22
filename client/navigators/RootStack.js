@@ -17,7 +17,7 @@ import RegisterExntended from "../screens/RegisterExntended";
 import CheckNav from "./CheckNav";
 import ServiceDetail from "../components/ServiceDetail/index.js";
 // components
-import DrawerBar from "../components/Drawer/index";
+import FAQ from "../components/FAQ";
 
 // credentials context
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
@@ -51,11 +51,7 @@ function RootStack() {
 
 function LoginStack() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
+    <Stack.Navigator>
       <Stack.Screen
         name="Login"
         component={Login}
@@ -70,6 +66,11 @@ function LoginStack() {
         name="RegisterExtended"
         component={RegisterExntended}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="F.A.Q."
+        component={FAQ}
+        options={{}}
       />
     </Stack.Navigator>
   );

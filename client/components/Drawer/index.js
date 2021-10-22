@@ -5,15 +5,16 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
-import Statistics from "../Statistics/index.js";
+import { View, Image, TouchableOpacity } from "react-native"
+import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 import UserProfile from "../UserProfile/index";
 import TabNav from "../TabNav/index.js";
 import AccountNav from "../Accounts/AccountNav/index.js";
-import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import FAQ from "../FAQ/index.js";
+import About from "../About";
 import { colors } from "../../utils/colors.js";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import { View, Image, TouchableOpacity } from "react-native"
 
 const Drawer = createDrawerNavigator();
 
@@ -74,7 +75,7 @@ function DrawerBar({ navigation }) {
             <DrawerItem
               label="Logout"
               onPress={() => clearLogin()}
-              style={{ backgroundColor: colors.secondary }}
+              style={{ backgroundColor: colors.secondary, fontSize: 30}}
               icon={() => (
                 <FontAwesome5
                   name="sign-out-alt"
@@ -114,15 +115,24 @@ function DrawerBar({ navigation }) {
           ),
         }}
       />
-      {/* <Drawer.Screen
-        name="Statistics"
-        component={Statistics}
+      <Drawer.Screen
+        name="F.A.Q."
+        component={FAQ}
         options={{
           drawerIcon: () => (
-            <FontAwesome5 name="chart-bar" color={colors.brand} size={20} />
+            <FontAwesome5 name="question" color={colors.brand} size={20} />
           ),
         }}
-      /> */}
+      />
+      <Drawer.Screen
+        name="About"
+        component={About}
+        options={{
+          drawerIcon: () => (
+            <FontAwesome5 name="users" color={colors.brand} size={20} />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 }
