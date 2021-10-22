@@ -5,7 +5,6 @@ async function ServPayment(req, res, next) {
   // nombre del servicio a pagar
   // monto a pagar
   // la cuenta de donde viene la plata
-  console.log("body serv", req.body)
   const { origen, destino, monto, fecha } = req.body;
 
   try {
@@ -15,11 +14,15 @@ async function ServPayment(req, res, next) {
       },
     });
 
+    console.log("Cuenta origen",Account_origen )
+
     let servicio = await Servicios.findOne({
       where: {
         nombre: destino,
       },
     });
+
+    
     
 
     // cargar en la bd la lista de servicios y en esta comprobacion mandar un alert con "este servicio no esta disponible en este momento."
@@ -49,11 +52,14 @@ async function ServPayment(req, res, next) {
       
       servicio.monto = parseInt(servicio.monto) + parseInt(monto);
       await servicio.save();
+      console.log("el destino es ", monto)
 
       let pago = await Pago_servicios.create({
         fecha: fecha,
         servicioId: servicio.id,
-      //  cuentasIdcuentas:Account_origen.idcuentas
+        destino:destino,
+        cuentaIdcuentas: Account_origen.idcuentas,
+        monto:monto,
       });
 
       return res.send(pago);
@@ -68,4 +74,26 @@ async function ServPayment(req, res, next) {
   //id servicios
 }
 
-module.exports = { ServPayment };
+
+async function getServicePayment(req, res, next){
+
+  try{
+    const id= req.query.id
+
+    if(typeof(id)== "string" && id.length==36 )
+    {const payments= await Pago_servicios.findAll({
+      where:{
+        cuentaIdcuentas:id
+      }
+    })
+
+    res.send(payments).status(200)
+  }else res.send(null).status(204)
+
+  }catch (error) {
+    next(error);
+}
+}
+
+
+module.exports = { ServPayment, getServicePayment }

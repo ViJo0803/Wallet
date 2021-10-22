@@ -84,6 +84,7 @@ export const styles = StyleSheet.create({
     color: colors.tertiary,
     textAlign: "center",
   },
+
   // viewScrollStyles: {
   //   display: "flex",
   //   flexDirection: "row",
@@ -101,4 +102,5 @@ export const styles = StyleSheet.create({
   //   display: "flex",
   //   flexWrap: "wrap",
   // },
+
 });

@@ -22,30 +22,39 @@ function Home({ navigation }) {
 
       <View style={styles.buttonCardContainer}>
         <View style={styles.buttonCard}>
-          <TouchableOpacity onPress={() => navigation.navigate("Main")}>
+
+     
+   
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("QRScan")}>
             <FontAwesome5 name="qrcode" color={colors.brand} size={60} />
           </TouchableOpacity>
           <Text style={styles.shortcutsTitle}> Scan with QR </Text>
         </View>
 
         <View style={styles.buttonCard}>
+
           <TouchableOpacity onPress={() => navigation.navigate("Transfers")}>
             <FontAwesome5 name="exchange-alt" color={colors.brand} size={60} />
+
           </TouchableOpacity>
           <Text style={styles.shortcutsTitle}> Transfers </Text>
         </View>
 
         <View style={styles.buttonCard}>
+
           <TouchableOpacity onPress={() => navigation.navigate("Services")}>
             <FontAwesome5 name="building" color={colors.brand} size={60} />
+
           </TouchableOpacity>
           <Text style={styles.shortcutsTitle}> Services </Text>
         </View>
 
         <View style={styles.buttonCard}>
+
           <TouchableOpacity onPress={() => navigation.navigate("Deposit")}>
             <FontAwesome5
               name="money-bill-wave"
+
               color={colors.brand}
               size={60}
             />

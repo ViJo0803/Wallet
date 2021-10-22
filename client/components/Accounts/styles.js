@@ -49,6 +49,16 @@ export const styles = StyleSheet.create({
       display: "flex",
       
     },
+
+    titles:{
+      marginTop:20,
+      width:"100%",
+      height: "5%",
+      alignItems:"center",
+      justifyContent:'center',
+      borderRadius: 8,
+      backgroundColor: "#5271FF",
+    },
   
     userCard: {
       width: "100%",
@@ -62,15 +72,21 @@ export const styles = StyleSheet.create({
      padding:10
     },
     textname: {
-      fontSize:45,
-      fontWeight: "500",
+      fontSize:30,
       color:  "#5271FF",
-      padding: 10
+      padding: 5
     },
     textdate: {
       alignContent: "flex-end",
       color: "#232020",
-      fontSize:35,
-      padding: 10
+      fontSize:20,
+      padding: 5
+    },
+    box:{
+      paddingTop:8,
+      flexDirection:"row",
+      alignContent:"center",
+     
+
     }
   });

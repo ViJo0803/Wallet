@@ -4,7 +4,6 @@ require("dotenv").config();
 async function CreateTransfers(req, res, next) {
   const { origen, monto, alias, destino, fecha } = req.body;
 
-
   try {
     let Account_origen = await Cuentas.findOne({
       where: {
@@ -19,7 +18,7 @@ async function CreateTransfers(req, res, next) {
     });
     
   
-    if (Account_origen.saldo >= monto && monto > 0) {
+    if (Account_origen.saldo >= parseInt(monto) && parseInt(monto) > 0) {
         Account_origen.saldo = parseInt(Account_origen.saldo) - parseInt(monto); 
       await Account_origen.save();
       Account_destino.saldo = parseInt(Account_destino.saldo) + parseInt(monto);

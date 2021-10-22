@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
     },
     lastname: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     favorite_account_id: {
       type: DataTypes.STRING,

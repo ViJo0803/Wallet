@@ -13,5 +13,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },   
+    destino:{
+      type:DataTypes.STRING,
+      allowNull:true
+    },
+    monto:{
+      type:DataTypes.STRING,
+      allowNull:false
+    }
   });
 };

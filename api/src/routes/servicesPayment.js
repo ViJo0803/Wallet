@@ -1,9 +1,10 @@
 const {Router}= require("express")
-const{ServPayment}= require("./Controllers/ServicesPayment.js")
+const{ServPayment, getServicePayment}= require("./Controllers/ServicesPayment.js")
 
 const router= Router()
 
 router.post("/", ServPayment);
+router.get("/get",getServicePayment )
 
 
 
