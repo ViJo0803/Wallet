@@ -25,7 +25,7 @@ function Transfers({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Title style={styles.title}>Contact List</Title>
+      <Title style={styles.title}> Your Contacts </Title>
 
       <ScrollView>
         <View style={styles.list}>
@@ -54,7 +54,11 @@ function Transfers({ navigation }) {
       <View>
         <TouchableRipple onPress={() => navigation.navigate("Add Contact")}>
           <View style={styles.button_container}>
-            <Icon name="account-multiple-plus" size={40} style={styles.addIcon} />
+            <Icon
+              name="account-multiple-plus"
+              size={40}
+              style={styles.addIcon}
+            />
             <Title style={styles.buttonText}>Add Contact</Title>
           </View>
         </TouchableRipple>
