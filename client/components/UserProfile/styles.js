@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontFamily: "sans-serif",
     fontSize: 18,
-    marginLeft:15
+    marginLeft:15,
   },
   containerButtons: {
     display: "flex",

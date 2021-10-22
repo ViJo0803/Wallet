@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
-export default function QRScan() {
+export default function QRScan({ navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [text, setText] = useState("Not yet scanned");
@@ -58,11 +58,18 @@ export default function QRScan() {
       <Text style={styles.maintext}>{text}</Text>
 
       {scanned && (
-        <Button
-          title={"Scan again?"}
-          onPress={() => setScanned(false)}
-          color="tomato"
-        />
+        <View>
+          <Button
+            title={"Scan again?"}
+            onPress={() => setScanned(false)}
+            color="tomato"
+          />
+          <Button
+            title={"Add Contact"}
+            onPress={() => navigation.navigate("Add Contact", {data:text})}
+            color="tomato"
+          />
+        </View>
       )}
     </View>
   );

@@ -5,6 +5,7 @@ import TransferNav from "../Transfers/TransferNav/index.js";
 import Deposit from "../Deposit/index.js";
 import QRScan from "../QRScanner/index.js";
 import Home from "../Home/index";
+import AddContact from "../AddContact/index.js";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ function TabNav() {
       <Stack.Screen name="Services" component={ServiceNav} />
       <Stack.Screen name="Deposit" component={Deposit} />
       <Stack.Screen name="QRScan" component={QRScan} />
+      <Stack.Screen name="Add Contact" component={AddContact} />
     </Stack.Navigator>
   );
 }

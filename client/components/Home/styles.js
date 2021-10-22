@@ -79,4 +79,18 @@ export const styles = StyleSheet.create({
     alignContent: "flex-end",
     color: "#fff",
   },
+  button: {
+    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowOffset: { height: 10, width: 6 }, // IOS
+    shadowOpacity: 6, // IOS
+    shadowRadius: 6, //IOS
+    backgroundColor: '#fff',
+    elevation: 8, // Android
+    height:100,
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderRadius:8  
+},
 });

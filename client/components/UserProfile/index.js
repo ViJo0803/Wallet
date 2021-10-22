@@ -22,7 +22,7 @@ function UserProfile({ navigation }) {
   return (
     <View style={styles.container}>
       <Avatar.Image
-        source={require("../../assets/JimC.jpg")}
+        source={ state.foto? {uri: state.foto} : require("../../assets/avatar.png")}
         style={styles.image}
         size={200}
       />
@@ -49,7 +49,8 @@ function UserProfile({ navigation }) {
           <Caption style={styles.caption}>{state.mail}</Caption>
         </View>
       </View>
-   
+
+      <ScrollView>
       <View style={styles.wrapperbox}>
         <View style={styles.infobox}>
           <Title style={styles.title}>$ {balance[0]?.saldo}</Title>
