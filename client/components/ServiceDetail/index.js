@@ -5,16 +5,15 @@ import {
   Text,
   Image,
   TextInput,
-  TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
 import { servicePayment } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 function ServiceDetail({ route, navigation }) {
   const dispatch = useDispatch();
   const [monto, setMonto] = useState();
+  const [monto2, setMonto2] = useState();
 
   const origen = useSelector((state) => state.account.accounts[0].numerocuenta);
   const idcuentas = useSelector((state) => state.account.accounts[0].idcuentas);
@@ -42,6 +41,15 @@ function ServiceDetail({ route, navigation }) {
       </View>
       <View>
         <Text style={styles.subtitleII}> {op.paymentId}</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          onChange={(value) => setMonto2(value.nativeEvent.text)}
+        />
+      </View>
+      <View>
+        <Text style={styles.subtitleII}>Payment Amount</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
