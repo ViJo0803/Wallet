@@ -24,7 +24,23 @@ export const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontFamily: "sans-serif",
     fontSize: 18,
+    marginLeft:15,
   },
+
+  containerButtons: {
+    display: "flex",
+    width: "50%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  cvu:{
+    fontSize: 18,
+    color: "#5271FF",
+    
+    alignSelf:"center",
+    
+  },
+
   button: {
     width: "25%",
     backgroundColor: "#8fd18e",
@@ -62,10 +78,9 @@ export const styles = StyleSheet.create({
   },
   menuItem: {
     alignItems: "center",
-    
     flexDirection: "row",
-    paddingVertical: 15,
-    paddingHorizontal: 30,
+    paddingVertical: 8,
+    paddingHorizontal: 2,
   },
   menuItemText: {
     color: "#232020",
@@ -74,4 +89,23 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
   },
+  qrContainer:{
+    marginTop:25,
+    alignContent:"center",
+    justifyContent:"center",
+    alignItems:"center",
+   
+
+
+  },
+  qr:{
+    marginTop:20,
+    paddingVertical:8
+  },
+  qrText:{
+    fontSize:18,
+    color:"#232020",
+    marginBottom:10
+  }
+
 });

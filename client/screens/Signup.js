@@ -6,7 +6,7 @@ import { Formik } from "formik";
 
 import {
   StyledContainer,
-  PageTitle,
+  PageLogo,
   StyledInputLabel,
   StyledFormArea,
   StyledButton,
@@ -21,7 +21,6 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
-  SubTitle,
 } from "../loginComponents/styles";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
 
@@ -128,8 +127,10 @@ const Signup = ({ navigation }) => {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageTitle>Flower Crib</PageTitle>
-          <SubTitle>Account Signup</SubTitle>
+          <PageLogo
+            resizeMode="cover"
+            source={require("../assets/isotipoMintDef.png")}
+          />
           {show && (
             <DateTimePicker
               testID="dateTimePicker"
@@ -143,7 +144,6 @@ const Signup = ({ navigation }) => {
               }}
             />
           )}
-
           <Formik
             initialValues={{
               name: "",

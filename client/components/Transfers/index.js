@@ -24,7 +24,9 @@ function Transfers({ navigation }) {
 
   return (
     <View style={styles.container}>
+
       <Title style={styles.title}>Contact List</Title>
+
       <ScrollView>
         <View style={styles.list}>
           {contacts?.map((el) => (

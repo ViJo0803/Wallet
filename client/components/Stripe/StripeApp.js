@@ -28,7 +28,7 @@ import { colors } from "../../utils/colors";
 
 //ADD localhost address of your server
 
-const StripeApp = (props) => {
+const StripeApp = ({ navigation}) => {
   //--------------deposit---------------------
   const dispatch = useDispatch();
   const { storedCredentials, setStoredCredentials } =
@@ -109,6 +109,7 @@ const StripeApp = (props) => {
           const idUsuario = user.idusuario;
           // hay que conseguir el idcuenta a partir del idusuario
           // useEffectDispatch(id, paymentAmount)
+          console.log("id usuario:",idUsuario , "id:", id, "monto:", paymentAmount)
           dispatch(deposit(id, paymentAmount, idUsuario));
           //dispatch(getAccount(id))
         }
@@ -121,7 +122,7 @@ const StripeApp = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Enter your deposit</Text>
+      <Text style={styles.title}> PUT YOUR CARD INFORMATION </Text>
       <TextInput
         autoCapitalize="none"
         placeholder="Amount"
@@ -171,6 +172,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontWeight: "700",
     marginBottom: 50,
+    marginLeft: 10,
   },
   input: {
     backgroundColor: colors.primary,

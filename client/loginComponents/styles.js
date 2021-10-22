@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import Constants from "expo-constants";
 import { colors } from "../utils/colors.js";
 
@@ -27,8 +26,8 @@ export const WelcomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
-  width: 300;
-  height: 250;
+  width: 300px;
+  height: 250px;
 `;
 
 export const Avatar = styled.Image`

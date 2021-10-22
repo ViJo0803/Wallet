@@ -1,74 +1,27 @@
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import ServiceNav from "../Services/ServiceNav/index.js";
 import TransferNav from "../Transfers/TransferNav/index.js";
 import Deposit from "../Deposit/index.js";
+import QRScan from "../QRScanner/index.js";
 import Home from "../Home/index";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import AddContact from "../AddContact/index.js";
 
-import { colors } from "../../utils/colors.js";
-
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 function TabNav() {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        tabBarActiveTintColor: colors.brand,
-        tabBarInactiveTintColor: colors.lightGray,
-        tabBarStyle: {
-          backgroundColor: colors.primary,
-          /* height: 60,
-          paddingBottom: 10,
-          paddingTop: 10, */
-        },
-        headerShown: false,
-      }}
+    <Stack.Navigator
+      initialRouteName="Main"
+      screenOptions={{ headerShown: false }}
     >
-      <Tab.Screen
-        name="Main Tab"
-        component={Home}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Transfers"
-        component={TransferNav}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="exchange-alt" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Services"
-        component={ServiceNav}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="building" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Deposit"
-        component={Deposit}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="cash-plus"
-              color={color}
-              size={size}
-            />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      <Stack.Screen name="Main" component={Home} />
+      <Stack.Screen name="Transfers" component={TransferNav} />
+      <Stack.Screen name="Services" component={ServiceNav} />
+      <Stack.Screen name="Deposit" component={Deposit} />
+      <Stack.Screen name="QRScan" component={QRScan} />
+      <Stack.Screen name="Add Contact" component={AddContact} />
+    </Stack.Navigator>
   );
 }
 

@@ -21,7 +21,6 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
-  SubTitle,
 } from "../loginComponents/styles";
 import { colors } from "../utils/colors";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
@@ -120,8 +119,7 @@ const Signup = ({ navigation }) => {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageTitle>Register Extended</PageTitle>
-          <SubTitle>Account Signup</SubTitle>
+          <PageTitle> Register </PageTitle>
           {show && (
             <DateTimePicker
               testID="dateTimePicker"
@@ -243,7 +241,7 @@ const Signup = ({ navigation }) => {
 
                 <Line />
                 <ExtraView>
-                  <ExtraText>Already have an account? </ExtraText>
+                  <ExtraText> Already have an account? </ExtraText>
                   <TextLink onPress={() => navigation.navigate("Login")}>
                     <TextLinkContent>Login</TextLinkContent>
                   </TextLink>

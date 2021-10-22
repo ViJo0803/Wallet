@@ -102,7 +102,7 @@ export default function NewRegisterExt({ navigation }) {
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
 
-  const { email, name, photoUrl} = storedCredentials;
+  const { email, name, photoUrl } = storedCredentials;
 
   const handleMessage = (message, type = "") => {
     setMessage(message);
@@ -114,7 +114,7 @@ export default function NewRegisterExt({ navigation }) {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageTitle>Register Extended</PageTitle>
+          <PageTitle> Extended Register </PageTitle>
 
           {show && (
             <DateTimePicker
@@ -133,7 +133,7 @@ export default function NewRegisterExt({ navigation }) {
           <Formik
             initialValues={{
               nombre: name,
-              apellidos: "",
+              //apellidos: "",
               mail: email,
               nickname: "",
               direccion: "",
@@ -145,7 +145,7 @@ export default function NewRegisterExt({ navigation }) {
               values = { ...values, foto: photoUrl };
               if (
                 // values.nombre == "" ||
-                values.apellidos == "" ||
+                //values.apellidos == "" ||
                 // values.mail == "" ||
                 values.nickname == "" ||
                 values.direccion == "" ||
@@ -179,7 +179,8 @@ export default function NewRegisterExt({ navigation }) {
                   //   icon="person"
                   // />
                 }
-                <MyTextInput
+
+             {/*    <MyTextInput
                   label="Last Name"
                   placeholder="Barnes"
                   placeholderTextColor={lightGray}
@@ -187,7 +188,7 @@ export default function NewRegisterExt({ navigation }) {
                   onBlur={handleBlur("apellidos")}
                   value={values.apellidos}
                   icon="person"
-                />
+                /> */}
                 <MyTextInput
                   label="Nickname"
                   placeholder="Rick"
@@ -224,6 +225,8 @@ export default function NewRegisterExt({ navigation }) {
                   onBlur={handleBlur("dni")}
                   value={values.dni}
                   icon="person"
+                  keyboardType="numeric"
+
                 />
                 <MyTextInput
                   label="Phone"
@@ -233,15 +236,19 @@ export default function NewRegisterExt({ navigation }) {
                   onBlur={handleBlur("telefono")}
                   value={values.telefono}
                   icon="person"
+                  keyboardType="numeric"
+
                 />
                 <MyTextInput
                   label="Postal Code"
-                  placeholder="Rick"
+                  placeholder="5000"
                   placeholderTextColor={lightGray}
                   onChangeText={handleChange("codigo_postal")}
                   onBlur={handleBlur("codigo_postal")}
                   value={values.codigo_postal}
                   icon="mail"
+                  keyboardType="numeric"
+
                 />
                 <MsgBox type={messageType}>{message}</MsgBox>
 
