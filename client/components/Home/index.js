@@ -4,8 +4,8 @@ import { styles } from "./styles";
 import { useSelector } from "react-redux";
 import { colors } from "../../utils/colors.js";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Category from "./Category";
-import { banners } from "./banners";
+//import Category from "./Category";
+//import { banners } from "./banners";
 
 function Home({ navigation }) {
   const balance = useSelector((state) => state.account.accounts);

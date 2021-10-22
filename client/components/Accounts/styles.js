@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
      padding:10
     },
     textname: {
-      fontSize:30,
+      fontSize:25,
       color:  "#5271FF",
       padding: 5
     },
