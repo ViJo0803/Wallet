@@ -2,7 +2,7 @@ import axios from "axios";
 //import { url } from "./const";
 
 import { URL_API_3001 } from "../../constantes"
-import {getAccount} from "./accountActions"
+import {getAccount, getPaymentHistory} from "./accountActions"
 
 import { GET_TRANSFERS, MAKE_TRANSFER } from "./types";
 
@@ -37,12 +37,16 @@ export function makeTransfer(data, idusuario) {
   };
 }
 
-export function servicePayment(data, idusuario) {
+export function servicePayment(data, idusuario, idcuenta) {
+
   return async (dispatch) => {
     await axios
       .post(`${URL_API_3001}/servicesPayment`, data)
       .then((response) => {
-        if (response.data !== "") alert("Payment Successful");
+        if (response.data !== "") {
+          alert("Payment Successful");
+          dispatch(getPaymentHistory(idcuenta))
+      }
         else if (response.data === "") alert("Something went Wrong");
         dispatch(getAccount(idusuario))
         })

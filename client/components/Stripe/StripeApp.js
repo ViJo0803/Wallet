@@ -109,6 +109,7 @@ const StripeApp = ({ navigation}) => {
           const idUsuario = user.idusuario;
           // hay que conseguir el idcuenta a partir del idusuario
           // useEffectDispatch(id, paymentAmount)
+          console.log("id usuario:",idUsuario , "id:", id, "monto:", paymentAmount)
           dispatch(deposit(id, paymentAmount, idUsuario));
           //dispatch(getAccount(id))
         }
@@ -152,9 +153,8 @@ const StripeApp = ({ navigation}) => {
         disabled={loading}
         style={styles.button}
       >
-        <Text style={styles.buttonText}>Pay</Text>
+        <Text style={styles.buttonText}>Recharge Balance</Text>
       </Pressable>
-      <TouchableOpacity onPress={() => navigation.navigate("Main")}><Text>Go Home</Text></TouchableOpacity>
     </View>
   );
 };

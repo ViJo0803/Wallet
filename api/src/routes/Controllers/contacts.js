@@ -9,12 +9,14 @@ async function addContact(req, res, next) {
         idusuario
     } = req.body
   
-   
+ 
     const account = await Cuentas.findOne({
         where: {
             alias: alias,
         },
     });
+
+    if(account !==undefined && account !==null ){
 
     const user = await Usuario.findOne({
         where: {
@@ -23,16 +25,18 @@ async function addContact(req, res, next) {
     })
 
     if (user) {
-        const fav = await Favoritos.create({
+        const fav = await Favoritos.findOrCreate({where: {
             alias: account.alias,
             name: user.nombre,
             lastname: user.apellidos,
             favorite_account_id: account.idcuentas,
             usuarioIdusuario: idusuario,
-        })
-
+        }})
         res.send(fav).status(200)
-    }else res.send(null).status(204)
+    }
+}
+
+    else res.send(null).status(204)
 }
 
 
@@ -40,32 +44,18 @@ async function addContact(req, res, next) {
 async function getContacts(req, res, next) {
 
     id = req.query.id
-    console.log("controller getcontacts id ", id)
-
-
-        const favs = await Favoritos.findAll({
+    const favs = await Favoritos.findAll({
             where: {
                 usuarioIdusuario: id
             }
         })
-
-
         res.send(favs)
-    
-
-}
-
-//esta funcionando
-// getall no hace falta se púede borrar
-async function getAllContacts(req, res, next) {
-
-    const allContacts = await Favoritos.findAll()
-    res.send(allContacts)
-
 }
 
 
-module.exports = { addContact, getContacts, getAllContacts }
+
+
+module.exports = { addContact, getContacts }
 
 
 
