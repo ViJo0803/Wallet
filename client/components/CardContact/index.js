@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { View, Text, TextInput, Button, Alert } from 'react-native';
+import React, { useEffect } from "react";
+import { View, Text, TextInput, Button, Alert } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { getContacts } from "../../store/actions/contactsActions";
@@ -38,7 +38,7 @@ function CardContact({ navigation, route }) {
   return (
     <View>
       <View>
-        <Title style={styles.header}>Contact Details</Title>
+        <Title style={styles.header}> Contact Details </Title>
         <View style={styles.contactCard}>
           <View>
             <Text style={styles.fields}>
@@ -69,29 +69,24 @@ function CardContact({ navigation, route }) {
             </View>
           </View>
         </View>
-      </View >
+      </View>
 
       <View>
-        
-        
-        
-        <Button title="Transfer" style={styles.buton} onPress={() =>{
-
-          Alert.alert(
-            "Make Transfer",
-            "Are you sure?",
-            [
+        <Button
+          title="Transfer"
+          style={styles.buton}
+          onPress={() => {
+            Alert.alert("Make Transfer", "Are you sure?", [
               {
                 text: "Cancel",
                 onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
+                style: "cancel",
               },
-              { text: "OK", onPress: handleSubmit(dataTransfer) }
-            ]
-          );
-        } } />
+              { text: "OK", onPress: handleSubmit(dataTransfer) },
+            ]);
+          }}
+        />
       </View>
-    
     </View>
   );
 }

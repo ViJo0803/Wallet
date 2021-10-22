@@ -50,7 +50,9 @@ export default function AddContact({ route }) {
             />
           )}
           name="alias"
-          defaultValue={`${route.params?.data}`}
+          defaultValue={
+            route.params?.data === undefined ? "Data" : route.params?.data
+          }
         />
       </View>
 

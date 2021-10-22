@@ -2,11 +2,6 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
-  // bigBox: {
-  //   display: "flex",
-  //   justifyContent: "space-between",
-  //   height: "100%",
-  // },
   headerContainer: {
     width: "100%",
     backgroundColor: colors.brand,
@@ -39,10 +34,10 @@ export const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: colors.tertiary,
     marginLeft: 18,
-    marginTop: 20,
+    marginTop: "10%",
     marginBottom: 10,
+    marginLeft: "7%",
   },
-
   buttonCard: {
     width: "45%",
     padding: "5%",

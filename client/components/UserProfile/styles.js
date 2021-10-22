@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../utils/colors.js";
 
 export const styles = StyleSheet.create({
   container: {
@@ -14,7 +15,7 @@ export const styles = StyleSheet.create({
   },
   image: {
     alignSelf: "center",
-    marginTop: 15,
+    marginTop: 20,
   },
   adress: {
     flexDirection: "row",
@@ -22,54 +23,59 @@ export const styles = StyleSheet.create({
   text: {
     marginTop: 3,
     alignSelf: "flex-start",
-    fontFamily: "sans-serif",
     fontSize: 18,
-    marginLeft:15,
+    marginLeft: 13,
+    color: colors.lightGray,
   },
-
-  containerButtons: {
-    display: "flex",
-    width: "50%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  cvu:{
-    fontSize: 18,
-    color: "#5271FF",
-    
-    alignSelf:"center",
-    
-  },
-
-  button: {
-    width: "25%",
-    backgroundColor: "#8fd18e",
+  cvu: {
+    fontSize: 15,
+    color: colors.primary,
+    alignSelf: "center",
+    marginRight: "25%",
+    fontWeight: "700",
   },
   title: {
-    fontSize: 24,
-    color: "#5271FF",
+    fontSize: 20,
+    color: colors.brand,
     marginLeft: 15,
+    fontWeight: "700",
   },
   caption: {
     marginTop: 3,
-    padding: 3,
+    padding: 2,
     fontSize: 15,
-    lineHeight: 14,
-    color: "#9CA3AF",
-    marginLeft: 8,
+    lineHeight: 15,
+    color: colors.lightGray,
+    marginRight: "10%",
+  },
+  buttonText: {
+    marginTop: 2,
+    fontSize: 15,
+    color: colors.primary,
+    marginRight: 35,
   },
   icon: {
     marginLeft: 15,
   },
   wrapperbox: {
-    borderTopColor: "#232020",
-    borderTopWidth: 1,
-    borderBottomColor: "#232020",
-    borderBottomWidth: 1,
     flexDirection: "row",
     height: 100,
-    alignItems:"center",
-    justifyContent:"center"
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: colors.brand,
+    width: "95%",
+    alignSelf: "center",
+    borderRadius: 5,
+    shadowColor: colors.tertiary,
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 18,
   },
   infobox: {
     alignItems: "center",
@@ -83,30 +89,25 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 2,
   },
   menuItemText: {
-    color: "#232020",
+    color: colors.tertiary,
     marginLeft: 15,
     fontWeight: "600",
     fontSize: 16,
     lineHeight: 26,
   },
-  qrContainer:{
-    marginVertical:25,
-    alignContent:"center",
-    justifyContent:"center",
-    alignItems:"center",
-   
-
-
+  qrContainer: {
+    marginVertical: 25,
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  qr:{
-
-    marginTop:20,
-    paddingVertical:8
+  qr: {
+    marginTop: 20,
+    paddingVertical: 8,
   },
-  qrText:{
-    fontSize:18,
-    color:"#232020",
-    marginBottom:10
-  }
-
+  qrText: {
+    fontSize: 18,
+    color: colors.lightGray,
+    marginBottom: 10,
+  },
 });
