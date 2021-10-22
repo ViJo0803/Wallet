@@ -2,7 +2,7 @@ import axios from "axios";
 //import { url } from './const';
 import { URL_API_3001 } from "../../constantes";
 
-import { GET_ACCOUNT, CREATE_ACCOUNT, DEPOSIT } from "./types";
+import { GET_ACCOUNT, DEPOSIT, GET_SERVICE_PAYMENT } from "./types";
 
 export function getAccount(id) {
   return async (dispatch) => {
@@ -14,6 +14,7 @@ export function getAccount(id) {
       .catch((error) => console.log(error));
   };
 }
+
 /*
 export function createAccount(userData) {
   return async (dispatch) => {
@@ -26,6 +27,7 @@ export function createAccount(userData) {
   };
 }
 */
+
 export function deposit(id, monto, idusuario){
 return async(dispatch)=>{
   await axios
@@ -37,9 +39,12 @@ return async(dispatch)=>{
 }
 }
 
-export function updateAccount(userData) {
-  return async (dispatch) => {
+export function getPaymentHistory(id){
+  return async(dispatch)=>{
     await axios
-    .put
+    .get(`${URL_API_3001}/servicesPayment/get?id=${id}`)
+    .then((response)=>{
+      dispatch({type:GET_SERVICE_PAYMENT, payload: response.data})
+    })
   }
 }

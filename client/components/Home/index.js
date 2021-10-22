@@ -20,25 +20,27 @@ function Home({ navigation }) {
       </View>
       <View style={styles.buttonGrid}>
         <View style={styles.buttonCard}>
+
           <TouchableOpacity onPress={() => navigation.navigate("QRScan")}>
+
             <Ionicons name="md-qr-code-sharp" color={colors.brand} size={70} />
           </TouchableOpacity>
           <Text>Scan with QR</Text>
         </View>
         <View style={styles.buttonCard}>
-          <TouchableOpacity onPress={() => navigation.navigate("Transfers")}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Transfers")}>
             <FontAwesome5 name="exchange-alt" color={colors.brand} size={70} />
           </TouchableOpacity>
           <Text>Transfers</Text>
         </View>
         <View style={styles.buttonCard}>
-          <TouchableOpacity onPress={() => navigation.navigate("Services")}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Services")}>
             <FontAwesome5 name="building" color={colors.brand} size={70} />
           </TouchableOpacity>
           <Text>Services</Text>
         </View>
         <View style={styles.buttonCard}>
-          <TouchableOpacity onPress={() => navigation.navigate("Deposit")}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Deposit")}>
             <MaterialCommunityIcons
               name="cash-plus"
               color={colors.brand}

@@ -10,6 +10,9 @@ import {
 } from "react-native";
 import { getTransfers } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
+import { getPaymentHistory } from "../../store/actions/accountActions";
+import { Avatar, Title, Caption, TouchableRipple } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 function Accounts() {
   //para navegar al detalle --> navigation.navigate('TransactionDetail')
@@ -22,35 +25,67 @@ function Accounts() {
   const history = useSelector((state) => state.transfer.history);
   console.log("Historial de transferencia", history);
 
+  const payments = useSelector((state) => state.account.payments);
+  console.log("Historial de Pagos a servicios", payments);
   useEffect(() => {
     dispatch(getTransfers(balance[0]?.idcuentas));
+    dispatch(getPaymentHistory(balance[0]?.idcuentas));
   }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.cuentas}>
-        <Text style={styles.titleCuenta}>Saldo AR$</Text>
+        <Text style={styles.titleCuenta}>Balance AR$</Text>
         <Text style={styles.saldo}>{balance[0]?.saldo} </Text>
       </View>
+
+      <View style={styles.titles}>
+      <Title style={styles.titleCuenta}>Recents transfers</Title>
+      </View>
+      
+
+      
 
       <ScrollView style={styles.scrollTransfer}>
         <View style={styles.userCardRight}>
           {history?.map((op, i) => (
             <View style={styles.userCard} key={i}>
-              <View >
+              <View>
                 {op?.origin == balance[0]?.idcuentas ? (
                   <Text style={styles.textname}> {"- " + op?.monto}</Text>
                 ) : (
                   <Text style={styles.textname}> {"+ " + op?.monto}</Text>
                 )}
-
               </View>
-              <Text style={styles.textdate}>{op.createdAt.slice(0,10)}</Text>
+              <Text style={styles.textdate}>{op.createdAt.slice(0, 10)}</Text>
             </View>
           ))}
         </View>
       </ScrollView>
-    </View>
+
+      <View style={styles.titles}>
+      <Title style={styles.titleCuenta}>Payments History</Title>
+      </View>
+      
+        <ScrollView style={styles.scrollTransfer}>
+          
+          <View style={styles.userCardRight}>
+            {payments?.map((op, i) => (
+              <View style={styles.userCard} key={i}>
+                <View style={styles.box}>
+                  <Text style={styles.textname}> {"- " + op?.monto}</Text>
+                  <Text style={styles.textname}> {op?.destino}</Text>
+                  
+                </View>
+                <Caption style={styles.textdate}>
+                  {op.createdAt.slice(0, 10)}
+                </Caption>
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+      </View>
+   
   );
 }
 
