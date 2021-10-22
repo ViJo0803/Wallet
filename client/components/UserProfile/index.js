@@ -48,7 +48,12 @@ function UserProfile({ navigation }) {
           <Icon name="email" color={"#232020"} size={15} style={styles.icon} />
           <Caption style={styles.caption}>{state.mail}</Caption>
         </View>
+        <View style={styles.adress}>
+          <Icon name="account-key" color={"#232020"} size={15} style={styles.icon} />
+          <Caption style={styles.caption}>{balance[0].alias}</Caption>
+        </View>
       </View>
+
 
       <ScrollView>
       <View style={styles.wrapperbox}>
@@ -58,6 +63,7 @@ function UserProfile({ navigation }) {
         </View>
         <View style={styles.infobox}>
           <Title style={styles.cvu}>{balance[0]?.numerocuenta}</Title>
+
           <Caption style={styles.caption}>CVU</Caption>
         </View>
       </View>

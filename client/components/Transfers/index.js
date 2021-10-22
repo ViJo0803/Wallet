@@ -11,7 +11,8 @@ import { styles } from "./styles";
 import { makeTransfer } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
 import { getContacts } from "../../store/actions/contactsActions";
-
+import {  Title, TouchableRipple } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 function Transfers({ navigation }) {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contacts.contacts);
@@ -23,10 +24,11 @@ function Transfers({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text>List of favourites</Text>
+
+      <Title style={styles.title}>Contact List</Title>
+
       <ScrollView>
-        <Text>in ScrollView</Text>
-        <View>
+        <View style={styles.list}>
           {contacts?.map((el) => (
             <TouchableOpacity
               key={el.id}
@@ -34,10 +36,16 @@ function Transfers({ navigation }) {
                 navigation.navigate("Card Contact", { el });
               }}
             >
-              <View>
-                <Text style={styles.textdate}>
+              <View style={styles.contact_box}>
+                <Icon style={styles.icon} name="account" size={40} />
+                <Text style={styles.contact}>
                   {el.name} {el.lastname}
                 </Text>
+                <Icon
+                  name="arrow-right-bold-circle-outline"
+                  style={styles.icon}
+                  size={40}
+                />
               </View>
             </TouchableOpacity>
           ))}

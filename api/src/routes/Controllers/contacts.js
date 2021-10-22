@@ -52,17 +52,10 @@ async function getContacts(req, res, next) {
         res.send(favs)
 }
 
-//esta funcionando
-// getall no hace falta se púede borrar
-async function getAllContacts(req, res, next) {
-
-    const allContacts = await Favoritos.findAll()
-    res.send(allContacts)
-
-}
 
 
-module.exports = { addContact, getContacts, getAllContacts }
+
+module.exports = { addContact, getContacts }
 
 
 
