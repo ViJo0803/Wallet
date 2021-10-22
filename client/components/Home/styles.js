@@ -2,11 +2,11 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
-  bigBox: {
-    display: "flex",
-    justifyContent: "space-between",
-    height: "100%",
-  },
+  // bigBox: {
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  //   height: "100%",
+  // },
   headerContainer: {
     width: "100%",
     backgroundColor: colors.brand,
@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
-
     elevation: 24,
   },
   buttonCardContainer: {
@@ -29,18 +28,19 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     marginRight: "7%",
-    marginLeft: "5%",
-    paddingBottom: 60,
+    marginLeft: "7%",
+    paddingBottom: 70,
     alignContent: "center",
     justifyContent: "space-between",
   },
   shortcuts: {
-    fontWeight: "500",
+    fontWeight: "700",
     fontSize: 13,
     textTransform: "uppercase",
     color: colors.tertiary,
     marginLeft: 18,
     marginTop: 20,
+    marginBottom: 10,
   },
 
   buttonCard: {
@@ -54,6 +54,7 @@ export const styles = StyleSheet.create({
     elevation: 8, // Android
     alignItems: "center",
     marginBottom: 10,
+    marginTop: 10,
     justifyContent: "space-around",
     borderRadius: 5,
     margin: 5,
@@ -84,21 +85,4 @@ export const styles = StyleSheet.create({
     color: colors.tertiary,
     textAlign: "center",
   },
-  // viewScrollStyles: {
-  //   display: "flex",
-  //   flexDirection: "row",
-  //   flexWrap: "wrap",
-  //   marginRight: "5%",
-  //   marginLeft: "5%",
-  //   marginBottom: "40%",
-  // },
-  // imageScroll: {
-  //   resizeMode: "cover",
-  //   width: null,
-  //   height: null,
-  // },
-  // bannerContainer: {
-  //   display: "flex",
-  //   flexWrap: "wrap",
-  // },
 });
