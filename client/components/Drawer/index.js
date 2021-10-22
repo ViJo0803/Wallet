@@ -9,32 +9,16 @@ import Statistics from "../Statistics/index.js";
 import UserProfile from "../UserProfile/index";
 import TabNav from "../TabNav/index.js";
 import AccountNav from "../Accounts/AccountNav/index.js";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { colors } from "../../utils/colors.js";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { View, Image, TouchableOpacity } from "react-native"
 
 const Drawer = createDrawerNavigator();
 
-function getHeaderTitle(route) {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
 
-  switch (routeName) {
-    case "Coins":
-      return "Coins";
-    case "Transfers":
-      return "Transfers";
-    case "Services":
-      return "Services";
-    case "Deposit":
-      return "Deposit";
-    default:
-      return "Home";
-  }
-}
-
-function DrawerBar() {
+function DrawerBar({ navigation }) {
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
 
@@ -46,10 +30,33 @@ function DrawerBar() {
       .catch((error) => console.log(error));
   };
 
+  function GoHome() {
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate("Main")} style={{ marginRight: 20 }}>
+        <FontAwesome5 name="home" color={colors.brand} size={30} />
+      </TouchableOpacity>
+    )
+  }
+
+
+  function LogoTitle() {
+    return (
+      <View>
+        <Image
+          style={{ width: 75, height: 75 }}
+          source={require('../../assets/IsotipoSinBG.png')}
+        />
+      </View>
+    );
+  }
+
   return (
     <Drawer.Navigator
       initialRouteName="TabNav"
       screenOptions={{
+        headerTitleAlign: 'center',
+        headerTitle: () => <LogoTitle />,
+        headerRight: () => <GoHome />,
         headerStyle: {
           backgroundColor: colors.primary,
         },
@@ -83,12 +90,11 @@ function DrawerBar() {
       <Drawer.Screen
         name="Home"
         component={TabNav}
-        options={({ route }) => ({
-          headerTitle: getHeaderTitle(route),
+        options={{
           drawerIcon: () => (
             <FontAwesome5 name="home" color={colors.brand} size={20} />
           ),
-        })}
+        }}
       />
       <Drawer.Screen
         name="User Profile"

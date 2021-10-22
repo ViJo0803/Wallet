@@ -51,7 +51,6 @@ function Transfers({ navigation }) {
           <Text style={styles.buttonText}>Add contact</Text>
         </Pressable>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("Main")}><Text>Go Home</Text></TouchableOpacity>
     </View>
   );
 }
