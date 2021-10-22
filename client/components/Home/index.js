@@ -24,8 +24,6 @@ function Home({ navigation }) {
         <Text style={styles.balance}> $ {balance[0]?.saldo || 0}</Text>
       </View>
 
-      <Text style={styles.shortcuts}> Your Shortcuts </Text>
-
       <View style={styles.buttonCardContainer}>
         <View style={styles.buttonCard}>
 

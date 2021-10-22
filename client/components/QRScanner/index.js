@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { colors } from "../../utils/colors";
 
 export default function QRScan({ navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -93,6 +94,6 @@ const styles = StyleSheet.create({
     width: 300,
     overflow: "hidden",
     borderRadius: 30,
-    backgroundColor: "tomato",
+    backgroundColor: colors.brand,
   },
 });
