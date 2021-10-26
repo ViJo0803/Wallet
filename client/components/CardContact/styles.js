@@ -24,7 +24,7 @@ fields:{
     borderBottomWidth:1,
     marginLeft:15,
     marginTop:10,
-    fontSize:30,
+    fontSize:18,
     color:"#232020"
   
 },
