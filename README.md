@@ -62,27 +62,37 @@ Many objectives unite us, between them, to acquire experience and knowledge rega
 <div>
     <h1>Landing</h1> 
    <img src="client\assets\readmeImages\landingPage.jpg" width="300px"> </img>
-    <h1>REGISTRO</h1> 
+    <h1>Register</h1> 
    <img src="client\assets\readmeImages\registerPage.jpg" width="300px"> </img>
-    <h2>REGISTRO EXTENDIDO</h2> 
+    <h2>Extended Register</h2> 
    <img src="client\assets\readmeImages\registerExtended.jpg"  width="300px"> </img>
-    <h2>HOME</h2> 
+    <h2>Home</h2> 
    <img src="client\assets\readmeImages\homePage.jpg"  width="300px"> </img>
-   <h2>DEPOSIT</h2> 
+   <h2>Deposit</h2> 
    <img src="client\assets\readmeImages\depositPage.jpg"  width="300px"> </img>
-    <h2>SERVICIOS</h2> 
+    <h2>Services</h2> 
    <img src="client\assets\readmeImages\allServices.jpg"  width="300px"> </img>
-    <h2>PAGO DE SERVICIOS</h2> 
+    <h2>Payment of a service</h2> 
    <img src="client\assets\readmeImages\servicePaymentPage.jpg"  width="300px"> </img>
-    <h2>TRANSFERENCIAS</h2> 
+    <h2>Drawer Menu</h2> 
+   <img src="client\assets\readmeImages\drawerPage.jpg"  width="300px"> </img>
+    <h2>Account Details</h2> 
+   <img src="client\assets\readmeImages\accountsPage.jpg"  width="300px"> </img>
+    <h2>User Profile</h2> 
+   <img src="client\assets\readmeImages\profilePage.jpg"  width="300px"> </img>
+    <h2>Contacts</h2> 
    <img src="client\assets\readmeImages\contactsPage.jpg"  width="300px"> </img>
-    <h2>HACER TRANSFERENCIA POR QR</h2> 
+    <h2>Add Contact</h2> 
    <img src="client\assets\readmeImages\addContactPage.jpg"  width="300px"> </img>
-    <h2>HACER TRANSFERENCIA POR QR</h2> 
+    <h2>Make a transfer</h2> 
    <img src="client\assets\readmeImages\contactsDetail.jpg"  width="300px"> </img>
-    <h2>HACER TRANSFERENCIA POR QR</h2> 
+   <h2>Add contact by scanning QR</h2> 
+   <img src="client\assets\readmeImages\homePage.jpg"  width="300px"> </img>
+    <h2>Scan QR</h2> 
    <img src="client\assets\readmeImages\scanQRPage.jpg"  width="300px"> </img>
-    <h2>ABOUT US</h2> 
+   <h2>Add Contact</h2>
+   <img src="client\assets\readmeImages\addContactPage.jpg"  width="300px"> </img>
+    <h2>About Us</h2> 
    <img src="client\assets\readmeImages\aboutUsPage.jpg"  width="300px"> </img>
     <h2>FAQ</h2> 
    <img src="client\assets\readmeImages\faqPage.jpg"  width="300px"> </img>
