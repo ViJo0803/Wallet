@@ -2,7 +2,7 @@
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
 
-# Mint App - Wallet :rocket:
+# Mint App - Wallet :💛
 
 This project was made by a team of 7 people *(check contributors)*, which was our Final Project for Henry. The purpose of the project, was to create a mobile app, which offers the possibility of to make deposits, to pay services, to make transfers and in a future to buy and operate with crypto.
 
@@ -20,7 +20,7 @@ This project was made by a team of 7 people *(check contributors)*, which was ou
     + PostgreQL
     + Sequelize
 
-# How to start the project:
+# How to start the project: :rocket:
 
 To run this project locally follow the next steps:
 
