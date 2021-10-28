@@ -57,6 +57,8 @@ Click Me
 
 # About Us: :busts_in_silhouette:
 
+We are a work team, formed by Henry's students, in which each one comes from different places, situations and experiences, which make this team multi-faceted, being this a great advantage, at the  hour of 'create' and development.
+Many objectives unite us, between them, to acquire experience and knowledge regarding the profession and teamwork and being able to offer our service in the best way, as Full Stack Web Developers.
 - Eva Cristina Vargas Medina [GitHub](https://github.com/evacvargas) [LinkedIn](https://www.linkedin.com/in/evargasm/)
 - Natalia Suarez [GitHub](https://github.com/Natalia977) [LinkedIn](https://www.linkedin.com/in/natalia-suarez-full-stack-developer/)
 - Victor Carreno [GitHub](https://github.com/ViJo0803) [LinkedIn](https://www.linkedin.com/in/victor-carreno-fullstack/)
