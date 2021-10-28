@@ -30,8 +30,6 @@ To run this project locally follow the next steps:
 - Run command prompt and enter `psql -U postgres` and enter the password you provided when installing PostgreSQL.
 - Enter `CREATE DATABASE wallet;` 
 - Run ```npm i``` inside ```/api``` and ```/client```
-- Sign up with [Sendgrid](https://sendgrid.com/) and obtain an API key, create at least one dynamic template.
-
 - Create a `.env` file inside  `api` folder with the format provided bellow:
     + DB_HOST = ""
     + DB_USER  = "" 
