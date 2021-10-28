@@ -55,17 +55,24 @@ Click Me
 [![Click Me](https://img.youtube.com/vi/BcFIxGM8K_Y/0.jpg)](https://www.youtube.com/watch?v=BcFIxGM8K_Y)
 Click Me
 
-# About Us: :busts_in_silhouette:
+# About Us :busts_in_silhouette:
 
 We are a work team, formed by Henry's students, in which each one comes from different places, situations and experiences, which make this team multi-faceted, being this a great advantage, at the  hour of 'create' and development.
 Many objectives unite us, between them, to acquire experience and knowledge regarding the profession and teamwork and being able to offer our service in the best way, as Full Stack Web Developers.
-- Eva Cristina Vargas Medina [GitHub](https://github.com/evacvargas) [LinkedIn](https://www.linkedin.com/in/evargasm/)
-- Natalia Suarez [GitHub](https://github.com/Natalia977) [LinkedIn](https://www.linkedin.com/in/natalia-suarez-full-stack-developer/)
-- Victor Carreno [GitHub](https://github.com/ViJo0803) [LinkedIn](https://www.linkedin.com/in/victor-carreno-fullstack/)
-- Luciano Mazzetti [GitHub](https://github.com/luchomazze) [LinkedIn](https://www.linkedin.com/in/luchomazze/)
-- Luciano Fuertes [GitHub](https://github.com/Luciano-Fuertes) [LinkedIn](https://www.linkedin.com/in/luciano-fuertes/)
-- Agustin Chaves [GitHub](https://github.com/AguChaves92) [LinkedIn](https://www.linkedin.com/in/agustin-chaves-b5bb7216a/)
-- Francisco Massello [GitHub](https://github.com/franmassello) [LinkedIn](https://www.linkedin.com/in/francisco-massello/)
+
+:woman_technologist: - Eva Cristina Vargas Medina [GitHub](https://github.com/evacvargas) [LinkedIn](https://www.linkedin.com/in/evargasm/)
+
+:woman_technologist: - Natalia Suarez [GitHub](https://github.com/Natalia977) [LinkedIn](https://www.linkedin.com/in/natalia-suarez-full-stack-developer/)
+
+:man_technologist: - Victor Carreno [GitHub](https://github.com/ViJo0803) [LinkedIn](https://www.linkedin.com/in/victor-carreno-fullstack/)
+
+:man_technologist: - Luciano Mazzetti [GitHub](https://github.com/luchomazze) [LinkedIn](https://www.linkedin.com/in/luchomazze/)
+
+:man_technologist: - Luciano Fuertes [GitHub](https://github.com/Luciano-Fuertes) [LinkedIn](https://www.linkedin.com/in/luciano-fuertes/)
+
+:man_technologist: - Agustin Chaves [GitHub](https://github.com/AguChaves92) [LinkedIn](https://www.linkedin.com/in/agustin-chaves-b5bb7216a/)
+
+:man_technologist: - Francisco Massello [GitHub](https://github.com/franmassello) [LinkedIn](https://www.linkedin.com/in/francisco-massello/)
 
 
 
