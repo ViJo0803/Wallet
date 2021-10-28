@@ -61,29 +61,29 @@ Many objectives unite us, between them, to acquire experience and knowledge rega
 
 <div>
     <h1>Landing</h1> 
-   <img src="client\assets\readmeImages\landingPage.jpg"> </img>
+   <img src="client\assets\readmeImages\landingPage.jpg" width="300px"> </img>
     <h1>REGISTRO</h1> 
-   <img src="client\assets\readmeImages\registerPage.jpg"> </img>
+   <img src="client\assets\readmeImages\registerPage.jpg" width="300px"> </img>
     <h2>REGISTRO EXTENDIDO</h2> 
-   <img src="client\assets\readmeImages\registerExtended.jpg"> </img>
+   <img src="client\assets\readmeImages\registerExtended.jpg"  width="300px"> </img>
     <h2>HOME</h2> 
-   <img src="client\assets\readmeImages\homePage.jpg"> </img>
+   <img src="client\assets\readmeImages\homePage.jpg"  width="300px"> </img>
    <h2>DEPOSIT</h2> 
-   <img src="client\assets\readmeImages\depositPage.jpg"> </img>
+   <img src="client\assets\readmeImages\depositPage.jpg"  width="300px"> </img>
     <h2>SERVICIOS</h2> 
-   <img src="client\assets\readmeImages\allServices.jpg"> </img>
+   <img src="client\assets\readmeImages\allServices.jpg"  width="300px"> </img>
     <h2>PAGO DE SERVICIOS</h2> 
-   <img src="client\assets\readmeImages\servicePaymentPage.jpg"> </img>
+   <img src="client\assets\readmeImages\servicePaymentPage.jpg"  width="300px"> </img>
     <h2>TRANSFERENCIAS</h2> 
-   <img src="client\assets\readmeImages\contactsPage.jpg"> </img>
+   <img src="client\assets\readmeImages\contactsPage.jpg"  width="300px"> </img>
     <h2>HACER TRANSFERENCIA POR QR</h2> 
-   <img src="client\assets\readmeImages\addContactPage.jpg"> </img>
+   <img src="client\assets\readmeImages\addContactPage.jpg"  width="300px"> </img>
     <h2>HACER TRANSFERENCIA POR QR</h2> 
-   <img src="client\assets\readmeImages\contactsDetail.jpg"> </img>
+   <img src="client\assets\readmeImages\contactsDetail.jpg"  width="300px"> </img>
     <h2>HACER TRANSFERENCIA POR QR</h2> 
-   <img src="client\assets\readmeImages\scanQRPage.jpg"> </img>
+   <img src="client\assets\readmeImages\scanQRPage.jpg"  width="300px"> </img>
     <h2>ABOUT US</h2> 
-   <img src="client\assets\readmeImages\aboutUsPage.jpg"> </img>
+   <img src="client\assets\readmeImages\aboutUsPage.jpg"  width="300px"> </img>
     <h2>FAQ</h2> 
-   <img src="client\assets\readmeImages\faqPage.jpg"> </img>
+   <img src="client\assets\readmeImages\faqPage.jpg"  width="300px"> </img>
 <div>
