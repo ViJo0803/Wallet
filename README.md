@@ -38,18 +38,6 @@ To run this project locally follow the next steps:
 
 - Run `npm start` inside `/api`,...
 
-
-# App Previews
-
-### Promotional Video:
-[![Click Here]()]() 
-Click Me
-
-### Project Full Demo (in spanish):
-
-[![Click Me]()]()
-Click Me
-
 # About Us :busts_in_silhouette:
 
 We are a work team, formed by Henry's students, in which each one comes from different places, situations and experiences, which make this team multi-faceted, being this a great advantage, at the  hour of 'create' and development.
