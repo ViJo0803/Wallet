@@ -64,15 +64,3 @@ export default function AddContact({ route }) {
     </View>
   );
 }
-
-// <input
-//         id="email"
-//         {...register("email", {
-//           required: "required",
-//           pattern: {
-//             value: /\S+@\S+\.\S+/,
-//             message: "Entered value does not match email format"
-//           }
-//         })}
-//         type="email"
-//       />

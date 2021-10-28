@@ -1,9 +1,6 @@
 import React, { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
-
-// formik
 import { Formik } from "formik";
-
 import {
   StyledContainer,
   PageLogo,
@@ -23,27 +20,13 @@ import {
   TextLinkContent,
 } from "../loginComponents/styles";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
-
-//colors
 import { colors } from "../utils/colors";
 const { lightGray, brand, primary } = colors;
-
-// icon
 import { Octicons, Ionicons } from "@expo/vector-icons";
-
-// Datetimepicker
 import DateTimePicker from "@react-native-community/datetimepicker";
-
-// keyboard avoiding view
 import KeyboardAvoidingWrapper from "../loginComponents/KeyboardAvoidingWrapper";
-
-// api client
 import axios from "axios";
-
-// Async storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-// credentials context
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
 
 const Signup = ({ navigation }) => {
@@ -53,7 +36,6 @@ const Signup = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  // Actual value to be sent
   const [dob, setDob] = useState();
 
   const onChange = (event, selectedDate) => {
@@ -67,11 +49,9 @@ const Signup = ({ navigation }) => {
     setShow("date");
   };
 
-  // credentials context
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
 
-  // Form handling
   const handleSignup = (credentials, setSubmitting) => {
     handleMessage(null);
     const url = "https://whispering-headland-00232.herokuapp.com/user/signup";
@@ -80,7 +60,6 @@ const Signup = ({ navigation }) => {
       .then((response) => {
         const result = response.data;
         const { status, message, data } = result;
-        console.log("data Signup", data);
         if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {
@@ -95,21 +74,11 @@ const Signup = ({ navigation }) => {
       });
   };
 
-  /* data Signup Object {
-    "__v": 0,
-    "_id": "6169f9f6aed3c7000438b341",
-    "dateOfBirth": "1974-01-12T03:00:00.000Z",
-    "email": "marcolucianomazzetti@gmail.com",
-    "name": "Juan Carlos",
-    "password": "$2b$10$pae30HLhH1T0Ztx1DVj54eLGeUGvpjbeuGkQtKR2I0v965YYJAX5K",
-  } */
-
   const handleMessage = (message, type = "") => {
     setMessage(message);
     setMessageType(type);
   };
 
-  // Persisting login after signup
   const persistLogin = (credentials, message, status) => {
     AsyncStorage.setItem("flowerCribCredentials", JSON.stringify(credentials))
       .then(() => {

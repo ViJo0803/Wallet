@@ -9,7 +9,6 @@ export function getContacts(userId) {
       .get(`${URL_API_3001}/contact/get/?id=${userId}`)
       .then((response) => {
         dispatch({ type: GET_CONTACT, payload: response.data });
-        console.log("data contactos id: ", response.data);
       })
       .catch((error) => console.log(error));
   };
@@ -30,14 +29,12 @@ export function updateContacts(data, userId) {
     await axios
       .post(`${URL_API_3001}/contact/add/`, data)
       .then((response) => {
-        console.log("response post contact", response)
         if (response.data === "") alert("Something went Wrong");
         else if (response.data[1] === true) alert("Contact added successfully");
         else if (response.data[1] === false) alert("Contact already exist");
-        dispatch(getContacts(userId))
+        dispatch(getContacts(userId));
         dispatch({ type: UPDATE_CONTACT, payload: response.data });
       })
       .catch((error) => console.log(error));
   };
 }
-

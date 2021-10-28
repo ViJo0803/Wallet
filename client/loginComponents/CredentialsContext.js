@@ -1,4 +1,6 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-// Credential context
-export const CredentialsContext = createContext({ storedCredentials: {}, setStoredCredentials: () => {} });
+export const CredentialsContext = createContext({
+  storedCredentials: {},
+  setStoredCredentials: () => {},
+});

@@ -1,9 +1,6 @@
 import React, { useState, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
-
-// formik
 import { Formik } from "formik";
-
 import {
   StyledContainer,
   PageTitle,
@@ -24,26 +21,12 @@ import {
 } from "../loginComponents/styles";
 import { colors } from "../utils/colors";
 import { View, TouchableOpacity, ActivityIndicator } from "react-native";
-
-//colors
 const { lightGray, brand, primary } = colors;
-
-// icon
 import { Octicons, Ionicons } from "@expo/vector-icons";
-
-// Datetimepicker
 import DateTimePicker from "@react-native-community/datetimepicker";
-
-// keyboard avoiding view
 import KeyboardAvoidingWrapper from "../loginComponents/KeyboardAvoidingWrapper";
-
-// api client
 import axios from "axios";
-
-// Async storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-// credentials context
 import { CredentialsContext } from "../loginComponents/CredentialsContext";
 
 const Signup = ({ navigation }) => {
@@ -53,7 +36,6 @@ const Signup = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  // Actual value to be sent
   const [dob, setDob] = useState();
 
   const onChange = (event, selectedDate) => {
@@ -67,13 +49,10 @@ const Signup = ({ navigation }) => {
     setShow("date");
   };
 
-  // credentials context
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
 
-  // Form handling
   const handleSignup = (credentials, setSubmitting) => {
-    //Crear un usuario en nuestra db -> se crea una cuenta
     handleMessage(null);
     const url = "https://whispering-headland-00232.herokuapp.com/user/signup";
     axios
@@ -101,7 +80,6 @@ const Signup = ({ navigation }) => {
     setMessageType(type);
   };
 
-  // Persisting login after signup
   const persistLogin = (credentials, message, status) => {
     AsyncStorage.setItem("flowerCribCredentials", JSON.stringify(credentials))
       .then(() => {

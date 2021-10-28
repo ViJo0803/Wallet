@@ -18,8 +18,6 @@ import QRCode from "react-native-qrcode-svg";
 function UserProfile({ navigation }) {
   const state = useSelector((state) => state.user.user);
   const balance = useSelector((state) => state.account.accounts);
-
-  console.log("this is the state ", state);
   return (
     <View style={styles.container}>
       <Avatar.Image

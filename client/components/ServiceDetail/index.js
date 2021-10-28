@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Pressable,
-  Text,
-  Image,
-  TextInput,
-} from "react-native";
+import { View, Pressable, Text, Image, TextInput } from "react-native";
 import { styles } from "./styles";
 import { servicePayment } from "../../store/actions/transferActions";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,19 +22,18 @@ function ServiceDetail({ route, navigation }) {
       monto: monto,
       fecha: "2021-10-13 14:58:21.706-03",
     };
-    console.log(dataFiltered);
     dispatch(servicePayment(dataFiltered, idUsuario, idcuentas));
   };
 
   const { op } = route.params;
   return (
-    <View >
+    <View>
       <View style={styles.userCard}>
         <Image source={op.image} style={styles.userImage} />
         <View style={styles.titlescontainer}>
-        <Text style={styles.messageBoxText}> {op.name}</Text>
-        <Text style={styles.subtitle}> {op.type}</Text>
-      </View>
+          <Text style={styles.messageBoxText}> {op.name}</Text>
+          <Text style={styles.subtitle}> {op.type}</Text>
+        </View>
       </View>
       <View>
         <Title style={styles.subtitleII}> {op.paymentId}</Title>

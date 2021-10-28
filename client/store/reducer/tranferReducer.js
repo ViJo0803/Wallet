@@ -1,7 +1,7 @@
 import { MAKE_TRANSFER, GET_TRANSFERS } from "../actions/types";
 
 const initalState = {
-  history: []
+  history: [],
 };
 
 const transfersReducer = (state = initalState, { type, payload }) => {
@@ -9,8 +9,8 @@ const transfersReducer = (state = initalState, { type, payload }) => {
     case GET_TRANSFERS:
       return { ...state, history: payload };
 
-      case MAKE_TRANSFER:
-        return {...state,history:payload }
+    case MAKE_TRANSFER:
+      return { ...state, history: payload };
 
     default:
       return state;

@@ -5,7 +5,7 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { View, Image, TouchableOpacity } from "react-native"
+import { View, Image, TouchableOpacity } from "react-native";
 import { CredentialsContext } from "../../loginComponents/CredentialsContext";
 import UserProfile from "../UserProfile/index";
 import TabNav from "../TabNav/index.js";
@@ -17,7 +17,6 @@ import { colors } from "../../utils/colors.js";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 const Drawer = createDrawerNavigator();
-
 
 function DrawerBar({ navigation }) {
   const { storedCredentials, setStoredCredentials } =
@@ -33,19 +32,21 @@ function DrawerBar({ navigation }) {
 
   function GoHome() {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate("Main")} style={{ marginRight: 20 }}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Main")}
+        style={{ marginRight: 20 }}
+      >
         <FontAwesome5 name="home" color={colors.brand} size={30} />
       </TouchableOpacity>
-    )
+    );
   }
-
 
   function LogoTitle() {
     return (
       <View>
         <Image
           style={{ width: 75, height: 75 }}
-          source={require('../../assets/IsotipoSinBG.png')}
+          source={require("../../assets/IsotipoSinBG.png")}
         />
       </View>
     );
@@ -55,7 +56,7 @@ function DrawerBar({ navigation }) {
     <Drawer.Navigator
       initialRouteName="TabNav"
       screenOptions={{
-        headerTitleAlign: 'center',
+        headerTitleAlign: "center",
         headerTitle: () => <LogoTitle />,
         headerRight: () => <GoHome />,
         headerStyle: {
@@ -75,7 +76,7 @@ function DrawerBar({ navigation }) {
             <DrawerItem
               label="Logout"
               onPress={() => clearLogin()}
-              style={{ backgroundColor: colors.secondary, fontSize: 30}}
+              style={{ backgroundColor: colors.secondary, fontSize: 30 }}
               icon={() => (
                 <FontAwesome5
                   name="sign-out-alt"

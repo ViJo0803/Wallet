@@ -7,7 +7,10 @@ const Stack = createStackNavigator();
 
 function ServiceNav() {
   return (
-    <Stack.Navigator initialRouteName="ServicesIndex" screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      initialRouteName="ServicesIndex"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="ServicesIndex" component={ServicesIndex} />
       <Stack.Screen name="ServiceDetail" component={ServiceDetail} />
     </Stack.Navigator>

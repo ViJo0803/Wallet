@@ -9,28 +9,17 @@ const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case CREATE_USER:
       return { ...state, user: payload };
+    case CREATE_USER:
+      return { ...state, user: payload };
 
-    //console.log("in reducer user")
+    case GET_USER:
+      return { ...state, user: payload };
 
-        case CREATE_USER:
-            //console.log("in reducer create user", payload)
-            return { ...state, user: payload };
+    case GET_JWT:
+      return { ...state, jwtToken: { payload } };
 
-
-        case GET_USER:
-            //console.log("in reducer get user", payload)
-            return {...state,user:payload};
-        
-        case GET_JWT:
-            //console.log("in reducer get jwt", payload)
-            return { ...state, jwtToken: { payload } }
-
-        
-        case UPDATE_USER:
-            //console.log("in reducer update user", payload);
-            return {...state, user:payload}
-
-
+    case UPDATE_USER:
+      return { ...state, user: payload };
 
     case GET_USER:
       return { ...state, user: payload };

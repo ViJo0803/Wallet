@@ -1,7 +1,7 @@
 import userReducer from "./userReducer";
 import accountReducer from "./accountReducer";
 import transfersReducer from "./tranferReducer";
-import contactsReducer from "./contactsReducer"
+import contactsReducer from "./contactsReducer";
 
 import { combineReducers } from "redux";
 

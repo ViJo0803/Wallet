@@ -68,13 +68,6 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  // const userTrue = (email) =>{
-  //   getUser(email)
-  //   const _user = useSelector((state) => state.user.user);
-  //   return _user
-  //     }
-
-
   const handleGoogleSignin = () => {
     setGoogleSubmitting(true);
     const config = {
@@ -87,8 +80,6 @@ const Login = ({ navigation }) => {
       .then((result) => {
         const { type, user } = result;
         const { email, name, photoUrl } = user;
-
-        // let _user = userTrue(email);
 
         if (type == "success") {
           const { email, name, photoUrl } = user;

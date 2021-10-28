@@ -30,10 +30,10 @@ function Statistics({ navigation }) {
         <Text style={styles.header}>Bezier Line Chart</Text>
         <LineChart
           data={{
-            labels: transfers.map(t=>t.fecha),
+            labels: transfers.map((t) => t.fecha),
             datasets: [
               {
-                data: transfers.map(t=>t.monto)
+                data: transfers.map((t) => t.monto),
               },
             ],
           }}
@@ -65,15 +65,15 @@ function Statistics({ navigation }) {
       <>
         <Text style={styles.header}>Contribution Graph</Text>
         <ContributionGraph
-          values={ transfers.map(t=>({ count:t.monto, date: t.fecha}))}
+          values={transfers.map((t) => ({ count: t.monto, date: t.fecha }))}
           // endDate={new Date('2019-04-01')}
           numDays={105}
-          width={Dimensions.get('window').width - 16}
+          width={Dimensions.get("window").width - 16}
           // height={220}
           chartConfig={{
-            backgroundColor: '#1cc910',
-            backgroundGradientFrom: '#eff3ff',
-            backgroundGradientTo: '#efefef',
+            backgroundColor: "#1cc910",
+            backgroundGradientFrom: "#eff3ff",
+            backgroundGradientTo: "#efefef",
             decimalPlaces: 2,
             color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
             style: {
@@ -86,8 +86,8 @@ function Statistics({ navigation }) {
   };
   return (
     <View style={styles.container}>
-     <MyBezierLineChart />
-     <MyContributionGraph />
+      <MyBezierLineChart />
+      <MyContributionGraph />
       <Button title="Go Home" onPress={() => navigation.navigate("Home")} />
     </View>
   );

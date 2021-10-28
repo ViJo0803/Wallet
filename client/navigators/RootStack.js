@@ -67,11 +67,7 @@ function LoginStack() {
         component={RegisterExntended}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="F.A.Q."
-        component={FAQ}
-        options={{}}
-      />
+      <Stack.Screen name="F.A.Q." component={FAQ} options={{}} />
     </Stack.Navigator>
   );
 }

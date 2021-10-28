@@ -1,11 +1,11 @@
+// require("dotenv").config();
 import axios from "axios";
-//import { url } from './const';
-import { URL_API_3001 } from "../../constantes";
+ import { URL_API_3001 } from "../../constantes";
+// const { URL_API_3001 } = process.env;
 
 import { GET_ACCOUNT, DEPOSIT, GET_SERVICE_PAYMENT } from "./types";
 
 export function getAccount(id) {
-  console.log("id",id)
   return async (dispatch) => {
     await axios
       .get(`${URL_API_3001}/account/get/?id=${id}`)
@@ -16,38 +16,23 @@ export function getAccount(id) {
   };
 }
 
-/*
-export function createAccount(userData) {
+export function deposit(id, monto, idusuario) {
   return async (dispatch) => {
     await axios
-      .post(`${URL_API_3001}/account/update`, userData)
+      .put(`${URL_API_3001}/account/update/?id=${id}&monto=${monto}`)
       .then((response) => {
-        dispatch({ type: CREATE_ACCOUNT, payload: response.data });
-      })
-      .catch((error) => console.log(error));
+        dispatch(getAccount(idusuario));
+        dispatch({ type: DEPOSIT, payload: response.data });
+      });
   };
 }
-*/
 
-export function deposit(id, monto, idusuario){
-return async(dispatch)=>{
-  console.log("in actions")
-  console.log("id usuario:",idusuario , "id:", id, "monto:", monto)
-  await axios
-  .put(`${URL_API_3001}/account/update/?id=${id}&monto=${monto}`)
-  .then((response)=>{
-    dispatch(getAccount(idusuario))
-    dispatch({type:DEPOSIT, payload: response.data})
-  })
-}
-}
-
-export function getPaymentHistory(id){
-  return async(dispatch)=>{
+export function getPaymentHistory(id) {
+  return async (dispatch) => {
     await axios
-    .get(`${URL_API_3001}/servicesPayment/get?id=${id}`)
-    .then((response)=>{
-      dispatch({type:GET_SERVICE_PAYMENT, payload: response.data})
-    })
-  }
+      .get(`${URL_API_3001}/servicesPayment/get?id=${id}`)
+      .then((response) => {
+        dispatch({ type: GET_SERVICE_PAYMENT, payload: response.data });
+      });
+  };
 }
