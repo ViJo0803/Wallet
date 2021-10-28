@@ -1126,7 +1126,7 @@
 
 "wrap-ansi@^7.0.0":
   "integrity" "sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q=="
-  "resolved" "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
+  "resolved" "https:registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
   "version" "7.0.0"
   dependencies:
     "ansi-styles" "^4.0.0"

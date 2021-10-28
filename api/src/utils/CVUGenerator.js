@@ -7,7 +7,7 @@
         var x1 = Math.floor(x)
         stringNum = stringNum + x1
     }
-     console.log(stringNum) 
+    
     return stringNum
 }
 
