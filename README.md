@@ -12,6 +12,7 @@ This project was made by a team of 7 people *(check contributors)*, which was ou
     + React Native
     + Expo
     + Redux
+    + Styles-Components
     
 
 - **Back End:**
