@@ -37,22 +37,18 @@ To run this project locally follow the next steps:
     + DB_PASSWORD = ""
     + DB_PORT = ""
 
-- Head to `api/microservices/db.js` uncomment lines 86-92, run `npm start` inside `api/microservices` TWICE, afterwards comment those lines again. This is used to create a bank user who is responsable of the recharge system.
+- Run `npm start` inside `/api`,...
 
-- Head to `api/microservices/config/gateway.config.yml` and replace all `'YOUR_LOCAL_IP'` by your preffered IPv4 (you can find it by running `cmd` and writing `ipconfig /all`.
 
-- Run `npm start` inside `/client` folder and start the project from Expo emulating a device or using your own device.
-
-**NOTE**: If you want to promote yourself to administrador you must create an user and use Postman (or some related software) and make a PATCH request to: `http://YOUR_LOCAL_IP/users/promote/:userId`
 # App Previews
 
 ### Promotional Video:
-[![Click Here](https://img.youtube.com/vi/t1KtkQB5uQ8/0.jpg)](https://www.youtube.com/watch?v=t1KtkQB5uQ8) 
+[![Click Here]()]() 
 Click Me
 
 ### Project Full Demo (in spanish):
 
-[![Click Me](https://img.youtube.com/vi/BcFIxGM8K_Y/0.jpg)](https://www.youtube.com/watch?v=BcFIxGM8K_Y)
+[![Click Me]()]()
 Click Me
 
 # About Us: :busts_in_silhouette:
